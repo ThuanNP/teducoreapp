@@ -5,7 +5,7 @@ using TeduCoreApp.infrastructure.SharedKernel;
 namespace TeduCoreApp.Data.Entities
 {
     [Table("Slides")]
-    public class Slides : DomainEntity<int>
+    public class Slide : DomainEntity<int>
     {
         [Required, MaxLength(256)]
         public string Name { get; set; }

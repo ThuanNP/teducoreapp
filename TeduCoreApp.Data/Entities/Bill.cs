@@ -41,8 +41,8 @@ namespace TeduCoreApp.Data.Entities
         [DefaultValue(Status.Active)]
         public Status Status { get; set; } = Status.Active;
 
-        //[ForeignKey("CustomerId")]
-        //public virtual AppUser User { set; get; }
+        [ForeignKey("CustomerId")]
+        public virtual AppUser User { set; get; }
 
         public virtual ICollection<BillDetail> BillDetails { get; set; }
     }

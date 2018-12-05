@@ -19,8 +19,8 @@ namespace TeduCoreApp.Data.Entities
         public bool CanUpdate { set; get; }
         public bool CanDelete { set; get; }
 
-        //[ForeignKey("RoleId")]
-        //public virtual AppRole AppRole { get; set; }
+        [ForeignKey("RoleId")]
+        public virtual AppRole AppRole { get; set; }
 
         [ForeignKey("FunctionId")]
         public virtual Function Function { get; set; }
