@@ -9,7 +9,7 @@ namespace TeduCoreApp.Data.Entities
     {
         public int ProductId { get; set; }
 
-        [Required, MaxLength(50), Column(TypeName = "varchar")]
+        [Required, MaxLength(50), Column(TypeName = "varchar(50)")]
         public string TagId { get; set; }
 
         [ForeignKey("ProductId")]
