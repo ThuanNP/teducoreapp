@@ -7,7 +7,7 @@ using TeduCoreApp.infrastructure.SharedKernel;
 namespace TeduCoreApp.Data.Entities
 {
     [Table("SystemConfigs")]
-    public class SystemConfig : DomainEntity<int>
+    public class SystemConfig : DomainEntity<string>
     {
         [Required, MaxLength(128)]
         public string Name { get; set; }
