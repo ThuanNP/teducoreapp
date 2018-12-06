@@ -13,12 +13,10 @@ namespace TeduCoreApp.Data.Entities
     {
         public ProductCategory() => Products = new List<Product>();
 
-        public ProductCategory(int id, string name, string description, int? parentId, int? homeOrder, string image, 
+        public ProductCategory(string name, string description, int? parentId, int? homeOrder, string image, 
             bool? homeFlag, string seoPageTitle, string seoAlias, string seokeywords, 
-            string seoDecription, Status status, int sortOrder, 
-            DateTime dateCreated, DateTime dateModified, ICollection<Product> products)
+            string seoDecription, Status status, int sortOrder)
         {
-            Id = id;
             Name = name;
             Description = description;
             ParentId = parentId;
@@ -30,10 +28,7 @@ namespace TeduCoreApp.Data.Entities
             Seokeywords = seokeywords;
             SeoDecription = seoDecription;
             Status = status;
-            SortOrder = sortOrder;
-            DateCreated = dateCreated;
-            DateModified = dateModified;
-            Products = products;
+            Products = new List<Product>();
         }
 
         [Required, MaxLength(256)]

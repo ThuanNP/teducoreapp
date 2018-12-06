@@ -1,14 +1,20 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TeduCoreApp.Application.Implementations;
+using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Data;
 using TeduCoreApp.Data.EF;
+using TeduCoreApp.Data.EF.Repositories;
 using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.Models;
 using TeduCoreApp.Services;
+using IConfigurationProvider = AutoMapper.IConfigurationProvider;
 
 namespace TeduCoreApp
 {
@@ -32,12 +38,22 @@ namespace TeduCoreApp
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+
             // Add application services.
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
 
+            services.AddSingleton(Mapper.Configuration);
+            services.AddScoped<IMapper>(sp=> new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
+            
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<DbIntinitializer>();
+
+
+            services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
+
+            services.AddTransient<IProductCategoryService, ProductCategoryService>();
+            
             services.AddMvc();
         }
 
