@@ -88,7 +88,7 @@ namespace TeduCoreApp.Data.EF
                     new Function() {Id = "ACCESS",Name = "Báo cáo truy cập",ParentId = "REPORT",SortOrder = 2,Status = Status.Active,URL = "/admin/report/visitor",IconCss = "fa-bar-chart-o"  },
                     new Function() {Id = "READER",Name = "Báo cáo độc giả",ParentId = "REPORT",SortOrder = 3,Status = Status.Active,URL = "/admin/report/reader",IconCss = "fa-bar-chart-o"  },
                 };
-                 _context.Functions.AddRange(functions);
+                _context.Functions.AddRange(functions);
             }
 
             if (_context.Footers.Count(x => x.Id == CommonConstants.DefaultFooterId) == 0)
@@ -127,7 +127,6 @@ namespace TeduCoreApp.Data.EF
                         AdvertisementPositions = new List<AdvertisementPosition>(){
                         new AdvertisementPosition(){Id="product-detail-left",Name="Bên trái"}
                     } },
-
                 };
                 _context.AdvertisementPages.AddRange(pages);
             }

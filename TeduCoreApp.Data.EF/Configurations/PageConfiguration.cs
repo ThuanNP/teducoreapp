@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TeduCoreApp.Data.Entities;
 using static TeduCoreApp.Data.EF.Extensions.ModelBuilderExtensions;
 
