@@ -67,9 +67,8 @@ namespace TeduCoreApp
             services.AddTransient<DbIntinitializer>();
 
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
-
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
-
+            
             services.AddMvc();
         }
 
