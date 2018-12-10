@@ -7,7 +7,7 @@
         $('#frmLogin').validate({
             errorClass: 'red',
             ignore: [],
-            lang: 'vi',
+            lang: 'en',
             rules: {
                 username: {
                     required: true
@@ -40,7 +40,7 @@
                 if (res.Success) {
                     window.location.href = '/Admin/Home/Index';
                 } else {
-                    tedu.notify('Đăng nhập không đúng.', 'error');
+                    tedu.notify("Login failed", 'error');
                 }
             },
             error: function (xhr, status, error) {

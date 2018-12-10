@@ -34,22 +34,22 @@
                 <section class="login_content">
                     <form id="frmLogin">
                         @Html.AntiForgeryToken()
-                        <h1>Đăng nhập</h1>
+                        <h1>Login</h1>
                         <div>
-                            <input id="txtUsername" name="username" type="text" class="form-control" placeholder="Tên đăng nhập"/>
+                            <input id="txtUsername" name="username" type="text" class="form-control" placeholder="Username"/>
                         </div>
                         <div>
-                            <input id="txtPassword" name="password" type="password" class="form-control" placeholder="Mật khẩu"/>
+                            <input id="txtPassword" name="password" type="password" class="form-control" placeholder="Password"/>
                         </div>
                         <div>
-                            <a id="btnLogin" class="btn btn-default submit" href="#">Đăng nhập</a>
-                            <a class="reset_pass" href="#">Quên mật khẩu?</a>
+                            <a id="btnLogin" class="btn btn-default submit" href="#">Log in</a>
+                            <a class="reset_pass" href="#">Lost your password?</a>
                         </div>
                         <div class="clearfix"></div>
                         <div class="separator">
                             <p class="change_link">
-                                Người dùng mới?
-                                <a href="#signup" class="to_register"> Đăng ký tài khoản </a>
+                                New to site?
+                                <a href="#signup" class="to_register"> Create Account </a>
                             </p>
                             <div class="clearfix"></div>
                             <br />
@@ -64,24 +64,24 @@
             <div id="register" class="animate form registration_form">
                 <section class="login_content">
                     <form>
-                        <h1>Đăng ký</h1>
+                        <h1>Create Account</h1>
                         <div>
-                            <input type="text" class="form-control" placeholder="Tên đăng nhập" />
+                            <input type="text" class="form-control" placeholder="Username" />
                         </div>
                         <div>
                             <input type="email" class="form-control" placeholder="Email" />
                         </div>
                         <div>
-                            <input type="password" class="form-control" placeholder="Mập khẩu" />
+                            <input type="password" class="form-control" placeholder="Password" />
                         </div>
                         <div>
-                            <a class="btn btn-default submit" href="#">Đăng ký</a>
+                            <a class="btn btn-default submit" href="#">Submit</a>
                         </div>
                         <div class="clearfix"></div>
                         <div class="separator">
                             <p class="change_link">
-                                Thành viên cũ ?
-                                <a href="#signin" class="to_register"> Đăng nhập </a>
+                                Already a member?
+                                <a href="#signin" class="to_register"> Log in </a>
                             </p>
                             <div class="clearfix"></div>
                             <br />

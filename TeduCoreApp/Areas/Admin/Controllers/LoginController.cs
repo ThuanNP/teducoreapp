@@ -49,12 +49,13 @@ namespace TeduCoreApp.Areas.Admin.Controllers
                 }
                 if (result.IsLockedOut)
                 {
-                    _logger.LogWarning("User account locked out.");
-                    return new OkObjectResult(new GenericResult(false, "Tài khoản đã bị khoá."));
+                    const string Message = "User account locked out.";
+                    _logger.LogWarning(Message);
+                    return new OkObjectResult(new GenericResult(false, Message));
                 }
                 else
                 {
-                    return new OkObjectResult(new GenericResult(false, "Đăng nhập không đúng."));
+                    return new OkObjectResult(new GenericResult(false, "Invalid login attempt."));
                 }
             }
 
