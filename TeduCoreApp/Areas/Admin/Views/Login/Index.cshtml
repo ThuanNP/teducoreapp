@@ -32,14 +32,14 @@
         <div class="login_wrapper">
             <div class="animate form login_form">
                 <section class="login_content">
-                    <form>
+                    <form id="frmLogin">
                         @Html.AntiForgeryToken()
                         <h1>Đăng nhập</h1>
                         <div>
-                            <input id="txtUsername" name="username" type="text" class="form-control" placeholder="Tên đăng nhập" required="" />
+                            <input id="txtUsername" name="username" type="text" class="form-control" placeholder="Tên đăng nhập"/>
                         </div>
                         <div>
-                            <input id="txtPassword" name="password" type="password" class="form-control" placeholder="Mật khẩu" required="" />
+                            <input id="txtPassword" name="password" type="password" class="form-control" placeholder="Mật khẩu"/>
                         </div>
                         <div>
                             <a id="btnLogin" class="btn btn-default submit" href="#">Đăng nhập</a>
@@ -66,13 +66,13 @@
                     <form>
                         <h1>Đăng ký</h1>
                         <div>
-                            <input type="text" class="form-control" placeholder="Tên đăng nhập" required="" />
+                            <input type="text" class="form-control" placeholder="Tên đăng nhập" />
                         </div>
                         <div>
-                            <input type="email" class="form-control" placeholder="Email" required="" />
+                            <input type="email" class="form-control" placeholder="Email" />
                         </div>
                         <div>
-                            <input type="password" class="form-control" placeholder="Mập khẩu" required="" />
+                            <input type="password" class="form-control" placeholder="Mập khẩu" />
                         </div>
                         <div>
                             <a class="btn btn-default submit" href="#">Đăng ký</a>
@@ -104,6 +104,12 @@
     <script src="~/lib/notifyjs/dist/styles/metro/notify-metro.js"></script>
     <!--Bootbox-->
     <script src="~/lib/bootbox/bootbox.js"></script>
+    <!--jquery-validation-->
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+    <!--jquery-validation-unobtrusive-->
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jquery-validation/localization/messages_vi.js"></script>
     <!--Tedu-->
     <script src="~/app/shared/tedu.js"></script>
     <!--Login Controller-->
