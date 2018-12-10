@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin - TeduCoreApp</title>
+    <title>TeduCoreApp Admin | @ViewData["Title"] </title>
 
     <!-- Bootstrap -->
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
@@ -226,7 +226,7 @@
                                     </li>
                                     <li>
                                         <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span class="image"><img src="~/admin-side/images/img.jpg" alt="Profile Image" /></span>
                                             <span>
                                                 <span>John Smith</span>
                                                 <span class="time">3 mins ago</span>
@@ -250,7 +250,7 @@
                                     </li>
                                     <li>
                                         <a>
-                                            <span class="image"><img src="~/admin-side/~/admin-side/images/img.jpg" alt="Profile Image" /></span>
+                                            <span class="image"><img src="~/admin-side/images/img.jpg" alt="Profile Image" /></span>
                                             <span>
                                                 <span>John Smith</span>
                                                 <span class="time">3 mins ago</span>
@@ -283,7 +283,7 @@
             <!-- footer content -->
             <footer>
                 <div class="pull-right">
-                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                    <p>&copy; @DateTime.Now.Year - TeduCoreApp</p>
                 </div>
                 <div class="clearfix"></div>
             </footer>
@@ -294,7 +294,7 @@
     <!-- jQuery -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <!-- FastClick -->
     <script src="~/lib/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
