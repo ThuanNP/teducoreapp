@@ -19,6 +19,7 @@
     <li><a href="javascript:;">Help</a></li>
     <li>
         <form action="/Admin/Account/Logout" method="post" id="logoutForm" class="navbar-right">
+            @Html.AntiForgeryToken()
             <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>
         </form>
     </li>
