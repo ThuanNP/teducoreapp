@@ -1,4 +1,4 @@
-﻿namespace TeduCoreApp.Application.ViewModels
+﻿namespace TeduCoreApp.Application.ViewModels.Product
 {
     public class ProductTagViewModel
     {

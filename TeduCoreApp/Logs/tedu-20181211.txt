@@ -1,0 +1,563 @@
+2018-12-11T23:41:25.7476496+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-11T23:41:26.1716505+07:00  [INF] Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:41:26.2267592+07:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:41:26.2730610+07:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-12-11T23:41:26.3216838+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-12-11T23:41:26.3336753+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-12-11T23:41:26.3904695+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertisementPages] AS [a]" (0723d8ff)
+2018-12-11T23:41:26.4557525+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-12-11T23:41:26.4757527+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-12-11T23:41:26.5041519+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-12-11T23:41:26.5997121+07:00  [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:41:26.6194835+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:41:26.6501654+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:41:26.6834409+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-11T23:41:26.7135174+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:41:26.7419466+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:41:26.7516414+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-12-11T23:41:26.7802772+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-12-11T23:41:26.8181560+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-12-11T23:41:26.8260305+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertisementPages] AS [a]" (0723d8ff)
+2018-12-11T23:41:26.8377426+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-12-11T23:41:26.8666536+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-12-11T23:41:26.8939515+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-12-11T23:41:26.9269162+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:41:26.9549662+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:41:26.9632726+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:41:27.4566503+07:00 0HLIVGTVD8POG:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/   (ca22a1cb)
+2018-12-11T23:41:27.4566502+07:00 0HLIVGTVD8POH:00000001 [INF] Request starting HTTP/1.1 DEBUG http://localhost:55775/  0 (ca22a1cb)
+2018-12-11T23:41:27.5075233+07:00 0HLIVGTVD8POH:00000001 [INF] Request finished in 120.7846ms 200  (791a596a)
+2018-12-11T23:41:27.7614384+07:00 0HLIVGTVD8POG:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-11T23:41:31.6204957+07:00 0HLIVGTVD8POG:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-12-11T23:41:32.6509398+07:00 0HLIVGTVD8POH:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44324/css/site.css   (ca22a1cb)
+2018-12-11T23:41:32.6668596+07:00 0HLIVGTVD8POJ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2018-12-11T23:41:32.6927469+07:00 0HLIVGTVD8POI:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/images/banner2.svg   (ca22a1cb)
+2018-12-11T23:41:32.7294170+07:00 0HLIVGTVD8POG:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 4865.5251ms (afa2e885)
+2018-12-11T23:41:32.7641559+07:00 0HLIVGTVD8POK:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/images/banner1.svg   (ca22a1cb)
+2018-12-11T23:41:32.8013134+07:00 0HLIVGTVD8POI:00000001 [INF] The file "/images/banner2.svg" was not modified (f1f8d725)
+2018-12-11T23:41:32.8108315+07:00 0HLIVGTVD8POH:00000002 [INF] The file "/css/site.css" was not modified (f1f8d725)
+2018-12-11T23:41:32.8310905+07:00 0HLIVGTVD8POJ:00000001 [INF] The file "/lib/bootstrap/dist/css/bootstrap.css" was not modified (f1f8d725)
+2018-12-11T23:41:32.8661280+07:00 0HLIVGTVD8POK:00000001 [INF] The file "/images/banner1.svg" was not modified (f1f8d725)
+2018-12-11T23:41:32.8897104+07:00 0HLIVGTVD8POI:00000001 [INF] Request finished in 174.8935ms 304 image/svg+xml (791a596a)
+2018-12-11T23:41:32.9232769+07:00 0HLIVGTVD8POG:00000001 [INF] Request finished in 5354.0877ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-11T23:41:32.9445927+07:00 0HLIVGTVD8POH:00000002 [INF] Request finished in 193.1019ms 304 text/css (791a596a)
+2018-12-11T23:41:32.9782656+07:00 0HLIVGTVD8POK:00000001 [INF] Request finished in 231.129ms 304 image/svg+xml (791a596a)
+2018-12-11T23:41:32.9851948+07:00 0HLIVGTVD8POJ:00000001 [INF] Request finished in 199.0036ms 304 text/css (791a596a)
+2018-12-11T23:41:33.0373971+07:00 0HLIVGTVD8POI:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44324/images/banner4.svg   (ca22a1cb)
+2018-12-11T23:41:33.0532212+07:00 0HLIVGTVD8POI:00000002 [INF] The file "/images/banner4.svg" was not modified (f1f8d725)
+2018-12-11T23:41:33.0859175+07:00 0HLIVGTVD8POH:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/bootstrap/dist/js/bootstrap.js   (ca22a1cb)
+2018-12-11T23:41:33.0992699+07:00 0HLIVGTVD8POG:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44324/js/site.js?v=ji3-IxbEzYWjzzLCGkF1KDjrT2jLbbrSYXw-AhMPNIA   (ca22a1cb)
+2018-12-11T23:41:33.1159641+07:00 0HLIVGTVD8POI:00000002 [INF] Request finished in 88.4782ms 304 image/svg+xml (791a596a)
+2018-12-11T23:41:33.1229447+07:00 0HLIVGTVD8POL:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/images/banner3.svg   (ca22a1cb)
+2018-12-11T23:41:33.1443075+07:00 0HLIVGTVD8POJ:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2   (ca22a1cb)
+2018-12-11T23:41:33.1724393+07:00 0HLIVGTVD8POH:00000003 [INF] The file "/lib/bootstrap/dist/js/bootstrap.js" was not modified (f1f8d725)
+2018-12-11T23:41:33.2041791+07:00 0HLIVGTVD8POG:00000002 [INF] The file "/js/site.js" was not modified (f1f8d725)
+2018-12-11T23:41:33.2230530+07:00 0HLIVGTVD8POL:00000001 [INF] The file "/images/banner3.svg" was not modified (f1f8d725)
+2018-12-11T23:41:33.2336950+07:00 0HLIVGTVD8POM:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/jquery/dist/jquery.js   (ca22a1cb)
+2018-12-11T23:41:33.2631926+07:00 0HLIVGTVD8POM:00000001 [INF] The file "/lib/jquery/dist/jquery.js" was not modified (f1f8d725)
+2018-12-11T23:41:33.3338149+07:00 0HLIVGTVD8POH:00000003 [INF] Request finished in 217.5503ms 304 application/javascript (791a596a)
+2018-12-11T23:41:33.3712383+07:00 0HLIVGTVD8POJ:00000002 [INF] The file "/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2" was not modified (f1f8d725)
+2018-12-11T23:41:33.3829985+07:00 0HLIVGTVD8POL:00000001 [INF] Request finished in 164.2142ms 304 image/svg+xml (791a596a)
+2018-12-11T23:41:33.4038690+07:00 0HLIVGTVD8POM:00000001 [INF] Request finished in 60.5109ms 304 application/javascript (791a596a)
+2018-12-11T23:41:33.4281777+07:00 0HLIVGTVD8POG:00000002 [INF] Request finished in 184.105ms 304 application/javascript (791a596a)
+2018-12-11T23:41:33.4563954+07:00 0HLIVGTVD8POJ:00000002 [INF] Request finished in 379.6475ms 304 font/woff2 (791a596a)
+2018-12-11T23:43:49.6590730+07:00 0HLIVGTVD8PON:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/admin   (ca22a1cb)
+2018-12-11T23:43:49.7009547+07:00 0HLIVGTVD8PON:00000001 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.LoginController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-11T23:43:50.2562294+07:00 0HLIVGTVD8PON:00000001 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Login/Index.cshtml". (9707eebe)
+2018-12-11T23:43:50.4566897+07:00 0HLIVGTVD8PON:00000001 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.LoginController.Index (TeduCoreApp)" in 664.837ms (afa2e885)
+2018-12-11T23:43:50.5180115+07:00 0HLIVGTVD8PON:00000001 [INF] Request finished in 828.2331ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-11T23:43:50.5699320+07:00 0HLIVGTVD8POQ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/notifyjs/dist/styles/metro/notify-metro.js   (ca22a1cb)
+2018-12-11T23:43:50.5901231+07:00 0HLIVGTVD8POO:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/font-awesome/css/font-awesome.css   (ca22a1cb)
+2018-12-11T23:43:50.6072101+07:00 0HLIVGTVD8POR:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/notifyjs/dist/notify.js   (ca22a1cb)
+2018-12-11T23:43:50.6215596+07:00 0HLIVGTVD8POP:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/app/shared/tedu.js   (ca22a1cb)
+2018-12-11T23:43:50.6611412+07:00 0HLIVGTVD8POR:00000001 [INF] The file "/lib/notifyjs/dist/notify.js" was not modified (f1f8d725)
+2018-12-11T23:43:50.7313762+07:00 0HLIVGTVD8POP:00000001 [INF] The file "/app/shared/tedu.js" was not modified (f1f8d725)
+2018-12-11T23:43:50.7504844+07:00 0HLIVGTVD8POQ:00000001 [INF] The file "/lib/notifyjs/dist/styles/metro/notify-metro.js" was not modified (f1f8d725)
+2018-12-11T23:43:50.7696343+07:00 0HLIVGTVD8POP:00000001 [INF] Request finished in 293.7103ms 304 application/javascript (791a596a)
+2018-12-11T23:43:50.7821575+07:00 0HLIVGTVD8POO:00000001 [INF] The file "/lib/font-awesome/css/font-awesome.css" was not modified (f1f8d725)
+2018-12-11T23:43:50.8305300+07:00 0HLIVGTVD8POR:00000001 [INF] Request finished in 71.1141ms 304 application/javascript (791a596a)
+2018-12-11T23:43:50.8547411+07:00 0HLIVGTVD8POO:00000001 [INF] Request finished in 344.5311ms 304 text/css (791a596a)
+2018-12-11T23:43:50.8841805+07:00 0HLIVGTVD8POQ:00000001 [INF] Request finished in 304.9137ms 304 application/javascript (791a596a)
+2018-12-11T23:43:50.9220906+07:00 0HLIVGTVD8POU:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js   (ca22a1cb)
+2018-12-11T23:43:50.9358837+07:00 0HLIVGTVD8POS:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/jquery-validation/dist/jquery.validate.js   (ca22a1cb)
+2018-12-11T23:43:50.9666050+07:00 0HLIVGTVD8POT:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/nprogress/nprogress.css   (ca22a1cb)
+2018-12-11T23:43:50.9844687+07:00 0HLIVGTVD8POV:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/jquery-validation/localization/messages_vi.js   (ca22a1cb)
+2018-12-11T23:43:51.0219096+07:00 0HLIVGTVD8POS:00000001 [INF] The file "/lib/jquery-validation/dist/jquery.validate.js" was not modified (f1f8d725)
+2018-12-11T23:43:51.0499099+07:00 0HLIVGTVD8POT:00000001 [INF] The file "/lib/nprogress/nprogress.css" was not modified (f1f8d725)
+2018-12-11T23:43:51.0720399+07:00 0HLIVGTVD8POU:00000001 [INF] The file "/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" was not modified (f1f8d725)
+2018-12-11T23:43:51.1130566+07:00 0HLIVGTVD8POU:00000001 [INF] Request finished in 161.7098ms 304 application/javascript (791a596a)
+2018-12-11T23:43:51.1713485+07:00 0HLIVGTVD8POV:00000001 [INF] The file "/lib/jquery-validation/localization/messages_vi.js" was not modified (f1f8d725)
+2018-12-11T23:43:51.1853763+07:00 0HLIVGTVD8PP0:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/app/controllers/login/index.js   (ca22a1cb)
+2018-12-11T23:43:51.2025009+07:00 0HLIVGTVD8PP0:00000001 [INF] The file "/app/controllers/login/index.js" was not modified (f1f8d725)
+2018-12-11T23:43:51.2157404+07:00 0HLIVGTVD8POS:00000001 [INF] Request finished in 192.8653ms 304 application/javascript (791a596a)
+2018-12-11T23:43:51.2329156+07:00 0HLIVGTVD8POT:00000001 [INF] Request finished in 150.8298ms 304 text/css (791a596a)
+2018-12-11T23:43:51.4058028+07:00 0HLIVGTVD8PP0:00000001 [INF] Request finished in 69.7932ms 304 application/javascript (791a596a)
+2018-12-11T23:43:51.4362072+07:00 0HLIVGTVD8PP1:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2018-12-11T23:43:51.4679335+07:00 0HLIVGTVD8PP2:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/jquery-validation/dist/additional-methods.js   (ca22a1cb)
+2018-12-11T23:43:51.5339765+07:00 0HLIVGTVD8PP1:00000001 [INF] The file "/lib/notifyjs/dist/styles/metro/notify-metro.css" was not modified (f1f8d725)
+2018-12-11T23:43:51.6034790+07:00 0HLIVGTVD8POV:00000001 [INF] Request finished in 214.7703ms 304 application/javascript (791a596a)
+2018-12-11T23:43:51.6217801+07:00 0HLIVGTVD8PP2:00000001 [INF] The file "/lib/jquery-validation/dist/additional-methods.js" was not modified (f1f8d725)
+2018-12-11T23:43:51.6575944+07:00 0HLIVGTVD8PP1:00000001 [INF] Request finished in 298.3806ms 304 text/css (791a596a)
+2018-12-11T23:43:51.6832917+07:00 0HLIVGTVD8PP3:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/animate.css/animate.css   (ca22a1cb)
+2018-12-11T23:43:51.7062391+07:00 0HLIVGTVD8PP5:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/admin-side/css/custom.css   (ca22a1cb)
+2018-12-11T23:43:51.7481496+07:00 0HLIVGTVD8PP2:00000001 [INF] Request finished in 319.7969ms 304 application/javascript (791a596a)
+2018-12-11T23:43:51.7992352+07:00 0HLIVGTVD8PP4:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/bootbox/bootbox.js   (ca22a1cb)
+2018-12-11T23:43:51.8379930+07:00 0HLIVGTVD8PP4:00000001 [INF] The file "/lib/bootbox/bootbox.js" was not modified (f1f8d725)
+2018-12-11T23:43:51.8554426+07:00 0HLIVGTVD8PP5:00000001 [INF] The file "/admin-side/css/custom.css" was not modified (f1f8d725)
+2018-12-11T23:43:51.9008140+07:00 0HLIVGTVD8PP5:00000001 [INF] Request finished in 172.2293ms 304 text/css (791a596a)
+2018-12-11T23:43:51.9363633+07:00 0HLIVGTVD8PP4:00000001 [INF] Request finished in 164.3413ms 304 application/javascript (791a596a)
+2018-12-11T23:43:51.9433420+07:00 0HLIVGTVD8PP3:00000001 [INF] The file "/lib/animate.css/animate.css" was not modified (f1f8d725)
+2018-12-11T23:43:52.0172171+07:00 0HLIVGTVD8PP3:00000001 [INF] Request finished in 454.1536ms 304 text/css (791a596a)
+2018-12-11T23:43:52.0372156+07:00 0HLIVGTVD8PON:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0   (ca22a1cb)
+2018-12-11T23:43:52.0544121+07:00 0HLIVGTVD8PON:00000002 [INF] The file "/lib/font-awesome/fonts/fontawesome-webfont.woff2" was not modified (f1f8d725)
+2018-12-11T23:43:52.1050933+07:00 0HLIVGTVD8PON:00000002 [INF] Request finished in 25.9364ms 304 font/woff2 (791a596a)
+2018-12-11T23:58:05.1354244+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-11T23:58:05.5081976+07:00  [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:58:05.5599615+07:00  [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:58:05.5976064+07:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-12-11T23:58:05.6337511+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-12-11T23:58:05.6419225+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-12-11T23:58:05.7096604+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertisementPages] AS [a]" (0723d8ff)
+2018-12-11T23:58:05.7641202+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-12-11T23:58:05.8118322+07:00  [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-12-11T23:58:05.8546402+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-12-11T23:58:05.9412318+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:58:05.9625157+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:58:05.9840560+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:58:06.2367472+07:00  [INF] Executed DbCommand ("119"ms) [Parameters=["@p0='?' (Size = 20), @p1='?' (Size = 256), @p2='?' (Size = 20), @p3='?' (Size = 256), @p4='?' (Size = 20), @p5='?' (Size = 256), @p6='?' (Size = 250), @p7='?' (Size = 250), @p8='?' (Size = 250), @p9='?' (Size = 250), @p10='?' (Size = 250), @p11='?' (Size = 250), @p12='?' (Size = 250), @p13='?' (Size = 250), @p14='?', @p15='?', @p16='?' (Size = 256), @p17='?', @p18='?', @p19='?' (Size = 256), @p20='?' (Size = 256), @p21='?', @p22='?' (Size = 256), @p23='?' (Size = 256), @p24='?' (Size = 256), @p25='?' (Size = 256), @p26='?', @p27='?', @p28='?', @p29='?', @p30='?' (Size = 256), @p31='?', @p32='?', @p33='?' (Size = 256), @p34='?' (Size = 256), @p35='?', @p36='?' (Size = 256), @p37='?' (Size = 256), @p38='?' (Size = 256), @p39='?' (Size = 256), @p40='?', @p41='?', @p42='?', @p43='?', @p44='?' (Size = 256), @p45='?', @p46='?', @p47='?' (Size = 256), @p48='?' (Size = 256), @p49='?', @p50='?' (Size = 256), @p51='?' (Size = 256), @p52='?' (Size = 256), @p53='?' (Size = 256), @p54='?', @p55='?', @p56='?', @p57='?', @p58='?' (Size = 256), @p59='?', @p60='?', @p61='?' (Size = 256), @p62='?' (Size = 256), @p63='?', @p64='?' (Size = 256), @p65='?' (Size = 256), @p66='?' (Size = 256), @p67='?' (Size = 256), @p68='?', @p69='?', @p70='?' (Size = 250), @p71='?' (Size = 250), @p72='?' (Size = 250), @p73='?' (Size = 250), @p74='?' (Size = 250), @p75='?' (Size = 250), @p76='?' (Size = 4000), @p77='?' (Size = 250), @p78='?', @p79='?' (Size = 25), @p80='?' (Size = 250), @p81='?' (Size = 256), @p82='?', @p83='?' (Size = 250), @p84='?' (Size = 4000), @p85='?' (Size = 250), @p86='?', @p87='?' (Size = 25), @p88='?' (Size = 250), @p89='?' (Size = 256), @p90='?', @p91='?' (Size = 250), @p92='?' (Size = 4000), @p93='?' (Size = 250), @p94='?', @p95='?' (Size = 25), @p96='?' (Size = 250), @p97='?' (Size = 256), @p98='?', @p99='?' (Size = 250), @p100='?' (Size = 4000), @p101='?' (Size = 250), @p102='?', @p103='?' (Size = 25), @p104='?' (Size = 250), @p105='?' (Size = 256), @p106='?', @p107='?' (Size = 250), @p108='?' (Size = 4000), @p109='?' (Size = 250), @p110='?', @p111='?' (Size = 25), @p112='?' (Size = 250), @p113='?' (Size = 256), @p114='?', @p115='?' (Size = 250), @p116='?' (Size = 4000), @p117='?' (Size = 250), @p118='?', @p119='?' (Size = 25), @p120='?' (Size = 250), @p121='?' (Size = 256), @p122='?', @p123='?' (Size = 250), @p124='?' (Size = 4000), @p125='?' (Size = 250), @p126='?', @p127='?' (Size = 25), @p128='?' (Size = 250), @p129='?' (Size = 256), @p130='?', @p131='?' (Size = 250), @p132='?' (Size = 4000), @p133='?' (Size = 250), @p134='?', @p135='?' (Size = 25), @p136='?' (Size = 250), @p137='?' (Size = 256), @p138='?', @p139='?' (Size = 250), @p140='?' (Size = 4000), @p141='?' (Size = 250), @p142='?', @p143='?' (Size = 25), @p144='?' (Size = 250), @p145='?' (Size = 256), @p146='?', @p147='?' (Size = 250), @p148='?' (Size = 4000), @p149='?' (Size = 250), @p150='?', @p151='?' (Size = 25), @p152='?' (Size = 250), @p153='?' (Size = 256), @p154='?', @p155='?' (Size = 250), @p156='?' (Size = 4000), @p157='?' (Size = 250), @p158='?', @p159='?' (Size = 25), @p160='?' (Size = 250), @p161='?' (Size = 256), @p162='?', @p163='?' (Size = 250), @p164='?' (Size = 4000), @p165='?' (Size = 250), @p166='?', @p167='?' (Size = 25), @p168='?' (Size = 250), @p169='?' (Size = 256), @p170='?', @p171='?' (Size = 250), @p172='?' (Size = 4000), @p173='?' (Size = 250), @p174='?', @p175='?' (Size = 25), @p176='?' (Size = 250), @p177='?' (Size = 256), @p178='?', @p179='?' (Size = 250), @p180='?' (Size = 4000), @p181='?' (Size = 250), @p182='?', @p183='?' (Size = 25), @p184='?' (Size = 250), @p185='?' (Size = 256), @p186='?', @p187='?' (Size = 250), @p188='?' (Size = 255), @p189='?' (Size = 128), @p190='?', @p191='?' (Size = 4000), @p192='?', @p193='?', @p194='?', @p195='?', @p196='?' (Size = 255), @p197='?' (Size = 128), @p198='?', @p199='?' (Size = 4000), @p200='?', @p201='?', @p202='?', @p203='?', @p204='?' (Size = 255), @p205='?' (Size = 128), @p206='?', @p207='?' (Size = 4000), @p208='?', @p209='?', @p210='?', @p211='?'"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AdvertisementPages] ([Id], [Name])
+VALUES (@p0, @p1),
+(@p2, @p3),
+(@p4, @p5);
+DECLARE @inserted3 TABLE ([Id] int, [_Position] [int]);
+MERGE [Colors] USING (
+VALUES (@p6, @p7, 0),
+(@p8, @p9, 1),
+(@p10, @p11, 2),
+(@p12, @p13, 3)) AS i ([Code], [Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Code], [Name])
+VALUES (i.[Code], i.[Name])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted3;
+
+SELECT [t].[Id] FROM [Colors] t
+INNER JOIN @inserted3 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+
+DECLARE @inserted7 TABLE ([Id] int, [_Position] [int]);
+MERGE [ProductCategories] USING (
+VALUES (@p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, 0),
+(@p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37, @p38, @p39, @p40, @p41, 1),
+(@p42, @p43, @p44, @p45, @p46, @p47, @p48, @p49, @p50, @p51, @p52, @p53, @p54, @p55, 2),
+(@p56, @p57, @p58, @p59, @p60, @p61, @p62, @p63, @p64, @p65, @p66, @p67, @p68, @p69, 3)) AS i ([DateCreated], [DateModified], [Description], [HomeFlag], [HomeOrder], [Image], [Name], [ParentId], [SeoAlias], [SeoDecription], [SeoPageTitle], [Seokeywords], [SortOrder], [Status], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([DateCreated], [DateModified], [Description], [HomeFlag], [HomeOrder], [Image], [Name], [ParentId], [SeoAlias], [SeoDecription], [SeoPageTitle], [Seokeywords], [SortOrder], [Status])
+VALUES (i.[DateCreated], i.[DateModified], i.[Description], i.[HomeFlag], i.[HomeOrder], i.[Image], i.[Name], i.[ParentId], i.[SeoAlias], i.[SeoDecription], i.[SeoPageTitle], i.[Seokeywords], i.[SortOrder], i.[Status])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted7;
+
+SELECT [t].[Id] FROM [ProductCategories] t
+INNER JOIN @inserted7 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+
+DECLARE @inserted11 TABLE ([Id] int, [_Position] [int]);
+MERGE [Sizes] USING (
+VALUES (@p70, 0),
+(@p71, 1),
+(@p72, 2),
+(@p73, 3),
+(@p74, 4),
+(@p75, 5)) AS i ([Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Name])
+VALUES (i.[Name])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted11;
+
+SELECT [t].[Id] FROM [Sizes] t
+INNER JOIN @inserted11 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+
+DECLARE @inserted17 TABLE ([Id] int, [_Position] [int]);
+MERGE [Slides] USING (
+VALUES (@p76, @p77, @p78, @p79, @p80, @p81, @p82, @p83, 0),
+(@p84, @p85, @p86, @p87, @p88, @p89, @p90, @p91, 1),
+(@p92, @p93, @p94, @p95, @p96, @p97, @p98, @p99, 2),
+(@p100, @p101, @p102, @p103, @p104, @p105, @p106, @p107, 3),
+(@p108, @p109, @p110, @p111, @p112, @p113, @p114, @p115, 4),
+(@p116, @p117, @p118, @p119, @p120, @p121, @p122, @p123, 5),
+(@p124, @p125, @p126, @p127, @p128, @p129, @p130, @p131, 6),
+(@p132, @p133, @p134, @p135, @p136, @p137, @p138, @p139, 7),
+(@p140, @p141, @p142, @p143, @p144, @p145, @p146, @p147, 8),
+(@p148, @p149, @p150, @p151, @p152, @p153, @p154, @p155, 9),
+(@p156, @p157, @p158, @p159, @p160, @p161, @p162, @p163, 10),
+(@p164, @p165, @p166, @p167, @p168, @p169, @p170, @p171, 11),
+(@p172, @p173, @p174, @p175, @p176, @p177, @p178, @p179, 12),
+(@p180, @p181, @p182, @p183, @p184, @p185, @p186, @p187, 13)) AS i ([Content], [Description], [DisplayOrder], [GroupAlias], [Image], [Name], [Status], [Url], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Content], [Description], [DisplayOrder], [GroupAlias], [Image], [Name], [Status], [Url])
+VALUES (i.[Content], i.[Description], i.[DisplayOrder], i.[GroupAlias], i.[Image], i.[Name], i.[Status], i.[Url])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted17;
+
+SELECT [t].[Id] FROM [Slides] t
+INNER JOIN @inserted17 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+
+INSERT INTO [SystemConfigs] ([Id], [Name], [Status], [Value1], [Value2], [Value3], [Value4], [Value5])
+VALUES (@p188, @p189, @p190, @p191, @p192, @p193, @p194, @p195),
+(@p196, @p197, @p198, @p199, @p200, @p201, @p202, @p203),
+(@p204, @p205, @p206, @p207, @p208, @p209, @p210, @p211);" (0723d8ff)
+2018-12-11T23:58:06.3452226+07:00  [INF] Executed DbCommand ("42"ms) [Parameters=["@p212='?' (Size = 20), @p213='?' (Size = 256), @p214='?' (Size = 20), @p215='?' (Size = 20), @p216='?' (Size = 256), @p217='?' (Size = 20), @p218='?' (Size = 20), @p219='?' (Size = 256), @p220='?' (Size = 20), @p221='?', @p222='?' (Size = 4000), @p223='?', @p224='?', @p225='?' (Size = 256), @p226='?', @p227='?', @p228='?' (Size = 256), @p229='?' (Size = 256), @p230='?', @p231='?', @p232='?', @p233='?' (Size = 256), @p234='?' (Size = 256), @p235='?' (Size = 256), @p236='?' (Size = 256), @p237='?', @p238='?' (Size = 256), @p239='?' (Size = 256), @p240='?', @p241='?', @p242='?' (Size = 4000), @p243='?', @p244='?', @p245='?' (Size = 256), @p246='?', @p247='?', @p248='?' (Size = 256), @p249='?' (Size = 256), @p250='?', @p251='?', @p252='?', @p253='?' (Size = 256), @p254='?' (Size = 256), @p255='?' (Size = 256), @p256='?' (Size = 256), @p257='?', @p258='?' (Size = 256), @p259='?' (Size = 256), @p260='?', @p261='?', @p262='?' (Size = 4000), @p263='?', @p264='?', @p265='?' (Size = 256), @p266='?', @p267='?', @p268='?' (Size = 256), @p269='?' (Size = 256), @p270='?', @p271='?', @p272='?', @p273='?' (Size = 256), @p274='?' (Size = 256), @p275='?' (Size = 256), @p276='?' (Size = 256), @p277='?', @p278='?' (Size = 256), @p279='?' (Size = 256), @p280='?', @p281='?', @p282='?' (Size = 4000), @p283='?', @p284='?', @p285='?' (Size = 256), @p286='?', @p287='?', @p288='?' (Size = 256), @p289='?' (Size = 256), @p290='?', @p291='?', @p292='?', @p293='?' (Size = 256), @p294='?' (Size = 256), @p295='?' (Size = 256), @p296='?' (Size = 256), @p297='?', @p298='?' (Size = 256), @p299='?' (Size = 256), @p300='?', @p301='?', @p302='?' (Size = 4000), @p303='?', @p304='?', @p305='?' (Size = 256), @p306='?', @p307='?', @p308='?' (Size = 256), @p309='?' (Size = 256), @p310='?', @p311='?', @p312='?', @p313='?' (Size = 256), @p314='?' (Size = 256), @p315='?' (Size = 256), @p316='?' (Size = 256), @p317='?', @p318='?' (Size = 256), @p319='?' (Size = 256), @p320='?', @p321='?', @p322='?' (Size = 4000), @p323='?', @p324='?', @p325='?' (Size = 256), @p326='?', @p327='?', @p328='?' (Size = 256), @p329='?' (Size = 256), @p330='?', @p331='?', @p332='?', @p333='?' (Size = 256), @p334='?' (Size = 256), @p335='?' (Size = 256), @p336='?' (Size = 256), @p337='?', @p338='?' (Size = 256), @p339='?' (Size = 256), @p340='?', @p341='?', @p342='?' (Size = 4000), @p343='?', @p344='?', @p345='?' (Size = 256), @p346='?', @p347='?', @p348='?' (Size = 256), @p349='?' (Size = 256), @p350='?', @p351='?', @p352='?', @p353='?' (Size = 256), @p354='?' (Size = 256), @p355='?' (Size = 256), @p356='?' (Size = 256), @p357='?', @p358='?' (Size = 256), @p359='?' (Size = 256), @p360='?', @p361='?', @p362='?' (Size = 4000), @p363='?', @p364='?', @p365='?' (Size = 256), @p366='?', @p367='?', @p368='?' (Size = 256), @p369='?' (Size = 256), @p370='?', @p371='?', @p372='?', @p373='?' (Size = 256), @p374='?' (Size = 256), @p375='?' (Size = 256), @p376='?' (Size = 256), @p377='?', @p378='?' (Size = 256), @p379='?' (Size = 256), @p380='?', @p381='?', @p382='?' (Size = 4000), @p383='?', @p384='?', @p385='?' (Size = 256), @p386='?', @p387='?', @p388='?' (Size = 256), @p389='?' (Size = 256), @p390='?', @p391='?', @p392='?', @p393='?' (Size = 256), @p394='?' (Size = 256), @p395='?' (Size = 256), @p396='?' (Size = 256), @p397='?', @p398='?' (Size = 256), @p399='?' (Size = 256), @p400='?', @p401='?', @p402='?' (Size = 4000), @p403='?', @p404='?', @p405='?' (Size = 256), @p406='?', @p407='?', @p408='?' (Size = 256), @p409='?' (Size = 256), @p410='?', @p411='?', @p412='?', @p413='?' (Size = 256), @p414='?' (Size = 256), @p415='?' (Size = 256), @p416='?' (Size = 256), @p417='?', @p418='?' (Size = 256), @p419='?' (Size = 256), @p420='?', @p421='?', @p422='?' (Size = 4000), @p423='?', @p424='?', @p425='?' (Size = 256), @p426='?', @p427='?', @p428='?' (Size = 256), @p429='?' (Size = 256), @p430='?', @p431='?', @p432='?', @p433='?' (Size = 256), @p434='?' (Size = 256), @p435='?' (Size = 256), @p436='?' (Size = 256), @p437='?', @p438='?' (Size = 256), @p439='?' (Size = 256), @p440='?', @p441='?', @p442='?' (Size = 4000), @p443='?', @p444='?', @p445='?' (Size = 256), @p446='?', @p447='?', @p448='?' (Size = 256), @p449='?' (Size = 256), @p450='?', @p451='?', @p452='?', @p453='?' (Size = 256), @p454='?' (Size = 256), @p455='?' (Size = 256), @p456='?' (Size = 256), @p457='?', @p458='?' (Size = 256), @p459='?' (Size = 256), @p460='?', @p461='?', @p462='?' (Size = 4000), @p463='?', @p464='?', @p465='?' (Size = 256), @p466='?', @p467='?', @p468='?' (Size = 256), @p469='?' (Size = 256), @p470='?', @p471='?', @p472='?', @p473='?' (Size = 256), @p474='?' (Size = 256), @p475='?' (Size = 256), @p476='?' (Size = 256), @p477='?', @p478='?' (Size = 256), @p479='?' (Size = 256), @p480='?', @p481='?', @p482='?' (Size = 4000), @p483='?', @p484='?', @p485='?' (Size = 256), @p486='?', @p487='?', @p488='?' (Size = 256), @p489='?' (Size = 256), @p490='?', @p491='?', @p492='?', @p493='?' (Size = 256), @p494='?' (Size = 256), @p495='?' (Size = 256), @p496='?' (Size = 256), @p497='?', @p498='?' (Size = 256), @p499='?' (Size = 256), @p500='?', @p501='?', @p502='?' (Size = 4000), @p503='?', @p504='?', @p505='?' (Size = 256), @p506='?', @p507='?', @p508='?' (Size = 256), @p509='?' (Size = 256), @p510='?', @p511='?', @p512='?', @p513='?' (Size = 256), @p514='?' (Size = 256), @p515='?' (Size = 256), @p516='?' (Size = 256), @p517='?', @p518='?' (Size = 256), @p519='?' (Size = 256), @p520='?', @p521='?', @p522='?' (Size = 4000), @p523='?', @p524='?', @p525='?' (Size = 256), @p526='?', @p527='?', @p528='?' (Size = 256), @p529='?' (Size = 256), @p530='?', @p531='?', @p532='?', @p533='?' (Size = 256), @p534='?' (Size = 256), @p535='?' (Size = 256), @p536='?' (Size = 256), @p537='?', @p538='?' (Size = 256), @p539='?' (Size = 256), @p540='?', @p541='?', @p542='?' (Size = 4000), @p543='?', @p544='?', @p545='?' (Size = 256), @p546='?', @p547='?', @p548='?' (Size = 256), @p549='?' (Size = 256), @p550='?', @p551='?', @p552='?', @p553='?' (Size = 256), @p554='?' (Size = 256), @p555='?' (Size = 256), @p556='?' (Size = 256), @p557='?', @p558='?' (Size = 256), @p559='?' (Size = 256), @p560='?', @p561='?', @p562='?' (Size = 4000), @p563='?', @p564='?', @p565='?' (Size = 256), @p566='?', @p567='?', @p568='?' (Size = 256), @p569='?' (Size = 256), @p570='?', @p571='?', @p572='?', @p573='?' (Size = 256), @p574='?' (Size = 256), @p575='?' (Size = 256), @p576='?' (Size = 256), @p577='?', @p578='?' (Size = 256), @p579='?' (Size = 256), @p580='?', @p581='?', @p582='?' (Size = 4000), @p583='?', @p584='?', @p585='?' (Size = 256), @p586='?', @p587='?', @p588='?' (Size = 256), @p589='?' (Size = 256), @p590='?', @p591='?', @p592='?', @p593='?' (Size = 256), @p594='?' (Size = 256), @p595='?' (Size = 256), @p596='?' (Size = 256), @p597='?', @p598='?' (Size = 256), @p599='?' (Size = 256), @p600='?', @p601='?', @p602='?' (Size = 4000), @p603='?', @p604='?', @p605='?' (Size = 256), @p606='?', @p607='?', @p608='?' (Size = 256), @p609='?' (Size = 256), @p610='?', @p611='?', @p612='?', @p613='?' (Size = 256), @p614='?' (Size = 256), @p615='?' (Size = 256), @p616='?' (Size = 256), @p617='?', @p618='?' (Size = 256), @p619='?' (Size = 256), @p620='?'"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AdvertisementPositions] ([Id], [Name], [PageId])
+VALUES (@p212, @p213, @p214),
+(@p215, @p216, @p217),
+(@p218, @p219, @p220);
+DECLARE @inserted3 TABLE ([Id] int, [_Position] [int]);
+MERGE [Products] USING (
+VALUES (@p221, @p222, @p223, @p224, @p225, @p226, @p227, @p228, @p229, @p230, @p231, @p232, @p233, @p234, @p235, @p236, @p237, @p238, @p239, @p240, 0),
+(@p241, @p242, @p243, @p244, @p245, @p246, @p247, @p248, @p249, @p250, @p251, @p252, @p253, @p254, @p255, @p256, @p257, @p258, @p259, @p260, 1),
+(@p261, @p262, @p263, @p264, @p265, @p266, @p267, @p268, @p269, @p270, @p271, @p272, @p273, @p274, @p275, @p276, @p277, @p278, @p279, @p280, 2),
+(@p281, @p282, @p283, @p284, @p285, @p286, @p287, @p288, @p289, @p290, @p291, @p292, @p293, @p294, @p295, @p296, @p297, @p298, @p299, @p300, 3),
+(@p301, @p302, @p303, @p304, @p305, @p306, @p307, @p308, @p309, @p310, @p311, @p312, @p313, @p314, @p315, @p316, @p317, @p318, @p319, @p320, 4),
+(@p321, @p322, @p323, @p324, @p325, @p326, @p327, @p328, @p329, @p330, @p331, @p332, @p333, @p334, @p335, @p336, @p337, @p338, @p339, @p340, 5),
+(@p341, @p342, @p343, @p344, @p345, @p346, @p347, @p348, @p349, @p350, @p351, @p352, @p353, @p354, @p355, @p356, @p357, @p358, @p359, @p360, 6),
+(@p361, @p362, @p363, @p364, @p365, @p366, @p367, @p368, @p369, @p370, @p371, @p372, @p373, @p374, @p375, @p376, @p377, @p378, @p379, @p380, 7),
+(@p381, @p382, @p383, @p384, @p385, @p386, @p387, @p388, @p389, @p390, @p391, @p392, @p393, @p394, @p395, @p396, @p397, @p398, @p399, @p400, 8),
+(@p401, @p402, @p403, @p404, @p405, @p406, @p407, @p408, @p409, @p410, @p411, @p412, @p413, @p414, @p415, @p416, @p417, @p418, @p419, @p420, 9),
+(@p421, @p422, @p423, @p424, @p425, @p426, @p427, @p428, @p429, @p430, @p431, @p432, @p433, @p434, @p435, @p436, @p437, @p438, @p439, @p440, 10),
+(@p441, @p442, @p443, @p444, @p445, @p446, @p447, @p448, @p449, @p450, @p451, @p452, @p453, @p454, @p455, @p456, @p457, @p458, @p459, @p460, 11),
+(@p461, @p462, @p463, @p464, @p465, @p466, @p467, @p468, @p469, @p470, @p471, @p472, @p473, @p474, @p475, @p476, @p477, @p478, @p479, @p480, 12),
+(@p481, @p482, @p483, @p484, @p485, @p486, @p487, @p488, @p489, @p490, @p491, @p492, @p493, @p494, @p495, @p496, @p497, @p498, @p499, @p500, 13),
+(@p501, @p502, @p503, @p504, @p505, @p506, @p507, @p508, @p509, @p510, @p511, @p512, @p513, @p514, @p515, @p516, @p517, @p518, @p519, @p520, 14),
+(@p521, @p522, @p523, @p524, @p525, @p526, @p527, @p528, @p529, @p530, @p531, @p532, @p533, @p534, @p535, @p536, @p537, @p538, @p539, @p540, 15),
+(@p541, @p542, @p543, @p544, @p545, @p546, @p547, @p548, @p549, @p550, @p551, @p552, @p553, @p554, @p555, @p556, @p557, @p558, @p559, @p560, 16),
+(@p561, @p562, @p563, @p564, @p565, @p566, @p567, @p568, @p569, @p570, @p571, @p572, @p573, @p574, @p575, @p576, @p577, @p578, @p579, @p580, 17),
+(@p581, @p582, @p583, @p584, @p585, @p586, @p587, @p588, @p589, @p590, @p591, @p592, @p593, @p594, @p595, @p596, @p597, @p598, @p599, @p600, 18),
+(@p601, @p602, @p603, @p604, @p605, @p606, @p607, @p608, @p609, @p610, @p611, @p612, @p613, @p614, @p615, @p616, @p617, @p618, @p619, @p620, 19)) AS i ([CategoryId], [Content], [DateCreated], [DateModified], [Description], [HomeFlag], [HotFlag], [Image], [Name], [OriginalPrice], [Price], [PromotionPrice], [SeoAlias], [SeoDecription], [SeoPageTitle], [Seokeywords], [Status], [Tags], [Unit], [ViewCount], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CategoryId], [Content], [DateCreated], [DateModified], [Description], [HomeFlag], [HotFlag], [Image], [Name], [OriginalPrice], [Price], [PromotionPrice], [SeoAlias], [SeoDecription], [SeoPageTitle], [Seokeywords], [Status], [Tags], [Unit], [ViewCount])
+VALUES (i.[CategoryId], i.[Content], i.[DateCreated], i.[DateModified], i.[Description], i.[HomeFlag], i.[HotFlag], i.[Image], i.[Name], i.[OriginalPrice], i.[Price], i.[PromotionPrice], i.[SeoAlias], i.[SeoDecription], i.[SeoPageTitle], i.[Seokeywords], i.[Status], i.[Tags], i.[Unit], i.[ViewCount])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted3;
+
+SELECT [t].[Id] FROM [Products] t
+INNER JOIN @inserted3 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2018-12-11T23:58:06.3804664+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-11T23:58:06.4026281+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:58:06.4105816+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:58:06.4360003+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-12-11T23:58:06.4622013+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-12-11T23:58:06.4897876+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-12-11T23:58:06.5187309+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertisementPages] AS [a]" (0723d8ff)
+2018-12-11T23:58:06.5255589+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-12-11T23:58:06.5517826+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-12-11T23:58:06.5784114+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-12-11T23:58:06.6081909+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:58:06.6411758+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:58:06.6554431+07:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-11T23:58:07.1215194+07:00 0HLIVH79AQ6T5:00000001 [INF] Request starting HTTP/1.1 DEBUG http://localhost:55775/  0 (ca22a1cb)
+2018-12-11T23:58:07.1214966+07:00 0HLIVH79AQ6T6:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/   (ca22a1cb)
+2018-12-11T23:58:07.1522183+07:00 0HLIVH79AQ6T5:00000001 [INF] Request finished in 104.0926ms 200  (791a596a)
+2018-12-11T23:58:07.3722294+07:00 0HLIVH79AQ6T6:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-11T23:58:10.6261059+07:00 0HLIVH79AQ6T6:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-12-11T23:58:11.6721453+07:00 0HLIVH79AQ6T6:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 4304.4946ms (afa2e885)
+2018-12-11T23:58:11.7030356+07:00 0HLIVH79AQ6T6:00000001 [INF] Request finished in 4645.634ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-11T23:58:18.0224955+07:00 0HLIVH79AQ6T5:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44324/admin   (ca22a1cb)
+2018-12-11T23:58:18.0619145+07:00 0HLIVH79AQ6T5:00000002 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.LoginController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-11T23:58:18.6020460+07:00 0HLIVH79AQ6T5:00000002 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Login/Index.cshtml". (9707eebe)
+2018-12-11T23:58:18.7844274+07:00 0HLIVH79AQ6T5:00000002 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.LoginController.Index (TeduCoreApp)" in 653.8388ms (afa2e885)
+2018-12-11T23:58:18.8420902+07:00 0HLIVH79AQ6T5:00000002 [INF] Request finished in 787.715ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-11T23:58:30.4809199+07:00 0HLIVH79AQ6T6:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:44324/admin/login/authen application/x-www-form-urlencoded; charset=UTF-8 33 (ca22a1cb)
+2018-12-11T23:58:30.5943372+07:00 0HLIVH79AQ6T6:00000002 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.LoginController.Authen (TeduCoreApp)" with arguments (["TeduCoreApp.Models.AccountViewModels.LoginViewModel"]) - ModelState is Valid (ba7f4ac2)
+2018-12-11T23:58:30.6188020+07:00 0HLIVH79AQ6T6:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-11T23:58:30.6676462+07:00 0HLIVH79AQ6T6:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-12-11T23:58:30.8385652+07:00 0HLIVH79AQ6T6:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-12-11T23:58:30.9027743+07:00 0HLIVH79AQ6T6:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-11T23:58:30.9420678+07:00 0HLIVH79AQ6T6:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-12-11T23:58:30.9696868+07:00 0HLIVH79AQ6T6:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__role_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-12-11T23:58:30.9858898+07:00 0HLIVH79AQ6T6:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-11T23:58:31.0252928+07:00 0HLIVH79AQ6T6:00000002 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2018-12-11T23:58:31.0305220+07:00 0HLIVH79AQ6T6:00000002 [INF] User logged in. (fdce0db4)
+2018-12-11T23:58:31.0596431+07:00 0HLIVH79AQ6T6:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-12-11T23:58:31.1094574+07:00 0HLIVH79AQ6T6:00000002 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.LoginController.Authen (TeduCoreApp)" in 578.8499ms (afa2e885)
+2018-12-11T23:58:31.1186527+07:00 0HLIVH79AQ6T6:00000002 [INF] Request finished in 635.8358ms 200 application/json; charset=utf-8 (791a596a)
+2018-12-11T23:58:31.1275846+07:00 0HLIVH79AQ6T5:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44324/Admin/Home/Index   (ca22a1cb)
+2018-12-11T23:58:31.1364415+07:00 0HLIVH79AQ6T5:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-11T23:58:31.1567666+07:00 0HLIVH79AQ6T5:00000003 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-11T23:58:31.4188783+07:00 0HLIVH79AQ6T5:00000003 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Home/Index.cshtml". (9707eebe)
+2018-12-11T23:58:31.9850879+07:00 0HLIVH79AQ6T5:00000003 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.HomeController.Index (TeduCoreApp)" in 813.8536ms (afa2e885)
+2018-12-11T23:58:32.1396331+07:00 0HLIVH79AQ6T7:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/admin-side/images/img.jpg   (ca22a1cb)
+2018-12-11T23:58:32.1524216+07:00 0HLIVH79AQ6T5:00000003 [INF] Request finished in 869.231ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-11T23:58:32.1807635+07:00 0HLIVH79AQ6T6:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/bootstrap-daterangepicker/daterangepicker.css   (ca22a1cb)
+2018-12-11T23:58:32.2019531+07:00 0HLIVH79AQ6T5:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/jquery/dist/jquery.min.js   (ca22a1cb)
+2018-12-11T23:58:32.2131822+07:00 0HLIVH79AQ6T5:00000004 [INF] The file "/lib/jquery/dist/jquery.min.js" was not modified (f1f8d725)
+2018-12-11T23:58:32.2561603+07:00 0HLIVH79AQ6T6:00000003 [INF] The file "/lib/bootstrap-daterangepicker/daterangepicker.css" was not modified (f1f8d725)
+2018-12-11T23:58:32.2995333+07:00 0HLIVH79AQ6T7:00000001 [INF] The file "/admin-side/images/img.jpg" was not modified (f1f8d725)
+2018-12-11T23:58:32.5570083+07:00 0HLIVH79AQ6TI:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/flot.orderbars/js/jquery.flot.orderBars.js   (ca22a1cb)
+2018-12-11T23:58:32.6096285+07:00 0HLIVH79AQ6T8:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/Chart.js/dist/Chart.js   (ca22a1cb)
+2018-12-11T23:58:32.6184671+07:00 0HLIVH79AQ6T7:00000001 [INF] Request finished in 251.4769ms 304 image/jpeg (791a596a)
+2018-12-11T23:58:32.6281885+07:00 0HLIVH79AQ6T6:00000003 [INF] Request finished in 238.1124ms 304 text/css (791a596a)
+2018-12-11T23:58:32.6448025+07:00 0HLIVH79AQ6T5:00000004 [INF] Request finished in 31.5884ms 304 application/javascript (791a596a)
+2018-12-11T23:58:32.6642141+07:00 0HLIVH79AQ6TD:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/fastclick/lib/fastclick.js   (ca22a1cb)
+2018-12-11T23:58:32.6862657+07:00 0HLIVH79AQ6T9:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/moment/moment.js   (ca22a1cb)
+2018-12-11T23:58:32.6968001+07:00 0HLIVH79AQ6TF:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/flot.curvedlines/curvedLines.js   (ca22a1cb)
+2018-12-11T23:58:32.7144506+07:00 0HLIVH79AQ6TJ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/nprogress/nprogress.js   (ca22a1cb)
+2018-12-11T23:58:32.7724153+07:00 0HLIVH79AQ6TI:00000001 [INF] The file "/lib/flot.orderbars/js/jquery.flot.orderBars.js" was not modified (f1f8d725)
+2018-12-11T23:58:32.8857682+07:00 0HLIVH79AQ6TA:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/admin-side/js/custom.js   (ca22a1cb)
+2018-12-11T23:58:32.8960641+07:00 0HLIVH79AQ6T8:00000001 [INF] The file "/lib/Chart.js/dist/Chart.js" was not modified (f1f8d725)
+2018-12-11T23:58:32.9351660+07:00 0HLIVH79AQ6TK:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/bootstrap-daterangepicker/daterangepicker.js   (ca22a1cb)
+2018-12-11T23:58:32.9575599+07:00 0HLIVH79AQ6TD:00000001 [INF] The file "/lib/fastclick/lib/fastclick.js" was not modified (f1f8d725)
+2018-12-11T23:58:33.0517189+07:00 0HLIVH79AQ6TI:00000001 [INF] Request finished in 472.3733ms 304 application/javascript (791a596a)
+2018-12-11T23:58:33.0646139+07:00 0HLIVH79AQ6TL:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/flot/jquery.flot.stack.js   (ca22a1cb)
+2018-12-11T23:58:33.0962609+07:00 0HLIVH79AQ6T9:00000001 [INF] The file "/lib/moment/moment.js" was not modified (f1f8d725)
+2018-12-11T23:58:33.1171421+07:00 0HLIVH79AQ6TF:00000001 [INF] The file "/lib/flot.curvedlines/curvedLines.js" was not modified (f1f8d725)
+2018-12-11T23:58:33.1397873+07:00 0HLIVH79AQ6TJ:00000001 [INF] The file "/lib/nprogress/nprogress.js" was not modified (f1f8d725)
+2018-12-11T23:58:33.2146020+07:00 0HLIVH79AQ6T5:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/DateJS/build/date.js   (ca22a1cb)
+2018-12-11T23:58:33.2319043+07:00 0HLIVH79AQ6TK:00000001 [INF] The file "/lib/bootstrap-daterangepicker/daterangepicker.js" was not modified (f1f8d725)
+2018-12-11T23:58:33.3026221+07:00 0HLIVH79AQ6TA:00000001 [INF] The file "/admin-side/js/custom.js" was not modified (f1f8d725)
+2018-12-11T23:58:33.3320083+07:00 0HLIVH79AQ6TL:00000001 [INF] The file "/lib/flot/jquery.flot.stack.js" was not modified (f1f8d725)
+2018-12-11T23:58:33.3607340+07:00 0HLIVH79AQ6T8:00000001 [INF] Request finished in 644.2456ms 304 application/javascript (791a596a)
+2018-12-11T23:58:33.3686180+07:00 0HLIVH79AQ6TD:00000001 [INF] Request finished in 703.4883ms 304 application/javascript (791a596a)
+2018-12-11T23:58:33.3892799+07:00 0HLIVH79AQ6TM:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/flot/jquery.flot.pie.js   (ca22a1cb)
+2018-12-11T23:58:33.4002020+07:00 0HLIVH79AQ6T9:00000001 [INF] Request finished in 759.2744ms 304 application/javascript (791a596a)
+2018-12-11T23:58:33.4109919+07:00 0HLIVH79AQ6TJ:00000001 [INF] Request finished in 807.4152ms 304 application/javascript (791a596a)
+2018-12-11T23:58:33.4222843+07:00 0HLIVH79AQ6TK:00000001 [INF] Request finished in 517.4606ms 304 application/javascript (791a596a)
+2018-12-11T23:58:33.4346588+07:00 0HLIVH79AQ6TF:00000001 [INF] Request finished in 851.4064ms 304 application/javascript (791a596a)
+2018-12-11T23:58:33.5169962+07:00 0HLIVH79AQ6TC:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/flot/jquery.flot.resize.js   (ca22a1cb)
+2018-12-11T23:58:33.5411468+07:00 0HLIVH79AQ6T5:00000005 [INF] The file "/lib/DateJS/build/date.js" was not modified (f1f8d725)
+2018-12-11T23:58:33.5499904+07:00 0HLIVH79AQ6TL:00000001 [INF] Request finished in 579.0549ms 304 application/javascript (791a596a)
+2018-12-11T23:58:33.5616856+07:00 0HLIVH79AQ6TA:00000001 [INF] Request finished in 971.4481ms 304 application/javascript (791a596a)
+2018-12-11T23:58:33.5705631+07:00 0HLIVH79AQ6TM:00000001 [INF] The file "/lib/flot/jquery.flot.pie.js" was not modified (f1f8d725)
+2018-12-11T23:58:33.6818624+07:00 0HLIVH79AQ6TB:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/flot-spline/js/jquery.flot.spline.js   (ca22a1cb)
+2018-12-11T23:58:33.7036475+07:00 0HLIVH79AQ6TC:00000001 [INF] The file "/lib/flot/jquery.flot.resize.js" was not modified (f1f8d725)
+2018-12-11T23:58:33.7289275+07:00 0HLIVH79AQ6TH:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/flot/jquery.flot.time.js   (ca22a1cb)
+2018-12-11T23:58:33.7383807+07:00 0HLIVH79AQ6TM:00000001 [INF] Request finished in 385.0782ms 304 application/javascript (791a596a)
+2018-12-11T23:58:33.7521509+07:00 0HLIVH79AQ6TE:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/flot/jquery.flot.js   (ca22a1cb)
+2018-12-11T23:58:33.7871986+07:00 0HLIVH79AQ6TG:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/jquery-sparkline/dist/jquery.sparkline.js   (ca22a1cb)
+2018-12-11T23:58:33.8118217+07:00 0HLIVH79AQ6T5:00000005 [INF] Request finished in 754.0647ms 304 application/javascript (791a596a)
+2018-12-11T23:58:33.8268658+07:00 0HLIVH79AQ6TC:00000001 [INF] Request finished in 1289.5624ms 304 application/javascript (791a596a)
+2018-12-11T23:58:33.8352939+07:00 0HLIVH79AQ6TB:00000001 [INF] The file "/lib/flot-spline/js/jquery.flot.spline.js" was not modified (f1f8d725)
+2018-12-11T23:58:33.8702032+07:00 0HLIVH79AQ6TH:00000001 [INF] The file "/lib/flot/jquery.flot.time.js" was not modified (f1f8d725)
+2018-12-11T23:58:33.8847796+07:00 0HLIVH79AQ6TE:00000001 [INF] The file "/lib/flot/jquery.flot.js" was not modified (f1f8d725)
+2018-12-11T23:58:33.9401787+07:00 0HLIVH79AQ6TG:00000001 [INF] The file "/lib/jquery-sparkline/dist/jquery.sparkline.js" was not modified (f1f8d725)
+2018-12-11T23:58:34.0014152+07:00 0HLIVH79AQ6TH:00000001 [INF] Request finished in 1339.6437ms 304 application/javascript (791a596a)
+2018-12-11T23:58:34.0250644+07:00 0HLIVH79AQ6TB:00000001 [INF] Request finished in 1421.3639ms 304 application/javascript (791a596a)
+2018-12-11T23:58:34.0551334+07:00 0HLIVH79AQ6TE:00000001 [INF] Request finished in 1390.9844ms 304 application/javascript (791a596a)
+2018-12-11T23:58:34.0629233+07:00 0HLIVH79AQ6TG:00000001 [INF] Request finished in 1424.6808ms 304 application/javascript (791a596a)

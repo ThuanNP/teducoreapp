@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TeduCoreApp.Application.ViewModels;
+using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Data.Entities;
 
 namespace TeduCoreApp.Application.AutoMapper

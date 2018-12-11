@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TeduCoreApp.Application.Interfaces;
-using TeduCoreApp.Application.ViewModels;
+using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Data.IRepositories;
@@ -30,10 +30,9 @@ namespace TeduCoreApp.Application.Implementations
             return productcategoryVm;
         }
 
-        public void Delete(int id)
-        {
-            _productCategoryRepository.Remove(id);
-        }
+        public void Delete(int id) => _productCategoryRepository.Remove(id);
+
+        public void Dispose() => GC.SuppressFinalize(this);
 
         public List<ProductCategoryViewModel> GetAll()
         {
@@ -89,10 +88,7 @@ namespace TeduCoreApp.Application.Implementations
             throw new NotImplementedException();
         }
 
-        public void Save()
-        {
-            _unitOfWork.Commit();
-        }
+        public void Save() => _unitOfWork.Commit();
 
         public void Update(ProductCategoryViewModel productcategoryVm)
         {

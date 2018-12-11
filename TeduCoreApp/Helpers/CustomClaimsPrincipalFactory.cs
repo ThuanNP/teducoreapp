@@ -9,6 +9,7 @@ namespace TeduCoreApp.Helpers
     public class CustomClaimsPrincipalFactory : UserClaimsPrincipalFactory<AppUser, AppRole>
     {
         private readonly UserManager<AppUser> _userManager;
+
         public CustomClaimsPrincipalFactory(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, IOptions<IdentityOptions> options) : base(userManager, roleManager, options)
         {
             _userManager = userManager;
@@ -23,7 +24,7 @@ namespace TeduCoreApp.Helpers
                  new Claim("Email", user.Email??string.Empty),
                  new Claim("FullName", user.FullName??string.Empty),
                  new Claim("Avatar", user.Avatar??string.Empty),
-                 new Claim("Role", string.Join(";", roles))
+                 new Claim("Roles", string.Join(";", roles))
             });
             return principal;
         }

@@ -1,6 +1,8 @@
-﻿namespace TeduCoreApp.Application.Interfaces
+﻿using System;
+
+namespace TeduCoreApp.Application.Interfaces
 {
-    public interface IProductService
+    public interface IProductService: IDisposable
     {
     }
 }

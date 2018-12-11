@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TeduCoreApp.Data.Enums;
 
-namespace TeduCoreApp.Application.ViewModels
+namespace TeduCoreApp.Application.ViewModels.Product
 {
     public class ProductViewModel
     {

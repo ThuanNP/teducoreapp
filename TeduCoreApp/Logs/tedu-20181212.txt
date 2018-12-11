@@ -1,0 +1,982 @@
+2018-12-12T00:36:45.2056897+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:36:45.4899549+07:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:36:45.5590383+07:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:36:45.5934982+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-12-12T00:36:45.6416434+07:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-12-12T00:36:45.6563995+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-12-12T00:36:45.6674846+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertisementPages] AS [a]" (0723d8ff)
+2018-12-12T00:36:45.6964806+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-12-12T00:36:45.7234284+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-12-12T00:36:45.7355756+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-12-12T00:36:45.7706454+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:36:45.7856955+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:36:45.7978926+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:36:45.8461151+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:36:45.8741221+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:36:45.9005050+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:36:45.9080641+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-12-12T00:36:45.9159615+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-12-12T00:36:45.9225508+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-12-12T00:36:45.9541837+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertisementPages] AS [a]" (0723d8ff)
+2018-12-12T00:36:45.9602022+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-12-12T00:36:45.9699127+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-12-12T00:36:45.9754010+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-12-12T00:36:45.9836950+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:36:46.0088480+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:36:46.0346910+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:36:46.4186430+07:00 0HLIVHSSHTRKI:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/   (ca22a1cb)
+2018-12-12T00:36:46.4299645+07:00 0HLIVHSSHTRKH:00000001 [INF] Request starting HTTP/1.1 DEBUG http://localhost:55775/  0 (ca22a1cb)
+2018-12-12T00:36:46.4367051+07:00 0HLIVHSSHTRKJ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/admin   (ca22a1cb)
+2018-12-12T00:36:46.4722290+07:00 0HLIVHSSHTRKH:00000001 [INF] Request finished in 92.9803ms 200  (791a596a)
+2018-12-12T00:36:46.5737630+07:00 0HLIVHSSHTRKI:00000001 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:36:46.5847557+07:00 0HLIVHSSHTRKJ:00000001 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:36:46.7000440+07:00 0HLIVHSSHTRKJ:00000001 [INF] Executed DbCommand ("42"ms) [Parameters=["@__get_Item_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-12-12T00:36:46.7039477+07:00 0HLIVHSSHTRKI:00000001 [INF] Executed DbCommand ("37"ms) [Parameters=["@__get_Item_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-12-12T00:36:46.8650503+07:00 0HLIVHSSHTRKI:00000001 [INF] Executed DbCommand ("6"ms) [Parameters=["@__user_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-12-12T00:36:46.8882020+07:00 0HLIVHSSHTRKJ:00000001 [INF] Executed DbCommand ("6"ms) [Parameters=["@__user_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-12-12T00:36:47.0336583+07:00 0HLIVHSSHTRKI:00000001 [INF] Executed DbCommand ("6"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-12T00:36:47.0477508+07:00 0HLIVHSSHTRKJ:00000001 [INF] Executed DbCommand ("34"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-12T00:36:47.0696867+07:00 0HLIVHSSHTRKI:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-12-12T00:36:47.0752565+07:00 0HLIVHSSHTRKJ:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-12-12T00:36:47.1396054+07:00 0HLIVHSSHTRKJ:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__role_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-12-12T00:36:47.1460614+07:00 0HLIVHSSHTRKI:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__role_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-12-12T00:36:47.1775186+07:00 0HLIVHSSHTRKJ:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-12T00:36:47.1835822+07:00 0HLIVHSSHTRKI:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-12T00:36:47.2111952+07:00 0HLIVHSSHTRKJ:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:36:47.2140434+07:00 0HLIVHSSHTRKI:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:36:47.4920012+07:00 0HLIVHSSHTRKI:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:36:47.4929486+07:00 0HLIVHSSHTRKJ:00000001 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.LoginController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:36:51.8534635+07:00 0HLIVHSSHTRKI:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-12-12T00:36:51.8669327+07:00 0HLIVHSSHTRKJ:00000001 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Login/Index.cshtml". (9707eebe)
+2018-12-12T00:36:52.2487300+07:00 0HLIVHSSHTRKJ:00000001 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.LoginController.Index (TeduCoreApp)" in 4620.6363ms (afa2e885)
+2018-12-12T00:36:52.3618158+07:00 0HLIVHSSHTRKJ:00000001 [INF] Request finished in 5824.9847ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-12T00:36:53.2071994+07:00 0HLIVHSSHTRKI:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 5766.4479ms (afa2e885)
+2018-12-12T00:36:53.2355916+07:00 0HLIVHSSHTRKI:00000001 [INF] Request finished in 6853.7017ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-12T00:40:40.8119985+07:00 0HLIVHSSHTRKK:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/favicon.ico   (ca22a1cb)
+2018-12-12T00:40:40.8229657+07:00 0HLIVHSSHTRKK:00000001 [INF] The file "/favicon.ico" was not modified (f1f8d725)
+2018-12-12T00:40:40.8391612+07:00 0HLIVHSSHTRKK:00000001 [INF] Request finished in 24.1042ms 304 image/x-icon (791a596a)
+2018-12-12T00:40:44.2790325+07:00 0HLIVHSSHTRKK:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:44324/admin/login/authen application/x-www-form-urlencoded; charset=UTF-8 33 (ca22a1cb)
+2018-12-12T00:40:44.2850323+07:00 0HLIVHSSHTRKK:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:40:44.4054537+07:00 0HLIVHSSHTRKK:00000002 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.LoginController.Authen (TeduCoreApp)" with arguments (["TeduCoreApp.Models.AccountViewModels.LoginViewModel"]) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:40:44.4324504+07:00 0HLIVHSSHTRKK:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:40:44.4467046+07:00 0HLIVHSSHTRKK:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-12-12T00:40:44.5010207+07:00 0HLIVHSSHTRKK:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-12-12T00:40:44.5286942+07:00 0HLIVHSSHTRKK:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-12T00:40:44.5551028+07:00 0HLIVHSSHTRKK:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-12-12T00:40:44.5657359+07:00 0HLIVHSSHTRKK:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__role_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-12-12T00:40:44.5723337+07:00 0HLIVHSSHTRKK:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-12T00:40:44.5803678+07:00 0HLIVHSSHTRKK:00000002 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2018-12-12T00:40:44.5860496+07:00 0HLIVHSSHTRKK:00000002 [INF] User logged in. (fdce0db4)
+2018-12-12T00:40:44.6178866+07:00 0HLIVHSSHTRKK:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-12-12T00:40:44.6740915+07:00 0HLIVHSSHTRKK:00000002 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.LoginController.Authen (TeduCoreApp)" in 338.9638ms (afa2e885)
+2018-12-12T00:40:44.7099714+07:00 0HLIVHSSHTRKK:00000002 [INF] Request finished in 410.9868ms 200 application/json; charset=utf-8 (791a596a)
+2018-12-12T00:40:44.7379135+07:00 0HLIVHSSHTRKK:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44324/Admin/Home/Index   (ca22a1cb)
+2018-12-12T00:40:44.7446518+07:00 0HLIVHSSHTRKK:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:40:44.7706459+07:00 0HLIVHSSHTRKK:00000003 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:40:45.0746570+07:00 0HLIVHSSHTRKK:00000003 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Home/Index.cshtml". (9707eebe)
+2018-12-12T00:40:45.3973831+07:00 0HLIVHSSHTRKK:00000003 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:40:45.4491766+07:00 0HLIVHSSHTRKK:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[URL], [dto].[ParentId], [dto].[IconCss], [dto].[SortOrder], [dto].[Status]
+FROM [Functions] AS [dto]" (0723d8ff)
+2018-12-12T00:40:46.0619832+07:00 0HLIVHSSHTRKK:00000003 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.HomeController.Index (TeduCoreApp)" in 1271.5982ms (afa2e885)
+2018-12-12T00:40:46.1961682+07:00 0HLIVHSSHTRKK:00000003 [ERR] An unhandled exception has occurred while executing the request (cf926119)
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at AspNetCore._Areas_Admin_Views_Shared_Components_SideBar_Default_cshtml.<ExecuteAsync>d__0.MoveNext() in C:\Users\Thuan\source\repos\TeduCoreApp\TeduCoreApp\Areas\Admin\Views\Shared\Components\SideBar\Default.cshtml:line 8
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.<RenderPageCoreAsync>d__16.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.<RenderPageAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.<RenderAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult.<ExecuteAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.ViewComponents.DefaultViewComponentInvoker.<InvokeAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.ViewComponents.DefaultViewComponentHelper.<InvokeCoreAsync>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at AspNetCore._Areas_Admin_Views_Shared__Layout_cshtml.<<ExecuteAsync>b__41_7>d.MoveNext() in C:\Users\Thuan\source\repos\TeduCoreApp\TeduCoreApp\Areas\Admin\Views\Shared\_Layout.cshtml:line 51
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext.<SetOutputContentAsync>d__30.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at AspNetCore._Areas_Admin_Views_Shared__Layout_cshtml.<ExecuteAsync>d__41.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.<RenderPageCoreAsync>d__16.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.<RenderPageAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.<RenderLayoutAsync>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.<RenderAsync>d__14.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.<ExecuteAsync>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.<ExecuteAsync>d__21.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.ViewResult.<ExecuteResultAsync>d__26.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeResultAsync>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResultFilterAsync>d__24.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResultExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeFilterPipelineAsync>d__17.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.<InvokeAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2018-12-12T00:40:46.3698449+07:00 0HLIVHSSHTRKK:00000003 [INF] Request finished in 1649.7926ms 500 text/html; charset=utf-8 (791a596a)
+2018-12-12T00:41:33.2820902+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:41:33.6355642+07:00  [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:41:33.6964752+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:41:33.7195015+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-12-12T00:41:33.7744970+07:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-12-12T00:41:33.8062269+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-12-12T00:41:33.8200975+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertisementPages] AS [a]" (0723d8ff)
+2018-12-12T00:41:33.8498655+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-12-12T00:41:33.8662526+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-12-12T00:41:33.9081025+07:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-12-12T00:41:33.9318740+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:41:33.9619136+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:41:33.9919277+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:41:34.0219801+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:41:34.0311864+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:41:34.0580588+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:41:34.0842075+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-12-12T00:41:34.0922613+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-12-12T00:41:34.1041696+07:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-12-12T00:41:34.1319943+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertisementPages] AS [a]" (0723d8ff)
+2018-12-12T00:41:34.1564881+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-12-12T00:41:34.1829288+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-12-12T00:41:34.2090196+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-12-12T00:41:34.2210558+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:41:34.2468754+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:41:34.2738965+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:41:34.6919237+07:00 0HLIVHVIEQMNL:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/admin   (ca22a1cb)
+2018-12-12T00:41:34.6889036+07:00 0HLIVHVIEQMNM:00000001 [INF] Request starting HTTP/1.1 DEBUG http://localhost:55775/  0 (ca22a1cb)
+2018-12-12T00:41:34.6890335+07:00 0HLIVHVIEQMNK:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/   (ca22a1cb)
+2018-12-12T00:41:34.7572740+07:00 0HLIVHVIEQMNM:00000001 [INF] Request finished in 88.5148ms 200  (791a596a)
+2018-12-12T00:41:34.8480125+07:00 0HLIVHVIEQMNL:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:41:34.8555358+07:00 0HLIVHVIEQMNK:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:41:35.2176058+07:00 0HLIVHVIEQMNK:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:41:35.2164269+07:00 0HLIVHVIEQMNL:00000001 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.LoginController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:41:39.1396977+07:00 0HLIVHVIEQMNL:00000001 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Login/Index.cshtml". (9707eebe)
+2018-12-12T00:41:39.1442325+07:00 0HLIVHVIEQMNK:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-12-12T00:41:39.2916246+07:00 0HLIVHVIEQMNL:00000001 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.LoginController.Index (TeduCoreApp)" in 4108.18ms (afa2e885)
+2018-12-12T00:41:39.3108544+07:00 0HLIVHVIEQMNL:00000001 [INF] Request finished in 4666.5238ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-12T00:41:40.1400166+07:00 0HLIVHVIEQMNK:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 4954.2047ms (afa2e885)
+2018-12-12T00:41:40.1480834+07:00 0HLIVHVIEQMNK:00000001 [INF] Request finished in 5510.5723ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-12T00:42:02.1414431+07:00 0HLIVHVIEQMNM:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:44324/admin/login/authen application/x-www-form-urlencoded; charset=UTF-8 75 (ca22a1cb)
+2018-12-12T00:42:02.1663632+07:00 0HLIVHVIEQMNM:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:42:02.2515076+07:00 0HLIVHVIEQMNM:00000002 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.LoginController.Authen (TeduCoreApp)" with arguments (["TeduCoreApp.Models.AccountViewModels.LoginViewModel"]) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:42:02.2681170+07:00 0HLIVHVIEQMNM:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:42:02.3411422+07:00 0HLIVHVIEQMNM:00000002 [INF] Executed DbCommand ("33"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-12-12T00:42:02.3795472+07:00 0HLIVHVIEQMNM:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-12-12T00:42:02.4504458+07:00 0HLIVHVIEQMNM:00000002 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.LoginController.Authen (TeduCoreApp)" in 214.9684ms (afa2e885)
+2018-12-12T00:42:02.4568788+07:00 0HLIVHVIEQMNM:00000002 [INF] Request finished in 316.8332ms 200 application/json; charset=utf-8 (791a596a)
+2018-12-12T00:42:04.5311135+07:00 0HLIVHVIEQMNL:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44324/admin   (ca22a1cb)
+2018-12-12T00:42:04.5375440+07:00 0HLIVHVIEQMNL:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:42:04.5616975+07:00 0HLIVHVIEQMNL:00000002 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.LoginController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:42:04.5867351+07:00 0HLIVHVIEQMNL:00000002 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Login/Index.cshtml". (9707eebe)
+2018-12-12T00:42:04.6206800+07:00 0HLIVHVIEQMNL:00000002 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.LoginController.Index (TeduCoreApp)" in 51.2517ms (afa2e885)
+2018-12-12T00:42:04.6319563+07:00 0HLIVHVIEQMNL:00000002 [INF] Request finished in 104.5647ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-12T00:42:04.9722180+07:00 0HLIVHVIEQMNM:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44324/favicon.ico   (ca22a1cb)
+2018-12-12T00:42:04.9993048+07:00 0HLIVHVIEQMNM:00000003 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Users\Thuan\source\repos\TeduCoreApp\TeduCoreApp\wwwroot\favicon.ico"' (27b0a520)
+2018-12-12T00:42:05.0189175+07:00 0HLIVHVIEQMNM:00000003 [INF] Request finished in 52.6539ms 200 image/x-icon (791a596a)
+2018-12-12T00:42:07.7465458+07:00 0HLIVHVIEQMNL:00000003 [INF] Request starting HTTP/1.1 POST http://localhost:44324/admin/login/authen application/x-www-form-urlencoded; charset=UTF-8 33 (ca22a1cb)
+2018-12-12T00:42:07.7717818+07:00 0HLIVHVIEQMNL:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:42:07.7782391+07:00 0HLIVHVIEQMNL:00000003 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.LoginController.Authen (TeduCoreApp)" with arguments (["TeduCoreApp.Models.AccountViewModels.LoginViewModel"]) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:42:07.7836858+07:00 0HLIVHVIEQMNL:00000003 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:42:07.7981327+07:00 0HLIVHVIEQMNL:00000003 [INF] Executed DbCommand ("8"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-12-12T00:42:07.9167644+07:00 0HLIVHVIEQMNL:00000003 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-12-12T00:42:07.9631970+07:00 0HLIVHVIEQMNL:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-12T00:42:07.9990397+07:00 0HLIVHVIEQMNL:00000003 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-12-12T00:42:08.0571602+07:00 0HLIVHVIEQMNL:00000003 [INF] Executed DbCommand ("2"ms) [Parameters=["@__role_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-12-12T00:42:08.0648137+07:00 0HLIVHVIEQMNL:00000003 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-12T00:42:08.0972736+07:00 0HLIVHVIEQMNL:00000003 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2018-12-12T00:42:08.1231369+07:00 0HLIVHVIEQMNL:00000003 [INF] User logged in. (fdce0db4)
+2018-12-12T00:42:08.1475524+07:00 0HLIVHVIEQMNL:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-12-12T00:42:08.1540157+07:00 0HLIVHVIEQMNL:00000003 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.LoginController.Authen (TeduCoreApp)" in 375.5861ms (afa2e885)
+2018-12-12T00:42:08.1916313+07:00 0HLIVHVIEQMNL:00000003 [INF] Request finished in 415.3192ms 200 application/json; charset=utf-8 (791a596a)
+2018-12-12T00:42:08.2230275+07:00 0HLIVHVIEQMNM:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44324/Admin/Home/Index   (ca22a1cb)
+2018-12-12T00:42:08.2289695+07:00 0HLIVHVIEQMNM:00000004 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:42:08.2579313+07:00 0HLIVHVIEQMNM:00000004 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:42:08.4739268+07:00 0HLIVHVIEQMNM:00000004 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Home/Index.cshtml". (9707eebe)
+2018-12-12T00:42:52.8754379+07:00 0HLIVHVIEQMNM:00000004 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:42:54.6630644+07:00 0HLIVHVIEQMNM:00000004 [INF] Executed DbCommand ("19"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[URL], [dto].[ParentId], [dto].[IconCss], [dto].[SortOrder], [dto].[Status]
+FROM [Functions] AS [dto]" (0723d8ff)
+2018-12-12T00:43:21.4579217+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:43:21.7462391+07:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:43:21.7763501+07:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:43:21.8138453+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-12-12T00:43:21.8400280+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-12-12T00:43:21.8691708+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-12-12T00:43:21.9434036+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertisementPages] AS [a]" (0723d8ff)
+2018-12-12T00:43:21.9789116+07:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-12-12T00:43:21.9970336+07:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-12-12T00:43:22.0101879+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-12-12T00:43:22.0444677+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:43:22.0754016+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:43:22.0837360+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:43:22.1129899+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:43:22.1400608+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:43:22.1645468+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:43:22.1895489+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-12-12T00:43:22.2155085+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-12-12T00:43:22.2290633+07:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-12-12T00:43:22.2447005+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertisementPages] AS [a]" (0723d8ff)
+2018-12-12T00:43:22.2719319+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-12-12T00:43:22.2968585+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-12-12T00:43:22.3273311+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-12-12T00:43:22.3563131+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:43:22.3822503+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:43:22.3923058+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:43:22.9550099+07:00 0HLIVI0IMJBM5:00000001 [INF] Request starting HTTP/1.1 DEBUG http://localhost:55775/  0 (ca22a1cb)
+2018-12-12T00:43:22.9550098+07:00 0HLIVI0IMJBM4:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/   (ca22a1cb)
+2018-12-12T00:43:22.9550118+07:00 0HLIVI0IMJBM3:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/admin   (ca22a1cb)
+2018-12-12T00:43:22.9806687+07:00 0HLIVI0IMJBM5:00000001 [INF] Request finished in 173.7749ms 200  (791a596a)
+2018-12-12T00:43:23.0435695+07:00 0HLIVI0IMJBM3:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:43:23.0445476+07:00 0HLIVI0IMJBM4:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:43:23.3160160+07:00 0HLIVI0IMJBM4:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:43:23.3152989+07:00 0HLIVI0IMJBM3:00000001 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.LoginController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:43:26.7612245+07:00 0HLIVI0IMJBM4:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-12-12T00:43:26.7637811+07:00 0HLIVI0IMJBM3:00000001 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Login/Index.cshtml". (9707eebe)
+2018-12-12T00:43:27.1562251+07:00 0HLIVI0IMJBM3:00000001 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.LoginController.Index (TeduCoreApp)" in 3673.3024ms (afa2e885)
+2018-12-12T00:43:27.2284704+07:00 0HLIVI0IMJBM3:00000001 [INF] Request finished in 4358.7416ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-12T00:43:28.6641868+07:00 0HLIVI0IMJBM4:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 5361.675ms (afa2e885)
+2018-12-12T00:43:28.6746393+07:00 0HLIVI0IMJBM4:00000001 [INF] Request finished in 5863.2742ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-12T00:43:31.6746231+07:00 0HLIVI0IMJBM5:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:44324/admin/login/authen application/x-www-form-urlencoded; charset=UTF-8 33 (ca22a1cb)
+2018-12-12T00:43:31.7033395+07:00 0HLIVI0IMJBM5:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:43:31.8867195+07:00 0HLIVI0IMJBM5:00000002 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.LoginController.Authen (TeduCoreApp)" with arguments (["TeduCoreApp.Models.AccountViewModels.LoginViewModel"]) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:43:31.9364885+07:00 0HLIVI0IMJBM5:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:43:32.1035715+07:00 0HLIVI0IMJBM5:00000002 [INF] Executed DbCommand ("68"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-12-12T00:43:32.4737345+07:00 0HLIVI0IMJBM5:00000002 [INF] Executed DbCommand ("58"ms) [Parameters=["@__user_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-12-12T00:43:32.5783455+07:00 0HLIVI0IMJBM5:00000002 [INF] Executed DbCommand ("7"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-12T00:43:32.6193831+07:00 0HLIVI0IMJBM5:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-12-12T00:43:32.6782147+07:00 0HLIVI0IMJBM5:00000002 [INF] Executed DbCommand ("7"ms) [Parameters=["@__role_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-12-12T00:43:32.6933444+07:00 0HLIVI0IMJBM5:00000002 [INF] Executed DbCommand ("7"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-12T00:43:32.7199247+07:00 0HLIVI0IMJBM5:00000002 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2018-12-12T00:43:32.7463477+07:00 0HLIVI0IMJBM5:00000002 [INF] User logged in. (fdce0db4)
+2018-12-12T00:43:32.7823480+07:00 0HLIVI0IMJBM5:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-12-12T00:43:32.9574504+07:00 0HLIVI0IMJBM5:00000002 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.LoginController.Authen (TeduCoreApp)" in 1104.1662ms (afa2e885)
+2018-12-12T00:43:33.0293464+07:00 0HLIVI0IMJBM5:00000002 [INF] Request finished in 1300.8651ms 200 application/json; charset=utf-8 (791a596a)
+2018-12-12T00:43:33.0594319+07:00 0HLIVI0IMJBM3:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44324/Admin/Home/Index   (ca22a1cb)
+2018-12-12T00:43:33.0732821+07:00 0HLIVI0IMJBM3:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:43:33.1073622+07:00 0HLIVI0IMJBM3:00000002 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:43:33.4655902+07:00 0HLIVI0IMJBM5:00000003 [INF] Request starting HTTP/1.1 POST http://localhost:44324/admin/login/authen application/x-www-form-urlencoded; charset=UTF-8 33 (ca22a1cb)
+2018-12-12T00:43:33.4757079+07:00 0HLIVI0IMJBM5:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:43:33.5287479+07:00 0HLIVI0IMJBM3:00000002 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Home/Index.cshtml". (9707eebe)
+2018-12-12T00:43:33.5308593+07:00 0HLIVI0IMJBM5:00000003 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.LoginController.Authen (TeduCoreApp)" with arguments (["TeduCoreApp.Models.AccountViewModels.LoginViewModel"]) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:43:33.5384492+07:00 0HLIVI0IMJBM5:00000003 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:43:33.5488188+07:00 0HLIVI0IMJBM5:00000003 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-12-12T00:43:33.5847270+07:00 0HLIVI0IMJBM5:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-12-12T00:43:33.5954291+07:00 0HLIVI0IMJBM5:00000003 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-12T00:43:33.6106101+07:00 0HLIVI0IMJBM5:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-12-12T00:43:33.6390748+07:00 0HLIVI0IMJBM5:00000003 [INF] Executed DbCommand ("0"ms) [Parameters=["@__role_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-12-12T00:43:33.6497318+07:00 0HLIVI0IMJBM5:00000003 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-12T00:43:33.6841936+07:00 0HLIVI0IMJBM5:00000003 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2018-12-12T00:43:33.6916476+07:00 0HLIVI0IMJBM5:00000003 [INF] User logged in. (fdce0db4)
+2018-12-12T00:43:33.6967176+07:00 0HLIVI0IMJBM5:00000003 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-12-12T00:43:33.7061793+07:00 0HLIVI0IMJBM5:00000003 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.LoginController.Authen (TeduCoreApp)" in 221.1858ms (afa2e885)
+2018-12-12T00:43:33.7396597+07:00 0HLIVI0IMJBM5:00000003 [INF] Request finished in 260.1014ms 200 application/json; charset=utf-8 (791a596a)
+2018-12-12T00:43:33.7556034+07:00 0HLIVI0IMJBM5:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44324/Admin/Home/Index   (ca22a1cb)
+2018-12-12T00:43:33.7660444+07:00 0HLIVI0IMJBM5:00000004 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:43:33.7772628+07:00 0HLIVI0IMJBM5:00000004 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:43:33.7885418+07:00 0HLIVI0IMJBM5:00000004 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Home/Index.cshtml". (9707eebe)
+2018-12-12T00:43:34.2987972+07:00 0HLIVI0IMJBM3:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:43:34.3179527+07:00 0HLIVI0IMJBM5:00000004 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:43:34.3779381+07:00 0HLIVI0IMJBM5:00000004 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[URL], [dto].[ParentId], [dto].[IconCss], [dto].[SortOrder], [dto].[Status]
+FROM [Functions] AS [dto]" (0723d8ff)
+2018-12-12T00:43:34.4263284+07:00 0HLIVI0IMJBM3:00000002 [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[URL], [dto].[ParentId], [dto].[IconCss], [dto].[SortOrder], [dto].[Status]
+FROM [Functions] AS [dto]" (0723d8ff)
+2018-12-12T00:43:34.9765370+07:00 0HLIVI0IMJBM3:00000002 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.HomeController.Index (TeduCoreApp)" in 1780.3714ms (afa2e885)
+2018-12-12T00:43:34.9860832+07:00 0HLIVI0IMJBM5:00000004 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.HomeController.Index (TeduCoreApp)" in 1085.5063ms (afa2e885)
+2018-12-12T00:43:35.0447961+07:00 0HLIVI0IMJBM3:00000002 [INF] Request finished in 1982.8438ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-12T00:43:35.0728536+07:00 0HLIVI0IMJBM5:00000004 [INF] Request finished in 1243.7371ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-12T00:43:53.4475956+07:00 0HLIVI0IMJBM5:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44324/lib/bootstrap/dist/css/bootstrap.css.map   (ca22a1cb)
+2018-12-12T00:43:53.4874488+07:00 0HLIVI0IMJBM5:00000005 [INF] The file "/lib/bootstrap/dist/css/bootstrap.css.map" was not modified (f1f8d725)
+2018-12-12T00:43:53.5059048+07:00 0HLIVI0IMJBM5:00000005 [INF] Request finished in 49.1603ms 304 text/plain (791a596a)
+2018-12-12T00:44:53.9053511+07:00 0HLIVI0IMJBM6:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/Admin/Home/Index   (ca22a1cb)
+2018-12-12T00:44:53.9104152+07:00 0HLIVI0IMJBM6:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:44:53.9177394+07:00 0HLIVI0IMJBM6:00000001 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:44:53.9223924+07:00 0HLIVI0IMJBM6:00000001 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Home/Index.cshtml". (9707eebe)
+2018-12-12T00:44:53.9475868+07:00 0HLIVI0IMJBM6:00000001 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:44:53.9557100+07:00 0HLIVI0IMJBM6:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[URL], [dto].[ParentId], [dto].[IconCss], [dto].[SortOrder], [dto].[Status]
+FROM [Functions] AS [dto]" (0723d8ff)
+2018-12-12T00:44:54.0809249+07:00 0HLIVI0IMJBM6:00000001 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.HomeController.Index (TeduCoreApp)" in 161.9697ms (afa2e885)
+2018-12-12T00:44:54.1487363+07:00 0HLIVI0IMJBM6:00000001 [INF] Request finished in 191.1088ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-12T00:44:55.2523025+07:00 0HLIVI0IMJBM6:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44324/favicon.ico   (ca22a1cb)
+2018-12-12T00:44:55.2825808+07:00 0HLIVI0IMJBM6:00000002 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Users\Thuan\source\repos\TeduCoreApp\TeduCoreApp\wwwroot\favicon.ico"' (27b0a520)
+2018-12-12T00:44:55.2990154+07:00 0HLIVI0IMJBM6:00000002 [INF] Request finished in 42.8254ms 200 image/x-icon (791a596a)
+2018-12-12T00:45:05.0394949+07:00 0HLIVI0IMJBM6:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44324/admin/function/index   (ca22a1cb)
+2018-12-12T00:45:05.0474909+07:00 0HLIVI0IMJBM6:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:45:05.0650896+07:00 0HLIVI0IMJBM6:00000003 [INF] Request finished in 15.0141ms 404  (791a596a)
+2018-12-12T00:57:43.8213771+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:57:44.1162078+07:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:57:44.1442544+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:57:44.1823897+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-12-12T00:57:44.2288242+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-12-12T00:57:44.2570465+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-12-12T00:57:44.2840010+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertisementPages] AS [a]" (0723d8ff)
+2018-12-12T00:57:44.3107789+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-12-12T00:57:44.3367962+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-12-12T00:57:44.3640922+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-12-12T00:57:44.3723929+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:57:44.3798156+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:57:44.3869040+07:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:57:44.4131063+07:00  [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:57:44.4250561+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:57:44.4505627+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:57:44.4763358+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Functions] AS [f]" (0723d8ff)
+2018-12-12T00:57:44.5013895+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [x]
+WHERE [x].[Id] = 'DefaultFooterId'" (0723d8ff)
+2018-12-12T00:57:44.5266439+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Colors] AS [c]" (0723d8ff)
+2018-12-12T00:57:44.5510729+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AdvertisementPages] AS [a]" (0723d8ff)
+2018-12-12T00:57:44.5753593+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Slides] AS [s]" (0723d8ff)
+2018-12-12T00:57:44.5985218+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Sizes] AS [s]" (0723d8ff)
+2018-12-12T00:57:44.6260811+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2018-12-12T00:57:44.6510715+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeTitle')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:57:44.6769180+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaKeyword')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:57:44.7024487+07:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [x]
+        WHERE [x].[Id] = N'HomeMetaDescription')
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-12-12T00:57:44.9797679+07:00 0HLIVI8JK4OHP:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44324/   (ca22a1cb)
+2018-12-12T00:57:44.9797675+07:00 0HLIVI8JK4OHO:00000001 [INF] Request starting HTTP/1.1 DEBUG http://localhost:55775/  0 (ca22a1cb)
+2018-12-12T00:57:45.0066377+07:00 0HLIVI8JK4OHO:00000001 [INF] Request finished in 111ms 200  (791a596a)
+2018-12-12T00:57:45.0773224+07:00 0HLIVI8JK4OHP:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:57:45.2821410+07:00 0HLIVI8JK4OHP:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:57:47.8199907+07:00 0HLIVI8JK4OHP:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-12-12T00:57:48.4394351+07:00 0HLIVI8JK4OHP:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 3149.5018ms (afa2e885)
+2018-12-12T00:57:48.4522362+07:00 0HLIVI8JK4OHP:00000001 [INF] Request finished in 3556.2811ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-12T00:57:54.9072067+07:00 0HLIVI8JK4OHO:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44324/admin   (ca22a1cb)
+2018-12-12T00:57:54.9266648+07:00 0HLIVI8JK4OHO:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:57:54.9609952+07:00 0HLIVI8JK4OHO:00000002 [INF] Authorization was successful for user: "admin". (d7eb274a)
+2018-12-12T00:57:54.9696791+07:00 0HLIVI8JK4OHO:00000002 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.LoginController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:57:55.5405762+07:00 0HLIVI8JK4OHO:00000002 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Login/Index.cshtml". (9707eebe)
+2018-12-12T00:57:55.6185176+07:00 0HLIVI8JK4OHO:00000002 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.LoginController.Index (TeduCoreApp)" in 663.3263ms (afa2e885)
+2018-12-12T00:57:55.6451425+07:00 0HLIVI8JK4OHO:00000002 [INF] Request finished in 723.8419ms 200 text/html; charset=utf-8 (791a596a)
+2018-12-12T00:58:01.8057017+07:00 0HLIVI8JK4OHP:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:44324/admin/login/authen application/x-www-form-urlencoded; charset=UTF-8 33 (ca22a1cb)
+2018-12-12T00:58:01.8119809+07:00 0HLIVI8JK4OHP:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:58:01.9132949+07:00 0HLIVI8JK4OHP:00000002 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.LoginController.Authen (TeduCoreApp)" with arguments (["TeduCoreApp.Models.AccountViewModels.LoginViewModel"]) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:58:01.9356316+07:00 0HLIVI8JK4OHP:00000002 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:58:02.0674238+07:00 0HLIVI8JK4OHP:00000002 [INF] Executed DbCommand ("77"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-12-12T00:58:02.2557164+07:00 0HLIVI8JK4OHP:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-12-12T00:58:02.2989293+07:00 0HLIVI8JK4OHP:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-12T00:58:02.3202222+07:00 0HLIVI8JK4OHP:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-12-12T00:58:02.3512911+07:00 0HLIVI8JK4OHP:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__role_Id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-12-12T00:58:02.3787888+07:00 0HLIVI8JK4OHP:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-12-12T00:58:02.4170023+07:00 0HLIVI8JK4OHP:00000002 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2018-12-12T00:58:02.4297700+07:00 0HLIVI8JK4OHP:00000002 [INF] User logged in. (fdce0db4)
+2018-12-12T00:58:02.4444667+07:00 0HLIVI8JK4OHP:00000002 [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2018-12-12T00:58:02.5462869+07:00 0HLIVI8JK4OHP:00000002 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.LoginController.Authen (TeduCoreApp)" in 682.412ms (afa2e885)
+2018-12-12T00:58:02.5975799+07:00 0HLIVI8JK4OHP:00000002 [INF] Request finished in 752.2603ms 200 application/json; charset=utf-8 (791a596a)
+2018-12-12T00:58:02.6173713+07:00 0HLIVI8JK4OHO:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44324/Admin/Home/Index   (ca22a1cb)
+2018-12-12T00:58:02.6258278+07:00 0HLIVI8JK4OHO:00000003 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-12-12T00:58:02.6546210+07:00 0HLIVI8JK4OHO:00000003 [INF] Authorization was successful for user: "admin". (d7eb274a)
+2018-12-12T00:58:02.6648217+07:00 0HLIVI8JK4OHO:00000003 [INF] Executing action method "TeduCoreApp.Areas.Admin.Controllers.HomeController.Index (TeduCoreApp)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-12-12T00:58:02.8865541+07:00 0HLIVI8JK4OHO:00000003 [INF] Executing ViewResult, running view at path "/Areas/Admin/Views/Home/Index.cshtml". (9707eebe)
+2018-12-12T00:58:03.3447195+07:00 0HLIVI8JK4OHO:00000003 [INF] Entity Framework Core "2.0.0-rtm-26452" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2018-12-12T00:58:03.4145541+07:00 0HLIVI8JK4OHO:00000003 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[URL], [dto].[ParentId], [dto].[IconCss], [dto].[SortOrder], [dto].[Status]
+FROM [Functions] AS [dto]" (0723d8ff)
+2018-12-12T00:58:03.9474434+07:00 0HLIVI8JK4OHO:00000003 [INF] Executed action "TeduCoreApp.Areas.Admin.Controllers.HomeController.Index (TeduCoreApp)" in 1312.7767ms (afa2e885)
+2018-12-12T00:58:04.0262526+07:00 0HLIVI8JK4OHO:00000003 [INF] Request finished in 1370.9434ms 200 text/html; charset=utf-8 (791a596a)

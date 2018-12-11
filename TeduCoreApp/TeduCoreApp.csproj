@@ -26,10 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="Areas\Admin\Views\Shared\Error.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
