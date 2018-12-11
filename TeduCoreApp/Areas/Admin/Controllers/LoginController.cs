@@ -26,6 +26,8 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();

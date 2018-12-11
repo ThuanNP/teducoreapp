@@ -18,11 +18,10 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return Redirect("/Admin/Login/Index");
         }
     }
 }
