@@ -118,7 +118,7 @@ namespace TeduCoreApp.Data.Entities
         [MaxLength(256)]
         public string SeoPageTitle { get; set; }
 
-        [MaxLength(256), Column(TypeName ="varchar(256)")]
+        [MaxLength(256)]
         public string SeoAlias { get; set; }
 
         [MaxLength(256)]

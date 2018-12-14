@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using TeduCoreApp.Data.Entities;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
-    public class AccountController : AdminBaseController
+    public class AccountController : BaseController
     {
         private readonly SignInManager<AppUser> _signInManager;
 

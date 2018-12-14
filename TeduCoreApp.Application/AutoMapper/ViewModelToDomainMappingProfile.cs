@@ -11,6 +11,7 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<ProductCategoryViewModel, ProductCategory>()
                 .ConstructUsing(c => new ProductCategory(c.Name, c.Description, c.ParentId, c.HomeOrder, c.Image, c.HomeFlag,
                 c.SeoPageTitle, c.SeoAlias, c.Seokeywords, c.SeoDecription, c.Status, c.SortOrder));
+            
         }
     }
 }

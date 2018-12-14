@@ -5,7 +5,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize]
-    public class AdminBaseController : Controller
+    public class BaseController : Controller
     {
     }
 }

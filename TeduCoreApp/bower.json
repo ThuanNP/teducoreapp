@@ -21,6 +21,7 @@
     "moment": "~2.19.1",
     "notifyjs": "~0.4.2",
     "bootbox": "~4.4.0",
-    "animate.css": "~3.7.0"
+    "animate.css": "~3.7.0",
+    "mustache": "~3.0.1"
   }
 }

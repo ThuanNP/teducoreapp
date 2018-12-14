@@ -18,31 +18,19 @@
     </li>
     <li><a href="javascript:;">Help</a></li>
     <li>
-        <form action="/Admin/Account/Logout" method="post" id="logoutForm" class="navbar-right">
+        <a href="javascript:;" id="btnLogout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+        <form action="/Admin/Account/Logout" method="post" id="frmLogout">
             @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>
+            @*<button type="submit" class="btn btn-link">Log out</button>*@
         </form>
     </li>
-    @*<li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>*@
+    <li>@*<a href="javascript:;" ><i class="fa fa-sign-out pull-right"></i> Log Out</a>*@</li>
 </ul>
-
-@*@if (SignInManager.IsSignedIn(User))
-    {
-        <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-                </li>
-                <li>
-                    <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>
-                </li>
-            </ul>
-        </form>
-    }
-    else
-    {
-        <ul class="nav navbar-nav navbar-right">
-            <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
-            <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
-        </ul>
-    }*@
+<script>   
+    window.addEventListener("DOMContentLoaded", function () {
+        var form = document.getElementById("frmLogout");
+        document.getElementById("btnLogout").addEventListener("click", function () {
+            form.submit();
+        });
+    });
+</script>

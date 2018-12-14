@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Models.AccountViewModels;
 using TeduCoreApp.Utilities.Dtos;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
-{    
-    public class LoginController : AdminBaseController
+{
+    public class LoginController : BaseController
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ILogger _logger;
 
-        public LoginController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, 
+        public LoginController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager,
             ILogger<LoginController> logger)
         {
             _userManager = userManager;
@@ -37,21 +34,21 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Authen(LoginViewModel model)
-        {           
+        {
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
+                    //_logger.LogInformation("User logged in.");
                     return new OkObjectResult(new GenericResult(true));
                 }
                 if (result.IsLockedOut)
                 {
                     const string Message = "User account locked out.";
-                    _logger.LogWarning(Message);
+                    _logger.LogWarning(Message, model);
                     return new OkObjectResult(new GenericResult(false, Message));
                 }
                 else
@@ -63,6 +60,5 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             // If we got this far, something failed, redisplay form
             return View(new GenericResult(false, model));
         }
-
     }
 }
