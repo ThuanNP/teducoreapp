@@ -15,6 +15,7 @@ using TeduCoreApp.Data.EF.Repositories;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.Helpers;
+using TeduCoreApp.infrastructure.Interfaces;
 using TeduCoreApp.Services;
 using IConfigurationProvider = AutoMapper.IConfigurationProvider;
 
@@ -72,6 +73,10 @@ namespace TeduCoreApp
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
 
             services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+            
+            // Add application services.
+            services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
+            services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
 
             //Repositories
             services.AddTransient<IFunctionRepository, FunctionRepository>();

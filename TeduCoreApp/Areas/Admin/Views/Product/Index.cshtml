@@ -3,7 +3,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-@section Scripts{ 
+@section Scripts{
     <script src="~/app/controllers/product/index.js"></script>
     <script>
         var product = new productController();
@@ -15,17 +15,22 @@
     <!-- page title -->
     <div class="page-title">
         <div class="title_left">
-            <h3>Product <small>Category management </small></h3>
+            <h3>Product <small>Management </small></h3>
         </div>
         <div class="title_right">
-            <div class="col-md-12 col-sm-12 col-xs-12 form-group pull-right top_search">
-                <div class="input-group">
-                    <input type="text" id="txtSearchKeyword" class="form-control" placeholder="Search for...">
+            <div class="form-group form-horizontal form-inline" style="padding-top:10px;">
+                <div class="input-group col-lg-3 col-md-4 col-sm-9 col-xs-9">
+                    <select id="ddlCategorySearch" class="form-control">
+                        <option>-- Select category --</option>
+                    </select>
+                </div>
+                <div class="input-group col-lg-8 col-md-7 col-sm-12 col-xs-12">
+                    <input type="text" id="txtKeyword" class="form-control" placeholder="Search for...">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" id="btnSearch" type="button">Go!</button>
+                        <button class="btn btn-primary" id="btnSearch" type="button">Go!</button>
                     </span>
                 </div>
-            </div>
+            </div>            
         </div>
     </div>
     <!-- /page title -->
@@ -35,7 +40,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Products <small>List of product</small></h2>                    
+                    <h2>Products <small>List of all products</small></h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -67,7 +72,7 @@
                                 <span class="item-per-page">
                                     bản ghi/trang.
                                 </span>
-                                <br/>
+                                <br />
                                 Tổng số bản ghi: <strong id="lblTotalRecords"></strong>
                             </div>
                         </div>
@@ -87,7 +92,7 @@
 </div>
 <script id="table-template" type="x-tmpl-mustache">
     <tr>
-        <th scope="row" class="text-center">           
+        <th scope="row" class="text-center">
             <div class="btn-group btn-group-sm">
                 <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i></button>
                 <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
@@ -96,7 +101,7 @@
         <td>{{Name}}</td>
         <td>{{CategoryName}}</td>
         <td>{{Price}}</td>
-        <td>{{{Image}}}</td>
+        <td class="text-center">{{{Image}}}</td>
         <td>{{CreatedDate}}</td>
         <td class="text-center">{{{Status}}}</td>
     </tr>

@@ -36,10 +36,12 @@ namespace TeduCoreApp.Application.Implementations
             }
             if (!string.IsNullOrWhiteSpace(keyword))
             {
+                //query = query.Where(p => p.Name.Contains(keyword) ||
+                //                    p.Description.Contains(keyword) ||
+                //                    p.Seokeywords.Contains(keyword) ||
+                //                    p.SeoDecription.Contains(keyword));
                 query = query.Where(p => p.Name.Contains(keyword) ||
-                                    p.Description.Contains(keyword) ||
-                                    p.Seokeywords.Contains(keyword) ||
-                                    p.SeoDecription.Contains(keyword));
+                                    p.Description.Contains(keyword));
             }
             int totalRow = query.Count();
             query = query.OrderByDescending(p => p.DateCreated)
