@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+    <script src="~/app/controllers/product-category/index.js"></script>
+    <script>
+        var productCategory = new productCategoryController();
+        productCategory.initialize();
+    </script>
+}
+<!-- page title -->
+<div class="page-title">
+    <div class="title_left">
+        @*<h3>Product category <small>Management </small></h3>*@
+        <h3>Product Category <small>List of all product categories</small></h3>
+    </div>
+    <div class="title_right">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="btn-group pull-right">
+                <button id="btnCreate" type="button" class="btn btn-success">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page title -->
+<div class="clearfix"></div>
+<!-- page content -->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            @*<div class="x_title">
+                <h2>Product Category<small>List of all product categories</small></h2>
+                <div class="clearfix"></div>
+            </div>*@
+            <div class="x_content">
+                <ul id="treeProductCategory"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
+<div class="clearfix"></div>
+

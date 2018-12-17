@@ -1,7 +1,6 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 @section Scripts{
     <script src="~/app/controllers/product/index.js"></script>
@@ -11,85 +10,84 @@
     </script>
 }
 
-<div class="">
-    <!-- page title -->
-    <div class="page-title">
-        <div class="title_left">
-            <h3>Product <small>Management </small></h3>
-        </div>
-        <div class="title_right">
-            <div class="form-group form-horizontal form-inline" style="padding-top:10px;">
-                <div class="input-group col-lg-3 col-md-4 col-sm-9 col-xs-9">
-                    <select id="ddlCategorySearch" class="form-control">
-                        <option>-- Select category --</option>
-                    </select>
-                </div>
-                <div class="input-group col-lg-8 col-md-7 col-sm-12 col-xs-12">
-                    <input type="text" id="txtKeyword" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" id="btnSearch" type="button">Go!</button>
-                    </span>
-                </div>
-            </div>            
-        </div>
+<!-- page title -->
+<div class="page-title">
+    <div class="title_left">
+        @*<h3>Product <small>Management </small></h3>*@
+        <h3>Products <small>List of all products</small></h3>
     </div>
-    <!-- /page title -->
-    <div class="clearfix"></div>
-    <!-- page content -->
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>Products <small>List of all products</small></h2>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Category</th>
-                                <th>Price</th>
-                                <th>Image</th>
-                                <th>Created</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbl-content"></tbody>
-                    </table>
-                    <!--Pagination-->
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <div class="dataTables_info" id="datatable-checkbox-info" role="status" aria-live="polite">
-                                <select id="ddlShowPage">
-                                    <option value="10" selected="selected">10</option>
-                                    <option value="20">20</option>
-                                    <option value="30">30</option>
-                                    <option value="40">40</option>
-                                    <option value="50">50</option>
-                                </select>
-                                <span class="item-per-page">
-                                    bản ghi/trang.
-                                </span>
-                                <br />
-                                Tổng số bản ghi: <strong id="lblTotalRecords"></strong>
-                            </div>
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox-paginate">
-                                <ul id="paginationUL"></ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Pagination-->
-                </div>
+    <div class="title_right">
+        <div class="form-group form-horizontal form-inline" style="padding-top:10px;">
+            <div class="input-group col-lg-3 col-md-4 col-sm-9 col-xs-9">
+                <select id="ddlCategorySearch" class="form-control">
+                    <option>-- Select category --</option>
+                </select>
+            </div>
+            <div class="input-group col-lg-8 col-md-7 col-sm-12 col-xs-12">
+                <input type="text" id="txtKeyword" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" id="btnSearch" type="button">Go!</button>
+                </span>
             </div>
         </div>
     </div>
-    <!-- /page content -->
-    <div class="clearfix"></div>
 </div>
+<!-- /page title -->
+<div class="clearfix"></div>
+<!-- page content -->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            @*<div class="x_title">
+                <h2>Products<small>List of all products</small></h2>
+                <div class="clearfix"></div>
+            </div>*@
+            <div class="x_content">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Image</th>
+                            <th>Created</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-content"></tbody>
+                </table>
+                <!--Pagination-->
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="datatable-checkbox-info" role="status" aria-live="polite">
+                            <select id="ddlShowPage">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="40">40</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span class="item-per-page">
+                                bản ghi/trang.
+                            </span>
+                            <br />
+                            Tổng số bản ghi: <strong id="lblTotalRecords"></strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox-paginate">
+                            <ul id="paginationUL"></ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Pagination-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
+<div class="clearfix"></div>
 <script id="table-template" type="x-tmpl-mustache">
     <tr>
         <th scope="row" class="text-center">
