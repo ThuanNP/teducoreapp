@@ -128,7 +128,7 @@
             node.children = [];
             map[node.id] = i; // use map to look-up the parents
             if (node.parentId !== null) {
-                arr[map[node.ParentId]].children.push(node);
+                arr[map[node.parentId]].children.push(node);
             } else {
                 roots.push(node);
             }
@@ -137,7 +137,7 @@
     }
 };
 
-$(document).ajaxSend(function (e, xhr, options) {
+$(document).ajaxSend(function (_e, xhr, options) {
     if (options.type.toUpperCase() === "POST" || options.type.toUpperCase() === "PUT") {
         var token = $('form').find("input[name='__RequestVerificationToken']").val();
         xhr.setRequestHeader("RequestVerificationToken", token);

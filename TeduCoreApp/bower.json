@@ -1,6 +1,4 @@
 {
-  "name": "asp.net",
-  "private": true,
   "dependencies": {
     "bootstrap": "~3.3.0",
     "jquery": "~2.2.0",
@@ -25,5 +23,7 @@
     "mustache": "~3.0.1",
     "twbs-pagination": "~1.4.2",
     "jQuery-EasyUI": "~1.5.3"
-  }
+  },
+  "name": "asp.net",
+  "private": true
 }

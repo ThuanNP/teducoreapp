@@ -83,9 +83,19 @@ namespace TeduCoreApp.Application.Implementations
             return categories;
         }
 
-        public void ReOrder(int sourceId, int targetId)
+        public void Reorder(int sourceId, int targetId)
         {
-            throw new NotImplementedException();
+            var source = _productCategoryRepository.FindById(sourceId);
+            var target = _productCategoryRepository.FindById(targetId);
+            if (source.ParentId != target.ParentId)
+            {
+                source.ParentId = target.ParentId;
+            }
+            int tempOrder = source.SortOrder;
+            source.SortOrder = target.SortOrder;
+            target.SortOrder = tempOrder;
+            _productCategoryRepository.Update(source);
+            _productCategoryRepository.Update(target);
         }
 
         public void Save() => _unitOfWork.Commit();
@@ -98,7 +108,17 @@ namespace TeduCoreApp.Application.Implementations
 
         public void UpdateParentId(int sourceId, int targetId, Dictionary<int, int> items)
         {
-            throw new NotImplementedException();
+            var source = _productCategoryRepository.FindById(sourceId);
+            source.ParentId = targetId;
+            _productCategoryRepository.Update(source);
+
+            // get all sibling
+            var sibling = _productCategoryRepository.FindAll(c => items.ContainsKey(c.Id));
+            foreach (var child in sibling)
+            {
+                child.SortOrder = items[child.Id];
+                _productCategoryRepository.Update(child);
+            }
         }
     }
 }

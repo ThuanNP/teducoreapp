@@ -6,7 +6,6 @@
     };
 
     function registerEvents() {
-        //todo: Binding events to controls
         $('#ddlShowPage').on('change', function () {
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
@@ -29,7 +28,7 @@
             dataType: 'json',
             success: function (response) {
                 var render = '<option>-- All categories --</option>';
-                $.each(response, function (i, item) {
+                $.each(response, function (_i, item) {
                     render += '<option value="' + item.Id + '">' + item.Name + '</option>';
                 });   
                 if (render !== "") {
@@ -57,7 +56,7 @@
             dataType: 'json',
             success: function (response) {
                 var render = "";
-                $.each(response.Results, function (i, item) {
+                $.each(response.Results, function (_i, item) {
                     render += Mustache.render(template, {
                         Id: item.Id,
                         Name: item.Name,
@@ -100,7 +99,7 @@
             prev: 'Trước',
             next: 'Tiếp',
             last: 'Cuối',
-            onPageClick: function (event, p) {
+            onPageClick: function (_event, p) {
                 tedu.configs.pageIndex = p;
                 setTimeout(callBack(), 200);
             }
