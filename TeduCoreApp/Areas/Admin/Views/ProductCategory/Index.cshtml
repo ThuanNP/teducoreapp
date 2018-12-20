@@ -35,15 +35,20 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             @*<div class="x_title">
-                <h2>Product Category<small>List of all product categories</small></h2>
-                <div class="clearfix"></div>
-            </div>*@
+                    <h2>Product Category<small>List of all product categories</small></h2>
+                    <div class="clearfix"></div>
+                </div>*@
             <div class="x_content">
                 <ul id="treeProductCategory"></ul>
+                <div id="contextMenu" class="easyui-menu" style="width:120px;" hidden="hidden">
+                    <div id="btnEdit" data-options="iconCls:'icon-edit'">Edit</div>
+                    <div id="btnDelete" data-options="iconCls:'icon-remove'">Remove</div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <!-- /page content -->
 <div class="clearfix"></div>
+@Html.Partial("_AddEditModal.cshtml")
 

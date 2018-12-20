@@ -6,6 +6,9 @@ namespace TeduCoreApp.Data.EF.Configurations
 {
     public class ProductTagConfiguration : DbEntityConfiguration<BlogTag>
     {
-        public override void Configure(EntityTypeBuilder<BlogTag> entity) => entity.Property(c => c.TagId).IsRequired().IsUnicode(false).HasMaxLength(50);
+        public override void Configure(EntityTypeBuilder<BlogTag> entity)
+        {
+            entity.Property(c => c.TagId).IsRequired().IsUnicode(false).HasMaxLength(50);
+        }
     }
 }

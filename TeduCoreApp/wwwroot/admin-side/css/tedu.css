@@ -1,2 +1,16 @@
-﻿body {
+﻿/*JEasyUI treeview customize*/
+.tree-node {
+    padding-top: 5px;
 }
+
+    .tree-node:first-of-type {
+        margin-top: 10px;
+    }
+
+    .tree-node:last-of-type {
+        margin-bottom: 10px;
+    }
+
+    .tree-node .tree-title {
+        font-size: 14px;
+    }

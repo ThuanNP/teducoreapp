@@ -56,7 +56,7 @@ namespace TeduCoreApp.Application.Implementations
         public List<ProductCategoryViewModel> GetAllByParentId(int parentId)
         {
             return _productCategoryRepository.FindAll(x => x.Status == Status.Active && x.ParentId == parentId)
-                .OrderBy(x => x.ParentId)
+                .OrderBy(x => x.SortOrder)
                 .ProjectTo<ProductCategoryViewModel>().ToList();
         }
 
@@ -83,7 +83,7 @@ namespace TeduCoreApp.Application.Implementations
             return categories;
         }
 
-        public void Reorder(int sourceId, int targetId)
+        public void Reorder(int sourceId, int targetId, string point)
         {
             var source = _productCategoryRepository.FindById(sourceId);
             var target = _productCategoryRepository.FindById(targetId);
@@ -91,11 +91,29 @@ namespace TeduCoreApp.Application.Implementations
             {
                 source.ParentId = target.ParentId;
             }
-            int tempOrder = source.SortOrder;
-            source.SortOrder = target.SortOrder;
-            target.SortOrder = tempOrder;
+            if (point.ToLower().Equals("top"))
+            {
+                source.SortOrder = target.SortOrder;
+                target.SortOrder++;
+            }
+            else
+            {
+                int count = _productCategoryRepository.FindAll(x => x.Status == Status.Active && x.ParentId == source.ParentId).Count();
+                source.SortOrder = Math.Min(target.SortOrder + 1, count - 1);
+            }
+            int minOrder = Math.Min(target.SortOrder, source.SortOrder);
+            var children = _productCategoryRepository.FindAll(x => x.ParentId == source.ParentId
+                            && x.SortOrder >= minOrder
+                            && x.Id != (point.Equals("top") ? targetId : sourceId)).OrderBy(x => x.SortOrder).ToList();
+            int maxOrder = Math.Max(target.SortOrder, source.SortOrder);
+            foreach (var item in children)
+            {
+                item.SortOrder = ++maxOrder;
+                _productCategoryRepository.Update(item);
+            }
             _productCategoryRepository.Update(source);
             _productCategoryRepository.Update(target);
+
         }
 
         public void Save() => _unitOfWork.Commit();
