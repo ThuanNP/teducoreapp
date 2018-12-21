@@ -30,7 +30,20 @@ namespace TeduCoreApp.Application.Implementations
             return productcategoryVm;
         }
 
-        public void Delete(int id) => _productCategoryRepository.Remove(id);
+        public void Delete(int id)
+        {
+            var category = _productCategoryRepository.FindById(id);    
+            var sibling = _productCategoryRepository.FindAll(x => x.ParentId == category.ParentId
+                           && x.SortOrder > category.SortOrder && x.Id != category.Id);
+            // update followed siblings from category
+            int order = category.SortOrder;
+            foreach (var item in sibling)
+            {
+                item.SortOrder = ++order;
+                _productCategoryRepository.Update(item);               
+            }
+            _productCategoryRepository.Remove(id);
+        }
 
         public void Dispose() => GC.SuppressFinalize(this);
 
@@ -83,37 +96,26 @@ namespace TeduCoreApp.Application.Implementations
             return categories;
         }
 
-        public void Reorder(int sourceId, int targetId, string point)
+        public void Reorder(int sourceId, int targetId, Dictionary<int, int> items)
         {
             var source = _productCategoryRepository.FindById(sourceId);
             var target = _productCategoryRepository.FindById(targetId);
             if (source.ParentId != target.ParentId)
             {
                 source.ParentId = target.ParentId;
-            }
-            if (point.ToLower().Equals("top"))
+                _productCategoryRepository.Update(source);
+            }      
+            // Shift siblings to right
+            var sibling = _productCategoryRepository.FindAll(c => items.ContainsKey(c.Id));
+            foreach (var item in sibling)
             {
-                source.SortOrder = target.SortOrder;
-                target.SortOrder++;
+                if (item.SortOrder != items[item.Id])
+                {
+                    item.SortOrder = items[item.Id];
+                    _productCategoryRepository.Update(item);
+                }
             }
-            else
-            {
-                int count = _productCategoryRepository.FindAll(x => x.Status == Status.Active && x.ParentId == source.ParentId).Count();
-                source.SortOrder = Math.Min(target.SortOrder + 1, count - 1);
-            }
-            int minOrder = Math.Min(target.SortOrder, source.SortOrder);
-            var children = _productCategoryRepository.FindAll(x => x.ParentId == source.ParentId
-                            && x.SortOrder >= minOrder
-                            && x.Id != (point.Equals("top") ? targetId : sourceId)).OrderBy(x => x.SortOrder).ToList();
-            int maxOrder = Math.Max(target.SortOrder, source.SortOrder);
-            foreach (var item in children)
-            {
-                item.SortOrder = ++maxOrder;
-                _productCategoryRepository.Update(item);
-            }
-            _productCategoryRepository.Update(source);
-            _productCategoryRepository.Update(target);
-
+            
         }
 
         public void Save() => _unitOfWork.Commit();
@@ -134,8 +136,11 @@ namespace TeduCoreApp.Application.Implementations
             var sibling = _productCategoryRepository.FindAll(c => items.ContainsKey(c.Id));
             foreach (var child in sibling)
             {
-                child.SortOrder = items[child.Id];
-                _productCategoryRepository.Update(child);
+                if (child.SortOrder != items[child.Id])
+                {
+                    child.SortOrder = items[child.Id];
+                    _productCategoryRepository.Update(child);
+                }
             }
         }
     }

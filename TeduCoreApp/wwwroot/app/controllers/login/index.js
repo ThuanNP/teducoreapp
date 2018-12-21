@@ -25,6 +25,18 @@
                 login(user, pass);
             }           
         });
+
+        //$('body').on('keypress', function (e) {
+        //    e.preventDefault();
+        //    if (e.which === 13) {
+        //        if ($('#frmLogin').valid()) {
+        //            e.preventDefault();
+        //            var user = $('#txtUsername').val();
+        //            var pass = $('#txtPassword').val();
+        //            login(user, pass);
+        //        }
+        //    }
+        //});
     };
 
     var login = function (user, pass) {

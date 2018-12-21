@@ -61,7 +61,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Reorder(int sourceId, int targetId, string point)
+        public IActionResult Reorder(int sourceId, int targetId, Dictionary<int, int> items)
         {
             if (!ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
                 else
                 {
                     // Some categories have the same SortOrder
-                    _productCategoryService.Reorder(sourceId, targetId, point);
+                    _productCategoryService.Reorder(sourceId, targetId, items);
                     _productCategoryService.Save();
                     return new OkResult();
                 }

@@ -18,9 +18,9 @@ var productCategoryController = function () {
         });
 
         $('body').on('click', '#btnDelete', function (e) {
-            e.preventDefault();
-            var that = parseInt($('#hidIdM').val());
+            e.preventDefault();            
             tedu.confirm("Are you sure to delete?", function () {
+                var that = parseInt($('#hidIdM').val());
                 deleteProductCategory(that);
             });            
         });
@@ -37,12 +37,11 @@ var productCategoryController = function () {
             type: "DELETE",
             url: "/Admin/Productcategory/Delete",
             data: { id: id },
-            dataType: "json",
             beforeSend: function () {
                 tedu.startLoading();
             },
-            success: function (response) {
-                tedu.notify('Deleting success ' + response.Name, 'success');
+            success: function () {
+                tedu.notify('Deleting success', 'success');
                 loadProductCategories();
             },
             error: function (status) {
@@ -247,20 +246,20 @@ var productCategoryController = function () {
 
                         console.log(target);
                         console.log(source);
-                        console.log(point);
+                        console.log(point);                       
 
+                        
                         var targetNode = $(this).tree("getNode", target);
-                        var children = [];
-                        $.each(targetNode.children, function (_i, item) {
-                            children.push({
-                                key: item.id,
-                                value: _i
+                        if (point === "append") {  
+                            var children = [];
+                            $.each(targetNode.children, function (i, item) {
+                                children.push({
+                                    key: item.id,
+                                    value: i
+                                });
                             });
-                        });
-
-                        if (point === "append") {
-                            // Update to database
-                            $.ajax({
+                            // Update to database                           
+                            $.ajax({         
                                 url: '/Admin/ProductCategory/UpdateParentId',
                                 type: 'POST',
                                 dataType: 'json',
@@ -275,6 +274,25 @@ var productCategoryController = function () {
                             });
 
                         } else if (point === "top" || point === "bottom") {
+                            var parentNode = $(this).tree("getParent", target);
+                            var items = [];
+                            if (parentNode) {
+                                $.each(parentNode.children, function (i, item) {
+                                    items.push({
+                                        key: item.id,
+                                        value: i
+                                    });
+                                });
+                            } else {
+                                var rootNodes = $(this).tree("getRoots");
+                                $.each(rootNodes, function (i, item) {
+                                    items.push({
+                                        key: item.id,
+                                        value: i
+                                    });
+                                });
+                            }
+                            
                             //Reorder the target product category
                             $.ajax({
                                 url: '/Admin/ProductCategory/Reorder',
@@ -283,7 +301,7 @@ var productCategoryController = function () {
                                 data: {
                                     sourceId: source.id,
                                     targetId: targetNode.id,
-                                    point: point
+                                    items: items
                                 },
                                 success: function () {
                                     loadProductCategories();
