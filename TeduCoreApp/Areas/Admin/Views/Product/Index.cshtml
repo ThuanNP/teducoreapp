@@ -11,37 +11,38 @@
 }
 
 <!-- page title -->
-<div class="page-title">
+<header class="page-title">
     <div class="title_left">
         @*<h3>Product <small>Management </small></h3>*@
         <h3>Products <small>List of all products</small></h3>
     </div>
     <div class="title_right">
-        <div class="form-group form-horizontal form-inline" style="padding-top:10px;">
-            <div class="input-group col-lg-3 col-md-4 col-sm-9 col-xs-9">
+        <section role="search">
+            <div class="input-group col-lg-8 col-md-6 col-sm-12 pull-right">
+                <input type="text" id="txtKeyword" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" id="btnSearch" type="button">Go!</button>
+                    <button class="btn btn-success" id="btnCreate" type="button">Create</button>
+                </span>
+            </div>
+            <div class="input-group col-lg-4 col-md-6 col-sm-12 pull-right">
                 <select id="ddlCategorySearch" class="form-control">
                     <option>-- Select category --</option>
                 </select>
             </div>
-            <div class="input-group col-lg-8 col-md-7 col-sm-12 col-xs-12">
-                <input type="text" id="txtKeyword" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                    <button class="btn btn-primary" id="btnSearch" type="button">Go!</button>
-                </span>
-            </div>
-        </div>
+        </section>
     </div>
-</div>
+</header>
 <!-- /page title -->
 <div class="clearfix"></div>
 <!-- page content -->
-<div class="row">
+<main class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             @*<div class="x_title">
-                <h2>Products<small>List of all products</small></h2>
-                <div class="clearfix"></div>
-            </div>*@
+                    <h2>Products<small>List of all products</small></h2>
+                    <div class="clearfix"></div>
+                </div>*@
             <div class="x_content">
                 <table class="table table-bordered">
                     <thead>
@@ -85,15 +86,15 @@
             </div>
         </div>
     </div>
-</div>
+</main>
 <!-- /page content -->
 <div class="clearfix"></div>
 <script id="table-template" type="x-tmpl-mustache">
     <tr>
         <th scope="row" class="text-center">
             <div class="btn-group btn-group-sm">
-                <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i></button>
-                <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                <button type="button" class="btn btn-default" data-id="{{Id}}"><i class="fa fa-pencil"></i></button>
+                <button type="button" class="btn btn-danger" data-id="{{Id}}"><i class="fa fa-trash"></i></button>
             </div>
         </th>
         <td>{{Name}}</td>
@@ -104,3 +105,5 @@
         <td class="text-center">{{{Status}}}</td>
     </tr>
 </script>
+@Html.Partial("_AddEditModal.cshtml")
+

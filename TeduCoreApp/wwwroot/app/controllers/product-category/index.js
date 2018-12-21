@@ -6,6 +6,7 @@ var productCategoryController = function () {
     };
 
     function registerEvents() {
+
         $('#btnCreate').off('click').on('click', function (e) {
             e.preventDefault();
             initTreeDropDownCategory();

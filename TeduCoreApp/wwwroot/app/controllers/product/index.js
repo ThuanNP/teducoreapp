@@ -1,39 +1,86 @@
 ﻿var productController = function () {
     this.initialize = function () {
         loadCategories();
-        loadProducts();       
+        loadProducts();
         registerEvents();
     };
 
     function registerEvents() {
+
+        //Todo: binding events to controls
         $('#ddlShowPage').on('change', function () {
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
             loadProducts(true);
         });
-        $('#btnSearch').on('click', function () {           
+
+        $('#btnSearch').on('click', function () {
             loadProducts(true);
         });
+
         $('#txtKeyword').on('keypress', function (e) {
             if (e.which === 13) {
                 loadProducts(true);
+            }
+        });
+
+        $("#btnCreate").on('click', function () {
+            resetFormMaintainance();
+            initTreeDropDownCategory();
+            $('#modal-add-edit').modal('show');
+
+        });
+        $('#btnSave').on('click', function (e) {
+        });
+
+
+        //$('body').on('click', '.btn-edit', function (e) {
+        //    e.preventDefault();
+        //    var that = $(this).data('id');
+        //    loadProduct(that);
+        //});
+    }
+
+    function initTreeDropDownCategory(selectedId) {
+        $.ajax({
+            url: "/Admin/ProductCategory/GetAll",
+            type: 'GET',
+            dataType: 'json',
+            async: false,
+            success: function (response) {
+                var data = [];
+                $.each(response, function (i, item) {
+                    data.push({
+                        id: item.Id,
+                        text: item.Name,
+                        parentId: item.ParentId,
+                        sortOrder: item.SortOrder
+                    });
+                });
+                var arr = tedu.unflattern(data);
+                $('#ddlCategoryIdM').combotree({
+                    data: arr
+                });
+                if (selectedId !== undefined) {
+                    $('#ddlCategoryIdM').combotree('setValue', selectedId);
+                }
             }
         });
     }
 
     function loadCategories() {
         $.ajax({
-            type: 'GET',            
+            type: 'GET',
             url: '/Admin/Product/GetAllCategories',
             dataType: 'json',
             success: function (response) {
                 var render = '<option>-- All categories --</option>';
                 $.each(response, function (_i, item) {
                     render += '<option value="' + item.Id + '">' + item.Name + '</option>';
-                });   
+                });
                 if (render !== "") {
                     $('#ddlCategorySearch').html(render);
-                }               
+                }
             },
             error: function (status) {
                 console.log(status);
@@ -43,7 +90,7 @@
     }
 
     function loadProducts(isPageChanged) {
-        var template = $('#table-template').html();        
+        var template = $('#table-template').html();
         $.ajax({
             type: 'GET',
             data: {
@@ -81,6 +128,10 @@
                 tedu.notify('Cannot loading product data.', 'error');
             }
         });
+    }
+
+    function loadProduct(id) {
+
     }
 
     function wrapPaging(recordCount, callBack, changePageSize) {
