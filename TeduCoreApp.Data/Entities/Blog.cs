@@ -23,8 +23,8 @@ namespace TeduCoreApp.Data.Entities
             Image = image;
             SeoPageTitle = seoPageTitle;
             SeoAlias = seoAlias;
-            Seokeywords = seokeywords;
-            SeoDecription = seoDecription;
+            SeoKeywords = seokeywords;
+            SeoDescription = seoDecription;
             Status = status;
             DateCreated = dateCreated;
             DateModified = dateModified;
@@ -38,8 +38,8 @@ namespace TeduCoreApp.Data.Entities
             Image = image;
             SeoPageTitle = seoPageTitle;
             SeoAlias = seoAlias;
-            Seokeywords = seokeywords;
-            SeoDecription = seoDecription;
+            SeoKeywords = seokeywords;
+            SeoDescription = seoDecription;
             Status = status;
             DateCreated = dateCreated;
             DateModified = dateModified;
@@ -63,10 +63,10 @@ namespace TeduCoreApp.Data.Entities
         public string SeoAlias { get; set; }
 
         [MaxLength(256)]
-        public string Seokeywords { get; set; }
+        public string SeoKeywords { get; set; }
 
         [MaxLength(256)]
-        public string SeoDecription { get; set; }
+        public string SeoDescription { get; set; }
 
         public Status Status { get; set; }
         public DateTime DateCreated { get; set; }

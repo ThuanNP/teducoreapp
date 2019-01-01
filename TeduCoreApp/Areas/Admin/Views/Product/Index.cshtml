@@ -2,7 +2,12 @@
 @{
     ViewData["Title"] = "Index";
 }
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+}
 @section Scripts{
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
     <script src="~/app/controllers/product/index.js"></script>
     <script>
         var product = new productController();
@@ -93,8 +98,8 @@
     <tr>
         <th scope="row" class="text-center">
             <div class="btn-group btn-group-sm">
-                <button type="button" class="btn btn-default" data-id="{{Id}}"><i class="fa fa-pencil"></i></button>
-                <button type="button" class="btn btn-danger" data-id="{{Id}}"><i class="fa fa-trash"></i></button>
+                <button type="button" class="btn btn-default btn-edit" data-id="{{Id}}" data-date-created="{{CreatedDate}}"><i class="fa fa-pencil"></i></button>
+                <button type="button" class="btn btn-danger btn-delete" data-id="{{Id}}"><i class="fa fa-trash"></i></button>
             </div>
         </th>
         <td>{{Name}}</td>

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using TeduCoreApp.Application.ViewModels;
 using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Application.ViewModels.System;
 using TeduCoreApp.Data.Entities;
@@ -12,7 +13,8 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<Function, FunctionViewModel>();
             CreateMap<ProductCategory, ProductCategoryViewModel>();
             CreateMap<Product, ProductViewModel>();
-            
+            CreateMap<Tag, TagViewModel>();
+            CreateMap<ProductTag, ProductTagViewModel>() ;
         }
     }
 }

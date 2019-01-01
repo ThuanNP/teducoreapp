@@ -27,7 +27,7 @@
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
-            <aside class="col-md-3 left_col">
+            <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
@@ -65,7 +65,7 @@
                     </div>
                     <!-- /menu footer buttons -->
                 </div>
-            </aside>
+            </div>
             <!-- top navigation -->
             <div class="top_nav">
                 <div class="nav_menu">
@@ -148,11 +148,11 @@
             </div>
             <!-- /top navigation -->
             <!-- main content -->
-            <main class="right_col" role="main">
+            <div class="right_col" role="main">
                 <div class="">
                     @RenderBody()
                 </div>
-            </main>
+            </div>
             <!-- /main content -->
             <!-- footer content -->
             <footer>
@@ -201,6 +201,10 @@
     <script src="~/lib/notifyjs/dist/styles/metro/notify-metro.js"></script>
     <!--Bootbox-->
     <script src="~/lib/bootbox/bootbox.js"></script>
+    <!--jquery-validation-->
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+    @*<script src="~/lib/jquery-validation/src/localization/messages_vi.js"></script>*@
     <!--Tedu-->
     <script src="~/app/shared/tedu.js"></script>
     <!-- Custom Theme Scripts -->

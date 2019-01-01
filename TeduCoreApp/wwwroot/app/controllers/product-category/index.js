@@ -8,8 +8,8 @@ var productCategoryController = function () {
     function registerEvents() {
 
         $('#btnCreate').off('click').on('click', function (e) {
-            e.preventDefault();
-            initTreeDropDownCategory();
+            e.preventDefault();           
+            s();
             $('#modal-add-edit').modal('show');
         });
 
@@ -19,11 +19,11 @@ var productCategoryController = function () {
         });
 
         $('body').on('click', '#btnDelete', function (e) {
-            e.preventDefault();            
+            e.preventDefault();
             tedu.confirm("Are you sure to delete?", function () {
                 var that = parseInt($('#hidIdM').val());
                 deleteProductCategory(that);
-            });            
+            });
         });
 
         $('#btnSave').off('click').on('click', function (e) {
@@ -56,7 +56,7 @@ var productCategoryController = function () {
         });
     }
 
-    function saveProductCategory(id) {       
+    function saveProductCategory(id) {
         var name = $('#txtNameM').val();
         var parentId = $('#ddlCategoryIdM').combotree('getValue');
         var description = $('#txtDescM').val();
@@ -127,6 +127,8 @@ var productCategoryController = function () {
 
         $('#ckStatusM').prop('checked', true);
         $('#ckShowHomeM').prop('checked', false);
+
+        initNumberSpinnerOrderDisplay();
     }
 
     function initTreeDropDownCategory(selectedId) {
@@ -165,6 +167,20 @@ var productCategoryController = function () {
         });
     }
 
+    function initNumberSpinnerOrderDisplay() {
+        $('#txtOrderM').numberspinner({
+            min: 0,
+            precision: 0,
+            editable: true
+        });
+        $('#txtHomeOrderM').numberspinner({
+            min: 0,
+            precision: 0,
+            editable: true
+        });
+    }
+    
+
     function loadProductCategory() {
         var that = $('#hidIdM').val();
         $.ajax({
@@ -194,7 +210,7 @@ var productCategoryController = function () {
                 $('#ckShowHomeM').prop('checked', data.HomeFlag);
                 $('#txtOrderM').val(data.SortOrder);
                 $('#txtHomeOrderM').val(data.HomeOrder);
-
+                initNumberSpinnerOrderDisplay();
                 $('#modal-add-edit').modal('show');
             },
             error: function (status) {
@@ -247,11 +263,11 @@ var productCategoryController = function () {
 
                         console.log(target);
                         console.log(source);
-                        console.log(point);                       
+                        console.log(point);
 
-                        
+
                         var targetNode = $(this).tree("getNode", target);
-                        if (point === "append") {  
+                        if (point === "append") {
                             var children = [];
                             $.each(targetNode.children, function (i, item) {
                                 children.push({
@@ -260,7 +276,7 @@ var productCategoryController = function () {
                                 });
                             });
                             // Update to database                           
-                            $.ajax({         
+                            $.ajax({
                                 url: '/Admin/ProductCategory/UpdateParentId',
                                 type: 'POST',
                                 dataType: 'json',
@@ -293,7 +309,7 @@ var productCategoryController = function () {
                                     });
                                 });
                             }
-                            
+
                             //Reorder the target product category
                             $.ajax({
                                 url: '/Admin/ProductCategory/Reorder',

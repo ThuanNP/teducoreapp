@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using TeduCoreApp.Data.Interfaces;
 using TeduCoreApp.infrastructure.Interfaces;
 using TeduCoreApp.infrastructure.SharedKernel;
 

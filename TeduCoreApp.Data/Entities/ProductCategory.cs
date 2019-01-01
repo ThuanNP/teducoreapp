@@ -25,8 +25,8 @@ namespace TeduCoreApp.Data.Entities
             HomeFlag = homeFlag;
             SeoPageTitle = seoPageTitle;
             SeoAlias = seoAlias;
-            Seokeywords = seokeywords;
-            SeoDecription = seoDecription;
+            SeoKeywords = seokeywords;
+            SeoDescription = seoDecription;
             Status = status;
             Products = new List<Product>();
         }
@@ -52,10 +52,10 @@ namespace TeduCoreApp.Data.Entities
         public string SeoAlias { get; set; }
 
         [MaxLength(256)]
-        public string Seokeywords { get; set; }
+        public string SeoKeywords { get; set; }
 
         [MaxLength(256)]
-        public string SeoDecription { get; set; }
+        public string SeoDescription { get; set; }
 
         public Status Status { get; set; }
         public int SortOrder { get; set; }

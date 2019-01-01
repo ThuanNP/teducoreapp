@@ -99,7 +99,12 @@ namespace TeduCoreApp.Data.EF
                     {
                         changedOrAddedItem.DateCreated = DateTime.Now;
                     }
+                    else
+                    {
+                        item.Property(nameof(IDateTracking.DateCreated)).IsModified = false;                       
+                    }
                     changedOrAddedItem.DateModified = DateTime.Now;
+
                 }
             }
             return base.SaveChanges();

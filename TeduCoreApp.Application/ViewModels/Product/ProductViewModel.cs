@@ -50,14 +50,14 @@ namespace TeduCoreApp.Application.ViewModels.Product
         public string SeoAlias { get; set; }
 
         [MaxLength(256)]
-        public string Seokeywords { get; set; }
+        public string SeoKeywords { get; set; }
 
         [MaxLength(256)]
-        public string SeoDecription { get; set; }
+        public string SeoDescription { get; set; }
 
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
+
         public ProductCategoryViewModel ProductCategory { get; set; }
-        //public ICollection<ProductTagViewModel> ProductTags { set; get; }
     }
 }

@@ -14,67 +14,60 @@ namespace TeduCoreApp.Data.Entities
     {
         public Product() => ProductTags = new List<ProductTag>();
 
-        public Product(int id, string name, int categoryId, string thumbnailImage, decimal price, decimal? promotionPrice,
-            decimal originalPrice, string description, string content,
-            bool? homeFlag, bool? hotFlag, int? viewCount, string tags,
-            string unit, ProductCategory productCategory, ICollection<ProductTag> productTags,
-            Status status, string seoPageTitle, string seoAlias, string seokeywords,
-            string seoDecription, DateTime dateCreated, DateTime dateModified)
+        public Product(int id, string name, int categoryId, string thumbnailImage,
+             decimal price, decimal originalPrice, decimal? promotionPrice,
+             string description, string content, bool? homeFlag, bool? hotFlag,
+             string tags, string unit, Status status, string seoPageTitle,
+             string seoAlias, string seoMetaKeyword,
+             string seoMetaDescription)
         {
             Id = id;
             Name = name;
             CategoryId = categoryId;
             Image = thumbnailImage;
             Price = price;
-            PromotionPrice = promotionPrice;
             OriginalPrice = originalPrice;
+            PromotionPrice = promotionPrice;
             Description = description;
             Content = content;
             HomeFlag = homeFlag;
             HotFlag = hotFlag;
-            ViewCount = viewCount;
             Tags = tags;
             Unit = unit;
-            ProductCategory = productCategory;
-            ProductTags = productTags;
             Status = status;
             SeoPageTitle = seoPageTitle;
             SeoAlias = seoAlias;
-            Seokeywords = seokeywords;
-            SeoDecription = seoDecription;
-            DateCreated = dateCreated;
-            DateModified = dateModified;
+            SeoKeywords = seoMetaKeyword;
+            SeoDescription = seoMetaDescription;
+            ProductTags = new List<ProductTag>();
+
         }
 
-        public Product(string name, int categoryId, string thumbnailImage, decimal price, decimal? promotionPrice, 
-            decimal originalPrice, string description, string content, 
-            bool? homeFlag, bool? hotFlag, int? viewCount, string tags, 
-            string unit, ProductCategory productCategory, ICollection<ProductTag> productTags, 
-            Status status, string seoPageTitle, string seoAlias, string seokeywords, 
-            string seoDecription, DateTime dateCreated, DateTime dateModified)
+        public Product(string name, int categoryId, string thumbnailImage,
+            decimal price, decimal originalPrice, decimal? promotionPrice,
+            string description, string content, bool? homeFlag, bool? hotFlag,
+            string tags, string unit, Status status, string seoPageTitle,
+            string seoAlias, string seoMetaKeyword,
+            string seoMetaDescription)
         {
             Name = name;
             CategoryId = categoryId;
             Image = thumbnailImage;
             Price = price;
-            PromotionPrice = promotionPrice;
             OriginalPrice = originalPrice;
+            PromotionPrice = promotionPrice;
             Description = description;
             Content = content;
             HomeFlag = homeFlag;
             HotFlag = hotFlag;
-            ViewCount = viewCount;
             Tags = tags;
             Unit = unit;
-            ProductCategory = productCategory;
-            ProductTags = productTags;
             Status = status;
             SeoPageTitle = seoPageTitle;
             SeoAlias = seoAlias;
-            Seokeywords = seokeywords;
-            SeoDecription = seoDecription;
-            DateCreated = dateCreated;
-            DateModified = dateModified;
+            SeoKeywords = seoMetaKeyword;
+            SeoDescription = seoMetaDescription;
+            ProductTags = new List<ProductTag>();
         }
 
         [Required, MaxLength(256)]
@@ -122,10 +115,10 @@ namespace TeduCoreApp.Data.Entities
         public string SeoAlias { get; set; }
 
         [MaxLength(256)]
-        public string Seokeywords { get; set; }
+        public string SeoKeywords { get; set; }
 
         [MaxLength(256)]
-        public string SeoDecription { get; set; }
+        public string SeoDescription { get; set; }
 
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }

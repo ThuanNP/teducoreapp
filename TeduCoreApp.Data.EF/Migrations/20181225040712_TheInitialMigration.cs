@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace TeduCoreApp.Data.EF.Migrations
 {
-    public partial class initial : Migration
+    public partial class TheInitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -151,9 +151,9 @@ namespace TeduCoreApp.Data.EF.Migrations
                     Image = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     SeoAlias = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    SeoDecription = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    SeoDescription = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    SeoKeywords = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     SeoPageTitle = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Seokeywords = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -287,9 +287,9 @@ namespace TeduCoreApp.Data.EF.Migrations
                     Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     ParentId = table.Column<int>(type: "int", nullable: true),
                     SeoAlias = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    SeoDecription = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    SeoDescription = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    SeoKeywords = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     SeoPageTitle = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Seokeywords = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     SortOrder = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -353,7 +353,7 @@ namespace TeduCoreApp.Data.EF.Migrations
                 name: "Tags",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Id = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Type = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
@@ -480,10 +480,10 @@ namespace TeduCoreApp.Data.EF.Migrations
                     OriginalPrice = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     PromotionPrice = table.Column<decimal>(type: "decimal(18, 2)", nullable: true),
-                    SeoAlias = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
-                    SeoDecription = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    SeoAlias = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    SeoDescription = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    SeoKeywords = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     SeoPageTitle = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Seokeywords = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     Tags = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Unit = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),

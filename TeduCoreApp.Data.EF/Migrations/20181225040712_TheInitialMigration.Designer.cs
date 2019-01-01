@@ -12,8 +12,8 @@ using TeduCoreApp.Data.Enums;
 namespace TeduCoreApp.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20181206081156_initial")]
-    partial class initial
+    [Migration("20181225040712_TheInitialMigration")]
+    partial class TheInitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -366,13 +366,13 @@ namespace TeduCoreApp.Data.EF.Migrations
                     b.Property<string>("SeoAlias")
                         .HasMaxLength(256);
 
-                    b.Property<string>("SeoDecription")
+                    b.Property<string>("SeoDescription")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("SeoKeywords")
                         .HasMaxLength(256);
 
                     b.Property<string>("SeoPageTitle")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("Seokeywords")
                         .HasMaxLength(256);
 
                     b.Property<int>("Status");
@@ -624,16 +624,15 @@ namespace TeduCoreApp.Data.EF.Migrations
                     b.Property<decimal?>("PromotionPrice");
 
                     b.Property<string>("SeoAlias")
-                        .HasColumnType("varchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<string>("SeoDecription")
+                    b.Property<string>("SeoDescription")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("SeoKeywords")
                         .HasMaxLength(256);
 
                     b.Property<string>("SeoPageTitle")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("Seokeywords")
                         .HasMaxLength(256);
 
                     b.Property<int>("Status");
@@ -681,13 +680,13 @@ namespace TeduCoreApp.Data.EF.Migrations
                     b.Property<string>("SeoAlias")
                         .HasMaxLength(256);
 
-                    b.Property<string>("SeoDecription")
+                    b.Property<string>("SeoDescription")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("SeoKeywords")
                         .HasMaxLength(256);
 
                     b.Property<string>("SeoPageTitle")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("Seokeywords")
                         .HasMaxLength(256);
 
                     b.Property<int>("SortOrder");
@@ -842,8 +841,8 @@ namespace TeduCoreApp.Data.EF.Migrations
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varchar(50)")
-                        .HasMaxLength(50);
+                        .HasMaxLength(50)
+                        .IsUnicode(false);
 
                     b.Property<string>("Name")
                         .IsRequired()
