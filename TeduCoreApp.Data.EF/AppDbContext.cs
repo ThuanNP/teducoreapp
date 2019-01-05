@@ -1,18 +1,16 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using TeduCoreApp.Data.Entities;
 using Microsoft.EntityFrameworkCore;
-using TeduCoreApp.Data.EF.Extensions;
-using TeduCoreApp.Data.EF.Configurations;
-using System.Linq;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using TeduCoreApp.Data.Interfaces;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.IO;
+using System.Linq;
+using TeduCoreApp.Data.EF.Configurations;
+using TeduCoreApp.Data.EF.Extensions;
+using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.Interfaces;
 
 namespace TeduCoreApp.Data.EF
 {
@@ -101,7 +99,7 @@ namespace TeduCoreApp.Data.EF
                     }
                     else
                     {
-                        item.Property(nameof(IDateTracking.DateCreated)).IsModified = false;                       
+                        item.Property(nameof(IDateTracking.DateCreated)).IsModified = false;
                     }
                     changedOrAddedItem.DateModified = DateTime.Now;
 

@@ -1,12 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Product;
-using TeduCoreApp.Utilities.Helpers;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
@@ -57,24 +54,40 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveEntity(ProductViewModel productViewModel) {
-            if (!ModelState.IsValid)
+        public IActionResult SaveEntity(ProductViewModel productViewModel)
+        {
+            if (ModelState.IsValid)
             {
-                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
-                return new BadRequestObjectResult(allErrors);
-            }
-            else
-            {               
                 if (productViewModel.Id == 0)
                 {
                     _productService.Add(productViewModel);
                 }
                 else
-                {                   
+                {
                     _productService.Update(productViewModel);
                 }
                 _productService.Save();
                 return new OkObjectResult(productViewModel);
+            }
+            else
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                _productService.Delete(id);
+                _productService.Save();
+                return new OkObjectResult(id);
+            }
+            else
+            {
+                return new BadRequestObjectResult(ModelState);
             }
         }
         #endregion

@@ -121,9 +121,11 @@ namespace TeduCoreApp.Application.Implementations
             {
                 _productTagRepository.RemoveMultiple(_productTagRepository.FindAll(x => x.ProductId == productViewModel.Id).ToList());
                 string[] tags = productViewModel.Tags.Split(',');
+                var productTags = _productTagRepository.FindAll(x => x.ProductId == productViewModel.Id).ToList();               
                 foreach (string t in tags)
                 {
                     var tagId = TextHelper.ToUnsignString(t);
+                    // Add tags
                     if (!_tagRepository.FindAll(tag => tag.Id == tagId).Any())
                     {
                         Tag tag = new Tag
@@ -134,11 +136,12 @@ namespace TeduCoreApp.Application.Implementations
                         };
                         _tagRepository.Add(tag);
                     }
+                    // Add product tags 
                     ProductTag productTag = new ProductTag
                     {
                         TagId = tagId
                     };
-                    product.ProductTags.Add(productTag);
+                    product.ProductTags.Add(productTag);                   
                 }
             }   
             product.SeoAlias = TextHelper.ToUnsignString(productViewModel.Name);

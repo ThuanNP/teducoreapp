@@ -3,6 +3,7 @@
         loadCategories();
         loadProducts();
         registerEvents();
+        registerControls();
     };
 
     function registerEvents() {
@@ -21,6 +22,7 @@
             }
         });
         //Todo: binding events to controls
+
         $('#ddlShowPage').on('change', function () {
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
@@ -48,6 +50,15 @@
             loadProduct(that);
         });
 
+        $('body').on('click', '.btn-delete', function (e) {
+            e.preventDefault();           
+            var name = $(this).data('name');
+            var that = $(this).data('id');
+            tedu.confirm("Are you sure to delete product: " + name + "?", function () {                   
+                deleteProduct(that, name);
+            });
+        });
+
         $('#btnSave').on('click', function (e) {
             e.preventDefault();
             if ($('#frmMaintainance').valid()) {
@@ -55,6 +66,26 @@
                 saveProduct(id);
             }
         });
+    }
+
+    function registerControls() {
+        CKEDITOR.replace('txtContentM', {});
+        //Fix: cannot click on element ck in modal
+        $.fn.modal.Constructor.prototype.enforceFocus = function () {
+            $(document)
+                .off('focusin.bs.modal') // guard against infinite focus loop
+                .on('focusin.bs.modal', $.proxy(function (e) {
+                    if (
+                        this.$element[0] !== e.target && !this.$element.has(e.target).length
+                        // CKEditor compatibility fix start.
+                        && !$(e.target).closest('.cke_dialog, .cke').length
+                        // CKEditor compatibility fix end.
+                    ) {
+                        this.$element.trigger('focus');
+                    }
+                }, this));
+        };
+
     }
 
     function initTreeDropDownCategory(selectedId) {
@@ -159,7 +190,8 @@
         $('#txtSeoPageTitleM').val('');
         $('#txtSeoAliasM').val('');
 
-        //CKEDITOR.instances.txtContentM.setData('');
+        CKEDITOR.instances.txtContentM.setData('');
+
         $('#ckStatusM').prop('checked', true);
         $('#ckHotM').prop('checked', false);
         $('#ckShowHomeM').prop('checked', false);
@@ -237,7 +269,7 @@
                 $('#txtSeoPageTitleM').val(data.SeoPageTitle);
                 $('#txtSeoAliasM').val(data.SeoAlias);
 
-                //CKEDITOR.instances.txtContentM.setData(data.Content);
+                CKEDITOR.instances.txtContentM.setData(data.Content);
                 $('#ckStatusM').prop('checked', data.Status === 1);
                 $('#ckHotM').prop('checked', data.HotFlag);
                 $('#ckShowHomeM').prop('checked', data.HomeFlag);
@@ -274,7 +306,7 @@
         var seoPageTitle = $('#txtSeoPageTitleM').val();
         var seoAlias = $('#txtSeoAliasM').val();
 
-        //var content = CKEDITOR.instances.txtContentM.getData();
+        var content = CKEDITOR.instances.txtContentM.getData();
         var status = $('#ckStatusM').prop('checked') === true ? 1 : 0;
         var hot = $('#ckHotM').prop('checked');
         var showHome = $('#ckShowHomeM').prop('checked');
@@ -292,7 +324,7 @@
                 OriginalPrice: originalPrice,
                 PromotionPrice: promotionPrice,
                 Description: description,
-                Content: '',
+                Content: content,
                 HomeFlag: showHome,
                 HotFlag: hot,
                 Tags: tags,
@@ -321,6 +353,28 @@
             complete: function () {
                 tedu.stopLoading();
             }
+        });
+    }
+
+    function deleteProduct(id, name) {
+        $.ajax({
+            type: "DELETE",
+            url: "/Admin/Product/Delete",
+            data: { id: id },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                tedu.notify("Delete product " + name, "success");       
+                loadProducts(true);
+            },
+            error: function (status) {
+                console.log("Has an error in delete product progress", status);
+                tedu.notify("Has an error in delete product progress", "error");
+            },
+            complete: function () {
+                tedu.stopLoading();            }
         });
     }
 
