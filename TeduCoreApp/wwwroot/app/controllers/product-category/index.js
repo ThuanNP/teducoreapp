@@ -31,6 +31,34 @@ var productCategoryController = function () {
             var that = parseInt($('#hidIdM').val());
             saveProductCategory(that);
         });
+
+        $('#btnSelectImg').on('click', function () {
+            $('#fileInputImage').click();
+        });
+
+        $("#fileInputImage").on('change', function () {
+            var fileUpload = $(this).get(0);
+            var files = fileUpload.files;
+            var data = new FormData();
+            for (var i = 0; i < files.length; i++) {
+                data.append(files[i].name, files[i]);
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Upload/UploadImage",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (path) {
+                    $('#txtImageM').val(path);
+                    tedu.notify('Upload image succesful!', 'success');
+                },
+                error: function (status) {
+                    console.log("There was error uploading files: ", status);
+                    tedu.notify('There was error uploading files!', 'error');
+                }
+            });
+        });
     }
 
     function deleteProductCategory(id) {
@@ -199,7 +227,7 @@ var productCategoryController = function () {
 
                 $('#txtDescM').val(data.Description);
 
-                $('#txtImageM').val(data.ThumbnailImage);
+                $('#txtImageM').val(data.Image);
 
                 $('#txtSeoKeywordM').val(data.SeoKeywords);
                 $('#txtSeoDescriptionM').val(data.SeoDescription);

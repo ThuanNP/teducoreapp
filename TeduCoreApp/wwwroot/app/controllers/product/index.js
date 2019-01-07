@@ -66,6 +66,34 @@
                 saveProduct(id);
             }
         });
+
+        $('#btnSelectImg').on('click', function () {
+            $('#fileInputImage').click();
+        });
+
+        $("#fileInputImage").on('change', function () {
+            var fileUpload = $(this).get(0);
+            var files = fileUpload.files;
+            var data = new FormData();
+            for (var i = 0; i < files.length; i++) {
+                data.append(files[i].name, files[i]);
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Upload/UploadImage",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (path) {
+                    $('#txtImageM').val(path);
+                    tedu.notify('Upload image succesful!', 'success');
+                },
+                error: function (status) {
+                    console.log("There was error uploading files: ", status);
+                    tedu.notify('There was error uploading files!', 'error');
+                }
+            });
+        });
     }
 
     function registerControls() {
@@ -182,7 +210,7 @@
 
         initNumberSpinnerPrice();
 
-        //$('#txtImageM').val('');
+        $('#txtImageM').val('');
 
         $('#txtTagM').val('');
         $('#txtMetakeywordM').val('');
@@ -298,7 +326,7 @@
         var originalPrice = $('#txtOriginalPriceM').val();
         var promotionPrice = $('#txtPromotionPriceM').val();
 
-        //var image = $('#txtImageM').val();
+        var image = $('#txtImageM').val();
 
         var tags = $('#txtTagM').val();
         var seoKeyword = $('#txtMetakeywordM').val();
@@ -319,7 +347,7 @@
                 Id: id,
                 Name: name,
                 CategoryId: categoryId,
-                Image: '',
+                Image: image,
                 Price: price,
                 OriginalPrice: originalPrice,
                 PromotionPrice: promotionPrice,
@@ -374,7 +402,8 @@
                 tedu.notify("Has an error in delete product progress", "error");
             },
             complete: function () {
-                tedu.stopLoading();            }
+                tedu.stopLoading();
+            }
         });
     }
 
