@@ -21,6 +21,7 @@
                 }
             }
         });
+
         //Todo: binding events to controls
 
         $('#ddlShowPage').on('change', function () {
@@ -226,7 +227,7 @@
 
     }
 
-    function loadProducts(isPageChanged) {
+    function loadProducts(isPageChanged) {       
         var template = $('#table-template').html();
         $.ajax({
             type: 'GET',
@@ -238,6 +239,9 @@
             },
             url: '/Admin/Product/GetAllPaging',
             dataType: 'json',
+            beforeSend: function () {
+                tedu.startLoading();
+            },
             success: function (response) {
                 var render = "";
                 $.each(response.Results, function (_i, item) {
@@ -256,13 +260,16 @@
                 //if (render !== "") {
                 //    $('#tbl-content').html(render);
                 //}
-                wrapPaging(response.RowCount, function () {
+                pagination.wrapPaging(response.RowCount, function () {
                     loadProducts();
                 }, isPageChanged);
             },
             error: function (status) {
                 console.log(status);
                 tedu.notify('Cannot loading product data.', 'error');
+            },
+            complete: function () {
+                tedu.stopLoading();
             }
         });
     }
@@ -407,26 +414,5 @@
         });
     }
 
-    function wrapPaging(recordCount, callBack, changePageSize) {
-        var totalSize = Math.ceil(recordCount / tedu.configs.pageSize);
-        // Unbind pagination if it existed or click change pagesize
-        if ($('#paginationUL a').length === 0 || changePageSize === true) {
-            $('#paginationUL').empty();
-            $('#paginationUL').removeData("twbs-pagination");
-            $('#paginationUL').unbind("page");
-        }
-        // Bind pagination Event
-        $('#paginationUL').twbsPagination({
-            totalPages: totalSize,
-            visiblePages: 7,
-            first: 'Đầu',
-            prev: 'Trước',
-            next: 'Tiếp',
-            last: 'Cuối',
-            onPageClick: function (_event, p) {
-                tedu.configs.pageIndex = p;
-                setTimeout(callBack(), 200);
-            }
-        });
-    }
+    
 };

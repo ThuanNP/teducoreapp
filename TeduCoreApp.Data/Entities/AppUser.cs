@@ -13,15 +13,13 @@ namespace TeduCoreApp.Data.Entities
         {
         }
 
-        public AppUser(Guid id, string fullName, DateTime? birthDay, decimal balance, string avatar, DateTime dateCreated, DateTime dateModified, Status status)
+        public AppUser(Guid id, string fullName, decimal balance, string avatar, DateTime dateCreated, Status status)
         {
             Id = id;
             FullName = fullName;
-            BirthDay = birthDay;
             Balance = balance;
             Avatar = avatar;
             DateCreated = dateCreated;
-            DateModified = dateModified;
             Status = status;
         }
 
