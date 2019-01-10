@@ -58,14 +58,14 @@ namespace TeduCoreApp
                 // user settings
                 options.User.RequireUniqueEmail = true;
             });
-
-            services.AddAutoMapper();
+         
             // Add application services.
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
 
+            services.AddAutoMapper();
             services.AddSingleton(Mapper.Configuration);
-            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
+            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));           
 
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<DbIntinitializer>();
@@ -97,7 +97,7 @@ namespace TeduCoreApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DbIntinitializer dbIntinitializer, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DbIntinitializer dbIntinitializer, ILoggerFactory loggerFactory, IConfigurationProvider autoMapper)
         {
             loggerFactory.AddFile("Logs/tedu-{Date}.txt");
             if (env.IsDevelopment())
