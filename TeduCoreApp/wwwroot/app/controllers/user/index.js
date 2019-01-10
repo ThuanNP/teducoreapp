@@ -1,9 +1,7 @@
 ﻿var userController = function () {
     this.initialize = function () {
-        //loadCategories();
         loadUsers();
         registerEvents();
-        //registerControls();
     };
 
     function registerEvents() {
@@ -34,6 +32,7 @@
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
             loadUsers(true);
+            return false;
         });
 
         $('#txtKeyword').keypress(function (e) {
@@ -41,16 +40,27 @@
                 e.preventDefault();
                 loadUsers();
             }
+            return false;
         });
 
-        $("#btnSearch").on('click', function () {
+        $('#btnSearch').on('click', function () {
             loadUsers();
+            return false;
         });
 
-        $("#btnCreate").on('click', function () {
+        $('#btnCreate').on('click', function () {
             resetFormMaintainance();
             initRoleList();
             $('#modal-add-edit').modal('show');
+            return false;
+        });
+
+        $('#btnSave').on('click', function () {
+            if ($('#frmMaintainance').valid()) {
+                var that = $('#hidId').val();
+                saveUser(that);
+            }
+            return false;
         });
 
         $('body').on('click', '.btn-edit', function (e) {
@@ -64,7 +74,7 @@
             var username = $(this).data('username');
             var that = $(this).data('id');
             tedu.confirm("Are you sure to delete user: " + username + "?", function () {
-                deleteUser(that, name);
+                deleteUser(that, username);
             });
         });
     }
@@ -147,6 +157,73 @@
         });
     }
 
+    function saveUser(id) {
+        var fullName = $('#txtFullName').val();
+        var userName = $('#txtUserName').val();
+        var password = $('#txtPassword').val();
+        var email = $('#txtEmail').val();
+        var phoneNumber = $('#txtPhoneNumber').val();
+        var roles = [];
+        $.each($('input[name="ckRoles"]'), function (_i, item) {
+            if ($(item).prop('checked') === true)
+                roles.push($(item).prop('value'));
+        });
+        var status = $('#ckStatus').prop('checked') === true ? 1 : 0;
+        $.ajax({
+            type: "POST",
+            url: "/Admin/User/SaveEntity",
+            data: {
+                Id: id,
+                FullName: fullName,
+                UserName: userName,
+                Password: password,
+                Email: email,
+                PhoneNumber: phoneNumber,
+                Status: status,
+                Roles: roles
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function () {
+                tedu.notify('Save user succesful', 'success');
+                $('#modal-add-edit').modal('hide');
+                resetFormMaintainance();
+                loadUsers(true);
+            },
+            error: function (status) {
+                console.log("Has an error in saving a users: ", status);
+                tedu.notify('Has an error in saving a users', 'error');
+            },
+            complete: function () {
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function deleteUser(id, username) {
+        $.ajax({
+            type: "POST",
+            url: "/Admin/User/Delete",
+            data: { id: id },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function () {
+                tedu.notify('Delete user ' + username + ' successful', 'success');               
+                loadUsers(true);
+            },
+            error: function (status) {
+                console.log("Has an error in deleting a users: ", status);
+                tedu.notify('Has an error in deleting a users ' + username, 'error');
+            },
+            complete: function () {
+                tedu.stopLoading();
+            }
+        });
+    }
+
     function disableFieldEdit(disabled) {
         $('#txtUserName').prop('disabled', disabled);
         $('#txtPassword').prop('disabled', disabled);
@@ -183,7 +260,7 @@
                     var checked = '';
                     if (selectedRoles !== undefined && selectedRoles.indexOf(item.Name) !== -1)
                         checked = 'checked';
-                        render += Mustache.render(template,
+                    render += Mustache.render(template,
                         {
                             Name: item.Name,
                             Description: item.Description,
@@ -201,4 +278,4 @@
             }
         });
     }
-}
+};

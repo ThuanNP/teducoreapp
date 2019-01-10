@@ -50,12 +50,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                IEnumerable<ModelError> modelErrors = ModelState.Values.SelectMany(v => v.Errors);
-                return new BadRequestObjectResult(modelErrors);
-            }
-            else
-            {
-                if (userViewModel.Id==Guid.Empty)
+                if (userViewModel.Id == null)
                 {
                     await _userService.AddAsync(userViewModel);
                 }
@@ -64,6 +59,11 @@ namespace TeduCoreApp.Areas.Admin.Controllers
                     await _userService.UpdateAsync(userViewModel);
                 }
             }
+            else
+            {
+                IEnumerable<ModelError> modelErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(modelErrors);
+            }
             return new OkObjectResult(userViewModel);
         }
 
@@ -71,14 +71,14 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             if (ModelState.IsValid)
-            {
-                IEnumerable<ModelError> modelErrors = ModelState.Values.SelectMany(v => v.Errors);
-                return new BadRequestObjectResult(modelErrors);
+            {                
+                await _userService.DeleteAsync(id);
+                return new OkObjectResult(id);
             }
             else
             {
-                await _userService.DeleteAsync(id);
-                return new OkObjectResult(id);
+                IEnumerable<ModelError> modelErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(modelErrors);
             }
         }
         #endregion

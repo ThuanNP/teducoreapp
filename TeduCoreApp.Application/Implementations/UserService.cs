@@ -30,8 +30,8 @@ namespace TeduCoreApp.Application.Implementations
                 Avatar = userViewModel.Avatar,
                 Email = userViewModel.Email,
                 FullName = userViewModel.FullName,
-                DateCreated = DateTime.Now,
-                PhoneNumber = userViewModel.PhoneNumber
+                PhoneNumber = userViewModel.PhoneNumber,
+                Status = userViewModel.Status
             };
             var result = await _userManager.CreateAsync(user, userViewModel.Password);
             if (result.Succeeded && userViewModel.Roles.Count > 0)
@@ -109,9 +109,11 @@ namespace TeduCoreApp.Application.Implementations
                 await _userManager.RemoveFromRolesAsync(user, needRemoveRoles);
                 //Update user detail
                 user.FullName = userViewModel.FullName;
-                user.Status = userViewModel.Status;
+                user.Avatar = userViewModel.Avatar;
+               
                 user.Email = userViewModel.Email;
                 user.PhoneNumber = userViewModel.PhoneNumber;
+                user.Status = userViewModel.Status;
                 await _userManager.UpdateAsync(user);
             }
         }
