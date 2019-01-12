@@ -7,7 +7,7 @@ var productCategoryController = function () {
 
     function registerEvents() {
 
-        $('#btnCreate').off('click').on('click', function (e) {
+        $('#btn-create').off('click').on('click', function (e) {
             e.preventDefault();           
             s();
             $('#modal-add-edit').modal('show');
@@ -21,22 +21,22 @@ var productCategoryController = function () {
         $('body').on('click', '#btnDelete', function (e) {
             e.preventDefault();
             tedu.confirm("Are you sure to delete?", function () {
-                var that = parseInt($('#hidIdM').val());
+                var that = parseInt($('#hidden-id-modal').val());
                 deleteProductCategory(that);
             });
         });
 
-        $('#btnSave').off('click').on('click', function (e) {
+        $('#btn-save').off('click').on('click', function (e) {
             e.preventDefault();
-            var that = parseInt($('#hidIdM').val());
+            var that = parseInt($('#hidden-id-modal').val());
             saveProductCategory(that);
         });
 
-        $('#btnSelectImg').on('click', function () {
-            $('#fileInputImage').click();
+        $('#btn-select-imgage').on('click', function () {
+            $('#txt-input-image-file').click();
         });
 
-        $("#fileInputImage").on('change', function () {
+        $("#txt-input-image-file").on('change', function () {
             var fileUpload = $(this).get(0);
             var files = fileUpload.files;
             var data = new FormData();
@@ -50,7 +50,7 @@ var productCategoryController = function () {
                 processData: false,
                 data: data,
                 success: function (path) {
-                    $('#txtImageM').val(path);
+                    $('#txt-image-modal').val(path);
                     tedu.notify('Upload image succesful!', 'success');
                 },
                 error: function (status) {
@@ -85,20 +85,20 @@ var productCategoryController = function () {
     }
 
     function saveProductCategory(id) {
-        var name = $('#txtNameM').val();
-        var parentId = $('#ddlCategoryIdM').combotree('getValue');
-        var description = $('#txtDescM').val();
+        var name = $('#txt-name-modal').val();
+        var parentId = $('#ddl-category-id-modal').combotree('getValue');
+        var description = $('#txt-description-modal').val();
 
-        var image = $('#txtImageM').val();
+        var image = $('#txt-image-modal').val();
         var order = parseInt($('#txtOrderM').val());
         var homeOrder = $('#txtHomeOrderM').val();
 
         var seoKeyword = $('#txtSeoKeywordM').val();
         var seoMetaDescription = $('#txtSeoDescriptionM').val();
-        var seoPageTitle = $('#txtSeoPageTitleM').val();
-        var seoAlias = $('#txtSeoAliasM').val();
-        var status = $('#ckStatusM').prop('checked') === true ? 1 : 0;
-        var showHome = $('#ckShowHomeM').prop('checked');
+        var seoPageTitle = $('#txt-seo-page-title-modal').val();
+        var seoAlias = $('#txt-seo-alias-modal').val();
+        var status = $('#ck-status-modal').prop('checked') === true ? 1 : 0;
+        var showHome = $('#ck-show-homepage-modal').prop('checked');
 
         $.ajax({
             type: "POST",
@@ -139,22 +139,22 @@ var productCategoryController = function () {
     }
 
     function resetFormMaintainance() {
-        $('#hidIdM').val(0);
-        $('#txtNameM').val('');
+        $('#hidden-id-modal').val(0);
+        $('#txt-name-modal').val('');
         initTreeDropDownCategory('');
 
-        $('#txtDescM').val('');
+        $('#txt-description-modal').val('');
         $('#txtOrderM').val('');
         $('#txtHomeOrderM').val('');
-        $('#txtImageM').val('');
+        $('#txt-image-modal').val('');
 
-        $('#txtMetakeywordM').val('');
-        $('#txtMetaDescriptionM').val('');
-        $('#txtSeoPageTitleM').val('');
-        $('#txtSeoAliasM').val('');
+        $('#txt-meta-keyword-modal').val('');
+        $('#txt-meta-description-modal').val('');
+        $('#txt-seo-page-title-modal').val('');
+        $('#txt-seo-alias-modal').val('');
 
-        $('#ckStatusM').prop('checked', true);
-        $('#ckShowHomeM').prop('checked', false);
+        $('#ck-status-modal').prop('checked', true);
+        $('#ck-show-homepage-modal').prop('checked', false);
 
         initNumberSpinnerOrderDisplay();
     }
@@ -166,7 +166,7 @@ var productCategoryController = function () {
             dataType: 'json',
             success: function (response) {
                 var data = [];
-                var categoryId = $('#hidIdM').val();
+                var categoryId = $('#hidden-id-modal').val();
                 $.each(response, function (_i, item) {
                     data.push({
                         id: item.Id,
@@ -179,12 +179,12 @@ var productCategoryController = function () {
                 arr.sort(function (a, b) {
                     return a.sortOrder - b.sortOrder;
                 });
-                $('#ddlCategoryIdM').combotree({
+                $('#ddl-category-id-modal').combotree({
                     data: arr
                 });
                 if (selectedId !== undefined) {
-                    $('#ddlCategoryIdM').combotree("clear", categoryId);
-                    $('#ddlCategoryIdM').combotree("setValue", selectedId);
+                    $('#ddl-category-id-modal').combotree("clear", categoryId);
+                    $('#ddl-category-id-modal').combotree("setValue", selectedId);
                 }
             },
             error: function (status) {
@@ -210,7 +210,7 @@ var productCategoryController = function () {
     
 
     function loadProductCategory() {
-        var that = $('#hidIdM').val();
+        var that = $('#hidden-id-modal').val();
         $.ajax({
             type: "GET",
             url: "/Admin/ProductCategory/GetById",
@@ -221,21 +221,21 @@ var productCategoryController = function () {
             },
             success: function (response) {
                 var data = response;
-                $('#hidIdM').val(data.Id);
-                $('#txtNameM').val(data.Name);
+                $('#hidden-id-modal').val(data.Id);
+                $('#txt-name-modal').val(data.Name);
                 initTreeDropDownCategory(data.ParentId);
 
-                $('#txtDescM').val(data.Description);
+                $('#txt-description-modal').val(data.Description);
 
-                $('#txtImageM').val(data.Image);
+                $('#txt-image-modal').val(data.Image);
 
                 $('#txtSeoKeywordM').val(data.SeoKeywords);
                 $('#txtSeoDescriptionM').val(data.SeoDescription);
-                $('#txtSeoPageTitleM').val(data.SeoPageTitle);
-                $('#txtSeoAliasM').val(data.SeoAlias);
+                $('#txt-seo-page-title-modal').val(data.SeoPageTitle);
+                $('#txt-seo-alias-modal').val(data.SeoAlias);
 
-                $('#ckStatusM').prop('checked', data.Status === 1);
-                $('#ckShowHomeM').prop('checked', data.HomeFlag);
+                $('#ck-status-modal').prop('checked', data.Status === 1);
+                $('#ck-show-homepage-modal').prop('checked', data.HomeFlag);
                 $('#txtOrderM').val(data.SortOrder);
                 $('#txtHomeOrderM').val(data.HomeOrder);
                 initNumberSpinnerOrderDisplay();
@@ -280,7 +280,7 @@ var productCategoryController = function () {
                         e.preventDefault();
                         // select the node
                         $(this).tree('select', node.target);
-                        $('#hidIdM').val(node.id);
+                        $('#hidden-id-modal').val(node.id);
                         // display context menu
                         $('#contextMenu').menu('show', {
                             left: e.pageX,

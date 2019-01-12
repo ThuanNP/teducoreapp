@@ -39,7 +39,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllPaging(string keyword, int page, int pageSize)
+        public IActionResult GetAllPaging(string keyword,  int page, int pageSize)
         {
             var model = _userService.GetAllPaggingAsync(keyword, page, pageSize);
             return new OkObjectResult(model);

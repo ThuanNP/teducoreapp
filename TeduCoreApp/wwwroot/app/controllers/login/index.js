@@ -4,7 +4,7 @@
     };
 
     var registerEvents = function () {
-        $('#frmLogin').validate({
+        $('#frm-login').validate({
             errorClass: 'red',
             ignore: [],
             lang: 'en',
@@ -12,13 +12,35 @@
             }
         });
 
-        $('#btnLogin').on('click', function (e) {
-            if ($('#frmLogin').valid()) {
+        $('#btn-login').on('click', function (e) {
+            if ($('#frm-login').valid()) {
                 e.preventDefault();
-                var user = $('#txtUsername').val();
-                var pass = $('#txtPassword').val();
+                var user = $('#txt-user-name-modal').val();
+                var pass = $('#txt-password-modal').val();
                 login(user, pass);
-            }           
+            }
+        });
+
+        $('#-user-name-modal').on('keypress', function (e) {           
+            if (e.which === 13) {
+                e.preventDefault();
+                if ($('#frm-login').valid()) {                   
+                    var user = $('#txt-user-name-modal').val();
+                    var pass = $('#txt-password-modal').val();
+                    login(user, pass);
+                }
+            }
+        });
+
+        $('#txt-password-modal').on('keypress', function (e) {
+            if (e.which === 13) {
+                e.preventDefault();
+                if ($('#frm-login').valid()) {
+                    var user = $('#txt-user-name-modal').val();
+                    var pass = $('#txt-password-modal').val();
+                    login(user, pass);
+                }
+            }
         });
     };
 

@@ -8,14 +8,14 @@
 
     function registerEvents() {
         //Init validation
-        $('#frmMaintainance').validate({
+        $('#form-maintainance-modal').validate({
             errorClass: 'red',
             ignore: [],
             lang: 'vi',
             rules: {
-                txtNameM: { required: true },
-                ddlCategoryIdM: { required: true },
-                txtPriceM: {
+                'txt-name-modal': { required: true },
+                'ddl-category-id-modal': { required: true },
+                'txt-price-modal': {
                     required: true,
                     number: true
                 }
@@ -24,23 +24,23 @@
 
         //Todo: binding events to controls
 
-        $('#ddlShowPage').on('change', function () {
+        $('#ddl-show-page').on('change', function () {
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
             loadProducts(true);
         });
 
-        $('#btnSearch').on('click', function () {
+        $('#btn-search').on('click', function () {
             loadProducts(true);
         });
 
-        $('#txtKeyword').on('keypress', function (e) {
+        $('#txt-keyword').on('keypress', function (e) {
             if (e.which === 13) {
                 loadProducts(true);
             }
         });
 
-        $("#btnCreate").on('click', function () {
+        $("#btn-create").on('click', function () {
             resetFormMaintainance();
             $('#modal-add-edit').modal('show');
         });
@@ -55,24 +55,22 @@
             e.preventDefault();           
             var name = $(this).data('name');
             var that = $(this).data('id');
-            tedu.confirm("Are you sure to delete product: " + name + "?", function () {                   
-                deleteProduct(that, name);
-            });
+            deleteProduct(that, name);          
         });
 
-        $('#btnSave').on('click', function (e) {
+        $('#btn-save').on('click', function (e) {
             e.preventDefault();
-            if ($('#frmMaintainance').valid()) {
-                var id = $('#hidIdM').val();
+            if ($('#form-maintainance-modal').valid()) {
+                var id = $('#hidden-id-modal').val();
                 saveProduct(id);
             }
         });
 
-        $('#btnSelectImg').on('click', function () {
-            $('#fileInputImage').click();
+        $('#btn-select-image').on('click', function () {
+            $('#txt-input-image-file').click();
         });
 
-        $("#fileInputImage").on('change', function () {
+        $("#txt-input-image-file").on('change', function () {
             var fileUpload = $(this).get(0);
             var files = fileUpload.files;
             var data = new FormData();
@@ -86,7 +84,7 @@
                 processData: false,
                 data: data,
                 success: function (path) {
-                    $('#txtImageM').val(path);
+                    $('#txt-image-modal').val(path);
                     tedu.notify('Upload image succesful!', 'success');
                 },
                 error: function (status) {
@@ -98,7 +96,7 @@
     }
 
     function registerControls() {
-        CKEDITOR.replace('txtContentM', {});
+        CKEDITOR.replace('txtContentModal', {});
         //Fix: cannot click on element ck in modal
         $.fn.modal.Constructor.prototype.enforceFocus = function () {
             $(document)
@@ -134,11 +132,11 @@
                     });
                 });
                 var arr = tedu.unflattern(data);
-                $('#ddlCategoryIdM').combotree({
+                $('#ddl-category-id-modal').combotree({
                     data: arr
                 });
-                if (selectedId !== undefined) {
-                    $('#ddlCategoryIdM').combotree('setValue', selectedId);
+                if (selectedId !== undefined || selectedId !== null) {
+                    $('#ddl-category-id-modal').combotree('setValue', selectedId);
                 }
             },
             error: function (status) {
@@ -153,21 +151,21 @@
         var groupSeparator = '.';
         var decimalSeparator = ',';
 
-        $('#txtPriceM').numberspinner({
+        $('#txt-price-modal').numberspinner({
             min: 0,
             precision: 0,
             groupSeparator: groupSeparator,
             decimalSeparator: decimalSeparator,
             editable: true
         });
-        $('#txtOriginalPriceM').numberspinner({
+        $('#txt-original-price-modal').numberspinner({
             min: 0,
             precision: 0,
             groupSeparator: groupSeparator,
             decimalSeparator: decimalSeparator,
             editable: true
         });
-        $('#txtPromotionPriceM').numberspinner({
+        $('#txt-promotion-price-modal').numberspinner({
             min: 0,
             precision: 0,
             groupSeparator: groupSeparator,
@@ -187,7 +185,7 @@
                     render += '<option value="' + item.Id + '">' + item.Name + '</option>';
                 });
                 if (render !== "") {
-                    $('#ddlCategorySearch').html(render);
+                    $('#ddl-category-search').html(render);
                 }
             },
             error: function (status) {
@@ -198,32 +196,32 @@
     }
 
     function resetFormMaintainance() {
-        $('#hidIdM').val(0);
-        $('#txtNameM').val('');
+        $('#hidden-id-modal').val(0);
+        $('#txt-name-modal').val('');
         initTreeDropDownCategory('');
 
-        $('#txtDescM').val('');
-        $('#txtUnitM').val('');
+        $('#txt-description-modal').val('');
+        $('#txt-unit-modal').val('');
 
-        $('#txtPriceM').val('0');
-        $('#txtOriginalPriceM').val('');
-        $('#txtPromotionPriceM').val('');
+        $('#txt-price-modal').val('0');
+        $('#txt-original-price-modal').val('');
+        $('#txt-promotion-price-modal').val('');
 
         initNumberSpinnerPrice();
 
-        $('#txtImageM').val('');
+        $('#txt-image-modal').val('');
 
-        $('#txtTagM').val('');
-        $('#txtMetakeywordM').val('');
-        $('#txtMetaDescriptionM').val('');
-        $('#txtSeoPageTitleM').val('');
-        $('#txtSeoAliasM').val('');
+        $('#txt-tag-modal').val('');
+        $('#txt-meta-keyword-modal').val('');
+        $('#txt-meta-description-modal').val('');
+        $('#txt-seo-page-title-modal').val('');
+        $('#txt-seo-alias-modal').val('');
 
-        CKEDITOR.instances.txtContentM.setData('');
+        CKEDITOR.instances.txtContentModal.setData('');
 
-        $('#ckStatusM').prop('checked', true);
-        $('#ckHotM').prop('checked', false);
-        $('#ckShowHomeM').prop('checked', false);
+        $('#ck-status-modal').prop('checked', true);
+        $('#ck-hot-modal').prop('checked', false);
+        $('#ck-show-homepage-modal').prop('checked', false);
 
     }
 
@@ -232,8 +230,8 @@
         $.ajax({
             type: 'GET',
             data: {
-                categoryId: $('#ddlCategorySearch').val(),
-                keyword: $('#txtKeyword').val(),
+                categoryId: $('#ddl-category-search').val(),
+                keyword: $('#txt-keyword').val(),
                 page: tedu.configs.pageIndex,
                 pageSize: tedu.configs.pageSize
             },
@@ -255,7 +253,7 @@
                         Status: tedu.getStatus(item.Status)
                     });
                 });
-                $('#lblTotalRecords').text(response.RowCount);
+                $('#lbl-total-records').text(response.RowCount);
                 $('#tbl-content').html(render);
                 //if (render !== "") {
                 //    $('#tbl-content').html(render);
@@ -285,29 +283,29 @@
             },
             success: function (response) {
                 var data = response;
-                $('#hidIdM').val(data.Id);
-                $('#txtNameM').val(data.Name);
+                $('#hidden-id-modal').val(data.Id);
+                $('#txt-name-modal').val(data.Name);
                 initTreeDropDownCategory(data.CategoryId);
 
-                $('#txtDescM').val(data.Description);
-                $('#txtUnitM').val(data.Unit);
+                $('#txt-description-modal').val(data.Description);
+                $('#txt-unit-modal').val(data.Unit);
 
-                $('#txtPriceM').val(data.Price);
-                $('#txtOriginalPriceM').val(data.OriginalPrice);
-                $('#txtPromotionPriceM').val(data.PromotionPrice);
+                $('#txt-price-modal').val(data.Price);
+                $('#txt-original-price-modal').val(data.OriginalPrice);
+                $('#txt-promotion-price-modal').val(data.PromotionPrice);
                 initNumberSpinnerPrice();
-                // $('#txtImageM').val(data.ThumbnailImage);
+                // $('#txt-image-modal').val(data.ThumbnailImage);
 
-                $('#txtTagM').val(data.Tags);
-                $('#txtMetakeywordM').val(data.SeoKeywords);
-                $('#txtMetaDescriptionM').val(data.SeoDescription);
-                $('#txtSeoPageTitleM').val(data.SeoPageTitle);
-                $('#txtSeoAliasM').val(data.SeoAlias);
+                $('#txt-tag-modal').val(data.Tags);
+                $('#txt-meta-keyword-modal').val(data.SeoKeywords);
+                $('#txt-meta-description-modal').val(data.SeoDescription);
+                $('#txt-seo-page-title-modal').val(data.SeoPageTitle);
+                $('#txt-seo-alias-modal').val(data.SeoAlias);
 
-                CKEDITOR.instances.txtContentM.setData(data.Content);
-                $('#ckStatusM').prop('checked', data.Status === 1);
-                $('#ckHotM').prop('checked', data.HotFlag);
-                $('#ckShowHomeM').prop('checked', data.HomeFlag);
+                CKEDITOR.instances.txtContentModal.setData(data.Content);
+                $('#ck-status-modal').prop('checked', data.Status === 1);
+                $('#ck-hot-modal').prop('checked', data.HotFlag);
+                $('#ck-show-homepage-modal').prop('checked', data.HomeFlag);
 
                 $('#modal-add-edit').modal('show');
             },
@@ -323,30 +321,31 @@
 
     function saveProduct(id) {
 
-        var name = $('#txtNameM').val();
-        var categoryId = $('#ddlCategoryIdM').combotree('getValue');
+        var name = $('#txt-name-modal').val();
+        var categoryId = $('#ddl-category-search').combotree('getValue');
 
-        var description = $('#txtDescM').val();
-        var unit = $('#txtUnitM').val();
+        var description = $('#txt-description-modal').val();
+        var unit = $('#txt-unit-modal').val();
 
-        var price = $('#txtPriceM').val();
-        var originalPrice = $('#txtOriginalPriceM').val();
-        var promotionPrice = $('#txtPromotionPriceM').val();
+        var price = $('#txt-price-modal').val();
+        var originalPrice = $('#txt-original-price-modal').val();
+        var promotionPrice = $('#txt-promotion-price-modal').val();
 
-        var image = $('#txtImageM').val();
+        var image = $('#txt-image-modal').val();
 
-        var tags = $('#txtTagM').val();
-        var seoKeyword = $('#txtMetakeywordM').val();
-        var seoMetaDescription = $('#txtMetaDescriptionM').val();
-        var seoPageTitle = $('#txtSeoPageTitleM').val();
-        var seoAlias = $('#txtSeoAliasM').val();
+        var tags = $('#txt-tag-modal').val();
+        var seoKeyword = $('#txt-meta-keyword-modal').val();
+        var seoMetaDescription = $('#txt-meta-description-modal').val();
+        var seoPageTitle = $('#txt-seo-page-title-modal').val();
+        var seoAlias = $('#txt-seo-alias-modal').val();
 
-        var content = CKEDITOR.instances.txtContentM.getData();
-        var status = $('#ckStatusM').prop('checked') === true ? 1 : 0;
-        var hot = $('#ckHotM').prop('checked');
-        var showHome = $('#ckShowHomeM').prop('checked');
+        var content = CKEDITOR.instances.txtContentModal.getData();
+        var status = $('#ck-status-modal').prop('checked') === true ? 1 : 0;
+        var hot = $('#ck-hot-modal').prop('checked');
+        var showHome = $('#ck-show-homepage-modal').prop('checked');
 
         var dateCreated = $(this).data('created-date');
+
         $.ajax({
             type: "POST",
             url: "/Admin/Product/SaveEntity",
@@ -392,27 +391,27 @@
     }
 
     function deleteProduct(id, name) {
-        $.ajax({
-            type: "DELETE",
-            url: "/Admin/Product/Delete",
-            data: { id: id },
-            dataType: "json",
-            beforeSend: function () {
-                tedu.startLoading();
-            },
-            success: function (response) {
-                tedu.notify("Delete product " + name, "success");       
-                loadProducts(true);
-            },
-            error: function (status) {
-                console.log("Has an error in delete product progress", status);
-                tedu.notify("Has an error in delete product progress", "error");
-            },
-            complete: function () {
-                tedu.stopLoading();
-            }
-        });
+        tedu.confirm("Are you sure to delete product: " + name + "?", function () {
+            $.ajax({
+                type: "DELETE",
+                url: "/Admin/Product/Delete",
+                data: { id: id },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    tedu.notify("Delete product " + name, "success");
+                    loadProducts(true);
+                },
+                error: function (status) {
+                    console.log("Has an error in delete product progress", status);
+                    tedu.notify("Has an error in delete product progress", "error");
+                },
+                complete: function () {
+                    tedu.stopLoading();
+                }
+            });
+        });        
     }
-
-    
 };

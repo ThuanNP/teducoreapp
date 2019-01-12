@@ -61,7 +61,7 @@ namespace TeduCoreApp.Application.Implementations
             var query = _userManager.Users;
             if (!string.IsNullOrWhiteSpace(keyword))
             {
-
+                query = query.Where(x=>x.UserName.Contains(keyword) || x.FullName.Contains(keyword));
             }
             int totalRow = query.Count();
             query = query.Skip((page - 1) * pageSize).Take(pageSize);

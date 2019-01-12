@@ -2,13 +2,13 @@
     wrapPaging: function (recordCount, callBack, changePageSize) {
         var totalSize = Math.ceil(recordCount / tedu.configs.pageSize);
         // Unbind pagination if it existed or click change pagesize
-        if ($('#paginationUL a').length === 0 || changePageSize === true) {
-            $('#paginationUL').empty();
-            $('#paginationUL').removeData("twbs-pagination");
-            $('#paginationUL').unbind("page");
+        if ($('#pagination-url a').length === 0 || changePageSize === true) {
+            $('#pagination-url').empty();
+            $('#pagination-url').removeData("twbs-pagination");
+            $('#pagination-url').unbind("page");
         }
         // Bind pagination Event
-        $('#paginationUL').twbsPagination({
+        $('#pagination-url').twbsPagination({
             totalPages: totalSize,
             visiblePages: 7,
             first: 'Đầu',

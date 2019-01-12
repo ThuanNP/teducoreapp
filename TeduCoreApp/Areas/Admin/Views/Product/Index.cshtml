@@ -24,14 +24,14 @@
     <div class="title_right">
         <section role="search">
             <div class="input-group col-lg-8 col-md-6 col-sm-12 pull-right">
-                <input type="text" id="txtKeyword" class="form-control" placeholder="Search for...">
+                <input type="text" id="txt-keyword" class="form-control" placeholder="Search for...">
                 <span class="input-group-btn">
-                    <button class="btn btn-primary" id="btnSearch" type="button">Go!</button>
-                    <button class="btn btn-success" id="btnCreate" type="button">Create</button>
+                    <button class="btn btn-primary" id="btn-search" type="button">Go!</button>
+                    <button class="btn btn-success" id="btn-create" type="button">Create</button>
                 </span>
             </div>
             <div class="input-group col-lg-4 col-md-6 col-sm-12 pull-right">
-                <select id="ddlCategorySearch" class="form-control">
+                <select id="ddl-category-search" class="form-control">
                     <option>-- Select category --</option>
                 </select>
             </div>
@@ -45,10 +45,10 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             @*<div class="x_title">
-                    <h2>Products<small>List of all products</small></h2>
-                    <div class="clearfix"></div>
-                </div>*@
-            <div class="x_content">
+            <h2>Products<small>List of all products</small></h2>
+            <div class="clearfix"></div>
+        </div>*@
+            <div class="x_content table-responsive">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -63,32 +63,33 @@
                     </thead>
                     <tbody id="tbl-content"></tbody>
                 </table>
-                <!--Pagination-->
-                <div class="row">
-                    <div class="col-sm-5">
-                        <div class="dataTables_info" id="datatable-checkbox-info" role="status" aria-live="polite">
-                            <select id="ddlShowPage">
-                                <option value="10" selected="selected">10</option>
-                                <option value="20">20</option>
-                                <option value="30">30</option>
-                                <option value="40">40</option>
-                                <option value="50">50</option>
-                            </select>
-                            <span class="item-per-page">
-                                bản ghi/trang.
-                            </span>
-                            <br />
-                            Tổng số bản ghi: <strong id="lblTotalRecords"></strong>
-                        </div>
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox-paginate">
-                            <ul id="paginationUL"></ul>
-                        </div>
+            </div>
+            <!--Pagination-->
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="dataTables_info" id="datatable-checkbox-info" role="status" aria-live="polite">
+                        <select id="ddl-show-page">
+                            <option value="10" selected="selected">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span class="item-per-page" style="white-space:nowrap;">
+                            bản ghi/trang.
+                        </span>
+                        <span style="white-space:nowrap;">
+                            Tổng số bản ghi: <strong id="lbl-total-records"></strong>
+                        </span>                        
                     </div>
                 </div>
-                <!-- /Pagination-->
+                <div class="col-sm-7">
+                    <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox-paginate">
+                        <ul id="pagination-url"></ul>
+                    </div>
+                </div>
             </div>
+            <!-- /Pagination-->
         </div>
     </div>
 </main>

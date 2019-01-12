@@ -6,21 +6,21 @@
 
     function registerEvents() {
         //Init validation
-        $('#frmMaintainance').validate({
+        $('#form-maintainance-modal').validate({
             errorClass: 'red',
             ignore: [],
             lang: 'en',
             rules: {
-                txtFullName: { required: true },
-                txtUserName: { required: true },
-                txtPassword: {
+                'txt-full-name-modal': { required: true },
+                'txt-user-name-modal': { required: true },
+                'txt-password-modal': {
                     required: true,
                     minlength: 6
                 },
-                txtConfirmPassword: {
-                    equalTo: "#txtPassword"
+                'txt-confirm-password-modal': {
+                    equalTo: "#txt-password-modal"
                 },
-                txtEmail: {
+                'txt-email-modal': {
                     required: true,
                     email: true
                 }
@@ -28,14 +28,14 @@
         });
 
         //Todo: binding events to controls
-        $('#ddlShowPage').on('change', function () {
+        $('#ddl-show-page').on('change', function () {
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
             loadUsers(true);
             return false;
         });
 
-        $('#txtKeyword').keypress(function (e) {
+        $('#txt-keyword').keypress(function (e) {
             if (e.which === 13) {
                 e.preventDefault();
                 loadUsers();
@@ -43,21 +43,21 @@
             return false;
         });
 
-        $('#btnSearch').on('click', function () {
+        $('#btn-search').on('click', function () {
             loadUsers();
             return false;
         });
 
-        $('#btnCreate').on('click', function () {
+        $('#btn-create').on('click', function () {
             resetFormMaintainance();
             initRoleList();
             $('#modal-add-edit').modal('show');
             return false;
         });
 
-        $('#btnSave').on('click', function () {
-            if ($('#frmMaintainance').valid()) {
-                var that = $('#hidId').val();
+        $('#btn-save').on('click', function () {
+            if ($('#form-maintainance-modal').valid()) {
+                var that = $('#hidden-id-modal').val();
                 saveUser(that);
             }
             return false;
@@ -73,9 +73,7 @@
             e.preventDefault();
             var username = $(this).data('username');
             var that = $(this).data('id');
-            tedu.confirm("Are you sure to delete user: " + username + "?", function () {
-                deleteUser(that, username);
-            });
+            deleteUser(that, username);
         });
     }
 
@@ -84,7 +82,7 @@
         $.ajax({
             type: 'GET',
             data: {
-                keyword: $('#txtKeyword').val(),
+                keyword: $('#txt-keyword').val(),
                 page: tedu.configs.pageIndex,
                 pageSize: tedu.configs.pageSize
             },
@@ -105,7 +103,7 @@
                         Status: tedu.getStatus(item.Status)
                     });
                 });
-                $('#lblTotalRecords').text(response.RowCount);
+                $('#lbl-total-records').text(response.RowCount);
                 $('#tbl-content').html(render);
                 //if (render !== "") {
                 //    $('#tbl-content').html(render);
@@ -135,12 +133,12 @@
             },
             success: function (response) {
                 var data = response;
-                $('#hidId').val(data.Id);
-                $('#txtFullName').val(data.FullName);
-                $('#txtUserName').val(data.UserName);
-                $('#txtEmail').val(data.Email);
-                $('#txtPhoneNumber').val(data.PhoneNumber);
-                $('#ckStatus').prop('checked', data.Status === 1);
+                $('#hidden-id-modal').val(data.Id);
+                $('#txt-full-name-modal').val(data.FullName);
+                $('#txt-user-name-modal').val(data.UserName);
+                $('#txt-email-modal').val(data.Email);
+                $('#txt-phone-number-modal').val(data.PhoneNumber);
+                $('#ck-status-modal').prop('checked', data.Status === 1);
 
                 initRoleList(data.Roles);
 
@@ -158,17 +156,17 @@
     }
 
     function saveUser(id) {
-        var fullName = $('#txtFullName').val();
-        var userName = $('#txtUserName').val();
-        var password = $('#txtPassword').val();
-        var email = $('#txtEmail').val();
-        var phoneNumber = $('#txtPhoneNumber').val();
+        var fullName = $('#txt-full-name-modal').val();
+        var userName = $('#txt-user-name-modal').val();
+        var password = $('#txt-password-modal').val();
+        var email = $('#txt-email-modal').val();
+        var phoneNumber = $('#txt-phone-number-modal').val();
         var roles = [];
-        $.each($('input[name="ckRoles"]'), function (_i, item) {
+        $.each($('input[name="roles"]'), function (_i, item) {
             if ($(item).prop('checked') === true)
                 roles.push($(item).prop('value'));
         });
-        var status = $('#ckStatus').prop('checked') === true ? 1 : 0;
+        var status = $('#ck-status-modal').prop('checked') === true ? 1 : 0;
         $.ajax({
             type: "POST",
             url: "/Admin/User/SaveEntity",
@@ -203,46 +201,48 @@
     }
 
     function deleteUser(id, username) {
-        $.ajax({
-            type: "POST",
-            url: "/Admin/User/Delete",
-            data: { id: id },
-            beforeSend: function () {
-                tedu.startLoading();
-            },
-            success: function () {
-                tedu.notify('Delete user ' + username + ' successful', 'success');               
-                loadUsers(true);
-            },
-            error: function (status) {
-                console.log("Has an error in deleting a users: ", status);
-                tedu.notify('Has an error in deleting a users ' + username, 'error');
-            },
-            complete: function () {
-                tedu.stopLoading();
-            }
+        tedu.confirm("Are you sure to delete user: " + username + "?", function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/User/Delete",
+                data: { id: id },
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function () {
+                    tedu.notify('Delete user ' + username + ' successful', 'success');
+                    loadUsers(true);
+                },
+                error: function (status) {
+                    console.log("Has an error in deleting a users: ", status);
+                    tedu.notify('Has an error in deleting a users ' + username, 'error');
+                },
+                complete: function () {
+                    tedu.stopLoading();
+                }
+            });
         });
     }
 
     function disableFieldEdit(disabled) {
-        $('#txtUserName').prop('disabled', disabled);
-        $('#txtPassword').prop('disabled', disabled);
-        $('#txtConfirmPassword').prop('disabled', disabled);
+        $('#txt-user-name-modal').prop('disabled', disabled);
+        $('#txt-password-modal').prop('disabled', disabled);
+        $('#txt-confirm-password-modal').prop('disabled', disabled);
 
     }
 
     function resetFormMaintainance() {
         disableFieldEdit(false);
-        $('#hidId').val('');
+        $('#hidden-id-modal').val('');
         initRoleList();
-        $('#txtFullName').val('');
-        $('#txtUserName').val('');
-        $('#txtPassword').val('');
-        $('#txtConfirmPassword').val('');
-        $('input[name="ckRoles"]').removeAttr('checked');
-        $('#txtEmail').val('');
-        $('#txtPhoneNumber').val('');
-        $('#ckStatus').prop('checked', true);
+        $('#txt-full-name-modal').val('');
+        $('#txt-user-name-modal').val('');
+        $('#txt-password-modal').val('');
+        $('#txt-confirm-password-modal').val('');
+        $('input[name="roles"]').removeAttr('checked');
+        $('#txt-email-modal').val('');
+        $('#txt-phone-number-modal').val('');
+        $('#ck-status-modal').prop('checked', true);
 
     }
 

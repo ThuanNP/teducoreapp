@@ -9,18 +9,18 @@
                 <h4 class="modal-title">Product category update</h4>
             </header>
             <section class="modal-body">
-                <form class="form-horizontal" role="form" id="frmMaintainance">
+                <form class="form-horizontal" role="form" id="form-maintainance-modal">
                     <div class="form-group">
-                        <input type="hidden" id="hidIdM" value="0" />
-                        <label for="txtNameM" class="col-sm-2 control-label no-padding-right">Name</label>
+                        <input type="hidden" id="hidden-id-modal" value="0" />
+                        <label for="txt-name-modal" class="col-sm-2 control-label no-padding-right">Name</label>
                         <div class="col-sm-10">
-                            <input type="text" name="txtNameM" class="form-control" id="txtNameM" placeholder="Name of category">
+                            <input type="text" name="txt-name-modal" class="form-control" id="txt-name-modal" placeholder="Name of category">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label no-padding-right">Parent</label>
                         <div class="col-sm-10">
-                            <input id="ddlCategoryIdM" class="form-control" name="ddlCategoryIdM" value="" style="width: 100%;">
+                            <input id="ddl-category-id-modal" class="form-control" name="ddl-category-id-modal" value="" style="width: 100%;">
                         </div>
                     </div>
                     <div class="form-group">
@@ -30,9 +30,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="txtDescM" class="col-sm-2 control-label no-padding-right">Description</label>
+                        <label for="txt-description-modal" class="col-sm-2 control-label no-padding-right">Description</label>
                         <div class="col-sm-10">
-                            <textarea rows="3" name="txtDescM" class="form-control" id="txtDescM"></textarea>
+                            <textarea rows="3" name="txt-description-modal" class="form-control" id="txt-description-modal"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -48,13 +48,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="txtImageM" class="col-sm-2 control-label no-padding-right">Images</label>
+                        <label for="txt-image-modal" class="col-sm-2 control-label no-padding-right">Images</label>
                         <div class="col-sm-10">
                             <div class="input-group">
-                                <input type="text" name="txtImageM" class="form-control" id="txtImageM" />
-                                <input type="file" id="fileInputImage" style="display:none" />
+                                <input type="text" name="txt-image-modal" class="form-control" id="txt-image-modal" />
+                                <input type="file" id="txt-input-image-file" style="display:none" />
                                 <span class="input-group-btn">
-                                    <input type="button" id="btnSelectImg" class="btn btn-default" value="Browser" />
+                                    <input type="button" id="btn-select-imgage" class="btn btn-default" value="Browser" />
                                 </span>
                             </div><!-- /input-group -->
 
@@ -62,15 +62,15 @@
 
                     </div>
                     <div class="form-group">
-                        <label for="txtSeoPageTitleM" class="col-sm-2 control-label no-padding-right">SEO Title</label>
+                        <label for="txt-seo-page-title-modal" class="col-sm-2 control-label no-padding-right">SEO Title</label>
                         <div class="col-sm-10">
-                            <input type="text" name="txtSeoPageTitleM" class="form-control" id="txtSeoPageTitleM">
+                            <input type="text" name="txt-seo-page-title-modal" class="form-control" id="txt-seo-page-title-modal">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="txtSeoAliasM" class="col-sm-2 control-label no-padding-right">URL SEO</label>
+                        <label for="txt-seo-alias-modal" class="col-sm-2 control-label no-padding-right">URL SEO</label>
                         <div class="col-sm-10">
-                            <input type="text" name="txtSeoAliasM" class="form-control" id="txtSeoAliasM">
+                            <input type="text" name="txt-seo-alias-modal" class="form-control" id="txt-seo-alias-modal">
                         </div>
                     </div>
                     <div class="form-group">
@@ -89,11 +89,11 @@
                         <div class="col-sm-offset-2 col-sm-10">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" checked="checked" id="ckStatusM">
+                                    <input type="checkbox" checked="checked" id="ck-status-modal">
                                     <span class="text">Active.</span>
                                 </label>
                                 <label>
-                                    <input type="checkbox" id="ckShowHomeM">
+                                    <input type="checkbox" id="ck-show-homepage-modal">
                                     <span class="text">Show on home.</span>
                                 </label>
                             </div>
@@ -103,7 +103,7 @@
             </section>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" id="btnSave" class="btn btn-primary">Save changes</button>
+                <button type="button" id="btn-save" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
