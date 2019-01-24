@@ -214,8 +214,8 @@
                     loadUsers(true);
                 },
                 error: function (status) {
-                    console.log("Has an error in deleting a users: ", status);
-                    tedu.notify('Has an error in deleting a users ' + username, 'error');
+                    console.log("Has an error in deleting a user: ", status);
+                    tedu.notify('Has an error in deleting a user ' + username, 'error');
                 },
                 complete: function () {
                     tedu.stopLoading();

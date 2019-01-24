@@ -322,7 +322,7 @@
     function saveProduct(id) {
 
         var name = $('#txt-name-modal').val();
-        var categoryId = $('#ddl-category-search').combotree('getValue');
+        var categoryId = $('#ddl-category-id-modal').combotree('getValue');
 
         var description = $('#txt-description-modal').val();
         var unit = $('#txt-unit-modal').val();

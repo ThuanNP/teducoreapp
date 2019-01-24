@@ -24,15 +24,18 @@ namespace TeduCoreApp.Application.Implementations
 
         public async Task<bool> AddAsync(AppUserViewModel userViewModel)
         {
-            var user = new AppUser()
-            {
-                UserName = userViewModel.UserName,
-                Avatar = userViewModel.Avatar,
-                Email = userViewModel.Email,
-                FullName = userViewModel.FullName,
-                PhoneNumber = userViewModel.PhoneNumber,
-                Status = userViewModel.Status
-            };
+            //var user = new AppUser()
+            //{
+            //    UserName = userViewModel.UserName,
+            //    Avatar = userViewModel.Avatar,
+            //    Email = userViewModel.Email,
+            //    FullName = userViewModel.FullName,
+            //    PhoneNumber = userViewModel.PhoneNumber,
+            //    Status = userViewModel.Status
+            //};
+
+            // Hack: user mapper alternate contructor of AppUser 
+            var user = Mapper.Map<AppUserViewModel, AppUser>(userViewModel);
             var result = await _userManager.CreateAsync(user, userViewModel.Password);
             if (result.Succeeded && userViewModel.Roles.Count > 0)
             {

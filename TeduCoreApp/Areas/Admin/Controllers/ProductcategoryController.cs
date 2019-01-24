@@ -68,13 +68,12 @@ namespace TeduCoreApp.Areas.Admin.Controllers
                 return new BadRequestObjectResult(ModelState);
             }
             else
-            {                
-                if (sourceId == targetId) 
+            {
+                if (sourceId == targetId)
                 {
                     // No change found
                     return new BadRequestResult();
                 }
-                
                 else
                 {
                     // Some categories have the same SortOrder

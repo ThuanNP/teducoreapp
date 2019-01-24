@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.System;
 
@@ -24,6 +23,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         }
 
         #region Ajax Api
+
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -39,7 +39,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllPaging(string keyword,  int page, int pageSize)
+        public IActionResult GetAllPaging(string keyword, int page, int pageSize)
         {
             var model = _userService.GetAllPaggingAsync(keyword, page, pageSize);
             return new OkObjectResult(model);
@@ -67,11 +67,11 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             return new OkObjectResult(userViewModel);
         }
 
-        [HttpPost]
+        [HttpDelete]
         public async Task<IActionResult> Delete(string id)
         {
             if (ModelState.IsValid)
-            {                
+            {
                 await _userService.DeleteAsync(id);
                 return new OkObjectResult(id);
             }
@@ -81,6 +81,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
                 return new BadRequestObjectResult(modelErrors);
             }
         }
-        #endregion
+
+        #endregion Ajax Api
     }
 }

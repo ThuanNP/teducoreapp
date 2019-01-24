@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    @*<link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />*@
+}
+@section Scripts{
+    @*<script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>*@
+    <script src="~/app/controllers/role/index.js"></script>
+    <script>
+        var roleCtrl = new roleController();
+        roleCtrl.initialize();
+    </script>
+}
+
+<!-- page title -->
+<header class="page-title">
+    <div class="title_left">
+        @*<h3>Product <small>Management </small></h3>*@
+        <h3>Users <small>List of roles</small></h3>
+    </div>
+    <div class="title_right">
+        <section role="search">
+            <div class="input-group col-lg-8 col-md-6 col-sm-12 pull-right">
+                <input type="text" id="txt-keyword" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" id="btn-search" type="button">Go!</button>
+                    <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                </span>
+            </div>
+        </section>
+    </div>
+</header>
+<!-- /page title -->
+<div class="clearfix"></div>
+<!-- page content -->
+<main class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            @*<div class="x_title">
+                    <h2>Products<small>List of all products</small></h2>
+                    <div class="clearfix"></div>
+                </div>*@
+            <div class="x_content table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th width="15%">#</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-content"></tbody>
+                </table>
+            </div>
+            <!--Pagination-->
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="dataTables_info" id="datatable-checkbox-info" role="status" aria-live="polite">
+                        <select id="ddl-show-page">
+                            <option value="10" selected="selected">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span class="item-per-page" style="white-space:nowrap;">
+                            bản ghi/trang.
+                        </span>
+                        <span style="white-space:nowrap;">
+                            Tổng số bản ghi: <strong id="lbl-total-records"></strong>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox-paginate">
+                        <ul id="pagination-url"></ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /Pagination-->
+        </div>
+    </div>
+</main>
+<!-- /page content -->
+<div class="clearfix"></div>
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <td>{{Name}}</td>
+        <td>{{Description}}</td>
+        <th scope="row" class="text-center">
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-default btn-edit" data-id="{{Id}}"><i class="fa fa-pencil-square-o"></i></button>
+                <button type="button" class="btn btn-danger btn-delete" data-id="{{Id}}" data-name="{{Name}}"><i class="fa fa-trash-o"></i></button>
+            </div>
+        </th>
+    </tr>
+</script>
+<partial name="_AddEditModal.cshtml" />
+

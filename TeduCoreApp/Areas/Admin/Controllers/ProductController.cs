@@ -10,7 +10,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
     public class ProductController : BaseController
     {
         private readonly IProductService _productService;
-        IProductCategoryService _productCategoryService;
+        private readonly IProductCategoryService _productCategoryService;
 
         public ProductController(IProductService productService, IProductCategoryService productCategoryService)
         {
@@ -90,6 +90,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
                 return new BadRequestObjectResult(ModelState);
             }
         }
-        #endregion
+
+        #endregion AJAX API
     }
 }
