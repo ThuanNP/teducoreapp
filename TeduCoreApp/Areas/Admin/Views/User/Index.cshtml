@@ -103,10 +103,6 @@
         <td>{{{Status}}}</td>
         <th scope="row" class="text-center">
             <div class="btn-group btn-group-sm">
-                @*@if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create)).Succeeded)
-                    {
-                        <button class="btn btn-success" id="btn-create" type="button">Create</button>
-                    }*@
                 @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded)
                 {
                     <button type="button" class="btn btn-default btn-edit" data-id="{{Id}}" data-date-created="{{CreatedDate}}"><i class="fa fa-pencil-square-o"></i></button>
@@ -115,8 +111,6 @@
                 {
                     <button type="button" class="btn btn-danger btn-delete" data-id="{{Id}}" data-username="{{UserName}}"><i class="fa fa-trash-o"></i></button>
                 }
-
-
             </div>
         </th>
     </tr>

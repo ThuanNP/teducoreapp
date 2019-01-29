@@ -30,7 +30,7 @@ namespace TeduCoreApp.Areas.Admin.Components
             else
             {
                 //TODO: Get functions by permistion
-                functions = new List<FunctionViewModel>();
+                functions = await _functionService.GetAll(string.Empty);
             }
             return View(functions);
         }
