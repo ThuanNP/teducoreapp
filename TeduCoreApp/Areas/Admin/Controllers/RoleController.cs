@@ -69,12 +69,19 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid? id)
         {
             if (ModelState.IsValid)
-            {
-                var result = await _roleService.DeleteAsync(id);
-                return new OkObjectResult(id);
+            {               
+                if (id.HasValue)
+                {
+                    var result = await _roleService.DeleteAsync(id.Value);
+                    return new OkObjectResult(id);
+                }
+                else
+                {
+                    return new BadRequestResult();
+                }
             }
             else
             {
@@ -83,18 +90,35 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             }
         }
 
-        [HttpGet]
-        public IActionResult GetListAllFunction(Guid roleId)
+        [HttpPost]
+        public IActionResult ListAllFunction(Guid? roleId)
         {
-            var functions = _roleService.GetListFunctionWithRole(roleId);
-            return new OkObjectResult(functions);
+            if (roleId.HasValue)
+            {
+                var functions = _roleService.GetListFunctionWithRole(roleId.Value);
+                return new OkObjectResult(functions);
+            }
+            else
+            {
+                return new BadRequestResult();
+            }
+          
         }
 
         [HttpPost]
-        public IActionResult SavePermission(List<PermissionViewModel> permissionViewModels, Guid roleId)
+        public IActionResult SavePermission(List<PermissionViewModel> permissionViewModels, Guid? roleId)
         {
-            _roleService.SavePermission(permissionViewModels, roleId);
-            return new OkResult();
+            if (roleId.HasValue)
+            {
+                _roleService.UpdatePermission(permissionViewModels, roleId.Value);
+                _roleService.Save();
+                return new OkResult();
+            }
+            else
+            {
+                return new BadRequestResult();
+            }
+            
         }
 
         #endregion Ajax api

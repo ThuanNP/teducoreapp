@@ -23,6 +23,8 @@ namespace TeduCoreApp.Application.AutoMapper
                 c.FullName,c.Balance, c.Avatar, c.DateCreated, c.Status));
             CreateMap<AppRoleViewModel, AppRole>()
                 .ConstructUsing(c => new AppRole(c.Name, c.Description));
+            CreateMap<PermissionViewModel, Permission>()
+                .ConstructUsing(c => new Permission(c.RoleId, c.FunctionId, c.CanCreate, c.CanRead, c.CanUpdate, c.CanDelete));
         }
     }
 }

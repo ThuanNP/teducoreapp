@@ -10,6 +10,7 @@ namespace TeduCoreApp.Application.AutoMapper
     {
         public DomainToViewModelMappingProfile()
         {
+            CreateMap<Permission, PermissionViewModel>();
             CreateMap<Function, FunctionViewModel>();
             CreateMap<ProductCategory, ProductCategoryViewModel>();
             CreateMap<Product, ProductViewModel>();

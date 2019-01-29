@@ -23,9 +23,9 @@ namespace TeduCoreApp.Areas.Admin.Components
         {
             var roles = ((ClaimsPrincipal)User).GetSpecificClaim("Roles");
             List<FunctionViewModel> functions;
-            if (roles.Split(";").Contains(CommonConstants.AdminRole))
+            if (roles.Split(";").Contains(CommonConstants.AppRoles.AdminRole))
             {
-                functions = await _functionService.GetAll();
+                functions = await _functionService.GetAll(string.Empty);
             }
             else
             {

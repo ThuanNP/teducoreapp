@@ -23,7 +23,8 @@
     "mustache": "~3.0.1",
     "twbs-pagination": "~1.4.2",
     "jQuery-EasyUI": "~1.5.3",
-    "ckeditor": "~4.11.1"
+    "ckeditor": "~4.11.1",
+    "jquery-treegrid": "~0.3.0"
   },
   "name": "asp.net",
   "private": true

@@ -24,6 +24,16 @@ namespace TeduCoreApp.Data.Entities
             Status = Status.Active;
         }
 
+        public Function(string name, string url, string parentId, string iconCss, int sortOrder)
+        {
+            Name = name;
+            URL = url;
+            ParentId = parentId;
+            IconCss = iconCss;
+            SortOrder = sortOrder;
+            Status = Status.Active;
+        }
+
         [Required, MaxLength(128)]
         public string Name { set; get; }
 

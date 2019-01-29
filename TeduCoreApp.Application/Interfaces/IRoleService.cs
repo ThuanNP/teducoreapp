@@ -7,7 +7,7 @@ using TeduCoreApp.Utilities.Dtos;
 
 namespace TeduCoreApp.Application.Interfaces
 {
-    public interface IRoleService
+    public interface IRoleService: IDisposable
     {
         Task<List<AppRoleViewModel>> GetAllAsync();
 
@@ -23,6 +23,10 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<PermissionViewModel> GetListFunctionWithRole(Guid roleId);
 
-        void SavePermission(List<PermissionViewModel> permissionViewModels, Guid roleId);
+        void UpdatePermission(List<PermissionViewModel> permissionViewModels, Guid roleId);
+
+        void Save();
+
+        Task<bool> CheckPermission(string functionId, string action, string[] roles);
     }
 }

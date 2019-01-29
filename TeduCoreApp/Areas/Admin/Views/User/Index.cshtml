@@ -1,4 +1,6 @@
-﻿
+﻿@using Microsoft.AspNetCore.Authorization
+@using TeduCoreApp.Authorization
+@inject IAuthorizationService AuthorizationService
 @{
     ViewData["Title"] = "Index";
 }
@@ -27,7 +29,10 @@
                 <input type="text" id="txt-keyword" class="form-control" placeholder="Search for...">
                 <span class="input-group-btn">
                     <button class="btn btn-primary" id="btn-search" type="button">Go!</button>
-                    <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                    @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create)).Succeeded)
+                    {
+                        <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                    }
                 </span>
             </div>
         </section>
@@ -40,9 +45,9 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             @*<div class="x_title">
-            <h2>Products<small>List of all products</small></h2>
-            <div class="clearfix"></div>
-        </div>*@
+                    <h2>Products<small>List of all products</small></h2>
+                    <div class="clearfix"></div>
+                </div>*@
             <div class="x_content table-responsive">
                 <table class="table table-bordered">
                     <thead>
@@ -98,8 +103,20 @@
         <td>{{{Status}}}</td>
         <th scope="row" class="text-center">
             <div class="btn-group btn-group-sm">
-                <button type="button" class="btn btn-default btn-edit" data-id="{{Id}}" data-date-created="{{CreatedDate}}"><i class="fa fa-pencil-square-o"></i></button>
-                <button type="button" class="btn btn-danger btn-delete" data-id="{{Id}}" data-username="{{UserName}}"><i class="fa fa-trash-o"></i></button>
+                @*@if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create)).Succeeded)
+                    {
+                        <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                    }*@
+                @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded)
+                {
+                    <button type="button" class="btn btn-default btn-edit" data-id="{{Id}}" data-date-created="{{CreatedDate}}"><i class="fa fa-pencil-square-o"></i></button>
+                }
+                @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete)).Succeeded)
+                {
+                    <button type="button" class="btn btn-danger btn-delete" data-id="{{Id}}" data-username="{{UserName}}"><i class="fa fa-trash-o"></i></button>
+                }
+
+
             </div>
         </th>
     </tr>

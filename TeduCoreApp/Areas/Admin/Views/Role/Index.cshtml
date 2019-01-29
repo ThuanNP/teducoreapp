@@ -3,11 +3,10 @@
     ViewData["Title"] = "Index";
 }
 @section Styles{
-    @*<link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
-    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />*@
+    <link href="~/lib/jquery-treegrid/css/jquery.treegrid.css" rel="stylesheet" />
 }
 @section Scripts{
-    @*<script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>*@
+    <script src="~/lib/jquery-treegrid/js/jquery.treegrid.js"></script>
     <script src="~/app/controllers/role/index.js"></script>
     <script>
         var roleCtrl = new roleController();
@@ -93,10 +92,12 @@
         <th scope="row" class="text-center">
             <div class="btn-group btn-group-sm">
                 <button type="button" class="btn btn-default btn-edit" data-id="{{Id}}"><i class="fa fa-pencil-square-o"></i></button>
+                <button type="button" class="btn btn-primary btn-grant" data-id="{{Id}}"><i class="fa fa-key"></i></button>
                 <button type="button" class="btn btn-danger btn-delete" data-id="{{Id}}" data-name="{{Name}}"><i class="fa fa-trash-o"></i></button>
             </div>
         </th>
     </tr>
 </script>
 <partial name="_AddEditModal.cshtml" />
+<partial name="_AssignPermission.cshtml" />
 

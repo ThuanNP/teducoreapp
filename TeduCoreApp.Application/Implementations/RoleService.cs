@@ -61,8 +61,7 @@ namespace TeduCoreApp.Application.Implementations
             };
             return paginationSet;
         }
-
-
+        
         public async Task<IdentityResult> AddAsync(AppRoleViewModel appRoleViewModel)
         {
             var appRole = Mapper.Map<AppRoleViewModel, AppRole>(appRoleViewModel);
@@ -92,7 +91,7 @@ namespace TeduCoreApp.Application.Implementations
                         where p != null && p.RoleId == roleId
                         let canRead = p != null ? p.CanRead : false
                         let canCreate = p != null ? p.CanCreate : false
-                        let candUpdate = p == null ? p.CanUpdate : false
+                        let candUpdate = p != null ? p.CanUpdate : false
                         let canDelete = p != null ? p.CanDelete : false
                         select new PermissionViewModel()
                         {
@@ -106,7 +105,7 @@ namespace TeduCoreApp.Application.Implementations
             return query.ToList();
         }
 
-        public void SavePermission(List<PermissionViewModel> permissionViewModels, Guid roleId)
+        public void UpdatePermission(List<PermissionViewModel> permissionViewModels, Guid roleId)
         {
             var permissions = Mapper.Map<List<PermissionViewModel>, List<Permission>>(permissionViewModels);
             var oldPermissions = _permissionRepository.FindAll().Where(r => r.RoleId.Equals(roleId)).ToList();
@@ -119,7 +118,26 @@ namespace TeduCoreApp.Application.Implementations
             {
                 _permissionRepository.Add(permission);
             }
-            _unitOfWork.Commit();
+        }
+
+        public void Save() => _unitOfWork.Commit();
+
+        public void Dispose() => GC.SuppressFinalize(this);
+
+        public Task<bool> CheckPermission(string functionId, string action, string[] roles)
+        {
+            var functions = _functionRepository.FindAll();
+            var permissions = _permissionRepository.FindAll();
+            var query = from f in functions
+                        join p in permissions on f.Id equals p.FunctionId
+                        join r in _roleManager.Roles on p.RoleId equals r.Id
+                        where roles.Contains(r.Name) && f.Id.Equals(functionId)
+                        && ((p.CanCreate && action == "Create")
+                        || (p.CanUpdate && action == "Update")
+                        || (p.CanDelete && action == "Delete")
+                        || (p.CanRead && action == "Read"))
+                        select p;
+            return query.AnyAsync();
         }
     }
 }
