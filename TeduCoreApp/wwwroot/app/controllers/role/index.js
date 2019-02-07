@@ -52,7 +52,7 @@
         $('#btn-save').on('click', function (e) {
             if ($('#form-maintainance-modal').valid()) {
                 e.preventDefault();
-                var that = $(this).data('id');
+                var that = $('#hidden-id-modal').val();
                 saveRole(that);
             }
         });
@@ -245,7 +245,7 @@
         $('#txt-description-modal').val('');
     }
 
-    function loadRoles(isPageChanged) {
+    function loadRoles(isPageSizeChanged) {
         var template = $('#table-template').html();
         $.ajax({
             type: 'GET',
@@ -272,7 +272,7 @@
                 $('#tbl-content').html(render);
                 pagination.wrapPaging(response.RowCount, function () {
                     loadRoles();
-                }, isPageChanged);
+                }, isPageSizeChanged);
             },
             error: function (status) {
                 console.log(status);
@@ -329,11 +329,11 @@
                 tedu.notify("Update role " + response.Name + " successful", 'success');
                 $('#modal-add-edit').modal('hide');
                 resetFormMaintainance();
-                loadRoles(true);
+                loadRoles();
             },
             error: function (status) {
-                console.log("Has an error in loading roles: ", status);
-                tedu.notify('Has an error in loading roles', 'error');
+                console.log("Has an error in saving role: ", status);
+                tedu.notify('Has an error in saving role', 'error');
             },
             complete: function () {
                 tedu.stopLoading();

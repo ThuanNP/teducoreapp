@@ -10,6 +10,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<ProductViewModel> GetAll();
 
+        List<ProductViewModel> GetAll(int? categoryId, string keyword);
+
         PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize);
 
         ProductViewModel GetById(int id);
@@ -19,6 +21,8 @@ namespace TeduCoreApp.Application.Interfaces
         void Update(ProductViewModel productViewModel);
 
         void Delete(int id);
+
+        void ImportExcel(string filePath, int categoryId);
 
         void Save();
     }

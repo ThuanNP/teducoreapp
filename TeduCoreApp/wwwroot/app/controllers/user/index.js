@@ -77,7 +77,7 @@
         });
     }
 
-    function loadUsers(isPageChanged) {
+    function loadUsers(isPageSizeChanged) {
         var template = $('#table-template').html();
         $.ajax({
             type: 'GET',
@@ -110,7 +110,7 @@
                 //}
                 pagination.wrapPaging(response.RowCount, function () {
                     loadUsers();
-                }, isPageChanged);
+                }, isPageSizeChanged);
             },
             error: function (status) {
                 console.log(status);

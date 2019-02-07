@@ -63,32 +63,7 @@
                     <tbody id="tbl-content"></tbody>
                 </table>
             </div>
-            <!--Pagination-->
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="dataTables_info" id="datatable-checkbox-info" role="status" aria-live="polite">
-                        <select id="ddl-show-page">
-                            <option value="10" selected="selected">10</option>
-                            <option value="20">20</option>
-                            <option value="30">30</option>
-                            <option value="40">40</option>
-                            <option value="50">50</option>
-                        </select>
-                        <span class="item-per-page" style="white-space:nowrap;">
-                            bản ghi/trang.
-                        </span>
-                        <span style="white-space:nowrap;">
-                            Tổng số bản ghi: <strong id="lbl-total-records"></strong>
-                        </span>
-                    </div>
-                </div>
-                <div class="col-sm-7">
-                    <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox-paginate">
-                        <ul id="pagination-url"></ul>
-                    </div>
-                </div>
-            </div>
-            <!-- /Pagination-->
+            <partial name="../Shared/_Pagination.cshtml" />
         </div>
     </div>
 </main>

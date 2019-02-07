@@ -18,22 +18,32 @@
 <!-- page title -->
 <header class="page-title">
     <div class="title_left">
-        @*<h3>Product <small>Management </small></h3>*@
-        <h3>Products <small>List of all products</small></h3>
+        <h3>Products</h3>
     </div>
     <div class="title_right">
         <section role="search">
-            <div class="input-group col-lg-8 col-md-6 col-sm-12 pull-right">
-                <input type="text" id="txt-keyword" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                    <button class="btn btn-primary" id="btn-search" type="button">Go!</button>
-                    <button class="btn btn-success" id="btn-create" type="button">Create</button>
-                </span>
-            </div>
-            <div class="input-group col-lg-4 col-md-6 col-sm-12 pull-right">
+            <div class="input-group col-lg-3 col-md-4 col-sm-12 pull-left" role="search" aria-label="category">
                 <select id="ddl-category-search" class="form-control">
                     <option>-- Select category --</option>
                 </select>
+            </div>
+            <div class="input-group col-lg-5 col-md-4 col-sm-12 pull-left" role="search" aria-label="name and code">
+                <input type="text" id="txt-keyword" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" id="btn-search" type="button">Go!</button>
+                </span>
+            </div>
+            <div class="btn-group col-lg-4 col-md-4 col-sm-12 pull-left" role="group" aria-label="index button">
+                <a class="btn btn-default" id="btn-template" href="~/templates/ProductImportTemplate.xlsx">
+                    <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                </a>
+                <button class="btn btn-warning" id="btn-import" type="button">
+                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-info" id="btn-export" type="button">
+                    <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-success" id="btn-create" type="button">Create</button>
             </div>
         </section>
     </div>
@@ -44,10 +54,6 @@
 <main class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
-            @*<div class="x_title">
-            <h2>Products<small>List of all products</small></h2>
-            <div class="clearfix"></div>
-        </div>*@
             <div class="x_content table-responsive">
                 <table class="table table-bordered">
                     <thead>
@@ -64,32 +70,7 @@
                     <tbody id="tbl-content"></tbody>
                 </table>
             </div>
-            <!--Pagination-->
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="dataTables_info" id="datatable-checkbox-info" role="status" aria-live="polite">
-                        <select id="ddl-show-page">
-                            <option value="10" selected="selected">10</option>
-                            <option value="20">20</option>
-                            <option value="30">30</option>
-                            <option value="40">40</option>
-                            <option value="50">50</option>
-                        </select>
-                        <span class="item-per-page" style="white-space:nowrap;">
-                            bản ghi/trang.
-                        </span>
-                        <span style="white-space:nowrap;">
-                            Tổng số bản ghi: <strong id="lbl-total-records"></strong>
-                        </span>                        
-                    </div>
-                </div>
-                <div class="col-sm-7">
-                    <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox-paginate">
-                        <ul id="pagination-url"></ul>
-                    </div>
-                </div>
-            </div>
-            <!-- /Pagination-->
+            <partial name="../Shared/_Pagination.cshtml" />
         </div>
     </div>
 </main>
@@ -99,17 +80,24 @@
     <tr>
         <td>{{Name}}</td>
         <td>{{CategoryName}}</td>
-        <td>{{Price}}</td>
+        <td class="text-right">{{Price}}</td>
         <td class="text-center">{{{Image}}}</td>
         <td>{{CreatedDate}}</td>
         <td class="text-center">{{{Status}}}</td>
         <th scope="row" class="text-center">
             <div class="btn-group btn-group-sm">
-                <button type="button" class="btn btn-default btn-edit" data-id="{{Id}}" data-date-created="{{CreatedDate}}"><i class="fa fa-pencil-square-o"></i></button>
-                <button type="button" class="btn btn-danger btn-delete" data-id="{{Id}}" data-name="{{Name}}"><i class="fa fa-trash-o"></i></button>
+                <button type="button" class="btn btn-default btn-edit"
+                        data-id="{{Id}}" data-date-created="{{CreatedDate}}">
+                    <i class="fa fa-pencil-square-o"></i>
+                </button>
+                <button type="button" class="btn btn-danger btn-delete"
+                        data-id="{{Id}}" data-name="{{Name}}">
+                    <i class="fa fa-trash-o"></i>
+                </button>
             </div>
         </th>
     </tr>
 </script>
 <partial name="_AddEditModal.cshtml" />
+<partial name="_ImportExcelModal.cshtml" />
 

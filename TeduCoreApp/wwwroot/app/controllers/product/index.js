@@ -23,7 +23,6 @@
         });
 
         //Todo: binding events to controls
-
         $('#ddl-show-page').on('change', function () {
             tedu.configs.pageSize = $(this).val();
             tedu.configs.pageIndex = 1;
@@ -66,11 +65,18 @@
             }
         });
 
-        $('#btn-select-image').on('click', function () {
+        $('#btn-select-image').on('click', function (e) {
+            e.preventDefault();            
             $('#txt-input-image-file').click();
         });
 
-        $("#txt-input-image-file").on('change', function () {
+        $('#btn-import').on('click', function () {
+            initTreeDropDownCategory();
+            $('#modal-import-excel').modal("show");
+        });
+
+        $("#txt-input-image-file").on('change', function (e) {
+            e.preventDefault();
             var fileUpload = $(this).get(0);
             var files = fileUpload.files;
             var data = new FormData();
@@ -93,6 +99,60 @@
                 }
             });
         });
+
+        $('#ddl-category-search').on('change', function (e) {
+            e.preventDefault();
+            loadProducts(true);
+        });
+
+        $('#btn-import').on('click', function (e) {
+            e.preventDefault();
+            initTreeDropDownCategory();
+            $('#modal-import-excel').modal("show");
+        });
+
+        $('#btn-import-excel').on('click', function (e) {
+            e.preventDefault();
+            var fileUpload = $('#file-input-excel').get(0);
+            var files = fileUpload.files;
+
+            // Create FormData object
+            var fileData = new FormData();
+            // Looping overakk files and add it ti FormData object
+            for (var i = 0; i < files.length; i++) {
+                fileData.append("files", files[i]);
+            }
+            // Adding one more key to FormData object
+            fileData.append("categoryId", $('#ddl-category-id-import-excel').combotree('getValue'));
+            importExcel(fileData);
+        });
+
+        $("#btn-export").on('click', function (e) {
+            e.preventDefault();           
+            $.ajax({
+                type: "POST",
+                data: {
+                    categoryId: $('#ddl-category-search').val(),
+                    keyword: $('#txt-keyword').val()
+                },
+                url: "/Admin/Product/ExportExcel",    
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    window.location.href = response;
+                },
+                error: function (status) {
+                    console.log("Has an error in exporting products file progress", status);
+                    tedu.notify("Has an error in exporting products file progress", "error");
+                },
+                complete: function () {
+                    tedu.stopLoading();
+                }
+            });
+        });
+
+
     }
 
     function registerControls() {
@@ -113,6 +173,10 @@
                 }, this));
         };
 
+        //Set tooltip for button
+        tedu.tooltip("btn-template", "Download template");
+        tedu.tooltip("btn-import", "Import products by file. You can download template by clicking button on the the left");
+        tedu.tooltip("btn-export", "Export all products");
     }
 
     function initTreeDropDownCategory(selectedId) {
@@ -132,8 +196,17 @@
                     });
                 });
                 var arr = tedu.unflattern(data);
+              
                 $('#ddl-category-id-modal').combotree({
-                    data: arr
+                    data: arr,
+                    required: true,
+                    editable: false
+                });
+               
+                $('#ddl-category-id-import-excel').combotree({
+                    data: arr,
+                    required: true,
+                    editable: false
                 });
                 if (selectedId !== undefined || selectedId !== null) {
                     $('#ddl-category-id-modal').combotree('setValue', selectedId);
@@ -141,8 +214,7 @@
             },
             error: function (status) {
                 console.log("Has an error in loading product categories: ", status);
-                tedu.notify('Has an error in loading product categories', 'error');
-                tedu.stopLoading();
+                tedu.notify('Has an error in loading product categories', 'error');               
             }
         });
     }
@@ -413,5 +485,30 @@
                 }
             });
         });        
+    }
+
+    function importExcel(fileData) {
+        $.ajax({
+            url: '/Admin/Product/ImportExcel',
+            type: 'POST',
+            data: fileData,
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (data) {
+                $('#modal-import-excel').modal("hide");
+                loadProducts();
+                tedu.notify("you've imported products file: " + data, "success");
+            },
+            error: function (status) {
+                console.log("Has an error in importing products file progress", status);
+                tedu.notify("Has an error in importing products file progress", "error");
+            },
+            complete: function () {
+                tedu.stopLoading();
+            }
+        });
     }
 };

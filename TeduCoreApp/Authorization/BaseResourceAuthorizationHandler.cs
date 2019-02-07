@@ -17,9 +17,11 @@ namespace TeduCoreApp.Authorization
             _roleService = roleService;
         }
 
-        protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, OperationAuthorizationRequirement requirement, string resource)
+        protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, 
+            OperationAuthorizationRequirement requirement, string resource)
         {
-            var roles = (context.User.Identity as ClaimsIdentity)?.Claims.FirstOrDefault(c => c.Type == CommonConstants.UserClaims.Roles);
+            var roles = (context.User.Identity as ClaimsIdentity)?
+                            .Claims.FirstOrDefault(c => c.Type == CommonConstants.UserClaims.Roles);
             if (roles != null)
             {
                 var arrRole = roles.Value.Split(";");

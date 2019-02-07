@@ -1,9 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using OfficeOpenXml;
+using OfficeOpenXml.Table;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Reflection;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Product;
+using TeduCoreApp.Data.Enums;
+using TeduCoreApp.Utilities.Dtos;
+using TeduCoreApp.Utilities.Helpers;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
@@ -11,11 +22,13 @@ namespace TeduCoreApp.Areas.Admin.Controllers
     {
         private readonly IProductService _productService;
         private readonly IProductCategoryService _productCategoryService;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public ProductController(IProductService productService, IProductCategoryService productCategoryService)
+        public ProductController(IProductService productService, IProductCategoryService productCategoryService, IHostingEnvironment hostingEnvironment)
         {
             _productService = productService;
             _productCategoryService = productCategoryService;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         public IActionResult Index()
@@ -28,28 +41,28 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAllCategories()
         {
-            var model = _productCategoryService.GetAll();
+            List<ProductCategoryViewModel> model = _productCategoryService.GetAll();
             return new OkObjectResult(model);
         }
 
         [HttpGet]
         public IActionResult GetById(int id)
         {
-            var model = _productService.GetById(id);
+            ProductViewModel model = _productService.GetById(id);
             return new OkObjectResult(model);
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            var model = _productService.GetAll();
+            List<ProductViewModel> model = _productService.GetAll();
             return new OkObjectResult(model);
         }
 
         [HttpGet]
         public IActionResult GetAllPaging(int? categoryId, string keyword, int page, int pageSize)
         {
-            var model = _productService.GetAllPaging(categoryId, keyword, page, pageSize);
+            PagedResult<ProductViewModel> model = _productService.GetAllPaging(categoryId, keyword, page, pageSize);
             return new OkObjectResult(model);
         }
 
@@ -91,6 +104,87 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult ImportExcel(IList<IFormFile> files, int categoryid)
+        {
+            if (files != null && files.Count > 0)
+            {
+                IFormFile file = files[0];
+                string filename = ContentDispositionHeaderValue
+                                .Parse(file.ContentDisposition)
+                                .FileName.Trim('"');
+                string directory = $@"{_hostingEnvironment.WebRootPath}\uploaded\excels";
+                //Create directory if it isn't existing
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+                string filePath = Path.Combine(directory, filename);
+                using (FileStream fs = System.IO.File.Create(filePath))
+                {
+                    file.CopyTo(fs);
+                    fs.Flush();
+                }
+                _productService.ImportExcel(filePath, categoryid);
+                _productService.Save();
+                return new OkObjectResult(filePath);
+            }
+            return new NoContentResult();
+        }
+
+        public IActionResult ExportExcel(int? categoryId, string keyword)
+        {
+            string webRootFolder = _hostingEnvironment.WebRootPath;
+            const string folder = "export-files";
+            string directory = Path.Combine(webRootFolder, folder);
+            //Create directory if it isn't existing
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+            string fileName = $"Products";
+            if (categoryId.HasValue)
+            {
+                var productCategory =  _productCategoryService.GetById(categoryId.Value);
+                fileName += $"_{TextHelper.ToUnsignString(productCategory.Name)}";
+            }
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                fileName += $"_{TextHelper.ToUnsignString(keyword)}";
+            }
+            fileName += $"_{ DateTime.Now:yyyyMMddhhmmss}.xlsx";
+            string fileUrl = $"{Request.Scheme}://{Request.Host}/{folder}/{fileName}";
+            FileInfo file = new FileInfo(Path.Combine(directory, fileName));
+            if (file.Exists)
+            {
+                file.Delete();
+                file = new FileInfo(Path.Combine(webRootFolder, fileName));
+            }
+            List<ProductViewModel> products = _productService.GetAll(categoryId, keyword);
+            using (ExcelPackage package = new ExcelPackage(file))
+            {
+                // add a new worksheet to the empty workbook
+                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Products");
+                worksheet.Cells["A1"].LoadFromCollection(products, true, TableStyles.Light1);
+                //Format columns
+                const string integerFormat = "#,##0";
+                worksheet.Column(1).Style.Numberformat.Format = integerFormat;
+
+                //number with 2 decimal places and thousand separator and money symbol
+                const string currencyFormat = "#,##0 ₫";
+                worksheet.Column(5).Style.Numberformat.Format = currencyFormat;
+                worksheet.Column(6).Style.Numberformat.Format = currencyFormat;
+                worksheet.Column(7).Style.Numberformat.Format = currencyFormat;
+
+                const string dateTimeFormat = "dd-MM-yyyy HH:mm:ss";
+                worksheet.Column(20).Style.Numberformat.Format = dateTimeFormat;
+                worksheet.Column(21).Style.Numberformat.Format = dateTimeFormat;
+                worksheet.DeleteColumn(22);
+                worksheet.Cells.AutoFitColumns();
+                package.Save(); //Save the workbook.
+            }
+            return new OkObjectResult(fileUrl);
+        }
         #endregion AJAX API
     }
 }

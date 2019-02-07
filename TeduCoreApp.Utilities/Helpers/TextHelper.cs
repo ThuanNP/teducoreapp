@@ -27,9 +27,9 @@ namespace TeduCoreApp.Utilities.Helpers
             }
             while (str2.Contains("--"))
             {
-                str2 = str2.Replace("--", "-").ToLower();
+                str2 = str2.Replace("--", "-");
             }
-            return str2;
+            return str2.ToLower();
         }
     }
 }

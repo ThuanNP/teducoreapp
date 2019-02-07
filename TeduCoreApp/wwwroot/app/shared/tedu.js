@@ -57,6 +57,21 @@
             }
         });
     },
+    tooltip: function (id, content, position) {
+        if (position === undefined) {
+            position = "bottom";
+        }
+        $('#' + id).tooltip({
+            position: position,
+            content: '<span style="color:#fff">' + content + '</span>',
+            onShow: function () {
+                $(this).tooltip('tip').css({
+                    backgroundColor: '#666',
+                    borderColor: '#666'
+                });
+            }            
+        });     
+    },    
     dateFormatJson: function (datetime) {
         if (datetime === null || datetime === '')
             return '';
@@ -134,7 +149,7 @@
             }
         }
         return roots;
-    }   
+    }
 };
 
 $(document).ajaxSend(function (_e, xhr, options) {
