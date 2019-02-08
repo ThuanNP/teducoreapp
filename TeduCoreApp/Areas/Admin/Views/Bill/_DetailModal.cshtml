@@ -1,0 +1,101 @@
+﻿<div id="modal-details" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg" role="document">
+        <div class="modal-content">
+            <header class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Order details</h4>
+            </header>
+            <main class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" id="frm-order-details-modal">
+                        <div class="form-group">
+                            <input type="hidden" id="hidd-order-id" value="0" />
+                            <label for="txt-customer-name" class="col-sm-2 control-label ">Customer's name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txt-customer-name" class="form-control" id="txt-customer-name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-customer-address" class="col-sm-2 control-label ">Customer's address</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txt-customer-address" class="form-control" id="txt-customer-address" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-customer-mobile" class="col-sm-2 control-label ">Customer's phone</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txt-customer-mobile" class="form-control" id="txt-customer-mobile" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-customer-message" class="col-sm-2 control-label ">Customer's message</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txt-customer-message" class="form-control" id="txt-customer-message" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ddl-payment-method" class="col-sm-2 control-label ">Payment method</label>
+                            <div class="col-sm-10">
+                                <select id="ddl-payment-method" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ddl-bill-status" class="col-sm-2 control-label ">Bill status</label>
+                            <div class="col-sm-10">
+                                <select id="ddl-bill-status" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label ">Details</label>
+                            <div class="col-sm-10 ">
+                                <table id="tbl-order-details" class="table table-striped table-bordered nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Color</th>
+                                            <th>Size</th>
+                                            <th>Quantity</th>
+                                            <td>Remove</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbl-order-details-body"></tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="5" class="text-right">
+                                                <button type="button" class="btn btn-xs btn-success" id="btn-add-detail">Add</button>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <script type="x-tmpl-mustache" id="template-table-order-details">
+                                    <tr data-id="{{Id}}">
+                                        <td>{{{Products}}}</td>
+                                        <td>{{{Colors}}}</td>
+                                        <td>{{{Sizes}}}</td>
+                                        <td style="width:15%;"><input type="number" class="txt-quantity form-control" value="{{Quantity}}"/></td>
+                                        <td style="width:5%; vertical-align:middle" class="text-center"><button class="btn btn-xs btn-danger btn-delete-detail text-center" type="button"><i class="fa fa-trash"></i></button></td>
+                                    </tr>
+                                </script>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </main>
+            <footer class="modal-footer">
+                <div class="btn-group col-sm-3 pull-right" role="group" aria-label="modal button">
+                    <button type="button" id="btn-export" class="btn group btn-basic">Export</button>
+                    <button type="button" data-dismiss="modal" class="btn group btn-danger">Close</button>
+                </div>
+                <div class="btn-group col-sm-8 pull-right" role="group" aria-label="Update order detail button">
+                    <button type="button" id="btn-confirm" class="btn group btn-primary">Confirm payment</button>
+                    <button type="button" id="btn-pending" class="btn group btn-warning">Pending</button>
+                    <button type="button" id="btn-save" class="btn group btn-success">Save</button>
+                    <button type="button" id="btn-cancel" class="btn group btn-info">Cancel</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>

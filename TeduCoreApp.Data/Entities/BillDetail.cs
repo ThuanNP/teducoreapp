@@ -10,7 +10,7 @@ namespace TeduCoreApp.Data.Entities
         {
         }
 
-        public BillDetail(int id, int billId, int productId, decimal quantity, decimal price, int colorId, int sizeId, Bill bill, Product product)
+        public BillDetail(int id, int billId, int productId, decimal quantity, decimal price, int colorId, int sizeId)
         {
             Id = id;
             BillId = billId;
@@ -19,11 +19,11 @@ namespace TeduCoreApp.Data.Entities
             Price = price;
             ColorId = colorId;
             SizeId = sizeId;
-            Bill = bill;
-            Product = product;
+            Bill = new Bill();
+            Product = new Product();
         }
 
-        public BillDetail(int billId, int productId, decimal quantity, decimal price, int colorId, int sizeId, Bill bill, Product product)
+        public BillDetail(int billId, int productId, decimal quantity, decimal price, int colorId, int sizeId)
         {
             BillId = billId;
             ProductId = productId;
@@ -31,8 +31,8 @@ namespace TeduCoreApp.Data.Entities
             Price = price;
             ColorId = colorId;
             SizeId = sizeId;
-            Bill = bill;
-            Product = product;
+            Bill = new Bill();
+            Product = new Product();
         }
 
         public int BillId { get; set; }

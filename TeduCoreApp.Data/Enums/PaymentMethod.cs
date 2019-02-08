@@ -7,22 +7,22 @@ namespace TeduCoreApp.Data.Enums
         [Description("Cash on delivery")]
         CashOnDelivery,
 
-        [Description("Onlin Banking")]
+        [Description("Online banking")]
         OnlinBanking,
 
-        [Description("Payment Gateway")]
+        [Description("Payment gateway")]
         PaymentGateway,
 
         [Description("Visa")]
         Visa,
 
-        [Description("Master Card")]
+        [Description("Master card")]
         MasterCard,
 
         [Description("PayPal")]
         PayPal,
 
-        [Description("Atm")]
+        [Description("ATM")]
         Atm
     }
 }

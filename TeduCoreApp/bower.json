@@ -24,7 +24,8 @@
     "twbs-pagination": "~1.4.2",
     "jQuery-EasyUI": "~1.5.3",
     "ckeditor": "~4.11.1",
-    "jquery-treegrid": "~0.3.0"
+    "jquery-treegrid": "~0.3.0",
+    "bootstrap-datepicker": "~1.8.0"
   },
   "name": "asp.net",
   "private": true

@@ -8,17 +8,19 @@
             $('#pagination-url').unbind("page");
         }
         // Bind pagination Event
-        $('#pagination-url').twbsPagination({
-            totalPages: totalSize,
-            visiblePages: 7,
-            first: 'Đầu',
-            prev: 'Trước',
-            next: 'Tiếp',
-            last: 'Cuối',
-            onPageClick: function (_event, p) {
-                tedu.configs.pageIndex = p;
-                setTimeout(callBack(), 200);
-            }
-        });
+        if (totalSize > 0) {
+            $('#pagination-url').twbsPagination({
+                totalPages: totalSize,
+                visiblePages: 7,
+                first: 'Đầu',
+                prev: 'Trước',
+                next: 'Tiếp',
+                last: 'Cuối',
+                onPageClick: function (_event, p) {
+                    tedu.configs.pageIndex = p;
+                    setTimeout(callBack(), 200);
+                }
+            });
+        }        
     }
 };
