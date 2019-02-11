@@ -26,11 +26,15 @@ namespace TeduCoreApp.Application.Interfaces
 
         void Save();
 
-        // Quantities management
+        // Quantities management   
+        List<ProductQuantityViewModel> GetQuantities(int productId);
 
         void AddQuantities(int productId, List<ProductQuantityViewModel> quantityViewModels);
 
-        List<ProductQuantityViewModel> GetQuantities(int productId);
+        // Images management
+     
+        List<ProductImageViewModel> GetImages(int productId);
 
+        void AddImages(int productId, string[] images);
     }
 }

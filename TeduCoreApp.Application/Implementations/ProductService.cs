@@ -21,15 +21,17 @@ namespace TeduCoreApp.Application.Implementations
         private readonly IProductRepository _productRepository;
         private readonly ITagRepository _tagRepository;
         private readonly IProductTagRepository _productTagRepository;
-        private IProductQuantityRepository _productQuantityRepository;
+        private readonly IProductQuantityRepository _productQuantityRepository;
+        private readonly IProductImageRepository _productImageRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ProductService(IProductRepository productRepository, ITagRepository tagRepository, IProductTagRepository productTagRepository, IProductQuantityRepository productQuantityRepository, IUnitOfWork unitOfWork)
+        public ProductService(IProductRepository productRepository, ITagRepository tagRepository, IProductTagRepository productTagRepository, IProductQuantityRepository productQuantityRepository, IProductImageRepository productImageRepository, IUnitOfWork unitOfWork)
         {
             _productRepository = productRepository;
             _tagRepository = tagRepository;
             _productTagRepository = productTagRepository;
             _productQuantityRepository = productQuantityRepository;
+            _productImageRepository = productImageRepository;
             _unitOfWork = unitOfWork;
         }
 
@@ -66,8 +68,8 @@ namespace TeduCoreApp.Application.Implementations
 
         public void AddQuantities(int productId, List<ProductQuantityViewModel> quantityViewModels)
         {
-            var product = _productRepository.FindById(productId, p=>p.ProductQuantities);
-            _productQuantityRepository.RemoveMultiple(product.ProductQuantities.ToList());           
+            var product = _productRepository.FindById(productId, p => p.ProductQuantities);
+            _productQuantityRepository.RemoveMultiple(product.ProductQuantities.ToList());
             var quantityList = Mapper.Map<List<ProductQuantityViewModel>, List<ProductQuantity>>(quantityViewModels);
             List<ProductQuantity> newQuantityList = new List<ProductQuantity>();
             foreach (var item in quantityList)
@@ -225,6 +227,25 @@ namespace TeduCoreApp.Application.Implementations
             }
             product.SeoAlias = TextHelper.ToUnsignString(productViewModel.Name);
             _productRepository.Update(product);
+        }
+
+        public List<ProductImageViewModel> GetImages(int productId)
+        {
+            return _productImageRepository.FindAll(x => x.ProductId == productId).ProjectTo<ProductImageViewModel>().ToList();
+        }
+
+        public void AddImages(int productId, string[] images)
+        {
+            _productImageRepository.RemoveMultiple(_productImageRepository.FindAll(i => i.ProductId == productId).ToList());
+            foreach (var image in images)
+            {
+                _productImageRepository.Add(new ProductImage()
+                {
+                    Path = image,
+                    ProductId = productId,
+                    Caption = string.Empty
+                });
+            }
         }
     }
 }

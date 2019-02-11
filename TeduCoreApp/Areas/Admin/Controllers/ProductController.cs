@@ -186,6 +186,13 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             return new OkObjectResult(fileUrl);
         }
 
+        [HttpGet]
+        public IActionResult GetQuantities(int productId)
+        {
+            var quantities = _productService.GetQuantities(productId);
+            return new OkObjectResult(quantities);
+        }
+
         [HttpPost]
         public IActionResult SaveQuantities(int productId, List<ProductQuantityViewModel> quantityViewModels)
         {
@@ -195,10 +202,18 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetQuantities(int productId)
+        public IActionResult GetImages(int productId)
         {
-            var quantities = _productService.GetQuantities(productId);
-            return new OkObjectResult(quantities);
+            var images = _productService.GetImages(productId);
+            return new OkObjectResult(images);
+        }
+
+        [HttpPost]
+        public IActionResult SaveImages(int productId, string[] images)
+        {
+            _productService.AddImages(productId, images);
+            _productService.Save();
+            return new OkObjectResult(images);
         }
         #endregion AJAX API
     }
