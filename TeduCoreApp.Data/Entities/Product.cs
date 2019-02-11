@@ -99,12 +99,7 @@ namespace TeduCoreApp.Data.Entities
         public string Tags { get; set; }
 
         [MaxLength(256)]
-        public string Unit { get; set; }
-
-        [ForeignKey("CategoryId")]
-        public virtual ProductCategory ProductCategory { get; set; }
-
-        public virtual ICollection<ProductTag> ProductTags { set; get; }
+        public string Unit { get; set; }       
 
         public Status Status { get; set; }
 
@@ -122,5 +117,14 @@ namespace TeduCoreApp.Data.Entities
 
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
+
+        [ForeignKey("CategoryId")]
+        public virtual ProductCategory ProductCategory { get; set; }
+
+        public virtual ICollection<ProductTag> ProductTags { set; get; }
+
+        public virtual ICollection<ProductQuantity> ProductQuantities { set; get; }
+        public virtual ICollection<ProductImage> ProductImages { set; get; }
+
     }
 }

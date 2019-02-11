@@ -1,9 +1,12 @@
 ﻿var productController = function () {
+    var quantityManagement = new QuantityManagement();
+
     this.initialize = function () {
         loadCategories();
         loadProducts();
         registerEvents();
         registerControls();
+        quantityManagement.initialize();
     };
 
     function registerEvents() {
@@ -60,7 +63,7 @@
         $('#btn-save').on('click', function (e) {
             e.preventDefault();
             if ($('#form-maintainance-modal').valid()) {
-                var id = $('#hidden-id-modal').val();
+                var id = $('#hidd-product-id').val();
                 saveProduct(id);
             }
         });
@@ -129,27 +132,7 @@
 
         $("#btn-export").on('click', function (e) {
             e.preventDefault();           
-            $.ajax({
-                type: "POST",
-                data: {
-                    categoryId: $('#ddl-category-search').val(),
-                    keyword: $('#txt-keyword').val()
-                },
-                url: "/Admin/Product/ExportExcel",    
-                beforeSend: function () {
-                    tedu.startLoading();
-                },
-                success: function (response) {
-                    window.location.href = response;
-                },
-                error: function (status) {
-                    console.log("Has an error in exporting products file progress", status);
-                    tedu.notify("Has an error in exporting products file progress", "error");
-                },
-                complete: function () {
-                    tedu.stopLoading();
-                }
-            });
+            exportExcel();
         });
 
 
@@ -268,7 +251,7 @@
     }
 
     function resetFormMaintainance() {
-        $('#hidden-id-modal').val(0);
+        $('#hidd-product-id').val(0);
         $('#txt-name-modal').val('');
         initTreeDropDownCategory('');
 
@@ -355,7 +338,7 @@
             },
             success: function (response) {
                 var data = response;
-                $('#hidden-id-modal').val(data.Id);
+                $('#hidd-product-id').val(data.Id);
                 $('#txt-name-modal').val(data.Name);
                 initTreeDropDownCategory(data.CategoryId);
 
@@ -505,6 +488,30 @@
             error: function (status) {
                 console.log("Has an error in importing products file progress", status);
                 tedu.notify("Has an error in importing products file progress", "error");
+            },
+            complete: function () {
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function exportExcel() {
+        $.ajax({
+            type: "POST",
+            data: {
+                categoryId: $('#ddl-category-search').val(),
+                keyword: $('#txt-keyword').val()
+            },
+            url: "/Admin/Product/ExportExcel",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+            },
+            error: function (status) {
+                console.log("Has an error in exporting products file progress", status);
+                tedu.notify("Has an error in exporting products file progress", "error");
             },
             complete: function () {
                 tedu.stopLoading();

@@ -14,7 +14,7 @@ using TeduCoreApp.Utilities.Dtos;
 
 namespace TeduCoreApp.Application.Implementations
 {
-    public class BillService : IBillService
+    public class BillService : BaseService, IBillService
     {
         private readonly IBillRepository _orderRepository;
         private readonly IBillDetailRepository _orderDetailRepository;
@@ -166,7 +166,5 @@ namespace TeduCoreApp.Application.Implementations
         }
 
         public void Save() => _unitOfWork.Commit();
-
-        public void Dispose() => GC.SuppressFinalize(this);
     }
 }

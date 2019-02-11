@@ -14,7 +14,7 @@ using TeduCoreApp.infrastructure.Interfaces;
 
 namespace TeduCoreApp.Application.Implementations
 {
-    public class FunctionService : IFunctionService
+    public class FunctionService : BaseService, IFunctionService
     {
         private readonly IFunctionRepository _functionRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -94,7 +94,5 @@ namespace TeduCoreApp.Application.Implementations
         }
 
         public void Save() => _unitOfWork.Commit();
-
-        public void Dispose() => GC.SuppressFinalize(this);
     }
 }

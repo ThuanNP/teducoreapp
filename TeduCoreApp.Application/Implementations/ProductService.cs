@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using OfficeOpenXml;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,18 +16,20 @@ using TeduCoreApp.Utilities.Helpers;
 
 namespace TeduCoreApp.Application.Implementations
 {
-    public class ProductService : IProductService
+    public class ProductService : BaseService, IProductService
     {
         private readonly IProductRepository _productRepository;
         private readonly ITagRepository _tagRepository;
         private readonly IProductTagRepository _productTagRepository;
+        private IProductQuantityRepository _productQuantityRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ProductService(IProductRepository productRepository, ITagRepository tagRepository, IProductTagRepository productTagRepository, IUnitOfWork unitOfWork)
+        public ProductService(IProductRepository productRepository, ITagRepository tagRepository, IProductTagRepository productTagRepository, IProductQuantityRepository productQuantityRepository, IUnitOfWork unitOfWork)
         {
             _productRepository = productRepository;
             _tagRepository = tagRepository;
             _productTagRepository = productTagRepository;
+            _productQuantityRepository = productQuantityRepository;
             _unitOfWork = unitOfWork;
         }
 
@@ -63,9 +64,29 @@ namespace TeduCoreApp.Application.Implementations
             return productViewModel;
         }
 
-        public void Delete(int id) => _productRepository.Remove(id);
+        public void AddQuantities(int productId, List<ProductQuantityViewModel> quantityViewModels)
+        {
+            var product = _productRepository.FindById(productId, p=>p.ProductQuantities);
+            _productQuantityRepository.RemoveMultiple(product.ProductQuantities.ToList());           
+            var quantityList = Mapper.Map<List<ProductQuantityViewModel>, List<ProductQuantity>>(quantityViewModels);
+            List<ProductQuantity> newQuantityList = new List<ProductQuantity>();
+            foreach (var item in quantityList)
+            {
+                var other = newQuantityList.FirstOrDefault(q => q.ProductId == item.ProductId && q.ColorId == item.ColorId && q.SizeId == item.SizeId);
+                if (other != null)
+                {
+                    other.Quantity += item.Quantity;
+                }
+                else
+                {
+                    newQuantityList.Add(item);
+                }
+            }
+            product.ProductQuantities = newQuantityList;
+            _productRepository.Update(product);
+        }
 
-        public void Dispose() => GC.SuppressFinalize(this);
+        public void Delete(int id) => _productRepository.Remove(id);
 
         public List<ProductViewModel> GetAll()
         {
@@ -83,7 +104,7 @@ namespace TeduCoreApp.Application.Implementations
             if (!string.IsNullOrWhiteSpace(keyword))
             {
                 query = query.Where(p => p.Name.Contains(keyword) || p.Description.Contains(keyword))
-                             .OrderByDescending(p => p.DateCreated);                
+                             .OrderByDescending(p => p.DateCreated);
             }
             var data = query.ProjectTo<ProductViewModel>().ToList();
             return data;
@@ -122,6 +143,11 @@ namespace TeduCoreApp.Application.Implementations
         public ProductViewModel GetById(int id)
         {
             return Mapper.Map<Product, ProductViewModel>(_productRepository.FindById(id));
+        }
+
+        public List<ProductQuantityViewModel> GetQuantities(int productId)
+        {
+            return _productQuantityRepository.FindAll(x => x.ProductId == productId).ProjectTo<ProductQuantityViewModel>().ToList();
         }
 
         public void ImportExcel(string filePath, int categoryId)

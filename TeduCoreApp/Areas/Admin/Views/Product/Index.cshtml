@@ -8,6 +8,7 @@
 }
 @section Scripts{
     <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+    <script src="~/app/controllers/product/quantity-management.js"></script>
     <script src="~/app/controllers/product/index.js"></script>
     <script>
         var product = new productController();
@@ -16,6 +17,7 @@
 }
 
 <!-- page title -->
+<input type="hidden" id="hidd-product-id" value="0" />
 <header class="page-title">
     <div class="title_left">
         <h3>Products</h3>
@@ -84,19 +86,22 @@
         <td class="text-center">{{{Image}}}</td>
         <td>{{CreatedDate}}</td>
         <td class="text-center">{{{Status}}}</td>
-        <th scope="row" class="text-center">
+        <th scope="row" class="">
             <div class="btn-group btn-group-sm">
-                <button type="button" class="btn btn-default btn-edit"
-                        data-id="{{Id}}" data-date-created="{{CreatedDate}}">
-                    <i class="fa fa-pencil-square-o"></i>
-                </button>
-                <button type="button" class="btn btn-danger btn-delete"
-                        data-id="{{Id}}" data-name="{{Name}}">
-                    <i class="fa fa-trash-o"></i>
-                </button>
+                <button type="button" data-id="{{Id}}" class="btn btn-sm btn-primary btn-edit"><i class="fa fa-pencil-square-o"></i></button>
+                <button type="button" data-id="{{Id}}" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash-o"></i></button>
+            </div>
+            <div class="btn-group btn-group-sm">
+                <a href="#" data-id="{{Id}}" class="btn btn-sm btn-quantity"><i class="fa fa-archive"></i></a>
+                <a href="#" data-id="{{Id}}" class="btn btn-sm btn-whole-price"><i class="fa fa-money"></i></a>
+                <a href="#" data-id="{{Id}}" class="btn btn-sm btn-images" data-name="{{Name}}"><i class="fa fa-image"></i></a>
             </div>
         </th>
     </tr>
 </script>
+
+<!-- Page Modal -->
 <partial name="_AddEditModal.cshtml" />
 <partial name="_ImportExcelModal.cshtml" />
+<partial name="_QuantityManagement.cshtml" />
+<!-- /Page Modal -->

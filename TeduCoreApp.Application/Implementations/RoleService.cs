@@ -15,7 +15,7 @@ using TeduCoreApp.Utilities.Dtos;
 
 namespace TeduCoreApp.Application.Implementations
 {
-    public class RoleService : IRoleService
+    public class RoleService : BaseService, IRoleService
     {
         private RoleManager<AppRole> _roleManager;
         private readonly IFunctionRepository _functionRepository;
@@ -121,9 +121,7 @@ namespace TeduCoreApp.Application.Implementations
         }
 
         public void Save() => _unitOfWork.Commit();
-
-        public void Dispose() => GC.SuppressFinalize(this);
-
+        
         public Task<bool> CheckPermission(string functionId, string action, string[] roles)
         {
             var functions = _functionRepository.FindAll();

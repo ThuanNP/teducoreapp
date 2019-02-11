@@ -185,6 +185,21 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             }
             return new OkObjectResult(fileUrl);
         }
+
+        [HttpPost]
+        public IActionResult SaveQuantities(int productId, List<ProductQuantityViewModel> quantityViewModels)
+        {
+            _productService.AddQuantities(productId, quantityViewModels);
+            _productService.Save();
+            return new OkObjectResult(quantityViewModels);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuantities(int productId)
+        {
+            var quantities = _productService.GetQuantities(productId);
+            return new OkObjectResult(quantities);
+        }
         #endregion AJAX API
     }
 }

@@ -15,16 +15,18 @@ namespace TeduCoreApp.Application.AutoMapper
 
             CreateMap<Permission, PermissionViewModel>();
             CreateMap<Function, FunctionViewModel>();
+
             CreateMap<ProductCategory, ProductCategoryViewModel>();
             CreateMap<Product, ProductViewModel>();
-
+            CreateMap<ProductQuantity, ProductQuantityViewModel>();
             CreateMap<Bill, BillViewModel>();
             CreateMap<BillDetail, BillDetailViewModel>();
             CreateMap<Color, ColorViewModel>();
             CreateMap<Size, SizeViewModel>();
-            
+
+            CreateMap<ProductTag, ProductTagViewModel>();
             CreateMap<Tag, TagViewModel>();
-            CreateMap<ProductTag, ProductTagViewModel>() ;
+            
            
         }
     }

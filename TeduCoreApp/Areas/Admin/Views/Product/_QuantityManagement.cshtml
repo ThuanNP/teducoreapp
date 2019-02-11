@@ -1,0 +1,52 @@
+﻿<div id="modal-quantity-management" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Product quantity management</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" id="form-quantity-management-modal">                        
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td>Color</td>
+                                    <td>Size</td>
+                                    <td>Quantity</td>
+                                    <td>#</td>
+                                </tr>
+                            </thead>
+                            <tbody id="table-quantity-content"></tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4" class="text-right">
+                                        <button class="btn btn-xs btn-success" type="button" id="btn-add-quantity">Add</button>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                    <script type="x-tmpl-mustache" id="template-table-quantity">
+                        <tr data-id="{{Id}}">
+                            <td>{{{Colors}}}</td>
+                            <td>{{{Sizes}}}</td>
+                            <td><input type="number" class="txt-quantity form-control" value="{{Quantity}}" /></td>
+                            <td>
+                                <button class="btn btn-xs btn-danger btn-delete-quantity" type="button"><i class="fa fa-close"></i></button>
+                            </td>
+                        </tr>
+                    </script>
+                </div>
+            </div>
+            <footer class="modal-footer">
+                <div class="btn-group col-sm-6pull-right" role="group" aria-label="modal button">
+                    <button type="button" id="btn-save-quantity" class="btn group btn-success">Save</button>
+                    <button type="button" data-dismiss="modal" class="btn group btn-danger">Close</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>

@@ -12,7 +12,7 @@ using TeduCoreApp.infrastructure.Interfaces;
 
 namespace TeduCoreApp.Application.Implementations
 {
-    public class ProductCategoryService : IProductCategoryService
+    public class ProductCategoryService : BaseService, IProductCategoryService
     {
         private readonly IProductCategoryRepository _productCategoryRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -44,8 +44,6 @@ namespace TeduCoreApp.Application.Implementations
             }
             _productCategoryRepository.Remove(id);
         }
-
-        public void Dispose() => GC.SuppressFinalize(this);
 
         public List<ProductCategoryViewModel> GetAll()
         {

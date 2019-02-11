@@ -6,6 +6,26 @@ namespace TeduCoreApp.Data.Entities
     [Table("ProductQuantities")]
     public class ProductQuantity : DomainEntity<int>
     {
+        public ProductQuantity()
+        {
+        }
+
+        public ProductQuantity(int id, int productId, int sizeId, int colorId, int quantity)
+        {
+            ProductId = productId;
+            SizeId = sizeId;
+            ColorId = colorId;
+            Quantity = quantity;
+        }
+
+        public ProductQuantity(int productId, int sizeId, int colorId, int quantity)
+        {
+            ProductId = productId;
+            SizeId = sizeId;
+            ColorId = colorId;
+            Quantity = quantity;
+        }
+
         [Column(Order = 1)]
         public int ProductId { get; set; }
 

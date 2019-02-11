@@ -25,5 +25,12 @@ namespace TeduCoreApp.Application.Interfaces
         void ImportExcel(string filePath, int categoryId);
 
         void Save();
+
+        // Quantities management
+
+        void AddQuantities(int productId, List<ProductQuantityViewModel> quantityViewModels);
+
+        List<ProductQuantityViewModel> GetQuantities(int productId);
+
     }
 }

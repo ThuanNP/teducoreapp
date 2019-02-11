@@ -82,9 +82,10 @@ namespace TeduCoreApp
 
             //Repositories
             services.AddTransient<IFunctionRepository, FunctionRepository>();
+            services.AddTransient<ITagRepository, TagRepository>();
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
-            services.AddTransient<ITagRepository, TagRepository>();
+            services.AddTransient<IProductQuantityRepository, ProductQuantityRepository>();
             services.AddTransient<IProductTagRepository, ProductTagRepository>();
             services.AddTransient<IPermissionRepository, PermissionRepository>();
             services.AddTransient<IColorRepository, ColorRepository>();
