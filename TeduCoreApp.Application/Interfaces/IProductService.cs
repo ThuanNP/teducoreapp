@@ -36,5 +36,12 @@ namespace TeduCoreApp.Application.Interfaces
         List<ProductImageViewModel> GetImages(int productId);
 
         void AddImages(int productId, string[] images);
+
+        // whole price management
+
+        List<WholePriceViewModel> GetWholePrices(int productId);
+
+        void AddWholePrice(int productId, List<WholePriceViewModel> wholePrices);
+
     }
 }

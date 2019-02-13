@@ -15,7 +15,7 @@
         $('body').on('click', '.btn-quantity', function (e) {
             e.preventDefault();
             var that = $(this).data('id');
-            loadQuantities(that);            
+            loadQuantities(that);      
             $('#modal-quantity-management').modal('show');
         });
 
@@ -27,7 +27,7 @@
                 Colors: getColorOptions(null),
                 Sizes: getSizeOptions(null),
                 Quantity: 1
-            });
+            });            
             $('#table-quantity-content').append(render);
         });
 
@@ -51,10 +51,6 @@
             e.preventDefault();
             $(this).closest('tr').remove();
         });
-    }
-
-    function initNumberSpinnerQuantity() {
-
     }
 
     function loadColors() {

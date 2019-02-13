@@ -6,6 +6,26 @@ namespace TeduCoreApp.Data.Entities
     [Table("WholePrices")]
     public class WholePrice : DomainEntity<int>
     {
+        public WholePrice()
+        {
+        }
+
+        public WholePrice(int productId, int fromQuantity, int toQuantity, decimal price)
+        {
+            ProductId = productId;
+            FromQuantity = fromQuantity;
+            ToQuantity = toQuantity;
+            Price = price;
+        }
+
+        public WholePrice(int id, int productId, int fromQuantity, int toQuantity, decimal price)
+        {
+            ProductId = productId;
+            FromQuantity = fromQuantity;
+            ToQuantity = toQuantity;
+            Price = price;
+        }
+
         public int ProductId { get; set; }
 
         public int FromQuantity { get; set; }

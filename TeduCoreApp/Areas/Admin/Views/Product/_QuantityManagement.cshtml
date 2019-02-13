@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <div id="horizontal-form">
-                    <form class="form-horizontal" role="form" id="form-quantity-management-modal">                        
+                    <form class="form-horizontal" role="form" id="form-quantity-management-modal">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -22,7 +22,7 @@
                             <tbody id="table-quantity-content"></tbody>
                             <tfoot>
                                 <tr>
-                                    <td colspan="4" class="text-right">
+                                    <td colspan="4" C>
                                         <button class="btn btn-xs btn-success" type="button" id="btn-add-quantity">Add</button>
                                     </td>
                                 </tr>
@@ -33,7 +33,7 @@
                         <tr data-id="{{Id}}">
                             <td>{{{Colors}}}</td>
                             <td>{{{Sizes}}}</td>
-                            <td><input type="number" class="txt-quantity form-control" value="{{Quantity}}" /></td>
+                            <td><input type="number" class="txt-quantity form-control" value="{{Quantity}}" style="max-width: 200px;"/></td>
                             <td>
                                 <button class="btn btn-xs btn-danger btn-delete-quantity" type="button"><i class="fa fa-close"></i></button>
                             </td>
@@ -42,10 +42,8 @@
                 </div>
             </div>
             <footer class="modal-footer">
-                <div class="btn-group col-sm-6 pull-right" role="group" aria-label="modal button">
-                    <button type="button" id="btn-save-quantity" class="btn group btn-success">Save</button>
-                    <button type="button" data-dismiss="modal" class="btn group btn-danger">Close</button>
-                </div>
+                <button type="button" id="btn-save-quantity" class="btn group btn-primary">Save</button>
+                <button type="button" data-dismiss="modal" class="btn group btn-secondary">Cancel</button>
             </footer>
         </div>
     </div>

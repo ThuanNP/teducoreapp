@@ -9,10 +9,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
-using System.Reflection;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Product;
-using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Utilities.Dtos;
 using TeduCoreApp.Utilities.Helpers;
 
@@ -214,6 +212,21 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             _productService.AddImages(productId, images);
             _productService.Save();
             return new OkObjectResult(images);
+        }
+
+        [HttpGet]
+        public IActionResult GetWholePrices(int productId)
+        {
+            var wholePrices = _productService.GetWholePrices(productId);
+            return new OkObjectResult(wholePrices);
+        }
+
+        [HttpPost]
+        public IActionResult SaveWholePrice(int productId, List<WholePriceViewModel> wholePrices)
+        {
+            _productService.AddWholePrice(productId, wholePrices);
+            _productService.Save();
+            return new OkObjectResult(wholePrices);
         }
         #endregion AJAX API
     }

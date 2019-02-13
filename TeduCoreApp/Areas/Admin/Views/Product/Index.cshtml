@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Products management";
 }
 @section Styles{
     <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
@@ -10,6 +10,7 @@
     <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
     <script src="~/app/controllers/product/quantity-management.js"></script>
     <script src="~/app/controllers/product/image-management.js"></script>
+    <script src="~/app/controllers/product/whole-price-management.js"></script>
     <script src="~/app/controllers/product/index.js"></script>
     <script>
         var product = new productController();
@@ -106,4 +107,5 @@
 <partial name="_ImportExcelModal.cshtml" />
 <partial name="_QuantityManagement.cshtml" />
 <partial name="_ImageManagement.cshtml" />
+<partial name="_WholePriceManagement.cshtml" />
 <!-- /Page Modal -->

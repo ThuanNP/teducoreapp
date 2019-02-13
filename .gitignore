@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /TeduCoreApp/Logs
+/TeduCoreApp/wwwroot/uploaded/images/20190212

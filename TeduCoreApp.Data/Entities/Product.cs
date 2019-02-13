@@ -125,6 +125,6 @@ namespace TeduCoreApp.Data.Entities
 
         public virtual ICollection<ProductQuantity> ProductQuantities { set; get; }
         public virtual ICollection<ProductImage> ProductImages { set; get; }
-
+        public virtual ICollection<WholePrice> WholePrices { get; set; }
     }
 }

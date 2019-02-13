@@ -23,15 +23,17 @@ namespace TeduCoreApp.Application.Implementations
         private readonly IProductTagRepository _productTagRepository;
         private readonly IProductQuantityRepository _productQuantityRepository;
         private readonly IProductImageRepository _productImageRepository;
+        private readonly IWholePriceRepository _wholePriceRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ProductService(IProductRepository productRepository, ITagRepository tagRepository, IProductTagRepository productTagRepository, IProductQuantityRepository productQuantityRepository, IProductImageRepository productImageRepository, IUnitOfWork unitOfWork)
+        public ProductService(IProductRepository productRepository, ITagRepository tagRepository, IProductTagRepository productTagRepository, IProductQuantityRepository productQuantityRepository, IProductImageRepository productImageRepository, IWholePriceRepository wholePriceRepository, IUnitOfWork unitOfWork)
         {
             _productRepository = productRepository;
             _tagRepository = tagRepository;
             _productTagRepository = productTagRepository;
             _productQuantityRepository = productQuantityRepository;
             _productImageRepository = productImageRepository;
+            _wholePriceRepository = wholePriceRepository;
             _unitOfWork = unitOfWork;
         }
 
@@ -190,10 +192,7 @@ namespace TeduCoreApp.Application.Implementations
             }
         }
 
-        public void Save()
-        {
-            _unitOfWork.Commit();
-        }
+        public void Save() => _unitOfWork.Commit();
 
         public void Update(ProductViewModel productViewModel)
         {
@@ -244,6 +243,26 @@ namespace TeduCoreApp.Application.Implementations
                     Path = image,
                     ProductId = productId,
                     Caption = string.Empty
+                });
+            }
+        }
+
+        public List<WholePriceViewModel> GetWholePrices(int productId)
+        {
+            return _wholePriceRepository.FindAll(x => x.ProductId == productId).ProjectTo<WholePriceViewModel>().ToList();
+        }
+
+        public void AddWholePrice(int productId, List<WholePriceViewModel> wholePrices)
+        {
+            _wholePriceRepository.RemoveMultiple(_wholePriceRepository.FindAll(x => x.ProductId == productId).ToList());
+            foreach (var wholePrice in wholePrices)
+            {
+                _wholePriceRepository.Add(new WholePrice()
+                {
+                    ProductId = productId,
+                    FromQuantity = wholePrice.FromQuantity,
+                    ToQuantity = wholePrice.ToQuantity,
+                    Price = wholePrice.Price
                 });
             }
         }
