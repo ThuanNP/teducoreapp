@@ -1,0 +1,317 @@
+/* Documentation For ShopMart Responsive Multi-Purpose HTML Template */
+
+ /* Template Name: ShopMart
+  Created By: justthemevalley 
+
+ 
+ 
+ [Table of contents]
+   
+    1. fonts CSS
+    2. mt-sidebar
+	3. Content Section
+
+
+################################################################# */ 
+
+
+
+/******************************************
+1. fonts CSS
+******************************************/
+/*Google Fonts*/
+@import 'http://fonts.googleapis.com/css?family=Open+Sans:700,600,800,400';
+@import 'https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i';
+@import 'https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700';
+
+body {
+	font-family: "Poppins", sans-serif;
+	font-size: 15px;
+	color: #353535;
+	line-height: 1.6em;
+	font-weight: 400;
+	background: #ffffff;
+	-webkit-font-smoothing: antialiased;
+}
+a {
+	text-decoration: none;
+	cursor: pointer;
+	color: #666;
+}
+a:hover, a:focus, a:visited {
+	text-decoration: none;
+	outline: none;
+}
+h1, h2, h3, h4, h5, h6 {
+	position: relative;
+	margin: 0px;
+	background: none;
+}
+h1 {
+	font-size: 24px;
+}
+h2 {
+	font-size: 20px;
+}
+h3 {
+	font-size: 18px;
+}
+h4 {
+	margin-bottom: 14px;
+}
+p {
+	font-size: 13px;
+	line-height: 1.6em;
+}
+/*** 
+
+====================================================================
+	2.mt-sidebar
+====================================================================
+
+****/
+
+#mt-sidebar {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 290px;
+	height: 100%;
+	padding: 0px 20px;
+	border-right: 2px solid #ccc;
+	z-index: 10;
+	-webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1); background-color:#e83f33; 
+}
+#mt-sidebar .mCSB_inside > .mCSB_container {
+	margin-right: 12px !important;
+}
+#mt-sidebar .mCS_no_scrollbar .mCSB_container {
+	margin-right: 0px !important;
+	background: #e83f33;
+}
+#mt-sidebar .menu-box {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	padding: 0px 0px 30px;
+	background: f8f8f8;
+	transition: all 1000ms ease;
+	-moz-transition: all 1000ms ease;
+	-webkit-transition: all 1000ms ease;
+	-ms-transition: all 1000ms ease;
+	-o-transition: all 1000ms ease;
+	overflow-x: hidden;
+}
+#mt-sidebar .menu-box .logo {
+	position: relative;
+	text-align: left;
+	margin-bottom: 35px;
+	padding: 30px 20px 30px; background-color:#fff;
+}
+#mt-sidebar .menu-box .logo img {
+	position: relative;
+	display: inline-block;
+	max-width: 100%;
+}
+#mt-sidebar .menu-box .sticky-menu {
+	position: relative;
+}
+#mt-sidebar .menu-box .sticky-menu > ul {
+	position: relative;
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	border-top: 1px solid #cb2d22;
+}
+#mt-sidebar .menu-box .sticky-menu > ul > li {
+	position: relative;
+	display: block;
+	padding: 0px;
+	border-bottom: 1px solid #cb2d22;
+	font-size: 20px;
+	color: #ffffff;
+	text-align: left;
+}
+#mt-sidebar .menu-box .sticky-menu > ul > li > a {
+	position: relative;
+	display: block;
+	padding: 7px 30px 7px 25px;
+	color: #fff;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 20px;
+	text-transform: uppercase;
+	transition: all 300ms ease;
+	-moz-transition: all 300ms ease;
+	-webkit-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+}
+#mt-sidebar .menu-box .sticky-menu > ul > li a .fa {
+	position: absolute;
+	right: -10px;
+	top: 0px;
+	width: 24px;
+	text-align: right;
+	color: #fff;
+	opacity: 0;
+	font-size: 12px;
+	display: block;
+	line-height: 34px;
+	transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-webkit-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+}
+#mt-sidebar .menu-box .sticky-menu > ul > li.current a .fa, #mt-sidebar .menu-box .sticky-menu > ul > li:hover a .fa {
+	right: 6px;
+	opacity: 1;
+	font-size: 20px;
+}
+#mt-sidebar .menu-box .sticky-menu > ul > li > a:hover, #mt-sidebar .menu-box .sticky-menu > ul > li.current > a, #mt-sidebar .menu-box .sticky-menu > ul > li.current-menu-item > a {
+	color: #fff;
+	background: #cb2d22;
+}
+#mt-sidebar .copyright {
+	position: fixed;
+	left: 0px;
+	bottom: 5px;
+	width: 250px;
+	height: 30px;
+	font-size: 13px;
+	color: #333;
+	line-height: 30px;
+	text-align: center;
+	background: #fff;
+}
+/*** 
+
+====================================================================
+	3. Content Section
+====================================================================
+
+****/
+
+
+
+#mt-content-section {
+	position: relative;
+	padding: 0px 0px 30px 290px;
+	z-index: 5;
+	overflow: hidden;
+}
+#mt-content-section .section {
+	position: relative;
+	min-height: 200px;
+	margin-bottom: 50px;
+}
+#mt-content-section .sec-title {
+	position: relative;
+	padding: 10px 20px 10px 50px;
+	background: #cb2d22;
+	color: #000;
+}
+#mt-content-section .sec-title h2 {
+	position: relative;
+	font-size: 24px;
+	text-transform: uppercase;
+	font-weight: 600; color:#fff;
+}
+#mt-content-section .sec-title h3 {
+	position: relative;
+	font-size: 22px;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+#mt-content-section .sec-title .icon {
+	position: absolute;
+	left: 20px;
+	top: 10px;
+	width: 30px;
+	height: 40px;
+	line-height: 22px;
+	font-size: 18px;color:#fff;
+}
+#mt-content-section .separator {
+	position: relative;
+	margin: 20px 0px;
+	height: 1px;
+}
+#mt-content-section .separator:before {
+	content: '';
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 1px;
+	background: linear-gradient(left, #d0d0d0, #f1f1f1, #ffffff);
+	background: -moz-linear-gradient(left, #d0d0d0, #f1f1f1, #ffffff);
+	background: -webkit-linear-gradient(left, #d0d0d0, #f1f1f1, #ffffff);
+	background: -ms-linear-gradient(left, #d0d0d0, #f1f1f1, #ffffff);
+	background: -o-linear-gradient(left, #d0d0d0, #f1f1f1, #ffffff);
+}
+#mt-content-section .sec-content {
+	position: relative;
+	padding: 10px 20px;
+}
+.introduction .sec-content h2 {
+	font-size: 32px;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+	font-weight: 600;
+	font-family: "Poppins", sans-serif;
+	color: #cb2d22;
+}
+.introduction .sec-content h3 {
+	font-size: 22px;
+	margin-bottom: 10px;
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+}
+.html-structure .sec-content h3, .css-structure .sec-content h3, .javascript .sec-content h3, .sources-credits .sec-content h3, .contact-form .sec-content h3, .support .sec-content h3, .map-settings .sec-content h3, .count-timer .sec-content h3 {
+	font-size: 20px;
+	font-weight: 900;
+	margin-bottom: 10px;
+	line-height: 1.4em;
+	text-transform: uppercase;
+}
+.html-structure code {
+	font-size: 14px;
+	font-family: "Poppins", sans-serif;
+	color: #353535;
+	padding: 30px 20px;
+	background: #f1f1f1;
+	height: auto;
+	display: block;
+}
+#pages ul {
+	padding: 0px 0 0 15px;
+}
+.javascript ul li {
+	list-style: none;
+}
+.sources-credits p {
+	margin-bottom: 2px;
+}
+#mt-content-section img {
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+}
+#mt-content-section .image-box {
+	position: relative;
+	padding: 0px;
+	margin: 30px 0px;
+}
+#mt-animations {
+	display: inline-block;
+	width: 100%;
+}
+.sec-content h4 {
+	font-size: 16px;
+}

@@ -54,6 +54,33 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\client-side\fonts\font-awesome\fontawesome-webfont.svg" />
+    <None Include="wwwroot\client-side\fonts\font-awesome\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\client-side\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\client-side\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\client-side\fonts\pe-icon-7-stroke\Pe-icon-7-stroke.svg" />
+    <None Include="wwwroot\client-side\fonts\revicons.svg" />
+    <None Include="wwwroot\client-side\fonts\revicons\index.php" />
+    <None Include="wwwroot\client-side\fonts\revicons\revicons.svg" />
+    <None Include="wwwroot\client-side\fonts\simple-line-icons\Simple-Line-Icons.dev.svg" />
+    <None Include="wwwroot\client-side\fonts\simple-line-icons\Simple-Line-Icons.svg" />
+    <None Include="wwwroot\client-side\fonts\simple-line-icons\Simple-Line-Icons.woff2" />
+    <None Include="wwwroot\client-side\js\bootstrap.min.js" />
+    <None Include="wwwroot\client-side\js\cloud-zoom.js" />
+    <None Include="wwwroot\client-side\js\countdown.js" />
+    <None Include="wwwroot\client-side\js\jquery-ui.js" />
+    <None Include="wwwroot\client-side\js\jquery.bxslider.js" />
+    <None Include="wwwroot\client-side\js\jquery.flexslider.js" />
+    <None Include="wwwroot\client-side\js\jquery.magnifying-zoom.js" />
+    <None Include="wwwroot\client-side\js\jquery.min.js" />
+    <None Include="wwwroot\client-side\js\main.js" />
+    <None Include="wwwroot\client-side\js\mobile-menu.js" />
+    <None Include="wwwroot\client-side\js\owl.carousel.min.js" />
+    <None Include="wwwroot\client-side\js\revolution-extension.js" />
+    <None Include="wwwroot\client-side\js\revolution-slider.js" />
+  </ItemGroup>
+
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>
