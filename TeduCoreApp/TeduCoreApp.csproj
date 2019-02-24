@@ -81,10 +81,6 @@
     <None Include="wwwroot\client-side\js\revolution-slider.js" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\Components\" />
-  </ItemGroup>
-
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>

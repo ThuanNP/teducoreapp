@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using TeduCoreApp.Data.Enums;
@@ -14,7 +15,7 @@ namespace TeduCoreApp.Data.Entities
         {
         }
 
-        public Blog(int id, string name, string description, string content, string image, string seoPageTitle, string seoAlias, string seokeywords, string seoDecription, Status status, DateTime dateCreated, DateTime dateModified)
+        public Blog(int id, string name, string description, string content, string image, string seoPageTitle, string seoAlias, string seokeywords, string seoDecription, Status status)
         {
             Id = id;
             Name = name;
@@ -26,11 +27,9 @@ namespace TeduCoreApp.Data.Entities
             SeoKeywords = seokeywords;
             SeoDescription = seoDecription;
             Status = status;
-            DateCreated = dateCreated;
-            DateModified = dateModified;
         }
 
-        public Blog(string name, string description, string content, string image, string seoPageTitle, string seoAlias, string seokeywords, string seoDecription, Status status, DateTime dateCreated, DateTime dateModified)
+        public Blog(string name, string description, string content, string image, string seoPageTitle, string seoAlias, string seokeywords, string seoDecription, Status status)
         {
             Name = name;
             Description = description;
@@ -41,8 +40,6 @@ namespace TeduCoreApp.Data.Entities
             SeoKeywords = seokeywords;
             SeoDescription = seoDecription;
             Status = status;
-            DateCreated = dateCreated;
-            DateModified = dateModified;
         }
 
         [Required, MaxLength(256)]
@@ -55,6 +52,12 @@ namespace TeduCoreApp.Data.Entities
 
         [MaxLength(256)]
         public string Image { get; set; }
+
+        public bool? HomeFlag { set; get; }
+        public bool? HotFlag { set; get; }
+        public int? ViewCount { set; get; }
+
+        public string Tags { get; set; }
 
         [MaxLength(256)]
         public string SeoPageTitle { get; set; }
@@ -71,5 +74,7 @@ namespace TeduCoreApp.Data.Entities
         public Status Status { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
+
+        public virtual ICollection<BlogTag> BlogTags { get; set; }
     }
 }

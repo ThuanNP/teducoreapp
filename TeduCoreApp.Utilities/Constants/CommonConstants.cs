@@ -6,6 +6,12 @@
         public const string ProductTag = "Product";
         public const string BlogTag = "Blog";
 
+        public sealed class SlideGroupAlias
+        {
+            public const string Top = "top";
+            public const string Brand = "brand";
+        }
+
         public sealed class UserClaims
         {
             public const string Roles = "Roles";

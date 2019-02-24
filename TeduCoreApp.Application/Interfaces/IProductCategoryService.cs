@@ -22,7 +22,7 @@ namespace TeduCoreApp.Application.Interfaces
 
         void UpdateParentId(int sourceId, int targetId, Dictionary<int, int> items);
 
-        List<ProductCategoryViewModel> GetHomeCategories(int top);
+        List<ProductCategoryViewModel> GetHomeCategories(int topCategory, int topProduct);
 
         void Reorder(int sourceId, int targetId, Dictionary<int, int> items);
 

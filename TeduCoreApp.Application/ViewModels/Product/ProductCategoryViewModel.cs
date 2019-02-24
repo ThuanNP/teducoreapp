@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using TeduCoreApp.Data.Enums;
 
 namespace TeduCoreApp.Application.ViewModels.Product
@@ -22,6 +23,11 @@ namespace TeduCoreApp.Application.ViewModels.Product
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
 
-        public ICollection<ProductViewModel> Products { get; set; }
+        public List<ProductViewModel> Products { get; set; }
+
+        public List<ProductCategoryViewModel> Children { get; set; }
+
+        [ForeignKey("ParentId")]
+        public ProductCategoryViewModel Parent { get; set; }
     }
 }

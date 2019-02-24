@@ -95,6 +95,8 @@ namespace TeduCoreApp.Data.Entities
         public bool? HotFlag { get; set; }
         public int? ViewCount { get; set; }
 
+        public int? PurchasedCount { get; set; }
+
         [MaxLength(256)]
         public string Tags { get; set; }
 
@@ -126,5 +128,6 @@ namespace TeduCoreApp.Data.Entities
         public virtual ICollection<ProductQuantity> ProductQuantities { set; get; }
         public virtual ICollection<ProductImage> ProductImages { set; get; }
         public virtual ICollection<WholePrice> WholePrices { get; set; }
+        public virtual ICollection<ProductReview> Reviews { get; set; }
     }
 }

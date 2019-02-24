@@ -6,11 +6,19 @@ using TeduCoreApp.Utilities.Dtos;
 namespace TeduCoreApp.Application.Interfaces
 {
     public interface IProductService : IDisposable
-    {      
+    {
 
         List<ProductViewModel> GetAll();
 
         List<ProductViewModel> GetAll(int? categoryId, string keyword);
+
+        List<ProductViewModel> GetTopSpecialOffers(int top);
+
+        List<ProductViewModel> GetTopBestSellers(int top);
+
+        List<ProductViewModel> GetTopNew(int top);
+
+        List<ProductViewModel> GetTopViewCount(int top);
 
         PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize);
 
@@ -32,7 +40,7 @@ namespace TeduCoreApp.Application.Interfaces
         void AddQuantities(int productId, List<ProductQuantityViewModel> quantityViewModels);
 
         // Images management
-     
+
         List<ProductImageViewModel> GetImages(int productId);
 
         void AddImages(int productId, string[] images);

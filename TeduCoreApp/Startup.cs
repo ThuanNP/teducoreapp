@@ -81,27 +81,40 @@ namespace TeduCoreApp
             services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
 
             //Repositories
+            //Repository: Sysytem
             services.AddTransient<IFunctionRepository, FunctionRepository>();
+            services.AddTransient<IPermissionRepository, PermissionRepository>();
+            //Repositories: Commons
             services.AddTransient<ITagRepository, TagRepository>();
+            services.AddTransient<IFooterRepository, FooterRepository>();
+            services.AddTransient<ISlideRepository, SlideRepository>();
+            services.AddTransient<ISystemConfigRepository, SystemConfigRepository>();
+            //Repository: Products
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IProductQuantityRepository, ProductQuantityRepository>();
             services.AddTransient<IProductImageRepository, ProductImageRepository>();
-            services.AddTransient<IWholePriceRepository, WholePriceRepository>();
-            services.AddTransient<IProductTagRepository, ProductTagRepository>();
-            services.AddTransient<IPermissionRepository, PermissionRepository>();
+            services.AddTransient<IWholePriceRepository, WholePriceRepository>();                    
             services.AddTransient<IColorRepository, ColorRepository>();
             services.AddTransient<ISizeRepository, SizeRepository>();
             services.AddTransient<IBillRepository, BillRepository>();
             services.AddTransient<IBillDetailRepository, BillDetailRepository>();
+            //Repository: Blogs
+            services.AddTransient<IBlogRepository, BlogRepository>();
+            //Repository: Tags
+            services.AddTransient<ITagRepository, TagRepository>();
+            services.AddTransient<IProductTagRepository, ProductTagRepository>();
+            services.AddTransient<IBlogTagRepository, BlogTagRepository>();
 
-            //Services
+            //Services            
+            services.AddTransient<IBillService, BillService>();
+            services.AddTransient<IBlogService, BlogService>();
+            services.AddTransient<ICommonService, CommonService>();
             services.AddTransient<IFunctionService, FunctionService>();
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
             services.AddTransient<IProductService, ProductService>();
-            services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
-            services.AddTransient<IBillService, BillService>();
+            services.AddTransient<IUserService, UserService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
         }

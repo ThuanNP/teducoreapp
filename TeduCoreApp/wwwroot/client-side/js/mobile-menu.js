@@ -103,28 +103,30 @@
             }), s("." + g + " > li > span.expand").click(function() {
                 if (1 == d.CollapseMenu) {
                     var e = s("." + g + " li span");
-                    e.hasClass("open") && "none" === s(this).next().next().css("display") && (s("." + g + " li ul").slideUp(), e.hasClass("open") ? e.removeClass("fa fa-minus").addClass("fa fa-plus") : e.removeClass("fa fa-plus").addClass("fa fa-minus"), e.removeClass("open"))
+                    //e.hasClass("open") && "none" === s(this).next().next().css("display") && (s("." + g + " li ul").slideUp(), e.hasClass("open") ? e.removeClass("fa fa-minus").addClass("fa fa-plus") : e.removeClass("fa fa-plus").addClass("fa fa-minus"), e.removeClass("open"))
+                    e.hasClass("open") && "none" === s(this).next().next().css("display") && (s("." + g + " li ul").slideUp(), e.hasClass("open") ? e.removeClass("fa-minus").addClass("fa-plus") : e.removeClass("fa-plus").addClass("fa-minus"), e.removeClass("open"))
+
                 }
                 s(this).nextAll("." + g + " ul").slideToggle(function() {
                     1 == d.CollapseMenu ? s(this).promise().done(function() {
                         c.css("height", a())
                     }) : c.css("height", a())
-                }), s(this).hasClass("fa fa-plus") ? s(this).removeClass("fa fa-plus").addClass("fa fa-minus") : s(this).removeClass("fa fa-minus").addClass("fa fa-plus"), s(this).toggleClass("open"), f || (l(2), f = !0)
+                }), s(this).hasClass("fa-plus") ? s(this).removeClass("fa-plus").addClass("fa-minus") : s(this).removeClass("fa-minus").addClass("fa-plus"), s(this).toggleClass("open"), f || (l(2), f = !0)
             }), s("." + g + " > li > ul > li > span.expand").click(function() {
                 if (1 == d.CollapseMenu) {
                     var e = s("." + g + " li ul li span");
-                    e.hasClass("open") && "none" === s(this).next().next().css("display") && (s("." + g + " li ul ul").slideUp(), e.hasClass("open") ? e.removeClass("fa fa-minus").addClass("fa fa-plus") : e.removeClass("fa fa-plus").addClass("fa fa-minus"), e.removeClass("open"))
+                    e.hasClass("open") && "none" === s(this).next().next().css("display") && (s("." + g + " li ul ul").slideUp(), e.hasClass("open") ? e.removeClass("fa-minus").addClass("fa-plus") : e.removeClass("fa-plus").addClass("fa-minus"), e.removeClass("open"))
                 }
                 s(this).nextAll("." + g + " ul ul").slideToggle(function() {
                     1 == d.CollapseMenu ? s(this).promise().done(function() {
                         c.css("height", a())
                     }) : c.css("height", a())
-                }), s(this).hasClass("fa fa-plus") ? s(this).removeClass("fa fa-plus").addClass("fa fa-minus") : s(this).removeClass("fa fa-minus").addClass("fa fa-plus"), s(this).toggleClass("open")
+                }), s(this).hasClass("fa-plus") ? s(this).removeClass("fa-plus").addClass("fa-minus") : s(this).removeClass("fa-minus").addClass("fa-plus"), s(this).toggleClass("open")
             }), s("." + g + " li a").click(function() {
                 s("." + g + " li a").removeClass("active"), s(this).addClass("active"), o()
             }), h.click(function() {
                 o()
-            }), s("." + g + " li a.active").parent().children(".expand").removeClass("fa fa-plus").addClass("fa fa-minus open"), s("." + g + " li a.active").parent().children("ul").css("display", "block")
+            }), s("." + g + " li a.active").parent().children(".expand").removeClass("fa-plus").addClass("fa fa-minus open"), s("." + g + " li a.active").parent().children("ul").css("display", "block")
         })
     }
 }(jQuery);

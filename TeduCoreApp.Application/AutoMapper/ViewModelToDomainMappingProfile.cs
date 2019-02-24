@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using System;
+using TeduCoreApp.Application.ViewModels.Blog;
 using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Application.ViewModels.System;
 using TeduCoreApp.Data.Entities;
@@ -10,6 +11,7 @@ namespace TeduCoreApp.Application.AutoMapper
     {
         public ViewModelToDomainMappingProfile()
         {
+            //System
             CreateMap<AppUserViewModel, AppUser>()
                 .ConstructUsing(c => new AppUser(c.Id.GetValueOrDefault(Guid.Empty),
                 c.FullName, c.Balance, c.Avatar, c.DateCreated, c.Status));
@@ -17,7 +19,7 @@ namespace TeduCoreApp.Application.AutoMapper
                 .ConstructUsing(c => new AppRole(c.Name, c.Description));
             CreateMap<PermissionViewModel, Permission>()
                 .ConstructUsing(c => new Permission(c.RoleId, c.FunctionId, c.CanCreate, c.CanRead, c.CanUpdate, c.CanDelete));
-
+            //Product
             CreateMap<ProductCategoryViewModel, ProductCategory>()
                 .ConstructUsing(c => new ProductCategory(c.Name, c.Description, c.ParentId,
                 c.HomeOrder, c.Image, c.HomeFlag, c.SeoPageTitle, c.SeoAlias, c.Seokeywords,
@@ -28,11 +30,16 @@ namespace TeduCoreApp.Application.AutoMapper
                 c.SeoPageTitle, c.SeoAlias, c.SeoKeywords, c.SeoDescription));
             CreateMap<ProductQuantityViewModel, ProductQuantity>()
                 .ConstructUsing(c => new ProductQuantity(c.ProductId, c.SizeId, c.ColorId, c.Quantity));
-
             CreateMap<BillViewModel, Bill>()
                 .ConstructUsing(c => new Bill(c.Id, c.CustomerId, c.CustomerName, c.CustomerAddress, c.CustomerMobile, c.CustomerEmail, c.CustomerMessage, c.BillStatus, c.PaymentMethod, c.Status));
             CreateMap<BillDetailViewModel, BillDetail>()
                 .ConstructUsing(c => new BillDetail(c.Id, c.BillId, c.ProductId, c.Quantity, c.Price, c.ColorId, c.SizeId));
+            //Content
+            CreateMap<BlogViewModel, Blog>()
+                .ConstructUsing(c => new Blog(c.Name, c.Description, c.Content, c.Image,
+                c.SeoPageTitle, c.SeoAlias, c.SeoKeywords, c.SeoDescription, c.Status));
+            //Common
+
         }
     }
 }

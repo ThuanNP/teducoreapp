@@ -27,9 +27,9 @@ namespace TeduCoreApp.Data.EF
         public DbSet<AppRole> AppRoles { get; set; }
         public DbSet<Announcement> Announcements { set; get; }
         public DbSet<AnnouncementUser> AnnouncementUsers { set; get; }
-        public DbSet<Blog> Bills { set; get; }
+        public DbSet<BlogTag> Bills { set; get; }
         public DbSet<BillDetail> BillDetails { set; get; }
-        public DbSet<Blog> Blogs { set; get; }
+        public DbSet<BlogTag> Blogs { set; get; }
         public DbSet<BlogTag> BlogTags { set; get; }
         public DbSet<Color> Colors { set; get; }
         public DbSet<Contact> Contacts { set; get; }

@@ -13,8 +13,8 @@ namespace TeduCoreApp.Data.Entities
     {
         public ProductCategory() => Products = new List<Product>();
 
-        public ProductCategory(string name, string description, int? parentId, int? homeOrder, string image, 
-            bool? homeFlag, string seoPageTitle, string seoAlias, string seokeywords, 
+        public ProductCategory(string name, string description, int? parentId, int? homeOrder, string image,
+            bool? homeFlag, string seoPageTitle, string seoAlias, string seokeywords,
             string seoDecription, Status status, int sortOrder)
         {
             Name = name;
@@ -63,5 +63,9 @@ namespace TeduCoreApp.Data.Entities
         public DateTime DateModified { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<ProductCategory> Children { get; set; }
+
+        [ForeignKey("ParentId")]
+        public virtual ProductCategory Parent { get; set; }
     }
 }

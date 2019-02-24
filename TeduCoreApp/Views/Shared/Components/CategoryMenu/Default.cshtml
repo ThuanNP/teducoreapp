@@ -1,0 +1,36 @@
+﻿@model List<ProductCategoryViewModel>
+<div class="navleft-container">
+    <div class="mega-menu-title">
+        <h3><span>All Categories</span></h3>
+    </div>
+
+    <!-- Shop by category -->
+    @*class="nosub"*@
+    <div class="mega-menu-category">
+        <ul class="nav">
+            @foreach (var item in Model.Where(x => x.ParentId == null))
+            {
+                if (Model.Any(x => x.ParentId == item.Id))
+                {
+                    <li>
+                        <a href="products/@item.SeoAlias-c.@(item.Id).html">@item.Name</a>
+                        <div class="wrap-popup column1">
+                            <div class="popup">
+                                <ul class="nav">
+                                    @foreach (var subItem in Model.Where(x => x.ParentId == item.Id))
+                                    {
+                                        <li><a href="products/@subItem.SeoAlias-c.@(subItem.Id).html"><span>@subItem.Name</span></a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                }
+                else
+                {
+                    <li class="nosub"><a href="products/@item.SeoAlias-c.@(item.Id).html">@item.Name</a></li>
+                }
+            }
+        </ul>
+    </div>
+</div>

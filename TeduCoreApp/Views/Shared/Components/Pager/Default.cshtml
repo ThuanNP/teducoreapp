@@ -1,0 +1,50 @@
+﻿@model TeduCoreApp.Utilities.Dtos.PagedResultBase
+
+@{
+    var startIndex = Math.Max(Model.CurrentPage - 5, 1);
+    var finishIndex = Math.Min(Model.CurrentPage + 5, Model.PageCount);
+    var urlTemplate = Url.Action() + "?page={0:#}";
+    var request = ViewContext.HttpContext.Request;
+    foreach (var key in request.Query.Keys)
+    {
+        if (key != "page")
+        {
+            urlTemplate += "&" + key + "=" + request.Query[key];
+        }
+    }
+}
+
+<div class="pagination-area">
+    @if (Model.PageCount > 1)
+    {
+        <ul>
+            @if (Model.CurrentPage == startIndex)
+            {
+                <li><i class="fa fa-angle-left"></i></li>
+            }
+            else
+            {
+                <li><a href="@string.Format(urlTemplate, Model.PageCount)"><i class="fa fa-angle-left"></i></a></li>
+            }
+            @for (int i = startIndex; i <= finishIndex; i++)
+            {
+                if (i == Model.CurrentPage)
+                {
+                    <li><a class="active" href="#"><span>@i</span></a></li>
+                }
+                else
+                {
+                    <li><a href="@string.Format(urlTemplate, i)">@i</a></li>
+                }
+            }
+            @if (Model.CurrentPage == finishIndex)
+            {
+                <li><i class="fa fa-angle-right"></i></li>
+            }
+            else
+            {
+                <li><a href="@string.Format(urlTemplate, Model.PageCount)"><i class="fa fa-angle-right"></i></a></li>
+            }
+        </ul>
+    }
+</div>

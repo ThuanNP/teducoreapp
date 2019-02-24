@@ -1,0 +1,109 @@
+﻿@model CatalogViewModel
+@{
+    ViewData["Title"] = Model.Category.SeoPageTitle;
+    ViewData["MetaKeyword"] = Model.Category.Seokeywords;
+    ViewData["MetaDescription"] = Model.Category.SeoDecription;
+}
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="index.html">Home</a><span>&raquo;</span></li>
+                    @if (Model.Category.Parent != null)
+                    {
+                        <li class=""> <a title="Go to Home Page" href="/products/@Model.Category.Parent.SeoAlias-c.@(Model.Category.Parent.Id).html">@(Model.Category.Parent.Name)</a><span>&raquo;</span></li>
+
+                    }
+                    <li><strong>@Model.Category.Name</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<div class="main-container col1-layout">
+    <div class="container">
+        <div class="row">
+            <div class="col-main col-sm-12 col-xs-12">
+                <div class="shop-inner">
+                    <div class="page-title">
+                        <h2>@Model.Category.Name</h2>
+                    </div>
+                    <div class="toolbar column">
+                        <form action="/products/@Model.Category.SeoAlias-c.@(Model.Category.Id).html" method="get">
+                            <div class="sorter">
+                                <div class="sort-by">
+                                    <label>Sort By:</label>
+                                    <select name="sortBy" asp-for="SortType" asp-items="Model.SortTypes" onchange="this.form.submit()"></select>
+                                </div>
+                                <div class="sort-by page">
+                                    <label>Show:</label>
+                                    <select name="pageSize" asp-for="PageSize" asp-items="Model.PageSizes" onchange="this.form.submit()"></select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="product-grid-area">
+                        <ul class="products-grid">
+                            @foreach (var product in Model.Data.Results)
+                            {
+                                <li class="item col-lg-3 col-md-4 col-sm-6 col-xs-6 ">
+                                    <div class="product-item">
+                                        <div class="item-inner">
+                                            <div class="product-thumbnail">
+                                                @if (product.PromotionPrice.HasValue)
+                                                {
+                                                    <div class="icon-sale-label sale-left">Sale</div>
+                                                }
+                                                @if (product.DateCreated >= DateTime.Now.AddDays(-7))
+                                                {
+                                                    <div class="icon-new-label new-right">New</div>
+                                                }
+                                                <div class="pr-img-area">
+                                                    <a title="Ipsums Dolors Untra" href="single_product.html">
+                                                        <figure>
+                                                            <img class="first-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg": product.Image)' alt="@product.Name">
+                                                            <img class="hover-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg": product.Image)' alt="@product.Name">
+                                                        </figure>
+                                                    </a>
+                                                </div>
+                                                <div class="pr-info-area">
+                                                    <div class="pr-button">
+                                                        <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart"></i> </a> </div>
+                                                        <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-signal"></i> </a> </div>
+                                                        <div class="mt-button quick-view"> <a href="quick_view.html"> <i class="fa fa-search"></i> </a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item-info">
+                                                <div class="info-inner">
+                                                    <div class="item-title"> <a title="Ipsums Dolors Untra" href="single_product.html">@product.Name</a> </div>
+                                                    <div class="item-content">
+                                                        <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                        <div class="item-price">
+                                                            <div class="price-box"> <span class="regular-price"> <span class="price">@product.Price.ToString("C0")</span> </span> </div>
+                                                        </div>
+                                                        <div class="pro-action">
+                                                            <button type="button" class="add-to-cart"><span> Add to Cart</span> </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    @* Pager *@
+                    @await Component.InvokeAsync("Pager", Model.Data)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Container End -->

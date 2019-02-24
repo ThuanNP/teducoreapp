@@ -8,8 +8,8 @@ var productCategoryController = function () {
     function registerEvents() {
 
         $('#btn-create').off('click').on('click', function (e) {
-            e.preventDefault();           
-            s();
+            e.preventDefault();       
+            resetFormMaintainance();
             $('#modal-add-edit').modal('show');
         });
 
@@ -94,7 +94,7 @@ var productCategoryController = function () {
         var homeOrder = $('#txtHomeOrderM').val();
 
         var seoKeyword = $('#txtSeoKeywordM').val();
-        var seoMetaDescription = $('#txtSeoDescriptionM').val();
+        var seoMetaDescription = $('#txt-description-modal').val();
         var seoPageTitle = $('#txt-seo-page-title-modal').val();
         var seoAlias = $('#txt-seo-alias-modal').val();
         var status = $('#ck-status-modal').prop('checked') === true ? 1 : 0;
@@ -230,7 +230,7 @@ var productCategoryController = function () {
                 $('#txt-image-modal').val(data.Image);
 
                 $('#txtSeoKeywordM').val(data.SeoKeywords);
-                $('#txtSeoDescriptionM').val(data.SeoDescription);
+                $('#txt-description-modal').val(data.SeoDescription);
                 $('#txt-seo-page-title-modal').val(data.SeoPageTitle);
                 $('#txt-seo-alias-modal').val(data.SeoAlias);
 

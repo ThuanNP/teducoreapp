@@ -1,0 +1,37 @@
+﻿@model List<ProductCategoryViewModel>
+<!-- mobile menu -->
+<div id="mobile-menu">
+    <ul class="mobile-menu">
+        <li><a href="index.html" class="home1">Home Pages</a></li>
+        <!--Products categories class="home1"-->
+        <li>
+            <a href="#">Products</a>
+            <ul>
+                @foreach (var item in Model.Where(x => x.ParentId == null))
+                {
+                    <li>
+                        <a href="/@item.SeoAlias-c.@(item.Id).html">@item.Name</a>
+                        <ul>
+                            @foreach (var subItem in Model.Where(x => x.ParentId == item.Id))
+                            {
+                                <li><a href="products/@item.SeoAlias-c.@(item.Id).html"><span>@subItem.Name</span></a></li>
+                            }
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </li>
+        <li>
+            <a href="shop_grid.html">Bestsellers</a>
+            <ul>
+                @foreach (ProductViewModel product in ViewBag.BestSellers)
+                {
+                    <li><a href="/@product.SeoAlias-c.@(product.Id).html">@product.Name</a></li>
+                }
+            </ul>
+        </li>
+        <li><a href="shop_grid.html">Blogs</a></li>
+        <li><a href="shop_grid.html">About us</a></li>
+    </ul>
+</div>
+<!-- end mobile menu -->

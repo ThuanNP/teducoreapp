@@ -18,23 +18,28 @@ namespace TeduCoreApp.Application.Implementations
 {
     public class ProductService : BaseService, IProductService
     {
-        private readonly IProductRepository _productRepository;
-        private readonly ITagRepository _tagRepository;
-        private readonly IProductTagRepository _productTagRepository;
-        private readonly IProductQuantityRepository _productQuantityRepository;
-        private readonly IProductImageRepository _productImageRepository;
-        private readonly IWholePriceRepository _wholePriceRepository;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IProductCategoryRepository productCategoryRepository;
+        private readonly IProductRepository productRepository;
+        private readonly ITagRepository tagRepository;
+        private readonly IProductTagRepository productTagRepository;
+        private readonly IProductQuantityRepository productQuantityRepository;
+        private readonly IProductImageRepository productImageRepository;
+        private readonly IWholePriceRepository wholePriceRepository;
+        private readonly IUnitOfWork unitOfWork;
 
-        public ProductService(IProductRepository productRepository, ITagRepository tagRepository, IProductTagRepository productTagRepository, IProductQuantityRepository productQuantityRepository, IProductImageRepository productImageRepository, IWholePriceRepository wholePriceRepository, IUnitOfWork unitOfWork)
+        public ProductService(IProductRepository productRepository, ITagRepository tagRepository, 
+            IProductCategoryRepository productCategoryRepository, IProductTagRepository productTagRepository, 
+            IProductQuantityRepository productQuantityRepository, IProductImageRepository productImageRepository, 
+            IWholePriceRepository wholePriceRepository, IUnitOfWork unitOfWork)
         {
-            _productRepository = productRepository;
-            _tagRepository = tagRepository;
-            _productTagRepository = productTagRepository;
-            _productQuantityRepository = productQuantityRepository;
-            _productImageRepository = productImageRepository;
-            _wholePriceRepository = wholePriceRepository;
-            _unitOfWork = unitOfWork;
+            this.productCategoryRepository = productCategoryRepository;
+            this.productRepository = productRepository;
+            this.tagRepository = tagRepository;
+            this.productTagRepository = productTagRepository;
+            this.productQuantityRepository = productQuantityRepository;
+            this.productImageRepository = productImageRepository;
+            this.wholePriceRepository = wholePriceRepository;
+            this.unitOfWork = unitOfWork;
         }
 
         public ProductViewModel Add(ProductViewModel productViewModel)
@@ -47,7 +52,7 @@ namespace TeduCoreApp.Application.Implementations
                 foreach (string t in tags)
                 {
                     var tagId = TextHelper.ToUnsignString(t);
-                    if (!_tagRepository.FindAll(tag => tag.Id == tagId).Any())
+                    if (!tagRepository.FindAll(tag => tag.Id == tagId).Any())
                     {
                         Tag tag = new Tag
                         {
@@ -55,7 +60,7 @@ namespace TeduCoreApp.Application.Implementations
                             Name = t,
                             Type = CommonConstants.ProductTag
                         };
-                        _tagRepository.Add(tag);
+                        tagRepository.Add(tag);
                     }
                     ProductTag productTag = new ProductTag
                     {
@@ -64,14 +69,14 @@ namespace TeduCoreApp.Application.Implementations
                     product.ProductTags.Add(productTag);
                 }
             }
-            _productRepository.Add(product);
+            productRepository.Add(product);
             return productViewModel;
         }
 
         public void AddQuantities(int productId, List<ProductQuantityViewModel> quantityViewModels)
         {
-            var product = _productRepository.FindById(productId, p => p.ProductQuantities);
-            _productQuantityRepository.RemoveMultiple(product.ProductQuantities.ToList());
+            var product = productRepository.FindById(productId, p => p.ProductQuantities);
+            productQuantityRepository.RemoveMultiple(product.ProductQuantities.ToList());
             var quantityList = Mapper.Map<List<ProductQuantityViewModel>, List<ProductQuantity>>(quantityViewModels);
             List<ProductQuantity> newQuantityList = new List<ProductQuantity>();
             foreach (var item in quantityList)
@@ -87,20 +92,20 @@ namespace TeduCoreApp.Application.Implementations
                 }
             }
             product.ProductQuantities = newQuantityList;
-            _productRepository.Update(product);
+            productRepository.Update(product);
         }
 
-        public void Delete(int id) => _productRepository.Remove(id);
+        public void Delete(int id) => productRepository.Remove(id);
 
         public List<ProductViewModel> GetAll()
         {
-            return _productRepository.FindAll(p => p.ProductCategory)
+            return productRepository.FindAll(p => p.ProductCategory)
                 .ProjectTo<ProductViewModel>().ToList();
         }
 
         public List<ProductViewModel> GetAll(int? categoryId, string keyword)
         {
-            var query = _productRepository.FindAll(p => p.Status == Status.Active);
+            var query = productRepository.FindAll(p => p.Status == Status.Active);
             if (categoryId.HasValue)
             {
                 query = query.Where(p => p.CategoryId == categoryId.Value);
@@ -116,10 +121,12 @@ namespace TeduCoreApp.Application.Implementations
 
         public PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize)
         {
-            var query = _productRepository.FindAll(p => p.Status == Status.Active);
+            var query = productRepository.FindAll(p => p.Status == Status.Active);
             if (categoryId.HasValue)
             {
-                query = query.Where(p => p.CategoryId == categoryId.Value);
+                var subCategories = productCategoryRepository.FindAll(x => x.ParentId == categoryId);
+                var CategoryIds = subCategories.Select(x => x.Id).ToList();
+                query = query.Where(p => p.CategoryId == categoryId.Value || CategoryIds.Contains(p.CategoryId));
             }
             if (!string.IsNullOrWhiteSpace(keyword))
             {
@@ -146,12 +153,12 @@ namespace TeduCoreApp.Application.Implementations
 
         public ProductViewModel GetById(int id)
         {
-            return Mapper.Map<Product, ProductViewModel>(_productRepository.FindById(id));
+            return Mapper.Map<Product, ProductViewModel>(productRepository.FindById(id));
         }
 
         public List<ProductQuantityViewModel> GetQuantities(int productId)
         {
-            return _productQuantityRepository.FindAll(x => x.ProductId == productId).ProjectTo<ProductQuantityViewModel>().ToList();
+            return productQuantityRepository.FindAll(x => x.ProductId == productId).ProjectTo<ProductQuantityViewModel>().ToList();
         }
 
         public void ImportExcel(string filePath, int categoryId)
@@ -186,27 +193,26 @@ namespace TeduCoreApp.Application.Implementations
                         product.HomeFlag = homeFlag;
                         product.Status = Status.Active;
 
-                        _productRepository.Add(product);
+                        productRepository.Add(product);
                     }
                 }
             }
         }
 
-        public void Save() => _unitOfWork.Commit();
+        public void Save() => unitOfWork.Commit();
 
         public void Update(ProductViewModel productViewModel)
         {
             var product = Mapper.Map<ProductViewModel, Product>(productViewModel);
+            productTagRepository.RemoveMultiple(productTagRepository.FindAll(x => x.ProductId == productViewModel.Id).ToList());
             if (!string.IsNullOrEmpty(productViewModel.Tags))
             {
-                _productTagRepository.RemoveMultiple(_productTagRepository.FindAll(x => x.ProductId == productViewModel.Id).ToList());
                 string[] tags = productViewModel.Tags.Split(',');
-                var productTags = _productTagRepository.FindAll(x => x.ProductId == productViewModel.Id).ToList();
                 foreach (string t in tags)
                 {
                     var tagId = TextHelper.ToUnsignString(t);
                     // Add tags
-                    if (!_tagRepository.FindAll(tag => tag.Id == tagId).Any())
+                    if (!tagRepository.FindAll(tag => tag.Id == tagId).Any())
                     {
                         Tag tag = new Tag
                         {
@@ -214,7 +220,7 @@ namespace TeduCoreApp.Application.Implementations
                             Name = t,
                             Type = CommonConstants.ProductTag
                         };
-                        _tagRepository.Add(tag);
+                        tagRepository.Add(tag);
                     }
                     // Add product tags 
                     ProductTag productTag = new ProductTag
@@ -225,20 +231,20 @@ namespace TeduCoreApp.Application.Implementations
                 }
             }
             product.SeoAlias = TextHelper.ToUnsignString(productViewModel.Name);
-            _productRepository.Update(product);
+            productRepository.Update(product);
         }
 
         public List<ProductImageViewModel> GetImages(int productId)
         {
-            return _productImageRepository.FindAll(x => x.ProductId == productId).ProjectTo<ProductImageViewModel>().ToList();
+            return productImageRepository.FindAll(x => x.ProductId == productId).ProjectTo<ProductImageViewModel>().ToList();
         }
 
         public void AddImages(int productId, string[] images)
         {
-            _productImageRepository.RemoveMultiple(_productImageRepository.FindAll(i => i.ProductId == productId).ToList());
+            productImageRepository.RemoveMultiple(productImageRepository.FindAll(i => i.ProductId == productId).ToList());
             foreach (var image in images)
             {
-                _productImageRepository.Add(new ProductImage()
+                productImageRepository.Add(new ProductImage()
                 {
                     Path = image,
                     ProductId = productId,
@@ -249,15 +255,15 @@ namespace TeduCoreApp.Application.Implementations
 
         public List<WholePriceViewModel> GetWholePrices(int productId)
         {
-            return _wholePriceRepository.FindAll(x => x.ProductId == productId).ProjectTo<WholePriceViewModel>().ToList();
+            return wholePriceRepository.FindAll(x => x.ProductId == productId).ProjectTo<WholePriceViewModel>().ToList();
         }
 
         public void AddWholePrice(int productId, List<WholePriceViewModel> wholePrices)
         {
-            _wholePriceRepository.RemoveMultiple(_wholePriceRepository.FindAll(x => x.ProductId == productId).ToList());
+            wholePriceRepository.RemoveMultiple(wholePriceRepository.FindAll(x => x.ProductId == productId).ToList());
             foreach (var wholePrice in wholePrices)
             {
-                _wholePriceRepository.Add(new WholePrice()
+                wholePriceRepository.Add(new WholePrice()
                 {
                     ProductId = productId,
                     FromQuantity = wholePrice.FromQuantity,
@@ -265,6 +271,31 @@ namespace TeduCoreApp.Application.Implementations
                     Price = wholePrice.Price
                 });
             }
+        }
+
+        public List<ProductViewModel> GetTopSpecialOffers(int top)
+        {
+            var query = productRepository.FindAll(x => x.Status == Status.Active);
+            return query.OrderByDescending(x => x.PurchasedCount.HasValue).OrderByDescending(x => (x.Price - (x.PromotionPrice ?? 0))).Take(top).ProjectTo<ProductViewModel>().ToList();
+
+        }
+
+        public List<ProductViewModel> GetTopBestSellers(int top)
+        {
+            var query = productRepository.FindAll(x => x.Status == Status.Active);
+            return query.OrderByDescending(x => x.PurchasedCount.HasValue).OrderByDescending(x => x.PurchasedCount.Value).Take(top).ProjectTo<ProductViewModel>().ToList();
+        }
+
+        public List<ProductViewModel> GetTopNew(int top)
+        {
+            var query = productRepository.FindAll(x => x.Status == Status.Active);
+            return query.OrderByDescending(x => x.DateCreated).Take(top).ProjectTo<ProductViewModel>().ToList();
+        }
+
+        public List<ProductViewModel> GetTopViewCount(int top)
+        {
+            var query = productRepository.FindAll(x => x.Status == Status.Active && x.HotFlag == true);
+            return query.OrderByDescending(x => x.ViewCount).Take(top).ProjectTo<ProductViewModel>().ToList();
         }
     }
 }

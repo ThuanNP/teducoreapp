@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TeduCoreApp.Application.ViewModels.Common;
 
 namespace TeduCoreApp.Application.ViewModels.Product
 {

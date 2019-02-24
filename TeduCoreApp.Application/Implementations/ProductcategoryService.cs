@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using TeduCoreApp.Application.Interfaces;
@@ -14,40 +13,42 @@ namespace TeduCoreApp.Application.Implementations
 {
     public class ProductCategoryService : BaseService, IProductCategoryService
     {
-        private readonly IProductCategoryRepository _productCategoryRepository;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IProductCategoryRepository productCategoryRepository;
+        private readonly IProductRepository productRepository;
+        private readonly IUnitOfWork unitOfWork;
 
-        public ProductCategoryService(IProductCategoryRepository productCategoryRepository, IUnitOfWork unitOfWork)
+        public ProductCategoryService(IProductCategoryRepository productCategoryRepository, IProductRepository productRepository, IUnitOfWork unitOfWork)
         {
-            _productCategoryRepository = productCategoryRepository;
-            _unitOfWork = unitOfWork;
+            this.productCategoryRepository = productCategoryRepository;
+            this.productRepository = productRepository;
+            this.unitOfWork = unitOfWork;
         }
 
         public ProductCategoryViewModel Add(ProductCategoryViewModel productcategoryVm)
         {
             ProductCategory productCategory = Mapper.Map<ProductCategoryViewModel, ProductCategory>(productcategoryVm);
-            _productCategoryRepository.Add(productCategory);
+            productCategoryRepository.Add(productCategory);
             return productcategoryVm;
         }
 
         public void Delete(int id)
         {
-            var category = _productCategoryRepository.FindById(id);    
-            var sibling = _productCategoryRepository.FindAll(x => x.ParentId == category.ParentId
+            var category = productCategoryRepository.FindById(id);
+            var sibling = productCategoryRepository.FindAll(x => x.ParentId == category.ParentId
                            && x.SortOrder > category.SortOrder && x.Id != category.Id);
             // update followed siblings from category
             int order = category.SortOrder;
             foreach (var item in sibling)
             {
                 item.SortOrder = ++order;
-                _productCategoryRepository.Update(item);               
+                productCategoryRepository.Update(item);
             }
-            _productCategoryRepository.Remove(id);
+            productCategoryRepository.Remove(id);
         }
 
         public List<ProductCategoryViewModel> GetAll()
         {
-            return _productCategoryRepository.FindAll()
+            return productCategoryRepository.FindAll()
                 .OrderBy(x => x.ParentId)
                 .ProjectTo<ProductCategoryViewModel>().ToList();
         }
@@ -55,89 +56,90 @@ namespace TeduCoreApp.Application.Implementations
         public List<ProductCategoryViewModel> GetAll(string keyword)
         {
             if (!string.IsNullOrEmpty(keyword))
-                return _productCategoryRepository.FindAll(x => x.Name.Contains(keyword) || x.Description.Contains(keyword))
+                return productCategoryRepository.FindAll(x => x.Name.Contains(keyword) || x.Description.Contains(keyword))
                     .OrderBy(x => x.ParentId)
                     .ProjectTo<ProductCategoryViewModel>().ToList();
             else
-                return _productCategoryRepository.FindAll()
+                return productCategoryRepository.FindAll()
                    .OrderBy(x => x.ParentId)
                    .ProjectTo<ProductCategoryViewModel>().ToList();
         }
 
         public List<ProductCategoryViewModel> GetAllByParentId(int parentId)
         {
-            return _productCategoryRepository.FindAll(x => x.Status == Status.Active && x.ParentId == parentId)
+            return productCategoryRepository.FindAll(x => x.Status == Status.Active && x.ParentId == parentId)
                 .OrderBy(x => x.SortOrder)
                 .ProjectTo<ProductCategoryViewModel>().ToList();
         }
 
         public ProductCategoryViewModel GetById(int id)
         {
-            return Mapper.Map<ProductCategory, ProductCategoryViewModel>(_productCategoryRepository.FindById(id));
+            return Mapper.Map<ProductCategory, ProductCategoryViewModel>(productCategoryRepository.FindById(id, c => c.Parent));
         }
 
-        public List<ProductCategoryViewModel> GetHomeCategories(int top)
+        public List<ProductCategoryViewModel> GetHomeCategories(int topCategory, int topProduct)
         {
-            var query = _productCategoryRepository.FindAll(x => x.HomeFlag == true, c => c.Products)
+            var query = productCategoryRepository.FindAll(x => x.HomeFlag == true, c => c.Children)
                   .OrderBy(x => x.HomeOrder)
-                  .Take(top).ProjectTo<ProductCategoryViewModel>();
+                  .Take(topCategory).ProjectTo<ProductCategoryViewModel>();
 
             var categories = query.ToList();
             foreach (var category in categories)
             {
-                //category.Products = _productRepository
-                //    .FindAll(x => x.HotFlag == true && x.CategoryId == category.Id)
-                //    .OrderByDescending(x => x.DateCreated)
-                //    .Take(5)
-                //    .ProjectTo<ProductViewModel>().ToList();
+                List<int> childrenCategories = category.Children.Select(c => c.Id).ToList();
+                category.Products = productRepository
+                    .FindAll(x => x.HotFlag == true && (x.CategoryId == category.Id || childrenCategories.Contains(x.CategoryId)))
+                    .OrderByDescending(x => x.PurchasedCount)
+                    .Take(topProduct)
+                    .ProjectTo<ProductViewModel>().ToList();
             }
             return categories;
         }
 
         public void Reorder(int sourceId, int targetId, Dictionary<int, int> items)
         {
-            var source = _productCategoryRepository.FindById(sourceId);
-            var target = _productCategoryRepository.FindById(targetId);
+            var source = productCategoryRepository.FindById(sourceId);
+            var target = productCategoryRepository.FindById(targetId);
             if (source.ParentId != target.ParentId)
             {
                 source.ParentId = target.ParentId;
-                _productCategoryRepository.Update(source);
-            }      
+                productCategoryRepository.Update(source);
+            }
             // Shift siblings to right
-            var sibling = _productCategoryRepository.FindAll(c => items.ContainsKey(c.Id));
+            var sibling = productCategoryRepository.FindAll(c => items.ContainsKey(c.Id));
             foreach (var item in sibling)
             {
                 if (item.SortOrder != items[item.Id])
                 {
                     item.SortOrder = items[item.Id];
-                    _productCategoryRepository.Update(item);
+                    productCategoryRepository.Update(item);
                 }
             }
-            
+
         }
 
-        public void Save() => _unitOfWork.Commit();
+        public void Save() => unitOfWork.Commit();
 
         public void Update(ProductCategoryViewModel productcategoryVm)
         {
             ProductCategory productCategory = Mapper.Map<ProductCategoryViewModel, ProductCategory>(productcategoryVm);
-            _productCategoryRepository.Update(productCategory);
+            productCategoryRepository.Update(productCategory);
         }
 
         public void UpdateParentId(int sourceId, int targetId, Dictionary<int, int> items)
         {
-            var source = _productCategoryRepository.FindById(sourceId);
+            var source = productCategoryRepository.FindById(sourceId);
             source.ParentId = targetId;
-            _productCategoryRepository.Update(source);
+            productCategoryRepository.Update(source);
 
             // get all sibling
-            var sibling = _productCategoryRepository.FindAll(c => items.ContainsKey(c.Id));
+            var sibling = productCategoryRepository.FindAll(c => items.ContainsKey(c.Id));
             foreach (var child in sibling)
             {
                 if (child.SortOrder != items[child.Id])
                 {
                     child.SortOrder = items[child.Id];
-                    _productCategoryRepository.Update(child);
+                    productCategoryRepository.Update(child);
                 }
             }
         }

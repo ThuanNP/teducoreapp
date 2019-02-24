@@ -43,6 +43,9 @@ namespace TeduCoreApp.Application.ViewModels.Product
         [Description("View count")]
         public int? ViewCount { get; set; }
 
+        [Description("Purchased count")]
+        public int? PurchasedCount { get; set; }
+
         [MaxLength(256)]
         public string Tags { get; set; }
 

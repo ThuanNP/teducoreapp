@@ -8,13 +8,10 @@ namespace TeduCoreApp.Data.Entities
     public class BlogTag : DomainEntity<string>
     {
         public int BlogId { get; set; }
-
         [Required, MaxLength(50), Column(TypeName = "varchar(50)")]
         public string TagId { get; set; }
-
         [ForeignKey("BlogId")]
         public virtual Blog Blog { get; set; }
-
         [ForeignKey("TagId")]
         public virtual Tag Tag { get; set; }
     }

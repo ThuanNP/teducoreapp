@@ -46,8 +46,7 @@
 		22.6 compare
 		22.7 popular tags
 		22.8 Add banner
-		22.9 Special product
-		
+		22.9 Special product		
 	23. category description
 	24. products grid
 	25. products list
@@ -711,15 +710,16 @@ label {
 color: #333333;
 }
 #search button {
-	line-height: 34px;
-	padding: 4px 15px 0px;
-	display: inline-block;
-	background: #e83f33;
-	border: none;
-	color: #fff;
-	border-left: 0px #e8e6e2 solid;
-	position: absolute;
-	right: 0px;
+    line-height: 34px;
+    padding: 4px 15px 0px;
+    display: inline-block;
+    background: #e83f33;
+    border: none;
+    color: #fff;
+    border-left: 0px #e8e6e2 solid;
+    position: absolute;
+    right: 0px;
+    height: 100%;
 }
 #search button:hover {
 	background: #e83f33;
@@ -1258,13 +1258,12 @@ ul#cart-sidebar {
 /******************************************
 5. Service area
 ******************************************/
-
 .our-features-box {
-	overflow: hidden;
-	width: 100%;
-	margin: auto;
-	padding: 15px 0 115px;
-	background: #e83f33;
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+    padding: 15px 0 115px;
+    background: #e83f33;
 }
 .our-features-box ul {
 	list-style: none;
@@ -2383,7 +2382,9 @@ a.link:hover {
 	color: #fff
 }
 .pr-img-area img {
-	width: 100%
+	width: 100%;
+    /*min-width: 265px;
+    min-height: 265px;*/
 }
 .product-item .pr-button {
 	border: 0 none;
@@ -3257,6 +3258,9 @@ footer .footer-links ul li a:hover {
 	text-align: center;
 	border-radius: 3px;
 }
+.social ul.inline-mode li a i{
+    line-height: 35px;
+}
 .social .fb a:hover, .social .tw a:hover, .social .googleplus a:hover, .social .rss a:hover, .social .instagram a:hover, .social .linkedin a:hover {
 	background: #e83f33
 }
@@ -3288,6 +3292,9 @@ footer .footer-links ul li a:hover {
 .social ul li {
 	margin-right: 7px;
 	display: inline-block
+}
+.social ul li a i {
+    line-height: 35px;
 }
 .social ul li:last-child {
 	margin-right: 0px;
@@ -3493,7 +3500,7 @@ nav a:hover {
 	background: none !important;
 	margin-right: 30px;
 }
-.mtmegamenu>ul>li:last-child {
+/*.mtmegamenu>ul>li:last-child {
 	margin-right: 0px;
 	float: right;
 	padding-top: 12px;
@@ -3501,7 +3508,7 @@ nav a:hover {
 .mtmegamenu>ul>li:last-child a {
 	color: #fff;
 	text-transform: none;
-}
+}*/
 .mtmegamenu>ul>li.demo_custom_link_cms {
 	position: relative;
 }
@@ -4397,16 +4404,16 @@ a.ads1 img {
 .toolbar .sorter {
 	margin-top: 10px
 }
-.sorter .short-by {
+.sorter .sort-by {
 	float: right;
 	margin: 0;
 	padding-left: 12px
 }
-.toolbar.column .sorter .short-by.page {
-	float: left;
-	margin: 0;
-	padding-left: 0;
-	margin-bottom: 10px;
+.toolbar.column .sorter .sort-by.page {
+    float: left;
+    margin: 0;
+    padding-left: 0;
+    margin-bottom: 10px;
 }
 .toolbar label {
 	color: #777;
@@ -4416,31 +4423,31 @@ a.ads1 img {
 	text-transform: capitalize;
 	margin-bottom: 0px;
 }
-.sorter .short-by select {
-	border: 0 none;
-	display: inline-block;
-	font-size: 14px;
-	height: 30px;
-	margin: 0;
-	padding: 0 14px;
-	vertical-align: middle;
-	width: 110px;
-	border: 1px #e8e8e8 solid;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	background-position: right center;
-	background-image: url(../images/arrow-d.png);
-	background-repeat: no-repeat;
-	position: right 10px center;
-	padding-right: 28px;
-	text-indent: 0.01px;
-	text-overflow: '';
-	cursor: pointer;
-	border-radius: 3px;
+.sorter .sort-by select {
+    border: 0 none;
+    display: inline-block;
+    font-size: 14px;
+    height: 30px;
+    margin: 0;
+    padding: 0 14px;
+    vertical-align: middle;
+    width: 110px;
+    border: 1px #e8e8e8 solid;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-position: right center;
+    background-image: url(../images/arrow-d.png);
+    background-repeat: no-repeat;
+    position: right 10px center;
+    padding-right: 28px;
+    text-indent: 0.01px;
+    text-overflow: '';
+    cursor: pointer;
+    border-radius: 3px;
 }
-.sorter .short-by.page select {
-	width: 65px
+.sorter .sort-by.page select {
+    width: 65px
 }
 .view-mode {
 	float: left;
@@ -4503,6 +4510,9 @@ a.ads1 img {
 	margin: 0 0 0 5px;
 	width: 30px;
 }
+.pagination-area ul li i {
+    line-height: 30px;
+}
 .pagination-area ul li a {
 	border: 1px solid #e5e5e5;
 	color: #363636;
@@ -4513,7 +4523,7 @@ a.ads1 img {
 	width: 30px;
 	text-decoration: none;
 	transition: all .4s ease-out .2s;
-	border-radius: 3px;
+	border-radius: 3px;    
 }
 .pagination-area ul li a:hover {
 	background: #e83f33;
@@ -4525,6 +4535,9 @@ a.ads1 img {
 	border: 1px solid #e83f33;
 	color: #fff;
 	transition: all .4s ease-out .2s;
+}
+.pagination-area ul li a i {
+    line-height: 30px;
 }
 /******************************************
 20. Filter price
@@ -7746,9 +7759,13 @@ label[for="rememberme"] {
 	color: #fff;
 	background-color: #e83f33;
 }
+.jtv-best-sale .pr-button-hover .mt-button a i{
+    line-height: 40px;
+}
 .jtv-best-sale .item-price {
 	margin-bottom: 8px;
 }
+
 .jtv-best-sale .owl-theme .owl-controls .owl-page span {
 	display: block;
 	width: 12px;
@@ -8131,3 +8148,10 @@ a.jtv-m-logo-img {
 	margin-top: 12px;
 }
 .manufacturers-box{ margin-top:15px;}
+
+/*.product-thumbnail{
+    height: 260px;
+}*/
+/*.item-content .item-price {
+    margin-bottom: 17px;
+}*/
