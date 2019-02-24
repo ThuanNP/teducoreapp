@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TeduCoreApp.Application.Interfaces;
+using TeduCoreApp.Application.ViewModels.Common;
 using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.Enums;
@@ -13,6 +14,7 @@ using TeduCoreApp.infrastructure.Interfaces;
 using TeduCoreApp.Utilities.Constants;
 using TeduCoreApp.Utilities.Dtos;
 using TeduCoreApp.Utilities.Helpers;
+using static TeduCoreApp.Utilities.Constants.CommonConstants;
 
 namespace TeduCoreApp.Application.Implementations
 {
@@ -27,9 +29,9 @@ namespace TeduCoreApp.Application.Implementations
         private readonly IWholePriceRepository wholePriceRepository;
         private readonly IUnitOfWork unitOfWork;
 
-        public ProductService(IProductRepository productRepository, ITagRepository tagRepository, 
-            IProductCategoryRepository productCategoryRepository, IProductTagRepository productTagRepository, 
-            IProductQuantityRepository productQuantityRepository, IProductImageRepository productImageRepository, 
+        public ProductService(IProductRepository productRepository, ITagRepository tagRepository,
+            IProductCategoryRepository productCategoryRepository, IProductTagRepository productTagRepository,
+            IProductQuantityRepository productQuantityRepository, IProductImageRepository productImageRepository,
             IWholePriceRepository wholePriceRepository, IUnitOfWork unitOfWork)
         {
             this.productCategoryRepository = productCategoryRepository;
@@ -119,7 +121,7 @@ namespace TeduCoreApp.Application.Implementations
             return data;
         }
 
-        public PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize)
+        public PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize, string SortBy)
         {
             var query = productRepository.FindAll(p => p.Status == Status.Active);
             if (categoryId.HasValue)
@@ -138,8 +140,18 @@ namespace TeduCoreApp.Application.Implementations
                                     p.Description.Contains(keyword));
             }
             int totalRow = query.Count();
-            query = query.OrderByDescending(p => p.DateCreated)
-                .Skip((page - 1) * pageSize).Take(pageSize);
+            switch (SortBy)
+            {
+                case ProductSortType.Latest:
+                    query = query.OrderByDescending(p => p.DateCreated).Skip((page - 1) * pageSize).Take(pageSize);
+                    break;
+                case ProductSortType.Name:
+                    query = query.OrderBy(p => p.Name).Skip((page - 1) * pageSize).Take(pageSize);
+                    break;
+                case ProductSortType.Price:
+                    query = query.OrderByDescending(x => x.PromotionPrice.HasValue ? x.PromotionPrice : x.Price).Skip((page - 1) * pageSize).Take(pageSize);
+                    break;
+            }
             var data = query.ProjectTo<ProductViewModel>().ToList();
             var paginationSet = new PagedResult<ProductViewModel>()
             {
@@ -153,7 +165,7 @@ namespace TeduCoreApp.Application.Implementations
 
         public ProductViewModel GetById(int id)
         {
-            return Mapper.Map<Product, ProductViewModel>(productRepository.FindById(id));
+            return Mapper.Map<Product, ProductViewModel>(productRepository.FindById(id, c => c.ProductTags));
         }
 
         public List<ProductQuantityViewModel> GetQuantities(int productId)
@@ -296,6 +308,61 @@ namespace TeduCoreApp.Application.Implementations
         {
             var query = productRepository.FindAll(x => x.Status == Status.Active && x.HotFlag == true);
             return query.OrderByDescending(x => x.ViewCount).Take(top).ProjectTo<ProductViewModel>().ToList();
+        }
+
+        public List<ProductViewModel> GetTopRelated(int id, int top)
+        {
+            var product = productRepository.FindById(id);
+            var query = productRepository.FindAll(x => x.Status == Status.Active && x.CategoryId == product.CategoryId);
+            return query.OrderByDescending(x => x.DateCreated).Take(top).ProjectTo<ProductViewModel>().ToList();
+        }
+
+        public List<TagViewModel> GetTags(int productId)
+        {
+            var tags = tagRepository.FindAll();
+            var productTags = productTagRepository.FindAll();
+            var query = (from tag in tags
+                         join ptag in productTags on tag.Id equals ptag.TagId
+                         where ptag.ProductId == productId && tag.Type.Equals("Product")
+                         select tag).ProjectTo<TagViewModel>();
+            return query.ToList();
+        }
+
+        public PagedResult<ProductViewModel> GetAllTaging(string tagId, int page, int pageSize, string SortBy)
+        {
+            var query = productRepository.FindAll(p => p.Status == Status.Active);
+            if (!string.IsNullOrEmpty(tagId))
+            {
+                var tags = tagRepository.FindAll();
+                var productTags = productTagRepository.FindAll();
+                query = from t in tags
+                        join pt in productTags on t.Id equals pt.TagId
+                        where t.Id.Equals(tagId) && t.Type.Equals("Product")
+                        select pt.Product;
+            }
+            int totalRow = query.Count();
+            switch (SortBy)
+            {
+                case ProductSortType.Latest:
+                    query = query.OrderByDescending(p => p.DateCreated).Skip((page - 1) * pageSize).Take(pageSize);
+                    break;
+                case ProductSortType.Name:
+                    query = query.OrderBy(p => p.Name).Skip((page - 1) * pageSize).Take(pageSize);
+                    break;
+                case ProductSortType.Price:
+                    query = query.OrderByDescending(x => x.PromotionPrice.HasValue ? x.PromotionPrice : x.Price).Skip((page - 1) * pageSize).Take(pageSize);
+                    break;
+            }
+
+            var data = query.ProjectTo<ProductViewModel>().ToList();
+            var paginationSet = new PagedResult<ProductViewModel>()
+            {
+                Results = data,
+                CurrentPage = page,
+                RowCount = totalRow,
+                PageSize = pageSize
+            };
+            return paginationSet;
         }
     }
 }

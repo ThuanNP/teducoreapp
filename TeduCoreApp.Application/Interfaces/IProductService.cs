@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TeduCoreApp.Application.ViewModels.Common;
 using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Utilities.Dtos;
 
@@ -12,6 +13,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<ProductViewModel> GetAll(int? categoryId, string keyword);
 
+        List<ProductViewModel> GetTopRelated(int id, int top);
+
         List<ProductViewModel> GetTopSpecialOffers(int top);
 
         List<ProductViewModel> GetTopBestSellers(int top);
@@ -20,7 +23,9 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<ProductViewModel> GetTopViewCount(int top);
 
-        PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize);
+        PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize, string sortBy);
+
+        PagedResult<ProductViewModel> GetAllTaging(string tagId, int page, int pageSize, string sortBy);
 
         ProductViewModel GetById(int id);
 
@@ -50,6 +55,9 @@ namespace TeduCoreApp.Application.Interfaces
         List<WholePriceViewModel> GetWholePrices(int productId);
 
         void AddWholePrice(int productId, List<WholePriceViewModel> wholePrices);
+
+        // Tags
+        List<TagViewModel> GetTags(int productId);
 
     }
 }

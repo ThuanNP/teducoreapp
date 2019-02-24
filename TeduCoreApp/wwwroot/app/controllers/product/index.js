@@ -354,7 +354,7 @@
                 $('#txt-original-price-modal').val(data.OriginalPrice);
                 $('#txt-promotion-price-modal').val(data.PromotionPrice);
                 initNumberSpinnerPrice();
-                // $('#txt-image-modal').val(data.ThumbnailImage);
+                $('#txt-image-modal').val(data.Image);
 
                 $('#txt-tag-modal').val(data.Tags);
                 $('#txt-meta-keyword-modal').val(data.SeoKeywords);

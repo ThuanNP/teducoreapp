@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using TeduCoreApp.Data.Enums;
@@ -77,5 +78,9 @@ namespace TeduCoreApp.Application.ViewModels.Product
 
         [Description("Product category")]
         public ProductCategoryViewModel ProductCategory { get; set; }
+
+        public List<ProductQuantityViewModel> ProductQuantities { set; get; }
+        public List<ProductImageViewModel> ProductImages { set; get; }
+        public List<WholePriceViewModel> WholePrices { get; set; }
     }
 }

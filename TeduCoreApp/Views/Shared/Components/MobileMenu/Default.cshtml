@@ -14,7 +14,7 @@
                         <ul>
                             @foreach (var subItem in Model.Where(x => x.ParentId == item.Id))
                             {
-                                <li><a href="products/@item.SeoAlias-c.@(item.Id).html"><span>@subItem.Name</span></a></li>
+                                <li><a href="/products/@item.SeoAlias-c.@(item.Id).html"><span>@subItem.Name</span></a></li>
                             }
                         </ul>
                     </li>

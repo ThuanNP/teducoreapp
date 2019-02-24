@@ -60,7 +60,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAllPaging(int? categoryId, string keyword, int page, int pageSize)
         {
-            PagedResult<ProductViewModel> model = _productService.GetAllPaging(categoryId, keyword, page, pageSize);
+            PagedResult<ProductViewModel> model = _productService.GetAllPaging(categoryId, keyword, page, pageSize, string.Empty);
             return new OkObjectResult(model);
         }
 

@@ -5718,8 +5718,8 @@ ul.products-list .cart-button i {
 	max-width: inherit
 }
 .cursorshade {
-	width: 150px !important;
-	height: 150px !important;
+	/*width: 150px !important;
+	height: 150px !important;*/
 	text-align: center;
 	line-height: 150px;
 }

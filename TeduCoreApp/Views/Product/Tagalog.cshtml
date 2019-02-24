@@ -1,8 +1,7 @@
-﻿@model CatalogViewModel
+﻿@model TagalogViewModel
 @{
-    ViewData["Title"] = Model.Category.SeoPageTitle;
-    ViewData["MetaKeyword"] = Model.Category.Seokeywords;
-    ViewData["MetaDescription"] = Model.Category.SeoDecription;
+
+    ViewData["Title"] = "Tagalog";
 }
 
 <!-- Breadcrumbs -->
@@ -12,12 +11,7 @@
             <div class="col-xs-12">
                 <ul>
                     <li class="home"> <a title="Go to Home Page" href="index.html">Home</a><span>&raquo;</span></li>
-                    @if (Model.Category.Parent != null)
-                    {
-                        <li class=""> <a title="Go to @Model.Category.Parent.Name" href="/products/@Model.Category.Parent.SeoAlias-c.@(Model.Category.Parent.Id).html">@(Model.Category.Parent.Name)</a><span>&raquo;</span></li>
-
-                    }
-                    <li><strong>@Model.Category.Name</strong></li>
+                    <li><strong>@Model.Tag.Name</strong></li>
                 </ul>
             </div>
         </div>
@@ -31,10 +25,10 @@
             <div class="col-main col-sm-12 col-xs-12">
                 <div class="shop-inner">
                     <div class="page-title">
-                        <h2>@Model.Category.Name</h2>
+                        <h2>@Model.Tag.Name</h2>
                     </div>
                     <div class="toolbar column">
-                        <form action="/products/@Model.Category.SeoAlias-c.@(Model.Category.Id).html" method="get">
+                        <form action="/products/tag-@(Model.Tag.Id).html" method="get">
                             <div class="sorter">
                                 <div class="sort-by">
                                     <label>Sort By:</label>

@@ -4,7 +4,7 @@
         <!--Home page-->
         <li class="mt-root">
             <div class="mt-root-item">
-                <a href="index.html">
+                <a href="/index.html">
                     <div class="title title_font"><span class="title-text">Home</span></div>
                 </a>
             </div>
@@ -20,12 +20,12 @@
                 @foreach (var item in Model.Where(x => x.ParentId == null))
                 {
                     <li class="menu-item depth-1 menucol-1-3">
-                        <div class="title title_font"><a href="/@item.SeoAlias-c.@(item.Id).html">@item.Name</a></div>
+                        <div class="title title_font"><a href="/products/@item.SeoAlias-c.@(item.Id).html">@item.Name</a></div>
                         <ul class="submenu">
                             @foreach (var subItem in Model.Where(x => x.ParentId == item.Id))
                             {
                                 <li class="menu-item">
-                                    <div class="title"><a href="products/@subItem.SeoAlias-c.@(subItem.Id).html">@subItem.Name</a></div>
+                                    <div class="title"><a href="/products/@subItem.SeoAlias-c.@(subItem.Id).html">@subItem.Name</a></div>
                                 </li>
                             }
                         </ul>
