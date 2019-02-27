@@ -8,7 +8,8 @@ namespace TeduCoreApp.Controllers
 {
     public class HomeController : Controller
     {
-        private const string bodyClass = "cms-index-index cms-home-page";
+        private const string homeBodyClass = "cms-index-index cms-home-page";
+        private const string aboutBodyClass = "about_us_page";
         private readonly ICommonService commonService;
         private readonly IProductService productService;
         private readonly IProductCategoryService productCategoryService;
@@ -26,7 +27,7 @@ namespace TeduCoreApp.Controllers
         [Route("")]
         public IActionResult Index()
         {
-            ViewData["BodyClass"] = bodyClass;
+            ViewData["BodyClass"] = homeBodyClass;
             var model = new HomeViewModel
             {
                 HomeSlides = commonService.GetSlides(SlideGroupAlias.Top, 4),
@@ -38,11 +39,10 @@ namespace TeduCoreApp.Controllers
             };
             return View(model);
         }
-
+         [Route("about.html")]
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
-
+            ViewData["BodyClass"] = aboutBodyClass;
             return View();
         }
 

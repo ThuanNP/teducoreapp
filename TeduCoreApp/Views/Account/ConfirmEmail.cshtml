@@ -1,10 +1,33 @@
 ﻿@{
     ViewData["Title"] = "Confirm email";
 }
-
-<h2>@ViewData["Title"]</h2>
-<div>
-    <p>
-        Thank you for confirming your email.
-    </p>
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="/index.html">Home</a><span>&raquo;</span></li>
+                    <li><strong>@ViewData["Title"]</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col1-layout">
+    <div class="main container">
+        <div class="page-content">
+            <div class="fullwidth-but">
+                <div class="col-xs-12">
+                    <div class="successmes" style="margin-bottom:20px;">
+                        <div class="message-box-wrap"> <i class="fa fa-check-square fa-lg"></i>  Thank you for confirming your email.</div>
+                    </div>
+                    <a href="/index.html" class="but_full"><i class="fa fa-home"></i>&nbsp; Go to Home Page</a>
+                </div>
+            </div>
+            <!-- end box -->
+        </div>
+    </div>
+</section>

@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using TeduCoreApp.Data.Entities;
-using TeduCoreApp.Models;
+using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Models.AccountViewModels;
 using TeduCoreApp.Services;
 
@@ -208,6 +204,7 @@ namespace TeduCoreApp.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        [Route("register.html")]
         public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -217,12 +214,22 @@ namespace TeduCoreApp.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [Route("register.html")]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new AppUser { UserName = model.Email, Email = model.Email };
+                // INFO: MM/dd/yyyy
+                var user = new AppUser
+                {
+                    UserName = model.Email,
+                    FullName = model.FullName,
+                    BirthDay = model.BirthDay,
+                    Email = model.Email,
+                    Status = Status.Active,
+                    Avatar = string.Empty
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -238,7 +245,10 @@ namespace TeduCoreApp.Controllers
                 }
                 AddErrors(result);
             }
-
+            else
+            {
+                return View(model);
+            }
             // If we got this far, something failed, redisplay form
             return View(model);
         }

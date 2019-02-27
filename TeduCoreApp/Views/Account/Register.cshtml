@@ -3,34 +3,100 @@
     ViewData["Title"] = "Register";
 }
 
-<h2>@ViewData["Title"]</h2>
+<!-- Breadcrumbs -->
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
-            <h4>Create a new account.</h4>
-            <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="/index.html">Home</a><span>&raquo;</span></li>
+                    <li><strong>Register</strong></li>
+                </ul>
             </div>
-            <div class="form-group">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassword"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-default">Register</button>
-        </form>
+        </div>
     </div>
 </div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
 
+<section class="main-container col1-layout">
+    <div class="main container">
+        <div class="page-content">
+            <div class="account-login">
+                <div class="col-md-3 col-sm-2"></div>
+                <div class="col-md-6 col-sm-8">
+                    <div class="single-input p-bottom50 clearfix">
+                        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="check-title">
+                                        @*<h4>New Customer</h4>*@
+                                        <div asp-validation-summary="All" class="text-danger"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label asp-for="FullName"></label>
+                                    <div class="input-text">
+                                        <input asp-for="FullName" name="fullname" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label asp-for="BirthDay"></label>
+                                    <div class="input-text">
+                                        <input asp-for="BirthDay" name="birthday" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label asp-for="Email"></label>
+                                    <div class="input-text">
+                                        <input asp-for="Email" name="email" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label asp-for="PhoneNumber"></label>
+                                    <div class="input-text">
+                                        <input asp-for="PhoneNumber" name="phonenumber" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label asp-for="Password"></label>
+                                    <div class="input-text">
+                                        <input asp-for="Password" name="password" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label asp-for="ConfirmPassword"></label>
+                                    <div class="input-text">
+                                        <input asp-for="ConfirmPassword" name="confirmpassword" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <label asp-for="Avatar"></label>
+                                    <div class="input-text">
+                                        <input asp-for="Avatar" name="avatar" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <label asp-for="Address"></label>
+                                    <div class="input-text">
+                                        <input asp-for="Address" name="address" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <button type="submit" class="button btn"><i class="fa fa-user"></i>&nbsp; <span>Register</span></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Main Container End -->
+<partial name="~/Views/Shared/_ServicePartial.cshtml" />
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
 }

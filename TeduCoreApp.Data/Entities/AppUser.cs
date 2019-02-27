@@ -13,13 +13,14 @@ namespace TeduCoreApp.Data.Entities
         {
         }
 
-        public AppUser(Guid id, string fullName, decimal balance, string avatar, DateTime dateCreated, Status status)
+        public AppUser(Guid id, string fullName, string email, string phoneNumber, string avatar, Status status)
         {
             Id = id;
             FullName = fullName;
-            Balance = balance;
+            UserName = email;
+            Email = email;
+            PhoneNumber = phoneNumber;
             Avatar = avatar;
-            DateCreated = dateCreated;
             Status = status;
         }
 

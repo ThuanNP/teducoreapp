@@ -357,7 +357,7 @@ label {
 	padding-left: 15px;
 	width: 380px;
 	color: #333333;
-	border-radius: 3px;
+	border-radius: 3px;    
 }
 #newsletter-popup .subscribe-bottom input[type=checkbox] {
 	vertical-align: sub;
@@ -7059,6 +7059,14 @@ p.note {
 	font-weight: 600;
 	font-size: 15px;
 }
+    .account-login .input-text {
+        padding-bottom: 5px;
+    }
+
+    .account-login .button {
+        margin-top: 10px;
+    }
+
 .register-benefits h5 {
 	font-weight: 600;
 	font-size: 13px;
