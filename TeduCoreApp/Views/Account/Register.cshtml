@@ -10,14 +10,13 @@
             <div class="col-xs-12">
                 <ul>
                     <li class="home"> <a title="Go to Home Page" href="/index.html">Home</a><span>&raquo;</span></li>
-                    <li><strong>Register</strong></li>
+                    <li><strong>@ViewData["Title"]</strong></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 <!-- Breadcrumbs End -->
-
 <!-- Main Container -->
 <section class="main-container col1-layout">
     <div class="main container">
@@ -30,7 +29,7 @@
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div class="check-title">
-                                        @*<h4>New Customer</h4>*@
+                                        <h4>@ViewData["Title"]</h4>
                                         <div asp-validation-summary="All" class="text-danger"></div>
                                     </div>
                                 </div>
@@ -84,6 +83,10 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
+                                    <recaptcha />
+                                    <span class="text-danger" id="recaptchaErrorMessage"></span>
+                                </div>
+                                <div class="col-xs-12">
                                     <button type="submit" class="button btn"><i class="fa fa-user"></i>&nbsp; <span>Register</span></button>
                                 </div>
                             </div>
@@ -99,4 +102,10 @@
 <partial name="~/Views/Shared/_ServicePartial.cshtml" />
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
+    <recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
 }
+@*@section Scripts{
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+        <recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
+    }*@

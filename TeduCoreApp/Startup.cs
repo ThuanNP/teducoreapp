@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using System;
 using TeduCoreApp.Application.Implementations;
 using TeduCoreApp.Application.Interfaces;
@@ -60,14 +61,20 @@ namespace TeduCoreApp
                 // user settings
                 options.User.RequireUniqueEmail = true;
             });
-         
+
             // Add application services.
+            services.AddRecaptcha(new RecaptchaOptions
+            {
+                SiteKey = Configuration["Recaptcha:SiteKey"],
+                SecretKey = Configuration["Recaptcha:SecretKey"]
+            });
+
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
 
             services.AddAutoMapper();
             services.AddSingleton(Mapper.Configuration);
-            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));           
+            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
 
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<DbIntinitializer>();
@@ -75,7 +82,7 @@ namespace TeduCoreApp
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
 
             services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
-            
+
             // Add application services.
             services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
             services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
@@ -94,7 +101,7 @@ namespace TeduCoreApp
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IProductQuantityRepository, ProductQuantityRepository>();
             services.AddTransient<IProductImageRepository, ProductImageRepository>();
-            services.AddTransient<IWholePriceRepository, WholePriceRepository>();                    
+            services.AddTransient<IWholePriceRepository, WholePriceRepository>();
             services.AddTransient<IColorRepository, ColorRepository>();
             services.AddTransient<ISizeRepository, SizeRepository>();
             services.AddTransient<IBillRepository, BillRepository>();
