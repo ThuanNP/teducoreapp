@@ -873,6 +873,10 @@ select.cate-dropdown {
 	font-size: 12px;
 	padding: 6px 15px;
 }
+.dropdown-menu > li > form>  a {
+    font-size: 12px;
+    padding: 6px 15px;
+}
 .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
 	color: #fff;
 	text-decoration: none;
@@ -7091,10 +7095,11 @@ p.note {
 	border: 1px solid #e8e6e2;
 	-webkit-box-shadow: inherit;
 	box-shadow: inherit;
-	width: 50%;
+	/*width: 50%;*/
+    width: 60%;
 }
 .box-authentication .button {
-	margin-top: 15px;
+	/*margin-top: 15px;*/
 }
 /******************************************
 36. 404 Error Page
