@@ -1,8 +1,10 @@
 ﻿@model CatalogViewModel
 @{
-    ViewData["Title"] = Model.Category.SeoPageTitle;
-    ViewData["MetaKeyword"] = Model.Category.Seokeywords;
-    ViewData["MetaDescription"] = Model.Category.SeoDecription;
+    var category = Model.Category as ProductCategoryViewModel;
+    ViewData["Title"] = category.SeoPageTitle;
+    ViewData["MetaKeyword"] = category.Seokeywords;
+    ViewData["MetaDescription"] = category.SeoDecription;
+
 }
 
 <!-- Breadcrumbs -->
@@ -14,7 +16,10 @@
                     <li class="home"> <a title="Go to Home Page" href="index.html">Home</a><span>&raquo;</span></li>
                     @if (Model.Category.Parent != null)
                     {
-                        <li class=""> <a title="Go to @Model.Category.Parent.Name" href="/products/@Model.Category.Parent.SeoAlias-c.@(Model.Category.Parent.Id).html">@(Model.Category.Parent.Name)</a><span>&raquo;</span></li>
+                        <li class="">
+                            <a title="@category.Parent.Name" asp-controller="Product" asp-action="Catalog" asp-route-alias="@category.Parent.SeoAlias" asp-route-id="@category.Parent.Id">@category.Parent.Name</a>
+                            <span>&raquo;</span>
+                        </li>
 
                     }
                     <li><strong>@Model.Category.Name</strong></li>
@@ -31,10 +36,10 @@
             <div class="col-main col-sm-12 col-xs-12">
                 <div class="shop-inner">
                     <div class="page-title">
-                        <h2>@Model.Category.Name</h2>
+                        <h2>@category.Name</h2>
                     </div>
                     <div class="toolbar column">
-                        <form action="/products/@Model.Category.SeoAlias-c.@(Model.Category.Id).html" method="get">
+                        <form asp-controller="Product" asp-action="Catalog" asp-route-alias="@category.SeoAlias" asp-route-id="@category.Id"  method="get">
                             <div class="sorter">
                                 <div class="sort-by">
                                     <label>Sort By:</label>
@@ -63,14 +68,14 @@
                                                 {
                                                     <div class="icon-new-label new-right">New</div>
                                                 }
-                                                <div class="pr-img-area">
-                                                    <a title="Ipsums Dolors Untra" href="/products/@product.SeoAlias-p.@(product.Id).html">
-                                                        <figure>
-                                                            <img class="first-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg": product.Image)' alt="@product.Name">
-                                                            <img class="hover-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg": product.Image)' alt="@product.Name">
-                                                        </figure>
-                                                    </a>
-                                                </div>
+                                                    <div class="pr-img-area">
+                                                        <a title="@product.Name" asp-controller="Product" asp-action="Detail" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">
+                                                            <figure>
+                                                                <img class="first-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg": product.Image)' alt="@product.Name">
+                                                                <img class="hover-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg": product.Image)' alt="@product.Name">
+                                                            </figure>
+                                                        </a>
+                                                    </div>
                                                 <div class="pr-info-area">
                                                     <div class="pr-button">
                                                         <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart"></i> </a> </div>
@@ -81,7 +86,7 @@
                                             </div>
                                             <div class="item-info">
                                                 <div class="info-inner">
-                                                    <div class="item-title"> <a title="Ipsums Dolors Untra" href="/products/@product.SeoAlias-p.@(product.Id).html">@product.Name</a> </div>
+                                                    <div class="item-title">  <a title="@product.Name" asp-controller="Product" asp-action="Detail" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">@product.Name</a> </div>
                                                     <div class="item-content">
                                                         <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                         <div class="item-price">

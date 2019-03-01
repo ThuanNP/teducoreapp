@@ -2,8 +2,10 @@
 
 namespace TeduCoreApp.Models.ProductViewModels
 {
-    public class CatalogViewModel : ProductPagingViewModel
+    public class SearchResultViewModel : ProductPagingViewModel
     {
+        public string Keyword { get; set; }
+
         public ProductCategoryViewModel Category { get; set; }
     }
 }

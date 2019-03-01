@@ -49,7 +49,7 @@
                                             <li><a href="account_page.html">Account</a></li>
                                             <li><a href="wishlist.html">Wishlist</a></li>
                                             <li><a href="orders_list.html">Order Tracking</a></li>
-                                            <li><a href="/about.html">About us</a></li>
+                                            <li><a title="About us" asp-controller="Home" asp-action="About">About us</a></li>
                                             <li class="divider"></li>
                                             <li>
                                                 <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
@@ -62,8 +62,8 @@
                             }
                             else
                             {
-                                <li><a title="login" href="/login.html"><span>Login</span></a></li>
-                                <li><a title="register as a new user" href="/register.html"><span>Register</span></a></li>
+                                <li><a title="login" asp-controller="Account" asp-action="Login"><span>Login</span></a></li>
+                                <li><a title="register" asp-controller="Account" asp-action="Register"><span>Register</span></a></li>
                             }
                         </ul>
                     </div>
@@ -77,7 +77,7 @@
                     <div class="col-sm-3 col-xs-12 jtv-logo-block">
 
                         <!-- Header Logo -->
-                        <div class="logo"><a title="e-commerce" href="/index.html"><img alt="ShopMart" title="ShopMart" src="~/client-side/images//logo.png"></a> </div>
+                        <div class="logo"><a title="e-commerce" asp-controller="Home" asp-action="index"><img alt="ShopMart" title="ShopMart" src="~/client-side/images//logo.png"></a> </div>
                     </div>
                     <div class="col-xs-12 col-sm-5 col-md-6 jtv-top-search">
 
@@ -85,24 +85,11 @@
 
                         <div class="top-search">
                             <div id="search">
-                                <form>
+                                <form asp-area="" asp-controller="Product" asp-action="Search" method="get">
                                     <div class="input-group">
-                                        <select class="cate-dropdown hidden-xs hidden-sm" name="category_id">
-                                            <option>All Categories</option>
-                                            <option>women</option>
-                                            <option>&nbsp;&nbsp;&nbsp;Chair </option>
-                                            <option>&nbsp;&nbsp;&nbsp;Decoration</option>
-                                            <option>&nbsp;&nbsp;&nbsp;Lamp</option>
-                                            <option>&nbsp;&nbsp;&nbsp;Handbags </option>
-                                            <option>&nbsp;&nbsp;&nbsp;Sofas </option>
-                                            <option>&nbsp;&nbsp;&nbsp;Essential </option>
-                                            <option>Men</option>
-                                            <option>Electronics</option>
-                                            <option>&nbsp;&nbsp;&nbsp;Mobiles </option>
-                                            <option>&nbsp;&nbsp;&nbsp;Music &amp; Audio </option>
-                                        </select>
-                                        <input type="text" class="form-control" placeholder="Enter your search..." name="search">
-                                        <button class="btn-search" type="button"><i class="fa fa-search"></i></button>
+                                        @await Component.InvokeAsync("CategorySearch")
+                                        <input type="text" class="form-control" placeholder="Enter your search..." name="keyword">
+                                        <button class="btn-search" type="submit"><i class="fa fa-search"></i></button>
                                     </div>
                                 </form>
                             </div>

@@ -20,12 +20,14 @@
                 @foreach (var item in Model.Where(x => x.ParentId == null))
                 {
                     <li class="menu-item depth-1 menucol-1-3">
-                        <div class="title title_font"><a href="/products/@item.SeoAlias-c.@(item.Id).html">@item.Name</a></div>
+                        <div class="title title_font">
+                            <a title="@item.Name" asp-controller="Product" asp-action="Catalog" asp-route-alias="@item.SeoAlias" asp-route-id="@item.Id">@item.Name</a>
+                        </div>
                         <ul class="submenu">
                             @foreach (var subItem in Model.Where(x => x.ParentId == item.Id))
                             {
                                 <li class="menu-item">
-                                    <div class="title"><a href="/products/@subItem.SeoAlias-c.@(subItem.Id).html">@subItem.Name</a></div>
+                                    <div class="title"> <a title="@subItem.Name" asp-controller="Product" asp-action="Catalog" asp-route-alias="@subItem.SeoAlias" asp-route-id="@subItem.Id">@subItem.Name</a></div>
                                 </li>
                             }
                         </ul>
@@ -50,8 +52,11 @@
                                         <div class="icon-sale-label sale-left">Sale</div>
                                     }
                                     <div class="pr-img-area">
-                                        <a title="Product title here" href="single_product.html">
-                                            <figure> <img class="first-img" src="@product.Image" alt="@product.SeoAlias"> <img class="hover-img" src="@product.Image" alt="@product.SeoAlias"></figure>
+                                        <a title="@product.Name" asp-controller="Product" asp-action="Detail" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">
+                                            <figure>
+                                                <img class="first-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg":product.Image)' alt="@product.Name">
+                                                <img class="hover-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg":product.Image)' alt="@product.Name">
+                                            </figure>
                                         </a>
                                     </div>
                                     <div class="pr-info-area">
@@ -64,7 +69,9 @@
                                 </div>
                                 <div class="item-info">
                                     <div class="info-inner">
-                                        <div class="item-title"> <a title="Product title here" href="single_product.html">@product.Name</a> </div>
+                                        <div class="item-title">
+                                            <a title="@product.Name" asp-controller="Product" asp-action="Detail" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">@product.Name</a>
+                                        </div>
                                         <div class="item-content">
                                             <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                             <div class="item-price">

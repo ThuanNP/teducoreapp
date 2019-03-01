@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using TeduCoreApp.Application.Interfaces;
+using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Models.ProductViewModels;
 
 namespace TeduCoreApp.Controllers
@@ -22,13 +23,15 @@ namespace TeduCoreApp.Controllers
             this.configuration = configuration;
         }
 
+        [HttpGet]
         [Route("products.html")]
         public IActionResult Index()
         {
             return View();
         }
 
-        [Route("products/{alias}-c.{id}.html", Name ="ProductByCategory")]
+        [HttpGet]
+        [Route("{alias}-c.{id}.html", Name = "ProductByCategory")]
         public IActionResult Catalog(int id, int? pageSize, string sortBy, int page = 1)
         {
             ViewData["BodyClass"] = catalogBodyClass;
@@ -43,8 +46,9 @@ namespace TeduCoreApp.Controllers
             return View(model);
         }
 
-        [Route("products/{alias}-p.{id}.html", Name = "ProductDetail")]
-        public IActionResult Details(int id)
+        [HttpGet]
+        [Route("{alias}-p.{id}.html", Name = "ProductDetail")]
+        public IActionResult Detail(int id)
         {
             ViewData["BodyClass"] = detailBodyClass;
             var product = productService.GetById(id);
@@ -66,7 +70,8 @@ namespace TeduCoreApp.Controllers
             return View(model);
         }
 
-        [Route("products/tag.{id}.html", Name = "ProductByTag")]
+        [HttpGet]
+        [Route("tag.{id}.html", Name = "ProductByTag")]
         public IActionResult Tagalog(string id, int? pageSize, string sortBy, int page = 1)
         {
             ViewData["BodyClass"] = catalogBodyClass;
@@ -80,5 +85,28 @@ namespace TeduCoreApp.Controllers
             };
             return View(model);
         }
+
+        [HttpGet]
+        [Route("search.html", Name = "ProductSearch")]
+        public IActionResult Search(int? categoryId, string keyword, int? pageSize, string sortBy, int page = 1)
+        {
+            ViewData["BodyClass"] = catalogBodyClass;
+            pageSize = pageSize ?? configuration.GetValue<int>("PageSize");
+            ProductCategoryViewModel category = new ProductCategoryViewModel();
+            if (categoryId.HasValue && categoryId.Value != 0)
+            {
+                category = productCategoryService.GetById(categoryId.Value);
+            }
+
+            var model = new SearchResultViewModel
+            {
+                Data = productService.GetAllPaging(categoryId, keyword, page, pageSize.Value, sortBy),
+                PageSize = pageSize.Value,
+                SortType = sortBy,
+                Keyword = string.IsNullOrEmpty(keyword) ? "All products" : keyword,
+                Category = category
+            };
+            return View(model);
+        }        
     }
 }

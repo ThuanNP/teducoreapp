@@ -13,13 +13,13 @@
                 if (Model.Any(x => x.ParentId == item.Id))
                 {
                     <li>
-                        <a href="products/@item.SeoAlias-c.@(item.Id).html">@item.Name</a>
+                        <a title="@item.Name" asp-controller="Product" asp-action="Catalog" asp-route-alias="@item.SeoAlias" asp-route-id="@item.Id">@item.Name</a>
                         <div class="wrap-popup column1">
                             <div class="popup">
                                 <ul class="nav">
                                     @foreach (var subItem in Model.Where(x => x.ParentId == item.Id))
                                     {
-                                        <li><a href="/products/@subItem.SeoAlias-c.@(subItem.Id).html"><span>@subItem.Name</span></a></li>
+                                        <li> <a title="@subItem.Name" asp-controller="Product" asp-action="Catalog" asp-route-alias="@subItem.SeoAlias" asp-route-id="@subItem.Id"><span>@subItem.Name</span></a></li>
                                     }
                                 </ul>
                             </div>
@@ -28,7 +28,7 @@
                 }
                 else
                 {
-                    <li class="nosub"><a href="/products/@item.SeoAlias-c.@(item.Id).html">@item.Name</a></li>
+                    <li class="nosub"><a title="@item.Name" asp-controller="Product" asp-action="Catalog" asp-route-alias="@item.SeoAlias" asp-route-id="@item.Id">@item.Name</a></li>
                 }
             }
         </ul>

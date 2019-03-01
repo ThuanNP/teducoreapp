@@ -1,9 +1,14 @@
-﻿@model TagalogViewModel
+﻿@model SearchResultViewModel
 @{
-    var tag = Model.Tag as TagViewModel;
-    ViewData["Title"] = $"Products taged by {tag.Name}";
-    ViewData["MetaKeyword"] = $"Products taged by {tag.Name}";
-    ViewData["MetaDescription"] = $"Products taged by {tag.Name}";
+    var category = Model.Category as ProductCategoryViewModel;
+    ViewData["Title"] = $"Search result of {category.Name} {Model.Keyword}";
+    ViewData["MetaKeyword"] = $"Search result of {category.Name} {Model.Keyword}";
+    ViewData["MetaDescription"] = $"Search result of {category.Name} {Model.Keyword}";
+    var searchParms = new Dictionary<string, string>
+    {
+        { "categoryId", category.Name },
+        { "keyword", Model.Keyword }
+    };
 }
 
 <!-- Breadcrumbs -->
@@ -12,8 +17,8 @@
         <div class="row">
             <div class="col-xs-12">
                 <ul>
-                    <li class="home"> <a title="Go to Home Page" asp-controller="Home" asp-action="index">Home</a><span>&raquo;</span></li>
-                    <li><strong>@Model.Tag.Name</strong></li>
+                    <li class="home"> <a title="Go to Home Page" href="index.html">Home</a><span>&raquo;</span></li>
+                    <li><strong>@ViewData["Title"] </strong></li>
                 </ul>
             </div>
         </div>
@@ -27,10 +32,11 @@
             <div class="col-main col-sm-12 col-xs-12">
                 <div class="shop-inner">
                     <div class="page-title">
-                        <h2>@Model.Tag.Name</h2>
+                        <h2>@Model.Keyword in @Model.Category.Name</h2>
                     </div>
                     <div class="toolbar column">
-                        <form  asp-controller="Product" asp-action="Tagalog" asp-route-id="@tag.Id"  method="get">
+                        @*<form action="/search.html?categoryId=@Model.Category.Id&keyword=@Model.Keyword" method="get">*@
+                        <form asp-area="" asp-controller="Product" asp-action="Search" asp-all-route-data="searchParms" method="get">
                             <div class="sorter">
                                 <div class="sort-by">
                                     <label>Sort By:</label>
@@ -59,14 +65,14 @@
                                                 {
                                                     <div class="icon-new-label new-right">New</div>
                                                 }
-                                                    <div class="pr-img-area">
-                                                        <a title="@product.Name" asp-controller="Product" asp-action="Detail" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">
-                                                            <figure>
-                                                                <img class="first-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg": product.Image)' alt="@product.Name">
-                                                                <img class="hover-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg": product.Image)' alt="@product.Name">
-                                                            </figure>
-                                                        </a>
-                                                    </div>
+                                                <div class="pr-img-area">
+                                                    <a title="Ipsums Dolors Untra" href="/@product.SeoAlias-p.@(product.Id).html">
+                                                        <figure>
+                                                            <img class="first-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg": product.Image)' alt="@product.Name">
+                                                            <img class="hover-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg": product.Image)' alt="@product.Name">
+                                                        </figure>
+                                                    </a>
+                                                </div>
                                                 <div class="pr-info-area">
                                                     <div class="pr-button">
                                                         <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart"></i> </a> </div>
@@ -77,7 +83,7 @@
                                             </div>
                                             <div class="item-info">
                                                 <div class="info-inner">
-                                                    <div class="item-title">   <a title="@product.Name" asp-controller="Product" asp-action="Detail" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">@product.Name</a> </div>
+                                                    <div class="item-title"> <a title="Ipsums Dolors Untra" href="/@product.SeoAlias-p.@(product.Id).html">@product.Name</a> </div>
                                                     <div class="item-content">
                                                         <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                         <div class="item-price">

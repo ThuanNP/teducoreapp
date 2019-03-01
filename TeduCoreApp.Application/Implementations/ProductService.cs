@@ -149,7 +149,10 @@ namespace TeduCoreApp.Application.Implementations
                     query = query.OrderBy(p => p.Name).Skip((page - 1) * pageSize).Take(pageSize);
                     break;
                 case ProductSortType.Price:
-                    query = query.OrderByDescending(x => x.PromotionPrice.HasValue ? x.PromotionPrice : x.Price).Skip((page - 1) * pageSize).Take(pageSize);
+                    query = query.OrderBy(x => x.PromotionPrice.HasValue ? x.PromotionPrice : x.Price).Skip((page - 1) * pageSize).Take(pageSize);
+                    break;
+                default:
+                    query = query.OrderByDescending(p => p.PurchasedCount.HasValue).ThenByDescending(p => p.PurchasedCount).Skip((page - 1) * pageSize).Take(pageSize);
                     break;
             }
             var data = query.ProjectTo<ProductViewModel>().ToList();

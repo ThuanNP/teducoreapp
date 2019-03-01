@@ -1,0 +1,31 @@
+﻿
+@model List<ProductCategoryViewModel>
+<select class="cate-dropdown hidden-xs hidden-sm" name="categoryId">
+    <option value="0">All Categories</option>
+    @foreach (var category in Model.Where(x => x.ParentId == null))
+    {
+        <option value="@category.Id">@category.Name</option>
+        @foreach (var subCategory in Model.Where(x => x.ParentId == category.Id))
+        {
+            <option value="@category.Id">&nbsp;&nbsp;&nbsp;@category.Name</option>
+            @foreach (var sub2Category in Model.Where(x => x.ParentId == subCategory.Id))
+            {
+                <option value="@category.Id">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@category.Name</option>
+            }
+        }
+    }
+</select>
+@*<select class="cate-dropdown hidden-xs hidden-sm" name="category_id">
+        <option>All Categories</option>
+        <option>women</option>
+        <option>&nbsp;&nbsp;&nbsp;Chair </option>
+        <option>&nbsp;&nbsp;&nbsp;Decoration</option>
+        <option>&nbsp;&nbsp;&nbsp;Lamp</option>
+        <option>&nbsp;&nbsp;&nbsp;Handbags </option>
+        <option>&nbsp;&nbsp;&nbsp;Sofas </option>
+        <option>&nbsp;&nbsp;&nbsp;Essential </option>
+        <option>Men</option>
+        <option>Electronics</option>
+        <option>&nbsp;&nbsp;&nbsp;Mobiles </option>
+        <option>&nbsp;&nbsp;&nbsp;Music &amp; Audio </option>
+    </select>*@

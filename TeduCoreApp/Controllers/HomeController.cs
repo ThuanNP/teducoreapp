@@ -39,7 +39,8 @@ namespace TeduCoreApp.Controllers
             };
             return View(model);
         }
-         [Route("about.html")]
+
+        [Route("about.html")]
         public IActionResult About()
         {
             ViewData["BodyClass"] = aboutBodyClass;
