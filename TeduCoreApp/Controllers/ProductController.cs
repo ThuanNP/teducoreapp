@@ -3,13 +3,13 @@ using Microsoft.Extensions.Configuration;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Models.ProductViewModels;
+using static TeduCoreApp.Utilities.Constants.CommonConstants;
 
 namespace TeduCoreApp.Controllers
 {
     public class ProductController : Controller
     {
-        private const string catalogBodyClass = "shop_grid_full_width_page";
-        private const string detailBodyClass = "product-page";
+       
         private readonly IProductService productService;
         private readonly ITagService tagService;
         private readonly IProductCategoryService productCategoryService;
@@ -34,7 +34,7 @@ namespace TeduCoreApp.Controllers
         [Route("{alias}-c.{id}.html", Name = "ProductByCategory")]
         public IActionResult Catalog(int id, int? pageSize, string sortBy, int page = 1)
         {
-            ViewData["BodyClass"] = catalogBodyClass;
+            ViewData["BodyClass"] = BodyCssClass.ProductCatalog;
             pageSize = pageSize ?? configuration.GetValue<int>("PageSize");
             var model = new CatalogViewModel
             {
@@ -50,7 +50,7 @@ namespace TeduCoreApp.Controllers
         [Route("{alias}-p.{id}.html", Name = "ProductDetail")]
         public IActionResult Detail(int id)
         {
-            ViewData["BodyClass"] = detailBodyClass;
+            ViewData["BodyClass"] = BodyCssClass.ProductDetail;
             var product = productService.GetById(id);
             product.ProductImages = productService.GetImages(id);
             product.ProductQuantities = productService.GetQuantities(id);
@@ -74,7 +74,7 @@ namespace TeduCoreApp.Controllers
         [Route("tag.{id}.html", Name = "ProductByTag")]
         public IActionResult Tagalog(string id, int? pageSize, string sortBy, int page = 1)
         {
-            ViewData["BodyClass"] = catalogBodyClass;
+            ViewData["BodyClass"] = BodyCssClass.ProductCatalog;
             pageSize = pageSize ?? configuration.GetValue<int>("PageSize");
             var model = new TagalogViewModel
             {
@@ -90,7 +90,7 @@ namespace TeduCoreApp.Controllers
         [Route("search.html", Name = "ProductSearch")]
         public IActionResult Search(int? categoryId, string keyword, int? pageSize, string sortBy, int page = 1)
         {
-            ViewData["BodyClass"] = catalogBodyClass;
+            ViewData["BodyClass"] = BodyCssClass.ProductCatalog;
             pageSize = pageSize ?? configuration.GetValue<int>("PageSize");
             ProductCategoryViewModel category = new ProductCategoryViewModel();
             if (categoryId.HasValue && categoryId.Value != 0)

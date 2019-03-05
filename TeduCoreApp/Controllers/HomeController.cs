@@ -7,9 +7,7 @@ using static TeduCoreApp.Utilities.Constants.CommonConstants;
 namespace TeduCoreApp.Controllers
 {
     public class HomeController : Controller
-    {
-        private const string homeBodyClass = "cms-index-index cms-home-page";
-        private const string aboutBodyClass = "about_us_page";
+    {     
         private readonly ICommonService commonService;
         private readonly IProductService productService;
         private readonly IProductCategoryService productCategoryService;
@@ -27,7 +25,7 @@ namespace TeduCoreApp.Controllers
         [Route("")]
         public IActionResult Index()
         {
-            ViewData["BodyClass"] = homeBodyClass;
+            ViewData["BodyClass"] = BodyCssClass.HomeIndex;
             var model = new HomeViewModel
             {
                 HomeSlides = commonService.GetSlides(SlideGroupAlias.Top, 4),
@@ -43,7 +41,7 @@ namespace TeduCoreApp.Controllers
         [Route("about.html")]
         public IActionResult About()
         {
-            ViewData["BodyClass"] = aboutBodyClass;
+            ViewData["BodyClass"] = BodyCssClass.HomeAbout;
             return View();
         }
 

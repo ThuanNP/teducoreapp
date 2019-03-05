@@ -5,6 +5,7 @@
         public const string DefaultFooterId = "DefaultFooterId";
         public const string ProductTag = "Product";
         public const string BlogTag = "Blog";
+        public const string CartSession = "CartSession";
 
         public sealed class SlideGroupAlias
         {
@@ -28,6 +29,15 @@
             public const string Latest = "Latest";
             public const string Price = "Price";
             public const string Name = "Name";
+        }
+
+        public sealed class BodyCssClass
+        {
+            public const string HomeIndex = "cms-index-index cms-home-page";
+            public const string HomeAbout = "about_us_page";
+            public const string ProductCatalog = "shop_grid_full_width_page";
+            public const string ProductDetail = "product-page";
+            public const string CartIndex = "shopping_cart_page";
         }
     }
 }
