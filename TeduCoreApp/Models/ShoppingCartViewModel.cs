@@ -1,4 +1,6 @@
-﻿using TeduCoreApp.Application.ViewModels.Product;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using TeduCoreApp.Application.ViewModels.Product;
 
 namespace TeduCoreApp.Models
 {
@@ -12,6 +14,6 @@ namespace TeduCoreApp.Models
 
         public int ColorId { get; set; }
 
-        public int SizeId { get; set; }
+        public int SizeId { get; set; }       
     }
 }

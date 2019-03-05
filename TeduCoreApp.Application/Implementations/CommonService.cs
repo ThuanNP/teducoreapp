@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Common;
+using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.infrastructure.Interfaces;
@@ -17,20 +18,34 @@ namespace TeduCoreApp.Application.Implementations
         private readonly IFooterRepository footerRepository;
         private readonly ISystemConfigRepository systemConfigRepository;
         private readonly ISlideRepository slideRepository;
+        private readonly IColorRepository colorRepository;
+        private readonly ISizeRepository sizeRepository;
         private readonly IUnitOfWork unitOfWork;
 
-        public CommonService(IFooterRepository footerRepository, ISystemConfigRepository systemConfigRepository, ISlideRepository slideRepository, IUnitOfWork unitOfWork)
+        public CommonService(IFooterRepository footerRepository, ISystemConfigRepository systemConfigRepository, ISlideRepository slideRepository, IColorRepository colorRepository, ISizeRepository sizeRepository, IUnitOfWork unitOfWork)
         {
             this.footerRepository = footerRepository;
             this.systemConfigRepository = systemConfigRepository;
             this.slideRepository = slideRepository;
+            this.colorRepository = colorRepository;
+            this.sizeRepository = sizeRepository;
             this.unitOfWork = unitOfWork;
+        }
+
+        public List<ColorViewModel> GetColors()
+        {
+            return colorRepository.FindAll().ProjectTo<ColorViewModel>().ToList();
         }
 
         public FooterViewModel GetFooter()
         {
             Footer footer = footerRepository.FindSingle(x => x.Id == CommonConstants.DefaultFooterId);
             return Mapper.Map<Footer, FooterViewModel>(footer);
+        }
+
+        public List<SizeViewModel> GetSizes()
+        {
+            return sizeRepository.FindAll().ProjectTo<SizeViewModel>().ToList();
         }
 
         public List<SlideViewModel> GetSlides(string groupAlias, int top =5)

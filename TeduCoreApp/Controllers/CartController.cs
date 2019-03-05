@@ -82,6 +82,8 @@ namespace TeduCoreApp.Controllers
                         if (item.Product.Id == productId)
                         {
                             item.Quantity += quantity;
+                            item.ColorId = color;
+                            item.SizeId = size;
                             item.Price = product.PromotionPrice ?? product.Price;
                             hasChanged = true;
                         }

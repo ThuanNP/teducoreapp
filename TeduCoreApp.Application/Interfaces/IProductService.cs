@@ -59,5 +59,7 @@ namespace TeduCoreApp.Application.Interfaces
         // Tags
         List<TagViewModel> GetTags(int productId);
 
+        bool CheckAvailability(int productId, int sizeId, int colorId);
+
     }
 }

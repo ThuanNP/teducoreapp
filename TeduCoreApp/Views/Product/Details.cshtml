@@ -9,7 +9,11 @@
 @section Scripts{
     <script src="~/client-side/js/cloud-zoom.js"></script>
     <script src="~/client-side/js/jquery.flexslider.js"></script>
-
+    <script src="~/client-app/controllers/product/details.js"></script>
+    <script>
+        var productObj = new ProductDetailsController();
+        productObj.initialize();
+    </script>
 }
 <div class="breadcrumbs">
     <div class="container">
@@ -103,26 +107,28 @@
                             <div class="color-area">
                                 <h2 class="saider-bar-title">Color</h2>
                                 <div class="color">
-                                    <ul>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                    </ul>
+                                    @*<ul>
+                                            <li><a href="#"></a></li>
+                                            <li><a href="#"></a></li>
+                                            <li><a href="#"></a></li>
+                                            <li><a href="#"></a></li>
+                                            <li><a href="#"></a></li>
+                                            <li><a href="#"></a></li>
+                                        </ul>*@
+                                    <select asp-items="Model.Colors" id="ddl-color-id"></select>
                                 </div>
                             </div>
                             <div class="size-area">
                                 <h2 class="saider-bar-title">Size</h2>
                                 <div class="size">
-                                    <ul>
-                                        <li><a href="#">S</a></li>
-                                        <li><a href="#">L</a></li>
-                                        <li><a href="#">M</a></li>
-                                        <li><a href="#">XL</a></li>
-                                        <li><a href="#">XXL</a></li>
-                                    </ul>
+                                    @*<ul>
+                                            <li><a href="#">S</a></li>
+                                            <li><a href="#">L</a></li>
+                                            <li><a href="#">M</a></li>
+                                            <li><a href="#">XL</a></li>
+                                            <li><a href="#">XXL</a></li>
+                                        </ul>*@
+                                    <select asp-items="Model.Sizes" id="ddl-size-id"></select>
                                 </div>
                             </div>
                         </div>
@@ -132,11 +138,11 @@
                                     <label for="qty">Quantity:</label>
                                     <div class="numbers-row">
                                         <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus">&nbsp;</i></div>
-                                        <input type="text" class="qty" title="Qty" value="1" maxlength="12" id="qty" name="qty">
+                                        <input type="text" class="qty" title="Qty" value="1" maxlength="12" id="txt-quantity" name="qty">
                                         <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus">&nbsp;</i></div>
                                     </div>
                                 </div>
-                                <button class="button pro-add-to-cart" title="Add to Cart" type="button"><span><i class="fa fa-shopping-basket"></i> Add to Cart</span></button>
+                                <button class="button pro-add-to-cart" id="btn-add-product-to-cart" title="Add to Cart" type="button" data-id="@product.Id"><span><i class="fa fa-shopping-basket"></i> Add to Cart</span></button>
                             </form>
                         </div>
                         <div class="product-cart-option">

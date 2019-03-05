@@ -89,7 +89,7 @@
                                                     <div class="icon-new-label new-right">New</div>
                                                 }
                                                 <div class="pr-img-area">
-                                                    <a title="@product.Name" asp-controller="Product" asp-action="Detail" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">
+                                                    <a title="@product.Name" asp-controller="Product" asp-action="Details" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">
                                                         <figure>
                                                             <img class="first-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg":product.Image)' alt="@product.Name">
                                                             <img class="hover-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg":product.Image)' alt="@product.Name">
@@ -106,7 +106,7 @@
                                             </div>
                                             <div class="item-info">
                                                 <div class="info-inner">
-                                                    <div class="item-title">  <a title="@product.Name" asp-controller="Product" asp-action="Detail" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">@product.Name </a> </div>
+                                                    <div class="item-title">  <a title="@product.Name" asp-controller="Product" asp-action="Details" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">@product.Name </a> </div>
                                                     <div class="item-content">
                                                         <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                         <div class="item-price">
@@ -178,7 +178,7 @@
                                                         <div class="icon-new-label new-right">New</div>
                                                     }
                                                     <div class="pr-img-area">
-                                                        <a title="@product.Name" asp-controller="Product" asp-action="Detail" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">
+                                                        <a title="@product.Name" asp-controller="Product" asp-action="Details" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">
                                                             <figure>
                                                                 <img class="first-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg":product.Image)' alt="@product.Name">
                                                                 <img class="hover-img" src='@(string.IsNullOrEmpty(product.Image)?"/client-side/images/products/product-1.jpg":product.Image)' alt="@product.Name">
@@ -195,7 +195,7 @@
                                                 </div>
                                                 <div class="item-info">
                                                     <div class="info-inner">
-                                                        <div class="item-title">  <a title="@product.Name" asp-controller="Product" asp-action="Detail" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">@product.Name </a> </div>
+                                                        <div class="item-title">  <a title="@product.Name" asp-controller="Product" asp-action="Details" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">@product.Name </a> </div>
                                                         <div class="item-content">
                                                             <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                             <div class="item-price">
@@ -243,13 +243,13 @@
                                             <li class="item">
                                                 <div class="item-inner">
                                                     <div class="item-img">
-                                                        <a class="product-image" title="@product.Name" asp-controller="Product" asp-action="Detail" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">
+                                                        <a class="product-image" title="@product.Name" asp-controller="Product" asp-action="Details" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">
                                                             <img alt="@product.Name" src='@(string.IsNullOrEmpty(product.Image)?"~/client-side/images/products/product-1.jpg":product.Image)'>
                                                         </a>
                                                     </div>
                                                     <div class="item-info">
                                                         <div class="info-inner">
-                                                            <div class="item-title"> <a title="@product.Name" asp-controller="Product" asp-action="Detail" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">@product.Name </a> </div>
+                                                            <div class="item-title"> <a title="@product.Name" asp-controller="Product" asp-action="Details" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">@product.Name </a> </div>
                                                             <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                             <div class="item-price">
                                                                 <div class="price-box"> <span class="regular-price"> <span class="price">@product.Price.ToString("C0")</span> </span> </div>
@@ -308,13 +308,13 @@
                                             <li class="item">
                                                 <div class="item-inner">
                                                     <div class="item-img">
-                                                        <a class="product-image" title="@product.Name" asp-controller="Product" asp-action="Detail" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">
+                                                        <a class="product-image" title="@product.Name" asp-controller="Product" asp-action="Details" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">
                                                             <img alt="@product.Name" src='@(string.IsNullOrEmpty(product.Image)?"~/client-side/images/products/product-1.jpg":product.Image)'>
                                                         </a>
                                                     </div>
                                                     <div class="item-info">
                                                         <div class="info-inner">
-                                                            <div class="item-title">   <a title="@product.Name" asp-controller="Product" asp-action="Detail" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">@product.Name </a> </div>
+                                                            <div class="item-title">   <a title="@product.Name" asp-controller="Product" asp-action="Details" asp-route-alias="@product.SeoAlias" asp-route-id="@product.Id">@product.Name </a> </div>
                                                             <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                             <div class="item-price">
                                                                 <div class="price-box"> <span class="regular-price"> <span class="price">@product.Price.ToString("C0")</span> </span> </div>

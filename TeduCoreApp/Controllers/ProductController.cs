@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
+using System.Linq;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Models.ProductViewModels;
@@ -9,18 +11,20 @@ namespace TeduCoreApp.Controllers
 {
     public class ProductController : Controller
     {
-       
+
         private readonly IProductService productService;
         private readonly ITagService tagService;
         private readonly IProductCategoryService productCategoryService;
         private readonly IConfiguration configuration;
+        private readonly ICommonService commonService;
 
-        public ProductController(IProductService productService, ITagService tagService, IProductCategoryService productCategoryService, IConfiguration configuration)
+        public ProductController(IProductService productService, ITagService tagService, IProductCategoryService productCategoryService, IConfiguration configuration, ICommonService commonService)
         {
             this.productService = productService;
             this.tagService = tagService;
             this.productCategoryService = productCategoryService;
             this.configuration = configuration;
+            this.commonService = commonService;
         }
 
         [HttpGet]
@@ -48,24 +52,32 @@ namespace TeduCoreApp.Controllers
 
         [HttpGet]
         [Route("{alias}-p.{id}.html", Name = "ProductDetail")]
-        public IActionResult Detail(int id)
+        public IActionResult Details(int id)
         {
             ViewData["BodyClass"] = BodyCssClass.ProductDetail;
             var product = productService.GetById(id);
             product.ProductImages = productService.GetImages(id);
             product.ProductQuantities = productService.GetQuantities(id);
             product.WholePrices = productService.GetWholePrices(id);
-            var category = productCategoryService.GetById(product.CategoryId);
-            var relatedProducts = productService.GetTopRelated(id, 8);
-            var upSellProducts = productService.GetTopSpecialOffers(8);
             var tags = productService.GetTags(id);
+            var colors = commonService.GetColors();
             var model = new DetailViewModel
             {
                 Product = product,
-                Category = category,
-                RelatedProducts = relatedProducts,
-                UpSellProducts = upSellProducts,
-                Tags = tags
+                Category = productCategoryService.GetById(id: product.CategoryId),
+                RelatedProducts = productService.GetTopRelated(id, top: 8),
+                UpSellProducts = productService.GetTopSpecialOffers(top: 8),
+                Tags = productService.GetTags(productId: id),
+                Colors = commonService.GetColors().Select(x => new SelectListItem
+                {
+                    Text = x.Name,
+                    Value = x.Id.ToString()
+                }).ToList(),
+                Sizes=commonService.GetSizes().Select(x=>new SelectListItem
+                {
+                    Text = x.Name,
+                    Value = x.Id.ToString()
+                }).ToList()
             };
             return View(model);
         }
@@ -107,6 +119,6 @@ namespace TeduCoreApp.Controllers
                 Category = category
             };
             return View(model);
-        }        
+        }
     }
 }

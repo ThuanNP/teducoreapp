@@ -367,5 +367,11 @@ namespace TeduCoreApp.Application.Implementations
             };
             return paginationSet;
         }
+
+        public bool CheckAvailability(int productId, int sizeId, int colorId)
+        {
+            var quantity = productQuantityRepository.FindSingle(x => x.ColorId == colorId && x.SizeId == sizeId && x.ProductId == productId);
+            return quantity == null ? false : quantity.Quantity > 0;
+        }
     }
 }
