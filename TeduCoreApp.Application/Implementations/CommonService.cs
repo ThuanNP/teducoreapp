@@ -32,6 +32,12 @@ namespace TeduCoreApp.Application.Implementations
             this.unitOfWork = unitOfWork;
         }
 
+        public ColorViewModel GetColor(int id)
+        {
+            var color = colorRepository.FindById(id);
+            return Mapper.Map<Color, ColorViewModel>(color);
+        }
+
         public List<ColorViewModel> GetColors()
         {
             return colorRepository.FindAll().ProjectTo<ColorViewModel>().ToList();
@@ -41,6 +47,12 @@ namespace TeduCoreApp.Application.Implementations
         {
             Footer footer = footerRepository.FindSingle(x => x.Id == CommonConstants.DefaultFooterId);
             return Mapper.Map<Footer, FooterViewModel>(footer);
+        }
+
+        public SizeViewModel GetSize(int id)
+        {
+            var size = sizeRepository.FindById(id);
+            return Mapper.Map<Size, SizeViewModel>(size);
         }
 
         public List<SizeViewModel> GetSizes()

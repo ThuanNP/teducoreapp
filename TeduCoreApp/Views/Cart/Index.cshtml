@@ -3,6 +3,14 @@
     ViewData["Title"] = "Shopping cart";
 }
 
+@section Scripts{
+    <script src="~/client-app/controllers/shared/tedu.js"></script>
+    <script src="~/client-app/controllers/cart/index.js"></script>
+    <script>
+        var cartObj = new CartController();
+        cartObj.initialize();
+    </script>
+}
 <!-- Main Container -->
 <section class="main-container col1-layout">
     <div class="main container">
@@ -19,70 +27,48 @@
                                     <tr>
                                         <th class="cart_product">Product</th>
                                         <th>Description</th>
-                                        <th>Avail.</th>
-                                        <th>Unit price</th>
-                                        <th>Qty</th>
-                                        <th>Total</th>
+                                        @*<th>Avail.</th>*@
+                                        <th class="text-center">Unit price</th>
+                                        <th class="text-center">Quantity</th>
+                                        <th class="text-center">Total</th>
                                         <th class="action"><i class="fa fa-trash-o"></i></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="cart_product"><a href="#"><img src="~/client-side/images/products/product-1.jpg" alt="Product"></a></td>
-                                        <td class="cart_description">
-                                            <p class="product-name"><a href="#">Ipsums Dolors Untra </a></p>
-                                            <small><a href="#">Color : Red</a></small>
-                                            <small><a href="#">Size : M</a></small>
-                                        </td>
-                                        <td class="availability in-stock"><span class="label">In stock</span></td>
-                                        <td class="price"><span>$49.88</span></td>
-                                        <td class="qty"><input class="form-control input-sm" type="text" value="1"></td>
-                                        <td class="price"><span>$49.88</span></td>
-                                        <td class="action"><a href="#"><i class="icon-close"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="cart_product"><a href="#"><img src="~/client-side/images/products/product-1.jpg" alt="Product"></a></td>
-                                        <td class="cart_description">
-                                            <p class="product-name"><a href="#">Ipsums Dolors Untra </a></p>
-                                            <small><a href="#">Color : Green</a></small>
-                                            <small><a href="#">Size : XL</a></small>
-                                        </td>
-                                        <td class="availability out-of-stock"><span class="label">No stock</span></td>
-                                        <td class="price"><span>$00.00</span></td>
-                                        <td class="qty"><input class="form-control input-sm" type="text" value="0"></td>
-                                        <td class="price"><span>00.00</span></td>
-                                        <td class="action"><a href="#"><i class="icon-close"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="cart_product"><a href="#"><img src="~/client-side/images/products/product-1.jpg" alt="Product"></a></td>
-                                        <td class="cart_description">
-                                            <p class="product-name"><a href="#">Ipsums Dolors Untra </a></p>
-                                            <small><a href="#">Color : Blue</a></small>
-                                            <small><a href="#">Size : S</a></small>
-                                        </td>
-                                        <td class="availability in-stock"><span class="label">In stock</span></td>
-                                        <td class="price"><span>$99.00</span></td>
-                                        <td class="qty"><input class="form-control input-sm" type="text" value="2"></td>
-                                        <td class="price"><span>$188.00</span></td>
-                                        <td class="action"><a href="#"><i class="icon-close"></i></a></td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="table-cart-content" />
                                 <tfoot>
                                     <tr>
                                         <td colspan="2" rowspan="2"></td>
-                                        <td colspan="3">Total products (tax incl.)</td>
-                                        <td colspan="2">$237.88 </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3"><strong>Total</strong></td>
-                                        <td colspan="2"><strong>$237.88 </strong></td>
+                                        <td colspan="3" class="text-right"><strong>Total</strong></td>
+                                        <td colspan="2" class="text-right"><strong><span id="lbl-total-amount"></span> </strong></td>
                                     </tr>
                                 </tfoot>
                             </table>
+                            <script id="template-cart" type="x-tmpl-mustache">
+                                <tr data-id="{{ProductId}}">
+                                    <td class="cart_product">
+                                        <a href="{{Url}}">
+                                            <img src="{{Image}}" alt="{{ProductName}}">
+                                        </a>
+                                    </td>
+                                    <td class="cart_description">
+                                        <p class="product-name"><a href="{{Url}}">{{ProductName}} </a></p>
+                                        <small><a href="#">Color : {{{Colors}}}</a></small>
+                                        <small><a href="#">Size : {{{Sizes}}}</a></small>
+                                    </td>
+                                    @*<td class="availability in-stock"><span class="label">In stock</span></td>*@
+                                    <td class="price"><span>{{Price}}</span></td>
+                                    <td class="qty">{{{Quantity}}}></td>
+                                    <td class="price"><span>{{Amount}}</span></td>
+                                    <td class="action">
+                                        <a href="#" data-id="{{ProductId}}" class="btn-delete"><i class="icon-close"></i></a>
+                                    </td>
+                                </tr>
+                            </script>
                         </div>
                         <div class="cart_navigation">
-                            <a class="continue-btn" asp-controller="Home" asp-action="Index"><i class="fa fa-arrow-left"> </i>&nbsp; Continue shopping</a>
-                            <a class="checkout-btn" href="#"><i class="fa fa-check"></i> Proceed to checkout</a>
+                            <a class="continue-btn" asp-controller="Product" asp-action="Index"><i class="fa fa-arrow-left"> </i>&nbsp; Continue shopping</a>
+                            <a id="btn-clear-all" class="continue-btn" href="#"><i class="fa fa-remove"> </i>&nbsp; Clear cart</a>
+                            <a class="checkout-btn" asp-controller="Cart" asp-action="Checkout"><i class="fa fa-check"></i> Proceed to checkout</a>
                         </div>
                     </div>
                 </div>

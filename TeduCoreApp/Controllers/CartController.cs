@@ -13,10 +13,12 @@ namespace TeduCoreApp.Controllers
     public class CartController : Controller
     {
         private readonly IProductService productService;
+        private readonly ICommonService commonService;
 
-        public CartController(IProductService productService)
+        public CartController(IProductService productService, ICommonService commonService)
         {
             this.productService = productService;
+            this.commonService = commonService;
         }
 
         [Route("cart.html", Name = "Cart")]
@@ -40,7 +42,7 @@ namespace TeduCoreApp.Controllers
         /// <returns></returns>
         public IActionResult GetCart()
         {
-            var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession) ?? new List<ShoppingCartViewModel>();
+            var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(key: CartSession) ?? new List<ShoppingCartViewModel>();
             return new OkObjectResult(session);
         }
 
@@ -82,8 +84,8 @@ namespace TeduCoreApp.Controllers
                         if (item.Product.Id == productId)
                         {
                             item.Quantity += quantity;
-                            item.ColorId = color;
-                            item.SizeId = size;
+                            item.Color = commonService.GetColor(id: color);
+                            item.Size = commonService.GetSize(id: size);
                             item.Price = product.PromotionPrice ?? product.Price;
                             hasChanged = true;
                         }
@@ -95,8 +97,8 @@ namespace TeduCoreApp.Controllers
                     {
                         Product = product,
                         Quantity = quantity,
-                        ColorId = color,
-                        SizeId = size,
+                        Color = commonService.GetColor(id: color),
+                        Size = commonService.GetSize(id: size),
                         Price = product.PromotionPrice ?? product.Price
                     });
                     hasChanged = true;
@@ -116,8 +118,8 @@ namespace TeduCoreApp.Controllers
                     {
                         Product = product,
                         Quantity = quantity,
-                        ColorId = color,
-                        SizeId = size,
+                        Color = commonService.GetColor(id: color),
+                        Size = commonService.GetSize(id: size),
                         Price = product.PromotionPrice ?? product.Price
                     }
                 };
@@ -161,7 +163,7 @@ namespace TeduCoreApp.Controllers
         /// <param name="productId"></param>
         /// <param name="quantity"></param>
         /// <returns></returns>
-        public IActionResult UpdateCart(int productId, int quantity)
+        public IActionResult UpdateCart(int productId, int quantity, int color, int size)
         {
             var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession);
             if (session != null)
@@ -174,6 +176,8 @@ namespace TeduCoreApp.Controllers
                         var product = productService.GetById(productId);
                         item.Product = product;
                         item.Quantity = quantity;
+                        item.Color = commonService.GetColor(color);
+                        item.Size = commonService.GetSize(size);
                         item.Price = product.PromotionPrice ?? product.Price;
                         hasChanged = true;
                     }
@@ -187,6 +191,19 @@ namespace TeduCoreApp.Controllers
             return new EmptyResult();
         }
 
+        [HttpGet]
+        public IActionResult GetColors()
+        {
+            var colors = commonService.GetColors();
+            return new OkObjectResult(colors);
+        }
+
+        [HttpGet]
+        public IActionResult GetSizes()
+        {
+            var sizes = commonService.GetSizes();
+            return new OkObjectResult(sizes);
+        }
         #endregion
     }
 }

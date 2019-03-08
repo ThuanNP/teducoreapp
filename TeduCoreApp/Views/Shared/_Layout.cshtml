@@ -18,8 +18,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="~/client-side/favicon.ico">
 
     <!-- CSS Style -->
-    <link rel="stylesheet" href="~/client-side/style.css">
-
+    <link href="~/lib/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/client-side/style.css">s
 </head>
 
 <body class="@ViewData["BodyClass"]">
@@ -68,6 +68,8 @@
     <!-- Slider Js -->
     <script type="text/javascript" src="~/client-side/js/revolution-slider.js"></script>
     <!-- JS -->
+    <script src="~/lib/notifyjs/dist/notify.js"></script>
+    <script src="~/lib/mustache/mustache.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

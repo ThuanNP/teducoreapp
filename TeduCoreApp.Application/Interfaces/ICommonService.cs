@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using TeduCoreApp.Application.ViewModels.Common;
 using TeduCoreApp.Application.ViewModels.Product;
-using TeduCoreApp.Data.Entities;
 
 namespace TeduCoreApp.Application.Interfaces
 {
@@ -16,5 +15,9 @@ namespace TeduCoreApp.Application.Interfaces
         List<ColorViewModel> GetColors();
 
         List<SizeViewModel> GetSizes();
+
+        ColorViewModel GetColor(int id);
+
+        SizeViewModel GetSize(int id);
     }
 }
