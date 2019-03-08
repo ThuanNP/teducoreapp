@@ -29,9 +29,17 @@ namespace TeduCoreApp.Controllers
 
         [HttpGet]
         [Route("products.html")]
-        public IActionResult Index()
+        public IActionResult Index(int? pageSize, string sortBy, int page = 1)
         {
-            return View();
+            ViewData["BodyClass"] = BodyCssClass.ProductCatalog;
+            pageSize = pageSize ?? configuration.GetValue<int>("PageSize");
+            var model = new ProductPagingViewModel
+            {
+                Data = productService.GetAllPaging(null, string.Empty, page, pageSize.Value, sortBy),
+                PageSize = pageSize.Value,
+                SortType = sortBy
+            };
+            return View(model);
         }
 
         [HttpGet]

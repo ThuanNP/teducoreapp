@@ -5,7 +5,7 @@ using TeduCoreApp.Utilities.Dtos;
 
 namespace TeduCoreApp.Models.ProductViewModels
 {
-    public abstract class ProductPagingViewModel
+    public class ProductPagingViewModel
     {
         public PagedResult<ProductViewModel> Data { get; set; }
 
