@@ -1,0 +1,96 @@
+﻿@model List<ShoppingCartViewModel>
+@{
+    int count = Model.Count;
+    decimal total = 0;
+    if (count > 0)
+    {
+        total = Model.Sum(x => (x.Price * x.Quantity)); ;
+    }
+}
+
+<div class="mini-cart" id="header-cart">
+    <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle">
+        <a href="#">
+            <div class="cart-icon">
+                <i class="icon-basket-loaded icons"></i>
+                @if (count > 0)
+                {
+                    <span class="cart-total">@count</span>
+                }
+            </div>
+            <div class="shoppingcart-inner hidden-xs"><span class="cart-title">My Cart</span> </div>
+        </a>
+    </div>
+    <div>
+        <div class="top-cart-content">
+            @if (count > 0)
+            {
+                <div class="block-subtitle hidden">Recently added items</div>
+                <ul id="cart-sidebar" class="mini-products-list">                    
+                    @for (int i = 0; i < count; i++)
+                    {
+                        var item = Model[i];
+                        var css = "item";
+                        if (i == count - 1)
+                        {
+                            css += " last";
+                        }
+                        if (i % 2 == 0)
+                        {
+                            css += " odd";
+
+                        }
+                        else
+                        {
+                            css += " even";
+                        }
+                        <li class="@css">
+                            <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Product.Id" title="@item.Product.Name" class="product-image"><img src='@(string.IsNullOrEmpty(item.Product.Image)?"/client-side/images/products/product-1.jpg": item.Product.Image)' alt="@item.Product.Name" width="65"></a>
+                            <div class="product-details">
+                                <a href="#" title="Remove This Item" class="remove-cart"><i class="pe-7s-trash"></i></a>
+                                <p class="product-name">
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Product.Id">@item.Product.Name</a>
+                                </p>
+                                <strong>@item.Quantity</strong> x <span class="price">@item.Price.ToString("C0")</span>
+                            </div>
+                        </li>
+                    }
+                    @*<li class="item odd">
+                    <a href="shopping_cart.html" title="Product title here" class="product-image"><img src="~/client-side/images//products/product-1.jpg" alt="html Template" width="65"></a>
+                    <div class="product-details">
+                        <a href="#" title="Remove This Item" class="remove-cart"><i class="pe-7s-trash"></i></a>
+                        <p class="product-name"><a href="shopping_cart.html">Lorem ipsum dolor sit amet Consectetur</a> </p>
+                        <strong>1</strong> x <span class="price">$20.00</span>
+                    </div>
+                </li>
+                <li class="item even">
+                    <a href="shopping_cart.html" title="Product title here" class="product-image"><img src="~/client-side/images//products/product-1.jpg" alt="html Template" width="65"></a>
+                    <div class="product-details">
+                        <a href="#" title="Remove This Item" class="remove-cart"><i class="pe-7s-trash"></i></a>
+                        <p class="product-name"><a href="shopping_cart.html">Consectetur utes anet adipisicing elit</a> </p>
+                        <strong>1</strong> x <span class="price">$230.00</span>
+                    </div>
+                </li>
+                <li class="item last odd">
+                    <a href="shopping_cart.html" title="Product title here" class="product-image"><img src="~/client-side/images//products/product-1.jpg" alt="html Template" width="65"></a>
+                    <div class="product-details">
+                        <a href="#" title="Remove This Item" class="remove-cart"><i class="pe-7s-trash"></i></a>
+                        <p class="product-name"><a href="shopping_cart.html">Sed do eiusmod tempor incidist</a> </p>
+                        <strong>2</strong> x <span class="price">$420.00</span>
+                    </div>
+                </li>*@
+                </ul>
+                <div class="top-subtotal">Subtotal: <span class="price">@total.ToString("C0")</span></div>
+                <div class="actions">
+                    <button class="btn-checkout" type="button" onClick="location.href='checkout.html'"><i class="fa fa-check"></i><span>Checkout</span></button>
+                    <button class="view-cart" type="button" onClick="location.href='cart.html'"><i class="fa fa-shopping-cart"></i><span>View Cart</span></button>
+                </div>
+            }
+            else
+            {
+                <p>You haven't had any product yet!</p>
+            }
+
+        </div>
+    </div>
+</div>

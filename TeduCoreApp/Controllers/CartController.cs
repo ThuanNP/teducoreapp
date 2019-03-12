@@ -69,7 +69,6 @@ namespace TeduCoreApp.Controllers
         {
             //Get product detail
             var product = productService.GetById(productId);
-
             //Get session with item list from cart
             var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession);
             if (session != null)
@@ -106,7 +105,7 @@ namespace TeduCoreApp.Controllers
                 //Update back to cart
                 if (hasChanged)
                 {
-                    HttpContext.Session.Set(CommonConstants.CartSession, session);
+                    HttpContext.Session.Set(CommonConstants.CartSession, session);                    
                 }
             }
             else
@@ -126,6 +125,7 @@ namespace TeduCoreApp.Controllers
                 HttpContext.Session.Set(CommonConstants.CartSession, cart);
             }
             return new OkObjectResult(productId);
+            //return new OkResult();
         }
 
         /// <summary>

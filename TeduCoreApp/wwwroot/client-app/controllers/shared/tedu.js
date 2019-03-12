@@ -149,6 +149,9 @@
             }
         }
         return roots;
+    },
+    loadHeaderCart: function () {
+        $("#header-cart").load("/AjaxContent/HeaderCart");
     }
 };
 

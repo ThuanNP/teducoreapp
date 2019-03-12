@@ -137,12 +137,12 @@
                                 <div class="cart-plus-minus">
                                     <label for="qty">Quantity:</label>
                                     <div class="numbers-row">
-                                        <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus">&nbsp;</i></div>
+                                        <div onClick="var result = document.getElementById('txt-quantity'); var qty = result.value; if( !isNaN( qty ) && qty > 1 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus">&nbsp;</i></div>
                                         <input type="text" class="qty" title="Qty" value="1" maxlength="12" id="txt-quantity" name="qty">
-                                        <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus">&nbsp;</i></div>
+                                        <div onClick="var result = document.getElementById('txt-quantity'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus">&nbsp;</i></div>
                                     </div>
                                 </div>
-                                <button class="button pro-add-to-cart" id="btn-add-product-to-cart" title="Add to Cart" type="button" data-id="@product.Id"><span><i class="fa fa-shopping-basket"></i> Add to Cart</span></button>
+                                <button class="button pro-add-to-cart" id="btn-add-products-to-cart" title="Add to Cart" type="button" data-id="@product.Id"><span><i class="fa fa-shopping-basket"></i> Add to Cart</span></button>
                             </form>
                         </div>
                         <div class="product-cart-option">

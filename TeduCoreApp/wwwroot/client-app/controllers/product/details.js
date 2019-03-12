@@ -4,7 +4,7 @@
     };
 
     function registerEvents() {
-        $('#btn-add-product-to-cart').on('click', function (e) {
+        $('#btn-add-products-to-cart').on('click', function (e) {
             e.preventDefault();
             var id = parseInt($(this).data('id'));
             var colorId = parseInt($('#ddl-color-id').val());
@@ -26,7 +26,8 @@
             },
             dataType: "json",
             success: function (response) {
-                alert(1);
+                tedu.loadHeaderCart();
+                tedu.notify('Add cart item successfully', 'success');
             },
             error: function (status) {
                 console.log("Has an error in add cart item progress", status);

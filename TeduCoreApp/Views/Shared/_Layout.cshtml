@@ -19,7 +19,7 @@
 
     <!-- CSS Style -->
     <link href="~/lib/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/client-side/style.css">s
+    <link rel="stylesheet" href="~/client-side/style.css">
 </head>
 
 <body class="@ViewData["BodyClass"]">
@@ -70,6 +70,13 @@
     <!-- JS -->
     <script src="~/lib/notifyjs/dist/notify.js"></script>
     <script src="~/lib/mustache/mustache.js"></script>
+
+    <script src="~/client-app/controllers/shared/tedu.js"></script>
+    <script src="~/client-app/controllers/base/index.js"></script>
+    <script>
+        var baseObj = new BaseController();
+        baseObj.initialize();
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

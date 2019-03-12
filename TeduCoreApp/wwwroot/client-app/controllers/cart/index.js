@@ -167,7 +167,7 @@
             },
             success: function () {
                 tedu.notify('Update quantity is successful', 'success');
-                //loadHeaderCart();
+                tedu.loadHeaderCart();
                 loadCart();
             }
         });
@@ -182,7 +182,7 @@
             },
             success: function () {
                 tedu.notify('Removing product is successful.', 'success');
-                //loadHeaderCart();
+                tedu.loadHeaderCart();
                 loadCart();
             }
         });
@@ -194,7 +194,7 @@
             type: 'post',
             success: function () {
                 tedu.notify('Clear cart is successful', 'success');
-                // loadHeaderCart();
+                tedu.loadHeaderCart();
                 loadCart();
             }
         });
