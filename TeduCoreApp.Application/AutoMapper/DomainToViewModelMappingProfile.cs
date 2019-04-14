@@ -21,6 +21,8 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<Slide, SlideViewModel>();
             CreateMap<Footer, FooterViewModel>();
             CreateMap<SystemConfig, SystemConfigViewModel>();
+            CreateMap<ShippingMethod, ShippingMethodViewModel>();
+
             //Product
             CreateMap<ProductCategory, ProductCategoryViewModel>();
             CreateMap<Product, ProductViewModel>();

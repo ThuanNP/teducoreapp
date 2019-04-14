@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Common;
 using TeduCoreApp.Application.ViewModels.Product;
@@ -148,8 +150,11 @@ namespace TeduCoreApp.Application.Implementations
                 case ProductSortType.Name:
                     query = query.OrderBy(p => p.Name).Skip((page - 1) * pageSize).Take(pageSize);
                     break;
-                case ProductSortType.Price:
+                case ProductSortType.PriceAsc:
                     query = query.OrderBy(x => x.PromotionPrice.HasValue ? x.PromotionPrice : x.Price).Skip((page - 1) * pageSize).Take(pageSize);
+                    break;
+                case ProductSortType.PriceDesc:
+                    query = query.OrderByDescending(x => x.PromotionPrice.HasValue ? x.PromotionPrice : x.Price).Skip((page - 1) * pageSize).Take(pageSize);
                     break;
                 default:
                     query = query.OrderByDescending(p => p.PurchasedCount.HasValue).ThenByDescending(p => p.PurchasedCount).Skip((page - 1) * pageSize).Take(pageSize);
@@ -295,6 +300,12 @@ namespace TeduCoreApp.Application.Implementations
 
         }
 
+        public async Task<List<ProductViewModel>> GetTopBestSellersAsync(int top)
+        {
+            var query = productRepository.FindAll(x => x.Status == Status.Active);
+            return await query.OrderByDescending(x => x.PurchasedCount.HasValue).OrderByDescending(x => x.PurchasedCount.Value).Take(top).ProjectTo<ProductViewModel>().ToListAsync();
+        }
+
         public List<ProductViewModel> GetTopBestSellers(int top)
         {
             var query = productRepository.FindAll(x => x.Status == Status.Active);
@@ -352,7 +363,10 @@ namespace TeduCoreApp.Application.Implementations
                 case ProductSortType.Name:
                     query = query.OrderBy(p => p.Name).Skip((page - 1) * pageSize).Take(pageSize);
                     break;
-                case ProductSortType.Price:
+                case ProductSortType.PriceAsc:
+                    query = query.OrderByDescending(x => x.PromotionPrice.HasValue ? x.PromotionPrice : x.Price).Skip((page - 1) * pageSize).Take(pageSize);
+                    break;
+                case ProductSortType.PriceDesc:
                     query = query.OrderByDescending(x => x.PromotionPrice.HasValue ? x.PromotionPrice : x.Price).Skip((page - 1) * pageSize).Take(pageSize);
                     break;
             }

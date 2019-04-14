@@ -30,7 +30,7 @@
             <div class="account-login">
                 <div class="box-authentication">
                     <section>
-                        <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                        <form asp-action="Login" asp-controller="Account" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
                             <h4>@ViewData["Title"]</h4>                            
                             <div asp-validation-summary="All" class="text-danger"></div>
                             <div class="form-group">
@@ -50,7 +50,7 @@
                                 </label>
                             </div>
                             <button class="button" type="submit"><i class="icon-lock icons"></i>&nbsp; <span>Login</span></button>
-                            <button class="button" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]"><i class="icon-user icons"></i>&nbsp; <span>Register</span></button>
+                            <button class="button" asp-action="Register" asp-route-returnUrl="@ViewData["ReturnUrl"]"><i class="icon-user icons"></i>&nbsp; <span>Register</span></button>
                             <p class="forgot-pass">
                                 <a asp-action="ForgotPassword">Forgot your password?</a>
                             </p>

@@ -2,21 +2,21 @@
 
 namespace TeduCoreApp.Data.EF.Migrations
 {
-    public partial class addProductPurchasedCount : Migration
+    public partial class addAddressUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "PurchasedCount",
-                table: "Products",
+            migrationBuilder.AddColumn<string>(
+                name: "Address",
+                table: "AppUsers",
                 nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "PurchasedCount",
-                table: "Products");
+                name: "Address",
+                table: "AppUsers");
         }
     }
 }

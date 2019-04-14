@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using TeduCoreApp.Application.ViewModels.Common;
 using TeduCoreApp.Data.Enums;
 
 namespace TeduCoreApp.Application.ViewModels.Product
@@ -34,6 +35,10 @@ namespace TeduCoreApp.Application.ViewModels.Product
         public BillStatus BillStatus { set; get; }
 
         public Status Status { get; set; }
+
+        public int ShippingMethodId { get; set; }
+
+        public ShippingMethodViewModel ShippingMethod { get; set; }
 
         public DateTime DateCreated { get; set; }
 

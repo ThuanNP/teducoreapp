@@ -27,8 +27,9 @@ namespace TeduCoreApp.Data.EF
         public DbSet<AppRole> AppRoles { get; set; }
         public DbSet<Announcement> Announcements { set; get; }
         public DbSet<AnnouncementUser> AnnouncementUsers { set; get; }
-        public DbSet<BlogTag> Bills { set; get; }
+        public DbSet<Bill> Bills { set; get; }
         public DbSet<BillDetail> BillDetails { set; get; }
+        public DbSet<ShippingMethod> ShippingMethods { get; set; }
         public DbSet<BlogTag> Blogs { set; get; }
         public DbSet<BlogTag> BlogTags { set; get; }
         public DbSet<Color> Colors { set; get; }
@@ -81,7 +82,8 @@ namespace TeduCoreApp.Data.EF
             builder.AddConfiguration(new SystemConfigConfiguration());
             builder.AddConfiguration(new AdvertistmentPositionConfiguration());
             builder.AddConfiguration(new AdvertisementPageConfiguration());
-            builder.AddConfiguration(new AdvertisementPageConfiguration());
+            builder.AddConfiguration(new FunctionConfiguration());
+            builder.AddConfiguration(new AnnouncementConfiguration());
 
             //base.OnModelCreating(builder);
         }

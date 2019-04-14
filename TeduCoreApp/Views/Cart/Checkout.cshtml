@@ -1,0 +1,255 @@
+﻿
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@model CheckoutViewModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+@section Scripts{
+    <script src="~/client-app/controllers/cart/checkout.js"></script>
+    <script>
+        var checkoutObj = new CheckoutController();
+        checkoutObj.initialize();
+    </script>
+}
+
+<!-- Breadcrumbs -->
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home">
+                        <a title="Go to Home Page" asp-controller="Home" asp-action="Index">Home</a>
+                        <span>&raquo;</span>
+                    </li>
+                    <li><strong>@ViewData["Title"]</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col2-right-layout">
+    <div class="main container">
+        <div class="row">
+            <div class="col-main col-sm-9 col-xs-12">
+                <div class="page-title">
+                    <h2>@ViewData["Title"]</h2>
+                </div>
+                <div class="page-content checkout-page">
+                    @if (ViewData["Success"] != null)
+                    {
+                        if ((bool)ViewData["Success"] == true)
+                        {
+                            <div class="alert alert-success">
+                                Thank you for your order. We are going to confirm your order as soon as possible.
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-danger">
+                                Have an error in order progress. Please contact to administrator.
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <form asp-controller="Cart" asp-action="Checkout" method="post">
+                            <h4 class="checkout-sep">1. Shipping Information</h4>
+                            <div class="box-border">
+                                <ul>
+                                    <li class="row">
+                                        <div class="col-sm-6">
+                                            <label class="required">Full name</label>
+                                            <input class="input form-control" type="text" asp-for="CustomerName">
+                                        </div>
+                                        <!--/ [col] -->
+                                        <div class="col-sm-6">
+                                            <label class="required">Phone</label>
+                                            <input class="input form-control" type="text" asp-for="CustomerMobile">
+                                        </div>
+                                        <!--/ [col] -->
+                                    </li>
+                                    <!--/ .row -->
+
+                                    <li class="row">
+                                        <div class="col-xs-12">
+                                            <label class="required">Address</label>
+                                            <input class="input form-control" type="text" asp-for="CustomerAddress">
+                                        </div>
+                                        <!--/ [col] -->
+
+                                    </li>
+                                    <!--/ .row -->
+
+                                    <li class="row">
+                                        <div class="col-sm-12">
+                                            <label class="required">Message</label>
+                                            <textarea class="input form-control" type="text" asp-for="CustomerMessage"></textarea>
+                                        </div>
+                                        <!--/ [col] -->
+
+                                    </li>
+                                    <!--/ .row -->
+                                </ul>
+                            </div>
+                            <h4 class="checkout-sep">2. Shipping Method</h4>
+                            <div class="box-border">
+                                <ul>
+                                    @foreach (var method in Model.ShippingMethods)
+                                    {
+                                        <li>
+                                            <label asp-for="@method.Id">
+                                                <input type="radio" name="shippingMethod" asp-for="ShippingMethod" value="@method.Id">
+                                                @method.Name : delivered on @(DateTime.Now.AddDays(method.Period).ToShortDateString()) with @( method.Price > 0 ? @method.Price.ToString("C0") : "cost-free")
+                                            </label>
+
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <h4 class="checkout-sep">3. Payment Information</h4>
+                            <div class="box-border">
+                                <ul>
+                                    @foreach (var method in Model.PaymentMethods)
+                                    {
+                                        <li>
+                                            <label asp-for="@method.Value">
+                                                <input  type="radio" name="paymentMethod" asp-for="PaymentMethod" value="@method.Value">
+                                                @method.Name
+                                            </label>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <h4 class="checkout-sep last">4. Order Review</h4>
+                            <div class="box-border">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered cart_summary">
+                                        <thead>
+                                            <tr>
+                                                <th class="cart_product">Product</th>
+                                                <th>Description</th>
+                                                <th>Avail.</th>
+                                                <th class="text-center">Unit price</th>
+                                                <th class="text-center">Qty</th>
+                                                <th class="text-center">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.ShoppingCarts)
+                                            {
+                                                <tr>
+                                                    <td class="cart_product">
+                                                        <a title="@item.Product.Name" asp-controller="Product" asp-action="Details" asp-route-alias="@item.Product.SeoAlias" asp-route-id="@item.Product.Id">
+                                                            <img src='@(string.IsNullOrEmpty(item.Product.Image) ? "/client-side/images/products/product-1.jpg" : item.Product.Image)' alt="@item.Product.Name">
+                                                        </a>
+                                                    </td>
+                                                    <td class="cart_description">
+                                                        <p class="product-name">
+                                                            <a title="@item.Product.Name" asp-controller="Product" asp-action="Details" asp-route-alias="@item.Product.SeoAlias" asp-route-id="@item.Product.Id">@item.Product.Name</a>
+                                                        </p>
+                                                        <small><a href="#">Color : @item.Color.Name </a></small><br>
+                                                        <small><a href="#">Size : @item.Size.Name</a></small>
+                                                    </td>
+                                                    <td class="cart_avail">
+                                                        @{
+                                                            string labelStatusCss = "label label-" + (item.Product.Status == TeduCoreApp.Data.Enums.Status.Active ? "success" : "danger");
+                                                        }
+                                                        <span class="@labelStatusCss">@item.Product.Status</span>
+                                                    </td>
+                                                    <td class="price">@item.Price.ToString("C0") </td>
+                                                    <td class="qty">@item.Quantity.ToString("N0") </td>
+                                                    <td class="price">@((item.Price * item.Quantity).ToString("C0")) </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="3" rowspan="2"></td>
+                                                <td colspan="2"><strong>Total</strong></td>
+                                                <td colspan="2" class="text-right">
+                                                    <strong id="lbl-total-amount" data-total=" @(Model.ShoppingCarts.Sum(x => x.Quantity * x.Price) + (decimal)Model.PaymentMethod)">
+                                                        @((Model.ShoppingCarts.Sum(x => x.Quantity * x.Price) + (decimal)Model.PaymentMethod).ToString("C0"))
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <a class="button" asp-controller="Cart" asp-action="Index"><i class="icon-action-undo"></i> <span>Back to cart</span></a>
+                                <button class="button pull-right" type="submit"><i class="fa fa-check"></i> <span>Place Order</span> </button>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+            <aside class="right sidebar col-sm-3 col-xs-12">
+                @*<div class="sidebar-checkout block">
+                        <div class="sidebar-bar-title">
+                            <h3>Your Checkout</h3>
+                        </div>
+                        <div class="block-content">
+                            <dl>
+                                <dt class="complete"> Billing Address <span class="separator">|</span> <a href="#">Change</a> </dt>
+                                <dd class="complete">
+                                    <address>
+                                        Deo Jone<br>
+                                        Company Name<br>
+                                        7064 Lorem <br>
+                                        Ipsum <br>
+                                        Vestibulum 0 666/13<br>
+                                        United States<br>
+                                        T: 12345678 <br>
+                                        F: 987654
+                                    </address>
+                                </dd>
+                                <dt class="complete"> Shipping Address <span class="separator">|</span> <a href="#">Change</a> </dt>
+                                <dd class="complete">
+                                    <address>
+                                        Deo Jone<br>
+                                        Company Name<br>
+                                        7064 Lorem <br>
+                                        Ipsum <br>
+                                        Vestibulum 0 666/13<br>
+                                        United States<br>
+                                        T: 12345678 <br>
+                                        F: 987654
+                                    </address>
+                                </dd>
+                                <dt class="complete"> Shipping Method <span class="separator">|</span> <a href="#">Change</a> </dt>
+                                <dd class="complete">
+                                    Flat Rate - Fixed <br>
+                                    <span class="price">$15.00</span>
+                                </dd>
+                                <dt> Payment Method </dt>
+
+                            </dl>
+
+                        </div>
+
+                    </div>*@
+                @if (!SignInManager.IsSignedIn(User))
+                {
+                    <div class="sidebar-checkout block">
+                        <div class="sidebar-bar-title">
+                            <h3>Login or Register and save time!</h3>
+                        </div>
+                        <div class="block-content">
+                            <a class="button" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Url.Action(action: "Checkout", controller: "Cart")"><i class="icon-login"></i>&nbsp; <span>Login</span></a>
+                            <a class="button" asp-controller="Account" asp-action="Register" asp-route-returnUrl="@Url.Action(action: "Checkout", controller: "Cart")"><i class="fa fa-user"></i>&nbsp; <span>Register</span></a>
+                        </div>
+                    </div>
+                }
+            </aside>
+        </div>
+    </div>
+</section>
+<!-- Main Container End -->

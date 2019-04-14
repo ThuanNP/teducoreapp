@@ -27,8 +27,8 @@
                 color: 0,
                 size: 0
             },
-            success: function () {
-                tedu.notify('The product was added to cart', 'success');
+            success: function (response) {
+                tedu.notify('The "' + response +'" was added to cart', 'success');
                 tedu.loadHeaderCart();
             },
             error: function (status) {

@@ -6,39 +6,40 @@ using System.Threading.Tasks;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Utilities.Constants;
+using ShippingMethod = TeduCoreApp.Data.Entities.ShippingMethod;
 
 namespace TeduCoreApp.Data.EF
 {
     public class DbIntinitializer
     {
-        private readonly AppDbContext _context;
-        private UserManager<AppUser> _userManager;
-        private RoleManager<AppRole> _roleManager;
+        private readonly AppDbContext context;
+        private UserManager<AppUser> userManager;
+        private RoleManager<AppRole> roleManager;
 
         public DbIntinitializer(AppDbContext context, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
         {
-            _context = context;
-            _userManager = userManager;
-            _roleManager = roleManager;
+            this.context = context;
+            this.userManager = userManager;
+            this.roleManager = roleManager;
         }
 
         public async Task Seed()
         {
-            if (!_roleManager.Roles.Any())
+            if (!roleManager.Roles.Any())
             {
-                await _roleManager.CreateAsync(new AppRole()
+                await roleManager.CreateAsync(new AppRole()
                 {
                     Name = "Admin",
                     NormalizedName = "Admin",
                     Description = "Top manager"
                 });
-                await _roleManager.CreateAsync(new AppRole()
+                await roleManager.CreateAsync(new AppRole()
                 {
                     Name = "Staff",
                     NormalizedName = "Staff",
                     Description = "Staff"
                 });
-                await _roleManager.CreateAsync(new AppRole()
+                await roleManager.CreateAsync(new AppRole()
                 {
                     Name = "Customer",
                     NormalizedName = "Customer",
@@ -46,23 +47,23 @@ namespace TeduCoreApp.Data.EF
                 });
             }
 
-            if (!_userManager.Users.Any())
+            if (!userManager.Users.Any())
             {
-                await _userManager.CreateAsync(new AppUser()
+                await userManager.CreateAsync(new AppUser()
                 {
                     UserName = "admin",
                     FullName = "Administrator",
                     Email = "admin@gmail.com",
                     Balance = 0,
                     DateCreated = DateTime.Now,
-                    DateModified=DateTime.Now,
-                    Status=Status.Active
+                    DateModified = DateTime.Now,
+                    Status = Status.Active
                 }, "123654$");
-                var user = await _userManager.FindByNameAsync("admin");
-                await _userManager.AddToRoleAsync(user, "Admin");
+                var user = await userManager.FindByNameAsync("admin");
+                await userManager.AddToRoleAsync(user, "Admin");
             }
 
-            if (_context.Functions.Count() == 0)
+            if (context.Functions.Count() == 0)
             {
                 List<Function> functions = new List<Function>()
                 {
@@ -92,22 +93,22 @@ namespace TeduCoreApp.Data.EF
                     new Function() {Id = "ACCESS",Name = "Visitor Report",ParentId = "REPORT",SortOrder = 2,Status = Status.Active,URL = "/admin/report/visitor",IconCss = "fa-bar-chart-o"  },
                     new Function() {Id = "READER",Name = "Reader Report",ParentId = "REPORT",SortOrder = 3,Status = Status.Active,URL = "/admin/report/reader",IconCss = "fa-bar-chart-o"  },
                 };
-                _context.Functions.AddRange(functions);
+                context.Functions.AddRange(functions);
             }
 
-            if (_context.Footers.Count(x => x.Id == CommonConstants.DefaultFooterId) == 0)
+            if (context.Footers.Count(x => x.Id == CommonConstants.DefaultFooterId) == 0)
             {
                 string content = "Footer";
-                _context.Footers.Add(new Footer()
+                context.Footers.Add(new Footer()
                 {
                     Id = CommonConstants.DefaultFooterId,
                     Content = content
-                });                
+                });
             }
 
-            if (_context.Colors.Count() == 0)
+            if (context.Colors.Count() == 0)
             {
-                _context.Colors.AddRange(new List<Color>()
+                context.Colors.AddRange(new List<Color>()
                 {
                     new Color() {Name="Black", Code="#000000" },
                     new Color() {Name="White", Code="#FFFFFF"},
@@ -116,7 +117,7 @@ namespace TeduCoreApp.Data.EF
                 });
             }
 
-            if (_context.AdvertisementPages.Count() == 0)
+            if (context.AdvertisementPages.Count() == 0)
             {
                 List<AdvertisementPage> pages = new List<AdvertisementPage>()
                 {
@@ -133,10 +134,10 @@ namespace TeduCoreApp.Data.EF
                     }},
 
                 };
-                _context.AdvertisementPages.AddRange(pages);
+                context.AdvertisementPages.AddRange(pages);
             }
 
-            if (_context.Slides.Count() == 0)
+            if (context.Slides.Count() == 0)
             {
                 List<Slide> slides = new List<Slide>()
                 {
@@ -156,10 +157,10 @@ namespace TeduCoreApp.Data.EF
                     new Slide() {Name="Slide 10",Image="/client-side/images/brand10.png",Url="#",DisplayOrder = 10,GroupAlias = "brand",Status = true },
                     new Slide() {Name="Slide 11",Image="/client-side/images/brand11.png",Url="#",DisplayOrder = 11,GroupAlias = "brand",Status = true },
                 };
-                _context.Slides.AddRange(slides);
+                context.Slides.AddRange(slides);
             }
 
-            if (_context.Sizes.Count() == 0)
+            if (context.Sizes.Count() == 0)
             {
                 List<Size> listSize = new List<Size>()
                 {
@@ -170,10 +171,10 @@ namespace TeduCoreApp.Data.EF
                     new Size() { Name="S" },
                     new Size() { Name="XS" }
                 };
-                _context.Sizes.AddRange(listSize);
+                context.Sizes.AddRange(listSize);
             }
 
-            if (_context.ProductCategories.Count() == 0)
+            if (context.ProductCategories.Count() == 0)
             {
                 List<ProductCategory> listProductCategory = new List<ProductCategory>()
                 {
@@ -215,12 +216,12 @@ namespace TeduCoreApp.Data.EF
                             new Product {Name = "Product 20",Image="/client-side/images/products/product-1.jpg",SeoAlias = "san-pham-20",Price = 1000,Status = Status.Active,OriginalPrice = 1000, DateCreated = DateTime.Now},
                         }}
                 };
-                _context.ProductCategories.AddRange(listProductCategory);
+                context.ProductCategories.AddRange(listProductCategory);
             }
 
-            if (!_context.SystemConfigs.Any(x => x.Id == "HomeTitle"))
+            if (!context.SystemConfigs.Any(x => x.Id == "HomeTitle"))
             {
-                _context.SystemConfigs.Add(new SystemConfig()
+                context.SystemConfigs.Add(new SystemConfig()
                 {
                     Id = "HomeTitle",
                     Name = "Home's title",
@@ -228,9 +229,10 @@ namespace TeduCoreApp.Data.EF
                     Status = Status.Active
                 });
             }
-            if (!_context.SystemConfigs.Any(x => x.Id == "HomeMetaKeyword"))
+
+            if (!context.SystemConfigs.Any(x => x.Id == "HomeMetaKeyword"))
             {
-                _context.SystemConfigs.Add(new SystemConfig()
+                context.SystemConfigs.Add(new SystemConfig()
                 {
                     Id = "HomeMetaKeyword",
                     Name = "Home Keyword",
@@ -238,9 +240,10 @@ namespace TeduCoreApp.Data.EF
                     Status = Status.Active
                 });
             }
-            if (!_context.SystemConfigs.Any(x => x.Id == "HomeMetaDescription"))
+
+            if (!context.SystemConfigs.Any(x => x.Id == "HomeMetaDescription"))
             {
-                _context.SystemConfigs.Add(new SystemConfig()
+                context.SystemConfigs.Add(new SystemConfig()
                 {
                     Id = "HomeMetaDescription",
                     Name = "Home Description",
@@ -248,7 +251,16 @@ namespace TeduCoreApp.Data.EF
                     Status = Status.Active
                 });
             }
-            await _context.SaveChangesAsync();
+
+            if (context.ShippingMethods.Count() == 0)
+            {
+                context.ShippingMethods.AddRange(new List<ShippingMethod> {
+                    new ShippingMethod { Name = "Standard", Period = 7, Price = 0 },
+                    new ShippingMethod { Name = "Express", Period = 1, Price = 20000 }
+                });
+            }
+
+            await context.SaveChangesAsync();
         }
     }
 }

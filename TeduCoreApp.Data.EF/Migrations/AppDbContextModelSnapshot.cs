@@ -157,7 +157,9 @@ namespace TeduCoreApp.Data.EF.Migrations
             modelBuilder.Entity("TeduCoreApp.Data.Entities.Announcement", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(128)
+                        .IsUnicode(false);
 
                     b.Property<string>("Content")
                         .HasMaxLength(250);
@@ -227,6 +229,8 @@ namespace TeduCoreApp.Data.EF.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AccessFailedCount");
+
+                    b.Property<string>("Address");
 
                     b.Property<string>("Avatar");
 
@@ -309,11 +313,15 @@ namespace TeduCoreApp.Data.EF.Migrations
 
                     b.Property<int>("PaymentMethod");
 
+                    b.Property<int?>("ShippingMethodId");
+
                     b.Property<int>("Status");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("ShippingMethodId");
 
                     b.ToTable("Bills");
                 });
@@ -519,7 +527,9 @@ namespace TeduCoreApp.Data.EF.Migrations
             modelBuilder.Entity("TeduCoreApp.Data.Entities.Function", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(128)
+                        .IsUnicode(false);
 
                     b.Property<string>("IconCss");
 
@@ -830,6 +840,25 @@ namespace TeduCoreApp.Data.EF.Migrations
                     b.ToTable("ProductTags");
                 });
 
+            modelBuilder.Entity("TeduCoreApp.Data.Entities.ShippingMethod", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150);
+
+                    b.Property<int>("Period");
+
+                    b.Property<decimal>("Price");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ShippingMethods");
+                });
+
             modelBuilder.Entity("TeduCoreApp.Data.Entities.Size", b =>
                 {
                     b.Property<int>("Id")
@@ -982,6 +1011,10 @@ namespace TeduCoreApp.Data.EF.Migrations
                     b.HasOne("TeduCoreApp.Data.Entities.AppUser", "User")
                         .WithMany()
                         .HasForeignKey("CustomerId");
+
+                    b.HasOne("TeduCoreApp.Data.Entities.ShippingMethod", "ShippingMethod")
+                        .WithMany("Bills")
+                        .HasForeignKey("ShippingMethodId");
                 });
 
             modelBuilder.Entity("TeduCoreApp.Data.Entities.BillDetail", b =>

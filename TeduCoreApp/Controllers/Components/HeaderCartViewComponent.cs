@@ -17,7 +17,9 @@ namespace TeduCoreApp.Controllers.Components
             var session = HttpContext.Session.GetString(CommonConstants.CartSession);
             var cart = new List<ShoppingCartViewModel>();
             if (session != null)
-                cart = JsonConvert.DeserializeObject<List<ShoppingCartViewModel>>(session);
+            {
+                cart = await Task.Run(() => JsonConvert.DeserializeObject<List<ShoppingCartViewModel>>(session));
+            }
             return View(cart);
         }
     }

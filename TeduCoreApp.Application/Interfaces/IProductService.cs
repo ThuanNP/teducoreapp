@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TeduCoreApp.Application.ViewModels.Common;
 using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Utilities.Dtos;
@@ -16,6 +17,8 @@ namespace TeduCoreApp.Application.Interfaces
         List<ProductViewModel> GetTopRelated(int id, int top);
 
         List<ProductViewModel> GetTopSpecialOffers(int top);
+
+        Task<List<ProductViewModel>> GetTopBestSellersAsync(int top);
 
         List<ProductViewModel> GetTopBestSellers(int top);
 

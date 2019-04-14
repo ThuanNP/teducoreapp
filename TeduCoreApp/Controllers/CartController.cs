@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using TeduCoreApp.Application.Interfaces;
+using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Extensions;
 using TeduCoreApp.Models;
 using TeduCoreApp.Utilities.Constants;
@@ -14,25 +16,46 @@ namespace TeduCoreApp.Controllers
     {
         private readonly IProductService productService;
         private readonly ICommonService commonService;
+        private readonly UserManager<AppUser> userManager;
+        private readonly SignInManager<AppUser> signInManager;
 
-        public CartController(IProductService productService, ICommonService commonService)
+        public CartController(IProductService productService, ICommonService commonService, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             this.productService = productService;
             this.commonService = commonService;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
         }
 
-        [Route("cart.html", Name = "Cart")]
+        [HttpGet, Route("cart.html", Name = "Cart")]
         public IActionResult Index()
         {
             ViewData["BodyClass"] = BodyCssClass.CartIndex;
             return View();
         }
 
-        [Route("checkout.html", Name = "Checkout")]
+        [HttpGet, Route("checkout.html", Name = "Checkout")]
         public IActionResult Checkout()
         {
-            ViewData["BodyClass"] = BodyCssClass.CartIndex;
-            return View();
+            ViewData["BodyClass"] = BodyCssClass.Checkout;
+            var cartItems = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession) ?? new List<ShoppingCartViewModel>();
+
+            var model = new CheckoutViewModel
+            {
+                ShoppingCarts = cartItems,
+                ShippingMethods = commonService.GetShippingMethods(),
+                ShippingMethod = commonService.GetShippingMethod(1)
+            };
+            if (signInManager.IsSignedIn(User))
+            {
+                var id = userManager.GetUserId(User);
+                var user = userManager.GetUserAsync(User).Result;
+                model.CustomerName = user.FullName;
+                model.CustomerEmail = user.Email;
+                model.CustomerMobile = user.PhoneNumber;
+                model.CustomerAddress = user.Address;
+            }
+            return View(model);
         }
 
         #region AJAX Request
@@ -65,67 +88,49 @@ namespace TeduCoreApp.Controllers
         /// <param name="size"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult AddToCart(int productId, int quantity, int color, int size)
+        public IActionResult AddToCart(int productId, int quantity, int color = 1, int size = 1)
         {
+            bool hasChanged = false;
             //Get product detail
             var product = productService.GetById(productId);
             //Get session with item list from cart
-            var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession);
-            if (session != null)
+            var shoppingCarts = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession) ?? new List<ShoppingCartViewModel>();
+
+            //Check exist with item product id
+            if (shoppingCarts.Any(x => x.Product.Id == productId))
             {
-                bool hasChanged = false;
-                //Check exist with item product id
-                if (session.Any(x => x.Product.Id == productId))
+                foreach (var item in shoppingCarts)
                 {
-                    foreach (var item in session)
+                    //Update quantity for product if match product id
+                    if (item.Product.Id == productId)
                     {
-                        //Update quantity for product if match product id
-                        if (item.Product.Id == productId)
-                        {
-                            item.Quantity += quantity;
-                            item.Color = commonService.GetColor(id: color);
-                            item.Size = commonService.GetSize(id: size);
-                            item.Price = product.PromotionPrice ?? product.Price;
-                            hasChanged = true;
-                        }
+                        item.Quantity += quantity;
+                        item.Color = commonService.GetColor(id: color);
+                        item.Size = commonService.GetSize(id: size);
+                        item.Price = product.PromotionPrice ?? product.Price;
+                        hasChanged = true;
                     }
-                }
-                else
-                {
-                    session.Add(new ShoppingCartViewModel
-                    {
-                        Product = product,
-                        Quantity = quantity,
-                        Color = commonService.GetColor(id: color),
-                        Size = commonService.GetSize(id: size),
-                        Price = product.PromotionPrice ?? product.Price
-                    });
-                    hasChanged = true;
-                }
-                //Update back to cart
-                if (hasChanged)
-                {
-                    HttpContext.Session.Set(CommonConstants.CartSession, session);                    
                 }
             }
             else
             {
-                //Add new cart
-                var cart = new List<ShoppingCartViewModel>
+                shoppingCarts.Add(new ShoppingCartViewModel
                 {
-                    new ShoppingCartViewModel
-                    {
-                        Product = product,
-                        Quantity = quantity,
-                        Color = commonService.GetColor(id: color),
-                        Size = commonService.GetSize(id: size),
-                        Price = product.PromotionPrice ?? product.Price
-                    }
-                };
-                HttpContext.Session.Set(CommonConstants.CartSession, cart);
+                    Product = product,
+                    Quantity = quantity,
+                    Color = commonService.GetColor(id: color) ?? commonService.GetColors().FirstOrDefault(),
+                    Size = commonService.GetSize(id: size) ?? commonService.GetSizes().FirstOrDefault(),
+                    Price = product.PromotionPrice ?? product.Price
+                });
+                hasChanged = true;
             }
-            return new OkObjectResult(productId);
-            //return new OkResult();
+            //Update back to cart
+            if (hasChanged)
+            {
+                HttpContext.Session.Set(CommonConstants.CartSession, shoppingCarts);
+                return new OkObjectResult(product.Name);
+            }
+            return new EmptyResult();
         }
 
         /// <summary>

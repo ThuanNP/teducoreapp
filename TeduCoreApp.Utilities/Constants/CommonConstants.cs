@@ -27,7 +27,8 @@
         public sealed class ProductSortType
         {
             public const string Latest = "Latest";
-            public const string Price = "Price";
+            public const string PriceAsc = "Price Ascent";
+            public const string PriceDesc = "Price Descent";
             public const string Name = "Name";
         }
 
@@ -38,6 +39,7 @@
             public const string ProductCatalog = "shop_grid_full_width_page";
             public const string ProductDetail = "product-page";
             public const string CartIndex = "shopping_cart_page";
+            public const string Checkout = "checkout_page";
         }
     }
 }

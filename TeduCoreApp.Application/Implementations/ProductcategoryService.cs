@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Data.Entities;
@@ -44,6 +46,13 @@ namespace TeduCoreApp.Application.Implementations
                 productCategoryRepository.Update(item);
             }
             productCategoryRepository.Remove(id);
+        }
+
+        public async Task<List<ProductCategoryViewModel>> GetAllAsync()
+        {
+            return await productCategoryRepository.FindAll()
+                .OrderBy(x => x.ParentId)
+                .ProjectTo<ProductCategoryViewModel>().ToListAsync();
         }
 
         public List<ProductCategoryViewModel> GetAll()

@@ -17,8 +17,11 @@ namespace TeduCoreApp.Controllers.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            ViewBag.BestSellers = productService.GetTopBestSellers(3);
-            return View(productCategoryService.GetAll());
+            var productTask = productService.GetTopBestSellersAsync(3);
+            var categoryTask = productCategoryService.GetAllAsync();
+            await Task.WhenAll(productTask, categoryTask);
+            ViewBag.BestSellers = productTask.Result;
+            return View(categoryTask.Result);
         }
     }
 }

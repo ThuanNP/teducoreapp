@@ -4634,6 +4634,36 @@ button span {
 	font-weight: 500;
 	letter-spacing: 0.5px;
 }
+a.button {
+	display: inline-block;
+	border: 0;
+	background: #444;
+	padding: 6px 16px;
+	font-size: 12px;
+	border: 1px solid #444;
+	font-weight: 500;
+	text-align: center;
+	white-space: nowrap;
+	color: #fff;
+	font-weight: normal;
+	transition: all 0.3s linear;
+	-moz-transition: all 0.3s linear;
+	-webkit-transition: all 0.3s linear;
+	border-radius: 3px;
+}
+a.button:hover {
+	background: #e83f33;
+	border: 1px solid #e83f33;
+	transition: all 0.3s linear;
+	-moz-transition: all 0.3s linear;
+	-webkit-transition: all 0.3s linear;
+	color: #fff
+}
+a span {
+	text-transform: uppercase;
+	font-weight: 500;
+	letter-spacing: 0.5px;
+}
 /******************************************
 21. breadcrumbs
 ******************************************/

@@ -101,14 +101,16 @@ namespace TeduCoreApp
             services.AddTransient<IFooterRepository, FooterRepository>();
             services.AddTransient<ISlideRepository, SlideRepository>();
             services.AddTransient<ISystemConfigRepository, SystemConfigRepository>();
+            services.AddTransient<IShippingMethodRepository, ShippingMethodRepository>();
+            services.AddTransient<IColorRepository, ColorRepository>();
+            services.AddTransient<ISizeRepository, SizeRepository>();
             //Repository: Products
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IProductQuantityRepository, ProductQuantityRepository>();
             services.AddTransient<IProductImageRepository, ProductImageRepository>();
             services.AddTransient<IWholePriceRepository, WholePriceRepository>();
-            services.AddTransient<IColorRepository, ColorRepository>();
-            services.AddTransient<ISizeRepository, SizeRepository>();
+         
             services.AddTransient<IBillRepository, BillRepository>();
             services.AddTransient<IBillDetailRepository, BillDetailRepository>();
             //Repository: Blogs

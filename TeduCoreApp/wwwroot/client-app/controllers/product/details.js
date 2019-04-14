@@ -27,7 +27,7 @@
             dataType: "json",
             success: function (response) {
                 tedu.loadHeaderCart();
-                tedu.notify('Add cart item successfully', 'success');
+                tedu.notify('The "' + response +'" was added to cart', 'success');
             },
             error: function (status) {
                 console.log("Has an error in add cart item progress", status);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TeduCoreApp.Application.ViewModels.Product;
 
 namespace TeduCoreApp.Application.Interfaces
@@ -11,6 +12,8 @@ namespace TeduCoreApp.Application.Interfaces
         void Update(ProductCategoryViewModel productcategoryVm);
 
         void Delete(int id);
+
+        Task<List<ProductCategoryViewModel>> GetAllAsync();
 
         List<ProductCategoryViewModel> GetAll();
 

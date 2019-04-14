@@ -31,5 +31,6 @@ namespace TeduCoreApp.Data.Entities
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
         public Status Status { get; set; }
+        public string Address { get; set; }
     }
 }
