@@ -1,0 +1,76 @@
+﻿@using TeduCoreApp.Data.Enums
+
+@model BillViewModel
+<h1>Hoa Ban Shop new bill</h1>
+<table>
+    <tr>
+        <td>Customer Name</td>
+        <td>@Model.CustomerName</td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td>@Model.CustomerAddress</td>
+    </tr>
+    <tr>
+        <td>Phone</td>
+        <td>@Model.CustomerMobile</td>
+    </tr>
+    <tr>
+        <td>Date</td>
+        <td>@Model.DateCreated.ToString("dd/MM/yyyy hh:mm")</td>
+    </tr>
+    <tr>
+        <td>Details</td>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Color</th>
+                        <th>Size</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BillDetails)
+                    {
+                        <tr>
+                            <td>@item.Product.Name</td>
+                            <td>@item.Color.Name</td>
+                            <td>@item.Size.Name</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.Price</td>
+                            <td>@((item.Quantity * item.Price).ToString("C0"))</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            @{
+                                decimal shippingCost = 0;
+                                switch (Model.ShippingMethod)
+                                {
+                                    case ShippingMethod.Standard:
+                                        shippingCost = 0;
+                                        break;
+                                    case ShippingMethod.Express:
+                                        shippingCost = 20000;
+                                        break;
+                                }
+                            }
+                            Ship. Cost: @shippingCost.ToString("C0")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            Total: @((Model.BillDetails.Sum(x => x.Quantity * x.Price) + shippingCost).ToString("C0"))
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </td>
+    </tr>
+</table>

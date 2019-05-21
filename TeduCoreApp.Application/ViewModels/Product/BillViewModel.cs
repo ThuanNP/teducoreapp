@@ -38,7 +38,7 @@ namespace TeduCoreApp.Application.ViewModels.Product
 
         public int ShippingMethodId { get; set; }
 
-        public ShippingMethodViewModel ShippingMethod { get; set; }
+        public ShippingMethod ShippingMethod { get; set; }
 
         public DateTime DateCreated { get; set; }
 

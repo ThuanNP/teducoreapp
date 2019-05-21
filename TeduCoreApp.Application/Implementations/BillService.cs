@@ -43,7 +43,7 @@ namespace TeduCoreApp.Application.Implementations
             var orderDetails = Mapper.Map<List<BillDetailViewModel>, List<BillDetail>>(billViewModel.BillDetails);
             foreach (BillDetail detail in orderDetails)
             {
-                var product = _productRepository.FindById(detail.ProductId);
+                var product = _productRepository.FindById(detail.Product.Id);
                 detail.Price = product.Price;
             }
             order.BillDetails = orderDetails;

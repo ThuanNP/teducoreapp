@@ -27,15 +27,18 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<ProductQuantityViewModel, ProductQuantity>()
                 .ConstructUsing(c => new ProductQuantity(c.ProductId, c.SizeId, c.ColorId, c.Quantity));
             CreateMap<BillViewModel, Bill>()
-                .ConstructUsing(c => new Bill(c.Id, c.CustomerId, c.CustomerName, c.CustomerAddress, c.CustomerMobile, c.CustomerEmail, c.CustomerMessage, c.BillStatus, c.PaymentMethod, c.Status));
+                .ConstructUsing(c => new Bill(c.CustomerId, c.CustomerName, c.CustomerAddress, c.CustomerMobile, c.CustomerEmail, c.CustomerMessage, c.BillStatus, c.PaymentMethod, c.ShippingMethod, c.Status));
             CreateMap<BillDetailViewModel, BillDetail>()
-                .ConstructUsing(c => new BillDetail(c.Id, c.BillId, c.ProductId, c.Quantity, c.Price, c.ColorId, c.SizeId));
+                .ConstructUsing(c => new BillDetail(c.BillId, c.ProductId, c.Quantity, c.Price, c.ColorId, c.SizeId));
             //Content
             CreateMap<BlogViewModel, Blog>()
                 .ConstructUsing(c => new Blog(c.Name, c.Description, c.Content, c.Image,
                 c.SeoPageTitle, c.SeoAlias, c.SeoKeywords, c.SeoDescription, c.Status));
             //Common
-
+            CreateMap<ColorViewModel, Color>()
+               .ConstructUsing(c => new Color(c.Name, c.Code));
+            CreateMap<SizeViewModel, Size>()
+              .ConstructUsing(c => new Size(c.Name));
         }
     }
 }

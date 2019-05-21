@@ -22,8 +22,5 @@ namespace TeduCoreApp.Application.Interfaces
         ColorViewModel GetColor(int id);
 
         SizeViewModel GetSize(int id);
-
-        List<ShippingMethodViewModel> GetShippingMethods();
-        ShippingMethodViewModel GetShippingMethod(int id);
     }
 }

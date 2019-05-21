@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Utilities.Constants;
-using ShippingMethod = TeduCoreApp.Data.Entities.ShippingMethod;
 
 namespace TeduCoreApp.Data.EF
 {
@@ -249,14 +248,6 @@ namespace TeduCoreApp.Data.EF
                     Name = "Home Description",
                     Value1 = "Home tedu",
                     Status = Status.Active
-                });
-            }
-
-            if (context.ShippingMethods.Count() == 0)
-            {
-                context.ShippingMethods.AddRange(new List<ShippingMethod> {
-                    new ShippingMethod { Name = "Standard", Period = 7, Price = 0 },
-                    new ShippingMethod { Name = "Express", Period = 1, Price = 20000 }
                 });
             }
 

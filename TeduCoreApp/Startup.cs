@@ -81,6 +81,7 @@ namespace TeduCoreApp
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
 
+            services.AddTransient<IViewRenderService, ViewRenderService>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<DbIntinitializer>();
 
@@ -101,7 +102,6 @@ namespace TeduCoreApp
             services.AddTransient<IFooterRepository, FooterRepository>();
             services.AddTransient<ISlideRepository, SlideRepository>();
             services.AddTransient<ISystemConfigRepository, SystemConfigRepository>();
-            services.AddTransient<IShippingMethodRepository, ShippingMethodRepository>();
             services.AddTransient<IColorRepository, ColorRepository>();
             services.AddTransient<ISizeRepository, SizeRepository>();
             //Repository: Products
@@ -121,6 +121,7 @@ namespace TeduCoreApp
             services.AddTransient<IBlogTagRepository, BlogTagRepository>();
 
             //Services            
+            
             services.AddTransient<IBillService, BillService>();
             services.AddTransient<IBlogService, BlogService>();
             services.AddTransient<ICommonService, CommonService>();

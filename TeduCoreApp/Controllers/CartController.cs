@@ -1,12 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
+using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Extensions;
 using TeduCoreApp.Models;
+using TeduCoreApp.Services;
 using TeduCoreApp.Utilities.Constants;
 using static TeduCoreApp.Utilities.Constants.CommonConstants;
 
@@ -16,15 +22,21 @@ namespace TeduCoreApp.Controllers
     {
         private readonly IProductService productService;
         private readonly ICommonService commonService;
+        private readonly IBillService billService;
+        private readonly IViewRenderService viewRenderService;
+        private readonly IEmailSender emailSender;
+        private readonly IConfiguration configuration;
         private readonly UserManager<AppUser> userManager;
-        private readonly SignInManager<AppUser> signInManager;
 
-        public CartController(IProductService productService, ICommonService commonService, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public CartController(IProductService productService, ICommonService commonService, IBillService billService, UserManager<AppUser> userManager, IViewRenderService viewRenderService, IEmailSender emailSender, IConfiguration configuration)
         {
             this.productService = productService;
             this.commonService = commonService;
             this.userManager = userManager;
-            this.signInManager = signInManager;
+            this.billService = billService;
+            this.viewRenderService = viewRenderService;
+            this.emailSender = emailSender;
+            this.configuration = configuration;
         }
 
         [HttpGet, Route("cart.html", Name = "Cart")]
@@ -38,23 +50,84 @@ namespace TeduCoreApp.Controllers
         public IActionResult Checkout()
         {
             ViewData["BodyClass"] = BodyCssClass.Checkout;
-            var cartItems = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession) ?? new List<ShoppingCartViewModel>();
+            var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CartSession) ?? new List<ShoppingCartViewModel>();
+            if (session.Any(x => x.Color == null || x.Size == null))
+            {
+                return Redirect("/cart.html");
+            }
 
             var model = new CheckoutViewModel
             {
-                ShoppingCarts = cartItems,
-                ShippingMethods = commonService.GetShippingMethods(),
-                ShippingMethod = commonService.GetShippingMethod(1)
+                ShoppingCarts = session,
             };
-            if (signInManager.IsSignedIn(User))
+            if (User.Identity.IsAuthenticated)
             {
-                var id = userManager.GetUserId(User);
                 var user = userManager.GetUserAsync(User).Result;
                 model.CustomerName = user.FullName;
                 model.CustomerEmail = user.Email;
                 model.CustomerMobile = user.PhoneNumber;
                 model.CustomerAddress = user.Address;
             }
+            return View(model);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken, Route("checkout.html", Name = "Checkout")]
+        public async Task<IActionResult> Checkout(CheckoutViewModel model)
+        {
+            ViewData["BodyClass"] = BodyCssClass.Checkout;
+            var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CartSession);
+            if (ModelState.IsValid)
+            {
+                if (session != null)
+                {
+                    var details = new List<BillDetailViewModel>();
+                    foreach (var item in session)
+                    {
+                        details.Add(new BillDetailViewModel
+                        {
+                            //ProductId = item.Product.Id,
+                            Product = item.Product,
+                            //Price = item.Price,
+                            //ColorId = item.Color.Id,
+                            Color = item.Color,
+                            //SizeId = item.Size.Id,
+                            Size = item.Size,
+                            Quantity = item.Quantity
+
+                        });
+                    }
+                    var billViewModel = new BillViewModel()
+                    {
+                        CustomerMobile = model.CustomerMobile,
+                        BillStatus = BillStatus.New,
+                        CustomerAddress = model.CustomerAddress,
+                        CustomerName = model.CustomerName,
+                        CustomerMessage = model.CustomerMessage,
+                        ShippingMethod = model.ShippingMethod,
+                        PaymentMethod = model.PaymentMethod,
+                        BillDetails = details
+                    };
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        billViewModel.CustomerId = Guid.Parse(User.GetSpecificClaim("UserId"));
+                    }
+                    billService.Create(billViewModel);
+                    try
+                    {
+                        billService.Save();
+                        var content = await viewRenderService.RenderToStringAsync("Cart/_BillMail", billViewModel);
+                        ////Send mail
+                        //await emailSender.SendEmailAsync(configuration["MailSettings:AdminMail"], "New bill from Hoa Ban shop", content);
+                        ViewData["Success"] = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewData["Success"] = false;
+                        ModelState.AddModelError("", ex.Message);
+                    }
+                }
+            }
+            model.ShoppingCarts = session;
             return View(model);
         }
 
@@ -94,7 +167,7 @@ namespace TeduCoreApp.Controllers
             //Get product detail
             var product = productService.GetById(productId);
             //Get session with item list from cart
-            var shoppingCarts = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession) ?? new List<ShoppingCartViewModel>();
+            var shoppingCarts = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CartSession) ?? new List<ShoppingCartViewModel>();
 
             //Check exist with item product id
             if (shoppingCarts.Any(x => x.Product.Id == productId))
@@ -140,7 +213,7 @@ namespace TeduCoreApp.Controllers
         /// <returns></returns>
         public IActionResult RemoveFromCart(int productId)
         {
-            var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession);
+            var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CartSession);
             if (session != null)
             {
                 bool hasChanged = false;
@@ -170,7 +243,7 @@ namespace TeduCoreApp.Controllers
         /// <returns></returns>
         public IActionResult UpdateCart(int productId, int quantity, int color, int size)
         {
-            var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession);
+            var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CartSession);
             if (session != null)
             {
                 bool hasChanged = false;

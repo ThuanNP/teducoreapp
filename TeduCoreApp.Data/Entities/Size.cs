@@ -7,6 +7,15 @@ namespace TeduCoreApp.Data.Entities
     [Table("Sizes")]
     public class Size : DomainEntity<int>
     {
+        public Size()
+        {
+        }
+
+        public Size(string name)
+        {
+            Name = name;
+        }
+
         [MaxLength(250)]
         public string Name { get; set; }
     }

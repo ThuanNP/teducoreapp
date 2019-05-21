@@ -1,7 +1,6 @@
 ﻿
 @using Microsoft.AspNetCore.Identity
 
-@inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
 
 @model CheckoutViewModel
@@ -10,11 +9,11 @@
 }
 
 @section Scripts{
-    <script src="~/client-app/controllers/cart/checkout.js"></script>
+    @*<script src="~/client-app/controllers/cart/checkout.js"></script>
     <script>
         var checkoutObj = new CheckoutController();
         checkoutObj.initialize();
-    </script>
+    </script>*@
 }
 
 <!-- Breadcrumbs -->
@@ -106,9 +105,9 @@
                                     @foreach (var method in Model.ShippingMethods)
                                     {
                                         <li>
-                                            <label asp-for="@method.Id">
-                                                <input type="radio" name="shippingMethod" asp-for="ShippingMethod" value="@method.Id">
-                                                @method.Name : delivered on @(DateTime.Now.AddDays(method.Period).ToShortDateString()) with @( method.Price > 0 ? @method.Price.ToString("C0") : "cost-free")
+                                            <label asp-for="@method.Value">
+                                                <input type="radio" name="ShippingMethod" asp-for="ShippingMethod" value="@method.Value" checked="@method.IsSelected">
+                                                @method.Name
                                             </label>
 
                                         </li>
@@ -122,7 +121,7 @@
                                     {
                                         <li>
                                             <label asp-for="@method.Value">
-                                                <input  type="radio" name="paymentMethod" asp-for="PaymentMethod" value="@method.Value">
+                                                <input type="radio" name="paymentMethod" asp-for="PaymentMethod" value="@method.Value" checked="@method.IsSelected">
                                                 @method.Name
                                             </label>
                                         </li>
@@ -176,8 +175,8 @@
                                                 <td colspan="3" rowspan="2"></td>
                                                 <td colspan="2"><strong>Total</strong></td>
                                                 <td colspan="2" class="text-right">
-                                                    <strong id="lbl-total-amount" data-total=" @(Model.ShoppingCarts.Sum(x => x.Quantity * x.Price) + (decimal)Model.PaymentMethod)">
-                                                        @((Model.ShoppingCarts.Sum(x => x.Quantity * x.Price) + (decimal)Model.PaymentMethod).ToString("C0"))
+                                                    <strong id="lbl-total-amount" data-total=" @Model.ShoppingCarts.Sum(x => x.Quantity * x.Price)">
+                                                        @Model.ShoppingCarts.Sum(x => x.Quantity * x.Price).ToString("C0")
                                                     </strong>
                                                 </td>
                                             </tr>
@@ -236,7 +235,7 @@
                         </div>
 
                     </div>*@
-                @if (!SignInManager.IsSignedIn(User))
+                @if (User.Identity.IsAuthenticated)
                 {
                     <div class="sidebar-checkout block">
                         <div class="sidebar-bar-title">

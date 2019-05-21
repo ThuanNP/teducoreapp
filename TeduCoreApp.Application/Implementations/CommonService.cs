@@ -21,17 +21,15 @@ namespace TeduCoreApp.Application.Implementations
         private readonly ISlideRepository slideRepository;
         private readonly IColorRepository colorRepository;
         private readonly ISizeRepository sizeRepository;
-        private readonly IShippingMethodRepository shippingMethodRepository;
         private readonly IUnitOfWork unitOfWork;
 
-        public CommonService(IFooterRepository footerRepository, ISystemConfigRepository systemConfigRepository, ISlideRepository slideRepository, IColorRepository colorRepository, ISizeRepository sizeRepository, IShippingMethodRepository shippingMethodRepository, IUnitOfWork unitOfWork)
+        public CommonService(IFooterRepository footerRepository, ISystemConfigRepository systemConfigRepository, ISlideRepository slideRepository, IColorRepository colorRepository, ISizeRepository sizeRepository, IUnitOfWork unitOfWork)
         {
             this.footerRepository = footerRepository;
             this.systemConfigRepository = systemConfigRepository;
             this.slideRepository = slideRepository;
             this.colorRepository = colorRepository;
             this.sizeRepository = sizeRepository;
-            this.shippingMethodRepository = shippingMethodRepository;
             this.unitOfWork = unitOfWork;
         }
 
@@ -50,17 +48,6 @@ namespace TeduCoreApp.Application.Implementations
         {
             Footer footer = footerRepository.FindSingle(x => x.Id == CommonConstants.DefaultFooterId);
             return Mapper.Map<Footer, FooterViewModel>(footer);
-        }
-
-        public ShippingMethodViewModel GetShippingMethod(int id)
-        {
-            var method = shippingMethodRepository.FindById(id);
-            return Mapper.Map<ShippingMethod, ShippingMethodViewModel>(method);
-        }
-
-        public List<ShippingMethodViewModel> GetShippingMethods()
-        {
-            return shippingMethodRepository.FindAll().ProjectTo<ShippingMethodViewModel>().OrderBy(x => x.Price).ToList();
         }
 
         public SizeViewModel GetSize(int id)

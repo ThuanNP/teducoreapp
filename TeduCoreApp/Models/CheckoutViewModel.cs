@@ -12,7 +12,7 @@ namespace TeduCoreApp.Models
     {
         public List<ShoppingCartViewModel> ShoppingCarts { get; set; }
 
-        public List<ShippingMethodViewModel> ShippingMethods { get; set; }
+       
 
         public List<EnumModel> PaymentMethods
         {
@@ -21,12 +21,24 @@ namespace TeduCoreApp.Models
                 return ((PaymentMethod[])Enum.GetValues(typeof(PaymentMethod))).Select(c => new EnumModel
                 {
                     Value = (int)c,
-                    Name = c.GetDescription()
+                    Name = c.GetDescription(),
+                    IsSelected = c == PaymentMethod
+                }).ToList();
+            }
+        }
+        public List<EnumModel> ShippingMethods
+        {
+            get
+            {
+                return ((ShippingMethod[])Enum.GetValues(typeof(ShippingMethod))).Select(c => new EnumModel
+                {
+                    Value = (int)c,
+                    Name = c.GetDescription(),
+                    IsSelected = (int)c == ShippingMethodId
                 }).ToList();
             }
         }
 
-      
 
     }
 }

@@ -18,7 +18,7 @@ namespace TeduCoreApp.Data.Entities
         }
 
         public Bill(Guid? customerId, string customerName, string customerAddress, string customerMobile, string customerMessage, string customerEmail,
-            BillStatus billStatus, PaymentMethod paymentMethod, Status status)
+            BillStatus billStatus, PaymentMethod paymentMethod, ShippingMethod shippingMethod, Status status)
         {
             CustomerName = customerName;
             CustomerAddress = customerAddress;
@@ -26,14 +26,14 @@ namespace TeduCoreApp.Data.Entities
             CustomerEmail = customerEmail;
             CustomerMessage = customerMessage;
             BillStatus = billStatus;
-            PaymentMethod = paymentMethod;
+            PaymentMethod = paymentMethod;            
             Status = status;
             CustomerId = customerId;
             BillDetails = new List<BillDetail>();
+            ShippingMethod = shippingMethod;
         }
 
-        public Bill(int id, Guid? customerId, string customerName, string customerAddress, string customerMobile, string customerEmail,
-            string customerMessage, BillStatus billStatus, PaymentMethod paymentMethod, Status status)
+        public Bill(int id, Guid? customerId, string customerName, string customerAddress, string customerMobile, string customerEmail, string customerMessage, BillStatus billStatus, PaymentMethod paymentMethod, ShippingMethod shippingMethod, Status status)
         {
             CustomerId = customerId;
             CustomerName = customerName;
@@ -45,6 +45,7 @@ namespace TeduCoreApp.Data.Entities
             BillStatus = billStatus;
             Status = status;
             BillDetails = new List<BillDetail>();
+            ShippingMethod = shippingMethod;
         }
 
         public Guid? CustomerId { get; set; }
@@ -80,9 +81,6 @@ namespace TeduCoreApp.Data.Entities
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
 
-        public int? ShippingMethodId { get; set; }
-
-        [ForeignKey("ShippingMethodId")]
         public virtual ShippingMethod ShippingMethod { get; set; }
     }
 }
